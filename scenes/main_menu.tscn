@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/RobotoCondensed-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/WashingtonText.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/Layout-edit.png" type="Texture" id=3]
+[ext_resource path="res://scripts/main_menu.gd" type="Script" id=4]
+[ext_resource path="res://themes/main_menu_theme.tres" type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+outline_size = 2
+outline_color = Color( 0, 0.290196, 0.843137, 1 )
+font_data = ExtResource( 2 )
+
+[node name="main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_game" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -432.0
+margin_top = -92.0
+margin_right = -232.0
+margin_bottom = -40.0
+hint_tooltip = "Начинает новую игру с текущими настройками."
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Начать игру"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settings" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -92.0
+margin_right = -8.0
+margin_bottom = -40.0
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Настройки"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scores" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -92.0
+margin_right = 216.0
+margin_bottom = -40.0
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Рекорды"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 240.0
+margin_top = -92.0
+margin_right = 440.0
+margin_bottom = -40.0
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Выход"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arcocard" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -240.0
+margin_top = 48.0
+margin_right = 243.0
+margin_bottom = 189.0
+custom_fonts/font = SubResource( 1 )
+text = "Arcocard"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="scores" to="." method="_on_scores_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
