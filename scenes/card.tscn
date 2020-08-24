@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sprites/cards/brick_shortage.png" type="Texture" id=3]
+[ext_resource path="res://sprites/red_card_layout.png" type="Texture" id=4]
+[ext_resource path="res://scripts/card.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 87
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 90
+font_data = ExtResource( 2 )
+
+[node name="card" type="Control"]
+margin_right = 960.0
+margin_bottom = 1280.0
+rect_min_size = Vector2( 960, 1280 )
+rect_scale = Vector2( 0.25, 0.25 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_use_anchors_": false
+}
+
+[node name="card_layout" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_art" type="TextureRect" parent="."]
+anchor_left = 0.033
+anchor_top = 0.15
+anchor_right = 0.967
+anchor_bottom = 0.569
+margin_left = 0.319998
+margin_right = -0.320129
+margin_bottom = -0.320007
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_name" type="Label" parent="."]
+anchor_left = 0.05
+anchor_top = 0.0375
+anchor_right = 0.955208
+anchor_bottom = 0.120312
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+text = "Кирпич треснул"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_description" type="Label" parent="."]
+anchor_left = 0.058
+anchor_top = 0.592
+anchor_right = 0.942
+anchor_bottom = 0.911
+margin_left = 0.320026
+margin_top = 0.23999
+margin_right = -0.320068
+margin_bottom = -0.0800781
+rect_clip_content = true
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Все игроки теряют по 8 кирпичей."
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_cost" type="Label" parent="."]
+anchor_left = 0.832
+anchor_top = 0.867
+anchor_right = 0.941
+anchor_bottom = 0.95
+margin_left = 0.279968
+margin_top = 0.23999
+margin_right = -0.360046
+rect_clip_content = true
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="." to="." method="_on_card_input"]

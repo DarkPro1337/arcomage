@@ -20,7 +20,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
@@ -55,6 +55,7 @@ margin_left = -208.0
 margin_top = -92.0
 margin_right = -8.0
 margin_bottom = -40.0
+hint_tooltip = "Позволяет настроить правила игры."
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Настройки"
@@ -71,6 +72,7 @@ margin_left = 16.0
 margin_top = -92.0
 margin_right = 216.0
 margin_bottom = -40.0
+hint_tooltip = "Открывает доску лидеров."
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Рекорды"
@@ -87,6 +89,7 @@ margin_left = 240.0
 margin_top = -92.0
 margin_right = 440.0
 margin_bottom = -40.0
+hint_tooltip = "Выйти из игры."
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Выход"
