@@ -49,10 +49,145 @@
 				{
 					"id": "lucky_cache",
 					"name": "Lucky Cache",
-					"description": "+2 Bricks, +2 Gems, Play Again",
+					"description": "+2 Bricks, +2 Gems, Play again",
 					"type": 0,
 					"cost": 0,
 					"pic": "../sprites/cards/lucky_cache.png",
+					"func": ""
+				},
+				{
+					"id": "friendly_terrain",
+					"name": "Friendly Terrain",
+					"description": "+1 Wall, Play again",
+					"type": 0,
+					"cost": 1,
+					"pic": "../sprites/cards/friendly_terrain.png",
+					"func": ""
+				},
+				{
+					"id": "miners",
+					"name": "Miners",
+					"description": "+1 Quarry",
+					"type": 0,
+					"cost": 3,
+					"pic": "../sprites/cards/miners.png",
+					"func": ""
+				},
+				{
+					"id": "mother_lode",
+					"name": "Mother Lode",
+					"description": "If quarry < enemy quarry, +2 quarry. Else, +1 quarry",
+					"type": 0,
+					"cost": 4,
+					"pic": "../sprites/cards/mother_lode.png",
+					"func": ""
+				},
+				{
+					"id": "dwarven_miners",
+					"name": "Dwarven Miners",
+					"description": "+4 Wall, +1 Quarry",
+					"type": 0,
+					"cost": 7,
+					"pic": "../sprites/cards/dwarven_miners.png",
+					"func": ""
+				},
+				{
+					"id": "work_overtime",
+					"name": "Work Overtime",
+					"description": "+5 Wall, You lose 6 gems",
+					"type": 2,
+					"cost": 2,
+					"pic": "../sprites/cards/work_overtime.png",
+					"func": ""
+				},
+				{
+					"id": "copping_the_tech",
+					"name": "Copping the Tech",
+					"description": "If quarry < enemy quarry, quarry = enemy quarry",
+					"type": 0,
+					"cost": 5,
+					"pic": "../sprites/cards/copping_the_tech.png",
+					"func": ""
+				},
+				{
+					"id": "basic_wall",
+					"name": "Basic Wall",
+					"description": "+3 Wall",
+					"type": 0,
+					"cost": 2,
+					"pic": "../sprites/cards/basic_wall.png",
+					"func": ""
+				},
+				{
+					"id": "sturdy_wall",
+					"name": "Sturdy Wall",
+					"description": "+4 Wall",
+					"type": 0,
+					"cost": 3,
+					"pic": "../sprites/cards/sturdy_wall.png",
+					"func": ""
+				},
+				{
+					"id": "innovations",
+					"name": "Innovations",
+					"description": "+1 To all player's quarrys, you gain 4 gems",
+					"type": 0,
+					"cost": 2,
+					"pic": "../sprites/cards/innovations.png",
+					"func": ""
+				},
+				{
+					"id": "foundations",
+					"name": "Foundations",
+					"description": "If wall = 0, +6 wall, else +3 wall",
+					"type": 0,
+					"cost": 3,
+					"pic": "../sprites/cards/foundations.png",
+					"func": ""
+				},
+				{
+					"id": "tremors",
+					"name": "Tremors",
+					"description": "All walls take 5 damage. Play again",
+					"type": 0,
+					"cost": 7,
+					"pic": "../sprites/cards/tremors.png",
+					"func": ""
+				},
+				{
+					"id": "secret_room",
+					"name": "Secret Room",
+					"description": "+1 Magic, Play Again",
+					"type": 0,
+					"cost": 8,
+					"pic": "../sprites/cards/secret_room.png",
+					"func": ""
+				},
+				{
+					"id": "earthquake",
+					"name": "Earthquake",
+					"description": "-1 To all player's quarrys",
+					"type": 0,
+					"cost": 0,
+					"pic": "../sprites/cards/earthquake.png",
+					"func": ""
+				},
+				{
+					"id": "big_wall",
+					"name": "Big Wall",
+					"description": "+6 Wall",
+					"type": 0,
+					"cost": 5,
+					"pic": "../sprites/cards/big_wall.png",
+					"func": ""
+				},
+				{
+					"id": "collapse",
+					"name": "Collapse!",
+					"description": "-1 Enemy quarry",
+					"type": 0,
+					"cost": 4,
+					"pic": "../sprites/cards/collapse.png",
 					"func": ""
 				}
 			],

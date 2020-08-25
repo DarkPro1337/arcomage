@@ -1,6 +1,7 @@
 extends Control
 
 var turn
+var card = preload("res://scenes/card.tscn")
 
 # DEFAULT TOWER AND WALL HP
 var player_tower_hp = 50
@@ -25,4 +26,6 @@ var enemy_dungeon = 5
 var enemy_recruits = 20
 
 func _ready():
-	pass
+	for i in 6:
+		var card_inst = card.instance()
+		$deck.add_child(card_inst)
