@@ -1,0 +1,65 @@
+{
+	"sheets": [
+		{
+			"name": "cards",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "name",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "description",
+					"display": null
+				},
+				{
+					"typeStr": "5:brick,gem,recruits",
+					"name": "type",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "cost"
+				},
+				{
+					"typeStr": "13",
+					"name": "pic",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "func"
+				}
+			],
+			"lines": [
+				{
+					"id": "brick_shortage",
+					"name": "Brick Shortage",
+					"description": "All players lose 8 bricks",
+					"type": 0,
+					"cost": 0,
+					"pic": "../sprites/cards/brick_shortage.png",
+					"func": ""
+				},
+				{
+					"id": "lucky_cache",
+					"name": "Lucky Cache",
+					"description": "+2 Bricks, +2 Gems, Play Again",
+					"type": 0,
+					"cost": 0,
+					"pic": "../sprites/cards/lucky_cache.png",
+					"func": ""
+				}
+			],
+			"separators": [],
+			"props": {}
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

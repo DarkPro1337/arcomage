@@ -1,5 +1,7 @@
 extends Control
 
+var card_name
+
 func _ready():
 	pass
 
