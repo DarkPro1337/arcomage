@@ -95,7 +95,7 @@
 					"id": "work_overtime",
 					"name": "Work Overtime",
 					"description": "+5 Wall, You lose 6 gems",
-					"type": 2,
+					"type": 0,
 					"cost": 2,
 					"pic": "../sprites/cards/work_overtime.png",
 					"func": ""
@@ -188,6 +188,159 @@
 					"type": 0,
 					"cost": 4,
 					"pic": "../sprites/cards/collapse.png",
+					"func": ""
+				},
+				{
+					"id": "new_equipment",
+					"name": "New Equipment",
+					"description": "+2 Quarry",
+					"type": 0,
+					"cost": 6,
+					"pic": "../sprites/cards/new_equipment.png",
+					"func": ""
+				},
+				{
+					"id": "strip_mine",
+					"name": "Strip Mine",
+					"description": "-1 Quarry, +10 Wall, You gain 5 gems",
+					"type": 0,
+					"cost": 0,
+					"pic": "../sprites/cards/strip_mine.png",
+					"func": ""
+				},
+				{
+					"id": "reinforced_wall",
+					"name": "Reinforced Wall",
+					"description": "+8 Wall",
+					"type": 0,
+					"cost": 8,
+					"pic": "../sprites/cards/reinforced_wall.png",
+					"func": ""
+				},
+				{
+					"id": "porticulus",
+					"name": "Porticulus",
+					"description": "+5 Wall, +1 Dungeons",
+					"type": 0,
+					"cost": 9,
+					"pic": "../sprites/cards/porticulus.png",
+					"func": ""
+				},
+				{
+					"id": "crystal_rocks",
+					"name": "Crystal Rocks",
+					"description": "+7 Wall, gain 7 gems",
+					"type": 0,
+					"cost": 9,
+					"pic": "../sprites/cards/crystal_rocks.png",
+					"func": ""
+				},
+				{
+					"id": "harmonic_ore",
+					"name": "Harmonic Ore",
+					"description": "+6 Wall, +3 Tower",
+					"type": 0,
+					"cost": 11,
+					"pic": "../sprites/cards/harmonic_ore.png",
+					"func": ""
+				},
+				{
+					"id": "mondo_wall",
+					"name": "Mondo Wall",
+					"description": "+12 Wall",
+					"type": 0,
+					"cost": 13,
+					"pic": "../sprites/cards/mondoWall.png",
+					"func": ""
+				},
+				{
+					"id": "focused_designs",
+					"name": "Focused Designs",
+					"description": "+8 Wall, +5 Tower",
+					"type": 0,
+					"cost": 15,
+					"pic": "../sprites/cards/focusedDesigns.png",
+					"func": ""
+				},
+				{
+					"id": "great_wall",
+					"name": "Great Wall",
+					"description": "+15 Wall",
+					"type": 0,
+					"cost": 16,
+					"pic": "../sprites/cards/great_wall.png",
+					"func": ""
+				},
+				{
+					"id": "rock_launcher",
+					"name": "Rock Launcher",
+					"description": "+6 Wall, 10 Damage to enemy",
+					"type": 0,
+					"cost": 18,
+					"pic": "../sprites/cards/rock_launcher.png",
+					"func": ""
+				},
+				{
+					"id": "dragons_heart",
+					"name": "Dragon's Heart",
+					"description": "+20 Wall, +8 Tower",
+					"type": 0,
+					"cost": 24,
+					"pic": "../sprites/cards/dragons_heart.png",
+					"func": ""
+				},
+				{
+					"id": "forced_labor",
+					"name": "Forced Labor",
+					"description": "+9 Wall, Lose 5 Recruits",
+					"type": 0,
+					"cost": 7,
+					"pic": "../sprites/cards/forced_labor.png",
+					"func": ""
+				},
+				{
+					"id": "rock_garden",
+					"name": "Rock Garden",
+					"description": "+1 Wall, +1 Tower, +2 Recruits",
+					"type": 0,
+					"cost": 1,
+					"pic": "../sprites/cards/rock_garden.png",
+					"func": ""
+				},
+				{
+					"id": "flood_water",
+					"name": "Flood Water",
+					"description": "Player(s) with lowest Wall are -1 Dungeon and 2 damage to Tower",
+					"type": 0,
+					"cost": 6,
+					"pic": "../sprites/cards/flood_water.png",
+					"func": ""
+				},
+				{
+					"id": "barracks",
+					"name": "Barracks",
+					"description": "+6 Recruits, +6 Wall, If dungeon < enemy dungeon then +1 dungeon",
+					"type": 0,
+					"cost": 10,
+					"pic": "../sprites/cards/barracks.png",
+					"func": ""
+				},
+				{
+					"id": "battlements",
+					"name": "Battlements",
+					"description": "+7 Wall, 6 damage to enemy",
+					"type": 0,
+					"cost": 14,
+					"pic": "../sprites/cards/battlements.png",
+					"func": ""
+				},
+				{
+					"id": "shift",
+					"name": "Shift",
+					"description": "Switch your Wall with enemy Wall",
+					"type": 0,
+					"cost": 17,
+					"pic": "../sprites/cards/shift.png",
 					"func": ""
 				}
 			],

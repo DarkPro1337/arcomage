@@ -18,6 +18,8 @@ _global_script_class_icons={
 config/name="Arcocard"
 config/description="Arcocard - is a Arcomage clone made on Godot Engine."
 run/main_scene="res://scenes/main_menu.tscn"
+boot_splash/image="res://sprites/empty_splash.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -26,7 +28,7 @@ config/windows_native_icon="res://icon.ico"
 window/size/width=960
 window/size/height=540
 window/stretch/mode="2d"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="expand"
 
 [input]
 

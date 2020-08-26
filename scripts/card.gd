@@ -14,7 +14,6 @@ func _ready():
 	data_read.open("res://db/base.cdb", File.READ)
 	var data_cdb = parse_json(data_read.get_as_text())
 	data_read.close()
-	
 	for sheet in data_cdb["sheets"]:
 		if sheet["name"] == "cards":
 			for entry in sheet["lines"]:
@@ -48,6 +47,12 @@ func _on_card_input(event):
 		get_tree().reload_current_scene()
 	if Input.is_action_pressed("ui_rmb"):
 		pass #TODO
+
+func _on_card_mouse_entered():
+	$selector.show()
+
+func _on_card_mouse_exited():
+	$selector.hide()
 
 func damage_tower(hp):
 	pass #TODO
