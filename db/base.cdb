@@ -33,7 +33,7 @@
 				},
 				{
 					"typeStr": "1",
-					"name": "func"
+					"name": "func_text"
 				}
 			],
 			"lines": [
@@ -44,7 +44,7 @@
 					"type": 0,
 					"cost": 0,
 					"pic": "../sprites/cards/brick_shortage.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "lucky_cache",
@@ -53,7 +53,7 @@
 					"type": 0,
 					"cost": 0,
 					"pic": "../sprites/cards/lucky_cache.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "friendly_terrain",
@@ -62,7 +62,7 @@
 					"type": 0,
 					"cost": 1,
 					"pic": "../sprites/cards/friendly_terrain.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "miners",
@@ -71,7 +71,7 @@
 					"type": 0,
 					"cost": 3,
 					"pic": "../sprites/cards/miners.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "mother_lode",
@@ -80,7 +80,7 @@
 					"type": 0,
 					"cost": 4,
 					"pic": "../sprites/cards/mother_lode.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "dwarven_miners",
@@ -89,7 +89,7 @@
 					"type": 0,
 					"cost": 7,
 					"pic": "../sprites/cards/dwarven_miners.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "work_overtime",
@@ -98,7 +98,7 @@
 					"type": 0,
 					"cost": 2,
 					"pic": "../sprites/cards/work_overtime.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "copping_the_tech",
@@ -107,7 +107,7 @@
 					"type": 0,
 					"cost": 5,
 					"pic": "../sprites/cards/copping_the_tech.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "basic_wall",
@@ -116,7 +116,7 @@
 					"type": 0,
 					"cost": 2,
 					"pic": "../sprites/cards/basic_wall.png",
-					"func": ""
+					"func_text": "heal_wall(3)"
 				},
 				{
 					"id": "sturdy_wall",
@@ -125,7 +125,7 @@
 					"type": 0,
 					"cost": 3,
 					"pic": "../sprites/cards/sturdy_wall.png",
-					"func": ""
+					"func_text": "heal_wall(4)"
 				},
 				{
 					"id": "innovations",
@@ -134,7 +134,7 @@
 					"type": 0,
 					"cost": 2,
 					"pic": "../sprites/cards/innovations.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "foundations",
@@ -143,7 +143,7 @@
 					"type": 0,
 					"cost": 3,
 					"pic": "../sprites/cards/foundations.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "tremors",
@@ -152,7 +152,7 @@
 					"type": 0,
 					"cost": 7,
 					"pic": "../sprites/cards/tremors.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "secret_room",
@@ -161,7 +161,7 @@
 					"type": 0,
 					"cost": 8,
 					"pic": "../sprites/cards/secret_room.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "earthquake",
@@ -170,7 +170,7 @@
 					"type": 0,
 					"cost": 0,
 					"pic": "../sprites/cards/earthquake.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "big_wall",
@@ -179,7 +179,7 @@
 					"type": 0,
 					"cost": 5,
 					"pic": "../sprites/cards/big_wall.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "collapse",
@@ -188,7 +188,7 @@
 					"type": 0,
 					"cost": 4,
 					"pic": "../sprites/cards/collapse.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "new_equipment",
@@ -197,7 +197,7 @@
 					"type": 0,
 					"cost": 6,
 					"pic": "../sprites/cards/new_equipment.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "strip_mine",
@@ -206,7 +206,7 @@
 					"type": 0,
 					"cost": 0,
 					"pic": "../sprites/cards/strip_mine.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "reinforced_wall",
@@ -215,7 +215,7 @@
 					"type": 0,
 					"cost": 8,
 					"pic": "../sprites/cards/reinforced_wall.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "porticulus",
@@ -224,7 +224,7 @@
 					"type": 0,
 					"cost": 9,
 					"pic": "../sprites/cards/porticulus.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "crystal_rocks",
@@ -233,7 +233,7 @@
 					"type": 0,
 					"cost": 9,
 					"pic": "../sprites/cards/crystal_rocks.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "harmonic_ore",
@@ -242,7 +242,7 @@
 					"type": 0,
 					"cost": 11,
 					"pic": "../sprites/cards/harmonic_ore.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "mondo_wall",
@@ -251,7 +251,7 @@
 					"type": 0,
 					"cost": 13,
 					"pic": "../sprites/cards/mondoWall.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "focused_designs",
@@ -260,7 +260,7 @@
 					"type": 0,
 					"cost": 15,
 					"pic": "../sprites/cards/focusedDesigns.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "great_wall",
@@ -269,7 +269,7 @@
 					"type": 0,
 					"cost": 16,
 					"pic": "../sprites/cards/great_wall.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "rock_launcher",
@@ -278,7 +278,7 @@
 					"type": 0,
 					"cost": 18,
 					"pic": "../sprites/cards/rock_launcher.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "dragons_heart",
@@ -287,7 +287,7 @@
 					"type": 0,
 					"cost": 24,
 					"pic": "../sprites/cards/dragons_heart.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "forced_labor",
@@ -296,7 +296,7 @@
 					"type": 0,
 					"cost": 7,
 					"pic": "../sprites/cards/forced_labor.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "rock_garden",
@@ -305,7 +305,7 @@
 					"type": 0,
 					"cost": 1,
 					"pic": "../sprites/cards/rock_garden.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "flood_water",
@@ -314,7 +314,7 @@
 					"type": 0,
 					"cost": 6,
 					"pic": "../sprites/cards/flood_water.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "barracks",
@@ -323,7 +323,7 @@
 					"type": 0,
 					"cost": 10,
 					"pic": "../sprites/cards/barracks.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "battlements",
@@ -332,7 +332,7 @@
 					"type": 0,
 					"cost": 14,
 					"pic": "../sprites/cards/battlements.png",
-					"func": ""
+					"func_text": ""
 				},
 				{
 					"id": "shift",
@@ -341,7 +341,43 @@
 					"type": 0,
 					"cost": 17,
 					"pic": "../sprites/cards/shift.png",
-					"func": ""
+					"func_text": ""
+				},
+				{
+					"id": "quartz",
+					"name": "Quartz",
+					"description": "+1 Tower, Play again",
+					"type": 1,
+					"cost": 1,
+					"pic": "../sprites/cards/quartz.png",
+					"func_text": ""
+				},
+				{
+					"id": "smoky_quartz",
+					"name": "Smoky Quartz",
+					"description": "1 Damage to enemy tower, Play again",
+					"type": 1,
+					"cost": 2,
+					"pic": "../sprites/cards/smoky_quartz.png",
+					"func_text": ""
+				},
+				{
+					"id": "amethyst",
+					"name": "Amethyst",
+					"description": "+3 Tower",
+					"type": 1,
+					"cost": 2,
+					"pic": "../sprites/cards/amethyst.png",
+					"func_text": ""
+				},
+				{
+					"id": "spell_weavers",
+					"name": "Spell Weavers",
+					"description": "+1 Magic",
+					"type": 1,
+					"cost": 3,
+					"pic": "../sprites/cards/spell_weavers.png",
+					"func_text": ""
 				}
 			],
 			"separators": [],

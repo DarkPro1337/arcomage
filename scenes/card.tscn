@@ -7,27 +7,27 @@
 [ext_resource path="res://scripts/card.gd" type="Script" id=5]
 [ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 shadow_color = Color( 0, 0, 0, 0.294118 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.964706, 0.964706, 0.964706, 1 )
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 10
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 19
 font_data = ExtResource( 6 )
 
@@ -46,7 +46,7 @@ __meta__ = {
 [node name="shadow" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -55,7 +55,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,7 +96,7 @@ margin_top = -0.0200009
 margin_right = 0.019989
 margin_bottom = 0.0399971
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Кирпич треснул"
 align = 1
@@ -117,7 +117,7 @@ margin_left = -0.0500002
 margin_top = -0.0200195
 margin_right = 0.0500031
 margin_bottom = 0.0199738
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Все игроки теряют по 8 кирпичей."
 align = 1
@@ -137,7 +137,7 @@ margin_left = 1.27001
 margin_top = 1.52588e-05
 margin_right = 1.32001
 margin_bottom = -0.039978
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 1
