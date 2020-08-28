@@ -1,8 +1,9 @@
 extends Control
 
-onready var exec = Expression.new()
+var rng = RandomNumberGenerator.new()
 var card_data = {}
 
+var card_id
 var card_name
 var card_description
 var card_cost
@@ -11,7 +12,7 @@ var card_art
 var card_func
 
 func _ready():
-	randomize()
+	rng.randomize() # RANDOMIZE THE SEED
 	# DB LOAD
 	var data_read = File.new()
 	data_read.open("res://db/base.cdb", File.READ)
@@ -24,15 +25,15 @@ func _ready():
 				card_data[entry["id"]] = new_entry
 	
 	# PICK RANDOM CARD FROM DB
-	var random_card = card_data[card_data.keys()[randi() % card_data.size()]].id
+	var random_card = card_data[card_data.keys()[rng.randi_range(0, card_data.size() - 1)]].id
 	
 	# CHANGING THE CARD VARS
+	card_id = card_data.get(random_card).id
 	card_name = card_data.get(random_card).name
 	card_art = str(card_data.get(random_card).pic).replace("../", "res://")
 	card_description = card_data.get(random_card).description
 	card_cost = card_data.get(random_card).cost
 	card_layout = card_data.get(random_card).type
-	card_func = card_data.get(random_card).func_text
 	
 	# CHANGING THE CARD LOOK
 	$name.text = card_name
@@ -47,22 +48,12 @@ func _ready():
 		$layout.texture = load("res://sprites/green_card_layout.png")
 
 func _on_card_input(event):
-	if Input.is_action_just_released("ui_lmb"):
-		exec.parse(card_func)
-		exec.execute([card_func], self)
-		if card_layout == 0:
-			global.table.player_bricks -= card_cost
-		elif card_layout == 1:
-			global.table.player_gems -= card_cost
-		elif card_layout == 2:
-			global.table.player_recruits -= card_cost
+	if Input.is_action_just_pressed("ui_lmb"):
+		card_func(card_id)
+		card_charge()
 		queue_free()
 
-	if Input.is_action_just_released("ui_rmb"):
-		if global.table.player_quarry < global.table.enemy_quarry:
-			add_player_quarry(2)
-		else:
-			add_player_quarry(1)
+	if Input.is_action_just_pressed("ui_rmb"):
 		queue_free()
 
 func _on_card_mouse_entered():
@@ -70,6 +61,78 @@ func _on_card_mouse_entered():
 
 func _on_card_mouse_exited():
 	$selector.hide()
+
+func card_charge():
+	if card_layout == 0:
+		global.table.player_bricks -= card_cost
+	elif card_layout == 1:
+		global.table.player_gems -= card_cost
+	elif card_layout == 2:
+		global.table.player_recruits -= card_cost
+
+func card_func(id):
+	match id:
+		"brick_shortage":
+			remove_player_bricks(8)
+			remove_enemy_bricks(8)
+		"lucky_cache":
+			add_player_bricks(2)
+			add_player_gems(2)
+			play_again()
+		"friendly_terrain":
+			heal_player_wall(1)
+			play_again()
+		"miners":
+			add_player_quarry(1)
+		"mother_lode":
+			if player_quarry() < enemy_quarry():
+				add_player_quarry(2)
+			else:
+				add_player_quarry(1)
+		"dwarven_miners":
+			heal_player_wall(4)
+			add_player_quarry(1)
+		"work_overtime":
+			heal_player_wall(5)
+			remove_player_gems(6)
+		"copping_the_tech":
+			if player_quarry() < enemy_quarry():
+				global.table.player_quarry = enemy_quarry()
+		"basic_wall":
+			heal_player_wall(3)
+		"sturdy_wall":
+			heal_player_wall(4)
+		"innovations":
+			add_player_quarry(1)
+			add_enemy_quarry(1)
+			add_player_gems(4)
+		"foundations":
+			if player_wall() == 0:
+				heal_player_wall(6)
+			else:
+				heal_player_wall(3)
+		"tremors":
+			damage_player_wall(5)
+			damage_enemy_wall(5)
+			play_again()
+		"secret_room":
+			add_player_magic(1)
+			play_again()
+		"earthquake":
+			remove_player_quarry(1)
+			remove_enemy_quarry(1)
+		"big_wall":
+			heal_player_wall(6)
+		"collapse":
+			remove_enemy_quarry(1)
+		"new_equipment":
+			add_player_quarry(2)
+		"strip_mine":
+			remove_player_quarry(1)
+			heal_player_wall(10)
+			add_player_gems(5)
+		"reinforced_wall":
+			heal_player_wall(8)
 
 func damage_player_tower(hp):
 	global.table.player_tower_hp -= hp
@@ -170,16 +233,50 @@ func remove_enemy_recruits(num):
 func play_again():
 	pass
 
-func ifelse(cond, iftrue, iffalse):
-	if cond:
-		iftrue
-		print("true")
-	else:
-		iffalse
-		print("false")
-
 func player_quarry():
 	return global.table.player_quarry
 
+func player_bricks():
+	return global.table.player_bricks
+
+func player_magic():
+	return global.table.player_magic
+
+func player_gems():
+	return global.table.player_gems
+
+func player_dungeon():
+	return global.table.player_dungeon
+
+func player_recruits():
+	return global.table.player_recruits
+
 func enemy_quarry():
 	return global.table.enemy_quarry
+
+func enemy_bricks():
+	return global.table.enemy_bricks
+
+func enemy_magic():
+	return global.table.enemy_magic
+
+func enemy_gems():
+	return global.table.enemy_gems
+
+func enemy_dungeon():
+	return global.table.enemy_dungeon
+
+func enemy_recruits():
+	return global.table.enemy_recruits
+
+func player_tower():
+	return global.table.player_tower_hp
+
+func player_wall():
+	return global.table.player_wall_hp
+
+func enemy_tower():
+	return global.table.enemy_tower_hp
+
+func enemy_wall():
+	return global.table.enemy_wall_hp

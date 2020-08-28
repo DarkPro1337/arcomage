@@ -27,7 +27,7 @@ var enemy_dungeon = 5
 var enemy_recruits = 20
 
 func _input(event):
-	if Input.is_action_pressed("ui_reset"):
+	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()
 
 func _ready():
@@ -42,15 +42,23 @@ func _physics_process(delta):
 		$deck.add_child(card_inst)
 
 func update_stat_panels():
+	# PLAYER STATS
 	$player_bricks_panel/per_turn.text = str(player_quarry)
 	$player_bricks_panel/total.text = str(player_bricks)
 	$player_gems_panel/per_turn.text = str(player_magic)
 	$player_gems_panel/total.text = str(player_gems)
 	$player_recruits_panel/per_turn.text = str(player_dungeon)
 	$player_recruits_panel/total.text = str(player_recruits)
+	# ENEMY STATS
 	$enemy_bricks_panel/per_turn.text = str(enemy_quarry)
 	$enemy_bricks_panel/total.text = str(enemy_bricks)
 	$enemy_gems_panel/per_turn.text = str(enemy_magic)
 	$enemy_gems_panel/total.text = str(enemy_gems)
 	$enemy_recruits_panel/per_turn.text = str(enemy_dungeon)
 	$enemy_recruits_panel/total.text = str(enemy_recruits)
+	# PLAYER TOWER AND WALL
+	$player_tower_panel/tower_hp.text = str(player_tower_hp)
+	$player_wall_panel/wall_hp.text = str(player_wall_hp)
+	# ENEMY TOWER AND WALL
+	$enemy_tower_panel/tower_hp.text = str(enemy_tower_hp)
+	$enemy_wall_panel/wall_hp.text = str(enemy_wall_hp)

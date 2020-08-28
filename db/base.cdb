@@ -30,10 +30,6 @@
 					"typeStr": "13",
 					"name": "pic",
 					"display": null
-				},
-				{
-					"typeStr": "1",
-					"name": "func_text"
 				}
 			],
 			"lines": [
@@ -43,8 +39,7 @@
 					"description": "All players lose 8 bricks",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/brick_shortage.png",
-					"func_text": "remove_player_bricks(8) and remove_enemy_bricks(8)"
+					"pic": "../sprites/cards/brick_shortage.png"
 				},
 				{
 					"id": "lucky_cache",
@@ -52,8 +47,7 @@
 					"description": "+2 Bricks, +2 Gems, Play again",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/lucky_cache.png",
-					"func_text": "add_player_bricks(2) and add_player_gems(2) and play_again()"
+					"pic": "../sprites/cards/lucky_cache.png"
 				},
 				{
 					"id": "friendly_terrain",
@@ -61,8 +55,7 @@
 					"description": "+1 Wall, Play again",
 					"type": 0,
 					"cost": 1,
-					"pic": "../sprites/cards/friendly_terrain.png",
-					"func_text": "heal_player_wall(1) and play_again()"
+					"pic": "../sprites/cards/friendly_terrain.png"
 				},
 				{
 					"id": "miners",
@@ -70,8 +63,7 @@
 					"description": "+1 Quarry",
 					"type": 0,
 					"cost": 3,
-					"pic": "../sprites/cards/miners.png",
-					"func_text": "add_player_quarry(1)"
+					"pic": "../sprites/cards/miners.png"
 				},
 				{
 					"id": "mother_lode",
@@ -79,8 +71,7 @@
 					"description": "If quarry < enemy quarry, +2 quarry. Else, +1 quarry",
 					"type": 0,
 					"cost": 4,
-					"pic": "../sprites/cards/mother_lode.png",
-					"func_text": "ifelse(player_quarry() < enemy_quarry(), add_player_quarry(2), add_player_quarry(1))"
+					"pic": "../sprites/cards/mother_lode.png"
 				},
 				{
 					"id": "dwarven_miners",
@@ -88,8 +79,7 @@
 					"description": "+4 Wall, +1 Quarry",
 					"type": 0,
 					"cost": 7,
-					"pic": "../sprites/cards/dwarven_miners.png",
-					"func_text": ""
+					"pic": "../sprites/cards/dwarven_miners.png"
 				},
 				{
 					"id": "work_overtime",
@@ -97,8 +87,7 @@
 					"description": "+5 Wall, You lose 6 gems",
 					"type": 0,
 					"cost": 2,
-					"pic": "../sprites/cards/work_overtime.png",
-					"func_text": ""
+					"pic": "../sprites/cards/work_overtime.png"
 				},
 				{
 					"id": "copping_the_tech",
@@ -106,8 +95,7 @@
 					"description": "If quarry < enemy quarry, quarry = enemy quarry",
 					"type": 0,
 					"cost": 5,
-					"pic": "../sprites/cards/copping_the_tech.png",
-					"func_text": ""
+					"pic": "../sprites/cards/copping_the_tech.png"
 				},
 				{
 					"id": "basic_wall",
@@ -115,8 +103,7 @@
 					"description": "+3 Wall",
 					"type": 0,
 					"cost": 2,
-					"pic": "../sprites/cards/basic_wall.png",
-					"func_text": ""
+					"pic": "../sprites/cards/basic_wall.png"
 				},
 				{
 					"id": "sturdy_wall",
@@ -124,8 +111,7 @@
 					"description": "+4 Wall",
 					"type": 0,
 					"cost": 3,
-					"pic": "../sprites/cards/sturdy_wall.png",
-					"func_text": "  "
+					"pic": "../sprites/cards/sturdy_wall.png"
 				},
 				{
 					"id": "innovations",
@@ -133,8 +119,7 @@
 					"description": "+1 To all player's quarrys, you gain 4 gems",
 					"type": 0,
 					"cost": 2,
-					"pic": "../sprites/cards/innovations.png",
-					"func_text": ""
+					"pic": "../sprites/cards/innovations.png"
 				},
 				{
 					"id": "foundations",
@@ -142,8 +127,7 @@
 					"description": "If wall = 0, +6 wall, else +3 wall",
 					"type": 0,
 					"cost": 3,
-					"pic": "../sprites/cards/foundations.png",
-					"func_text": ""
+					"pic": "../sprites/cards/foundations.png"
 				},
 				{
 					"id": "tremors",
@@ -151,8 +135,7 @@
 					"description": "All walls take 5 damage. Play again",
 					"type": 0,
 					"cost": 7,
-					"pic": "../sprites/cards/tremors.png",
-					"func_text": ""
+					"pic": "../sprites/cards/tremors.png"
 				},
 				{
 					"id": "secret_room",
@@ -160,8 +143,7 @@
 					"description": "+1 Magic, Play Again",
 					"type": 0,
 					"cost": 8,
-					"pic": "../sprites/cards/secret_room.png",
-					"func_text": ""
+					"pic": "../sprites/cards/secret_room.png"
 				},
 				{
 					"id": "earthquake",
@@ -169,8 +151,7 @@
 					"description": "-1 To all player's quarrys",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/earthquake.png",
-					"func_text": ""
+					"pic": "../sprites/cards/earthquake.png"
 				},
 				{
 					"id": "big_wall",
@@ -178,8 +159,7 @@
 					"description": "+6 Wall",
 					"type": 0,
 					"cost": 5,
-					"pic": "../sprites/cards/big_wall.png",
-					"func_text": ""
+					"pic": "../sprites/cards/big_wall.png"
 				},
 				{
 					"id": "collapse",
@@ -187,8 +167,7 @@
 					"description": "-1 Enemy quarry",
 					"type": 0,
 					"cost": 4,
-					"pic": "../sprites/cards/collapse.png",
-					"func_text": ""
+					"pic": "../sprites/cards/collapse.png"
 				},
 				{
 					"id": "new_equipment",
@@ -196,8 +175,7 @@
 					"description": "+2 Quarry",
 					"type": 0,
 					"cost": 6,
-					"pic": "../sprites/cards/new_equipment.png",
-					"func_text": ""
+					"pic": "../sprites/cards/new_equipment.png"
 				},
 				{
 					"id": "strip_mine",
@@ -205,8 +183,7 @@
 					"description": "-1 Quarry, +10 Wall, You gain 5 gems",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/strip_mine.png",
-					"func_text": ""
+					"pic": "../sprites/cards/strip_mine.png"
 				},
 				{
 					"id": "reinforced_wall",
@@ -214,8 +191,7 @@
 					"description": "+8 Wall",
 					"type": 0,
 					"cost": 8,
-					"pic": "../sprites/cards/reinforced_wall.png",
-					"func_text": ""
+					"pic": "../sprites/cards/reinforced_wall.png"
 				},
 				{
 					"id": "porticulus",
@@ -223,8 +199,7 @@
 					"description": "+5 Wall, +1 Dungeons",
 					"type": 0,
 					"cost": 9,
-					"pic": "../sprites/cards/porticulus.png",
-					"func_text": ""
+					"pic": "../sprites/cards/porticulus.png"
 				},
 				{
 					"id": "crystal_rocks",
@@ -232,8 +207,7 @@
 					"description": "+7 Wall, gain 7 gems",
 					"type": 0,
 					"cost": 9,
-					"pic": "../sprites/cards/crystal_rocks.png",
-					"func_text": ""
+					"pic": "../sprites/cards/crystal_rocks.png"
 				},
 				{
 					"id": "harmonic_ore",
@@ -241,8 +215,7 @@
 					"description": "+6 Wall, +3 Tower",
 					"type": 0,
 					"cost": 11,
-					"pic": "../sprites/cards/harmonic_ore.png",
-					"func_text": ""
+					"pic": "../sprites/cards/harmonic_ore.png"
 				},
 				{
 					"id": "mondo_wall",
@@ -250,8 +223,7 @@
 					"description": "+12 Wall",
 					"type": 0,
 					"cost": 13,
-					"pic": "../sprites/cards/mondoWall.png",
-					"func_text": ""
+					"pic": "../sprites/cards/mondoWall.png"
 				},
 				{
 					"id": "focused_designs",
@@ -259,8 +231,7 @@
 					"description": "+8 Wall, +5 Tower",
 					"type": 0,
 					"cost": 15,
-					"pic": "../sprites/cards/focusedDesigns.png",
-					"func_text": ""
+					"pic": "../sprites/cards/focusedDesigns.png"
 				},
 				{
 					"id": "great_wall",
@@ -268,8 +239,7 @@
 					"description": "+15 Wall",
 					"type": 0,
 					"cost": 16,
-					"pic": "../sprites/cards/great_wall.png",
-					"func_text": ""
+					"pic": "../sprites/cards/great_wall.png"
 				},
 				{
 					"id": "rock_launcher",
@@ -277,8 +247,7 @@
 					"description": "+6 Wall, 10 Damage to enemy",
 					"type": 0,
 					"cost": 18,
-					"pic": "../sprites/cards/rock_launcher.png",
-					"func_text": ""
+					"pic": "../sprites/cards/rock_launcher.png"
 				},
 				{
 					"id": "dragons_heart",
@@ -286,8 +255,7 @@
 					"description": "+20 Wall, +8 Tower",
 					"type": 0,
 					"cost": 24,
-					"pic": "../sprites/cards/dragons_heart.png",
-					"func_text": ""
+					"pic": "../sprites/cards/dragons_heart.png"
 				},
 				{
 					"id": "forced_labor",
@@ -295,8 +263,7 @@
 					"description": "+9 Wall, Lose 5 Recruits",
 					"type": 0,
 					"cost": 7,
-					"pic": "../sprites/cards/forced_labor.png",
-					"func_text": ""
+					"pic": "../sprites/cards/forced_labor.png"
 				},
 				{
 					"id": "rock_garden",
@@ -304,8 +271,7 @@
 					"description": "+1 Wall, +1 Tower, +2 Recruits",
 					"type": 0,
 					"cost": 1,
-					"pic": "../sprites/cards/rock_garden.png",
-					"func_text": ""
+					"pic": "../sprites/cards/rock_garden.png"
 				},
 				{
 					"id": "flood_water",
@@ -313,8 +279,7 @@
 					"description": "Player(s) with lowest Wall are -1 Dungeon and 2 damage to Tower",
 					"type": 0,
 					"cost": 6,
-					"pic": "../sprites/cards/flood_water.png",
-					"func_text": ""
+					"pic": "../sprites/cards/flood_water.png"
 				},
 				{
 					"id": "barracks",
@@ -322,8 +287,7 @@
 					"description": "+6 Recruits, +6 Wall, If dungeon < enemy dungeon then +1 dungeon",
 					"type": 0,
 					"cost": 10,
-					"pic": "../sprites/cards/barracks.png",
-					"func_text": ""
+					"pic": "../sprites/cards/barracks.png"
 				},
 				{
 					"id": "battlements",
@@ -331,8 +295,7 @@
 					"description": "+7 Wall, 6 damage to enemy",
 					"type": 0,
 					"cost": 14,
-					"pic": "../sprites/cards/battlements.png",
-					"func_text": ""
+					"pic": "../sprites/cards/battlements.png"
 				},
 				{
 					"id": "shift",
@@ -340,8 +303,7 @@
 					"description": "Switch your Wall with enemy Wall",
 					"type": 0,
 					"cost": 17,
-					"pic": "../sprites/cards/shift.png",
-					"func_text": ""
+					"pic": "../sprites/cards/shift.png"
 				},
 				{
 					"id": "quartz",
@@ -349,8 +311,7 @@
 					"description": "+1 Tower, Play again",
 					"type": 1,
 					"cost": 1,
-					"pic": "../sprites/cards/quartz.png",
-					"func_text": ""
+					"pic": "../sprites/cards/quartz.png"
 				},
 				{
 					"id": "smoky_quartz",
@@ -358,8 +319,7 @@
 					"description": "1 Damage to enemy tower, Play again",
 					"type": 1,
 					"cost": 2,
-					"pic": "../sprites/cards/smoky_quartz.png",
-					"func_text": ""
+					"pic": "../sprites/cards/smoky_quartz.png"
 				},
 				{
 					"id": "amethyst",
@@ -367,8 +327,7 @@
 					"description": "+3 Tower",
 					"type": 1,
 					"cost": 2,
-					"pic": "../sprites/cards/amethyst.png",
-					"func_text": ""
+					"pic": "../sprites/cards/amethyst.png"
 				},
 				{
 					"id": "spell_weavers",
@@ -376,8 +335,519 @@
 					"description": "+1 Magic",
 					"type": 1,
 					"cost": 3,
-					"pic": "../sprites/cards/spell_weavers.png",
-					"func_text": ""
+					"pic": "../sprites/cards/spell_weavers.png"
+				},
+				{
+					"id": "prism",
+					"name": "Prism",
+					"description": "Draw 1 card, Discard 1 card, Play again",
+					"type": 1,
+					"cost": 2,
+					"pic": "../sprites/cards/prism.png"
+				},
+				{
+					"id": "lodestone",
+					"name": "Lodestone",
+					"description": "+3 Tower, This card can't be discarded without playing it",
+					"type": 1,
+					"cost": 5,
+					"pic": "../sprites/cards/lodestone.png"
+				},
+				{
+					"id": "solar_flare",
+					"name": "Solar Flare",
+					"description": "+2 Tower, 2 Damage to enemy tower",
+					"type": 1,
+					"cost": 4,
+					"pic": "../sprites/cards/solar_flare.png"
+				},
+				{
+					"id": "crystal_matrix",
+					"name": "Crystal Matrix",
+					"description": "+1 Magic, +3 Tower, +1 Enemy tower",
+					"type": 1,
+					"cost": 6,
+					"pic": "../sprites/cards/crystal_matrix.png"
+				},
+				{
+					"id": "gemstone_flaw",
+					"name": "Gemstone Flaw",
+					"description": "3 Damage to enemy tower",
+					"type": 1,
+					"cost": 2,
+					"pic": "../sprites/cards/gemstone_flaw.png"
+				},
+				{
+					"id": "ruby",
+					"name": "Ruby",
+					"description": "+5 Tower",
+					"type": 1,
+					"cost": 3,
+					"pic": "../sprites/cards/ruby.png"
+				},
+				{
+					"id": "gem_spear",
+					"name": "Gem Spear",
+					"description": "5 Damage to enemy tower",
+					"type": 1,
+					"cost": 4,
+					"pic": "../sprites/cards/gem_spear.png"
+				},
+				{
+					"id": "power_burn",
+					"name": "Power Burn",
+					"description": "5 Damage to your tower +2 Magic",
+					"type": 1,
+					"cost": 3,
+					"pic": "../sprites/cards/power_burn.png"
+				},
+				{
+					"id": "harmonic_vibe",
+					"name": "Harmonic Vibe",
+					"description": "+1 Magic, +3 Tower, +3 Wall",
+					"type": 1,
+					"cost": 7,
+					"pic": "../sprites/cards/harmonic_vibe.png"
+				},
+				{
+					"id": "parity",
+					"name": "Parity",
+					"description": "All player's magic equals the highest player's magic",
+					"type": 1,
+					"cost": 7,
+					"pic": "../sprites/cards/parity.png"
+				},
+				{
+					"id": "emerald",
+					"name": "Emerald",
+					"description": "+8 Tower",
+					"type": 1,
+					"cost": 6,
+					"pic": "../sprites/cards/emerald.png"
+				},
+				{
+					"id": "pearl_of_wisdom",
+					"name": "Pearl of Wisdom",
+					"description": "+5 Tower, +1 Magic",
+					"type": 1,
+					"cost": 9,
+					"pic": "../sprites/cards/pearl_of_wisdom.png"
+				},
+				{
+					"id": "shatterer",
+					"name": "Shatterer",
+					"description": "-1 Magic, 9 Damage to enemy tower",
+					"type": 1,
+					"cost": 8,
+					"pic": "../sprites/cards/shatterer.png"
+				},
+				{
+					"id": "crumblestone",
+					"name": "Crumblestone",
+					"description": "+5 Tower, Enemy loses 6 bricks",
+					"type": 1,
+					"cost": 7,
+					"pic": "../sprites/cards/crumblestone.png"
+				},
+				{
+					"id": "sapphire",
+					"name": "Sapphire",
+					"description": "+11 Tower",
+					"type": 1,
+					"cost": 10,
+					"pic": "../sprites/cards/sapphire.png"
+				},
+				{
+					"id": "discord",
+					"name": "Discord",
+					"description": "7 Damage to all towers, all player's magic -1",
+					"type": 1,
+					"cost": 5,
+					"pic": "../sprites/cards/discord.png"
+				},
+				{
+					"id": "fire_ruby",
+					"name": "Fire Ruby",
+					"description": "+6 Tower, 4 Damage to all enemy towers",
+					"type": 1,
+					"cost": 13,
+					"pic": "../sprites/cards/fire_ruby.png"
+				},
+				{
+					"id": "quarrys_help",
+					"name": "Quarry's Help",
+					"description": "+7 Tower, Lose 10 bricks",
+					"type": 1,
+					"cost": 4,
+					"pic": "../sprites/cards/quarrys_help.png"
+				},
+				{
+					"id": "crystal_shield",
+					"name": "Crystal Shield",
+					"description": "+8 Tower, +3 Wall",
+					"type": 1,
+					"cost": 12,
+					"pic": "../sprites/cards/crystal_shield.png"
+				},
+				{
+					"id": "empathy_gem",
+					"name": "Empathy Gem",
+					"description": "+8 Tower, +1 Dungeon",
+					"type": 1,
+					"cost": 14,
+					"pic": "../sprites/cards/empathy_gem.png"
+				},
+				{
+					"id": "diamond",
+					"name": "Diamond",
+					"description": "+15 Tower",
+					"type": 1,
+					"cost": 16,
+					"pic": "../sprites/cards/diamond.png"
+				},
+				{
+					"id": "sanctuary",
+					"name": "Sanctuary",
+					"description": "+10 Tower, +5 Wall, Gain 5 recruits",
+					"type": 1,
+					"cost": 15,
+					"pic": "../sprites/cards/sanctuary.png"
+				},
+				{
+					"id": "lava_jewel",
+					"name": "Lava Jewel",
+					"description": "+12 Tower, 6 Damage to all enemies",
+					"type": 1,
+					"cost": 17,
+					"pic": "../sprites/cards/lava_jewel.png"
+				},
+				{
+					"id": "dragons_eye",
+					"name": "Dragon's Eye",
+					"description": "+20 Tower",
+					"type": 1,
+					"cost": 21,
+					"pic": "../sprites/cards/dragons_eye.png"
+				},
+				{
+					"id": "crystallize",
+					"name": "Crystallize",
+					"description": "+11 Tower, -6 Wall",
+					"type": 1,
+					"cost": 8,
+					"pic": "../sprites/cards/crystallize.png"
+				},
+				{
+					"id": "bag_of_baubles",
+					"name": "Bag of Baubles",
+					"description": "If Tower < enemy Tower than +2 Tower, Else +1 Tower",
+					"type": 1,
+					"cost": 0,
+					"pic": "../sprites/cards/bag_of_baubles.png"
+				},
+				{
+					"id": "rainbow",
+					"name": "Rainbow",
+					"description": "+1 Tower to all players. You gain 3 gems",
+					"type": 1,
+					"cost": 0,
+					"pic": "../sprites/cards/rainbow.png"
+				},
+				{
+					"id": "apprentice",
+					"name": "Apprentice",
+					"description": "+4 Tower, you lose 3 recruits, 2 Damage to enemy Tower",
+					"type": 1,
+					"cost": 5,
+					"pic": "../sprites/cards/apprentice.png"
+				},
+				{
+					"id": "lightning_shard",
+					"name": "Lightning Shard",
+					"description": "If Tower > enemy Wall then 8 damage to enemy Tower, else 8 damage",
+					"type": 1,
+					"cost": 11,
+					"pic": "../sprites/cards/lightning_shard.png"
+				},
+				{
+					"id": "phase_jewel",
+					"name": "Phase Jewel",
+					"description": "+13 Tower, +6 Recruits, +6 Bricks",
+					"type": 1,
+					"cost": 18,
+					"pic": "../sprites/cards/phase_jewel.png"
+				},
+				{
+					"id": "mad_cow_disease",
+					"name": "Mad Cow Disease",
+					"description": "All players lose 6 recruits.",
+					"type": 2,
+					"cost": 0,
+					"pic": "../sprites/cards/madCowDisease.png"
+				},
+				{
+					"id": "faerie",
+					"name": "Faerie",
+					"description": "2 Damage, Play again",
+					"type": 2,
+					"cost": 1,
+					"pic": "../sprites/cards/faerie.png"
+				},
+				{
+					"id": "moody_goblins",
+					"name": "Moody Goblins",
+					"description": "4 Damage, You lose 3 gems",
+					"type": 2,
+					"cost": 1,
+					"pic": "../sprites/cards/moody_goblins.png"
+				},
+				{
+					"id": "minotaur",
+					"name": "Minotaur",
+					"description": "+1 Dungeon",
+					"type": 2,
+					"cost": 3,
+					"pic": "../sprites/cards/minotaur.png"
+				},
+				{
+					"id": "elven_scout",
+					"name": "Elven Scout",
+					"description": "Draw 1 card, Discard 1 card, Play again",
+					"type": 2,
+					"cost": 2,
+					"pic": "../sprites/cards/elven_scout.png"
+				},
+				{
+					"id": "goblin_mob",
+					"name": "Goblin Mob",
+					"description": "6 Damage, You take 3 damage",
+					"type": 2,
+					"cost": 3,
+					"pic": "../sprites/cards/goblin_mob.png"
+				},
+				{
+					"id": "goblin_archers",
+					"name": "Goblin Archers",
+					"description": "3 Damage to enemy tower, You take 1 damage",
+					"type": 2,
+					"cost": 4,
+					"pic": "../sprites/cards/goblin_archers.png"
+				},
+				{
+					"id": "shadow_faerie",
+					"name": "Shadow Faerie",
+					"description": "2 Damage to enemy tower, Play again",
+					"type": 2,
+					"cost": 6,
+					"pic": "../sprites/cards/shadow_faerie.png"
+				},
+				{
+					"id": "orc",
+					"name": "Orc",
+					"description": "5 Damage",
+					"type": 2,
+					"cost": 3,
+					"pic": "../sprites/cards/orc.png"
+				},
+				{
+					"id": "dwarves",
+					"name": "Dwarves",
+					"description": "4 Damage, +3 Wall",
+					"type": 2,
+					"cost": 5,
+					"pic": "../sprites/cards/dwarves.png"
+				},
+				{
+					"id": "little_snakes",
+					"name": "Little Snakes",
+					"description": "4 Damage to enemy tower",
+					"type": 2,
+					"cost": 6,
+					"pic": "../sprites/cards/little_snakes.png"
+				},
+				{
+					"id": "troll_trainer",
+					"name": "Troll Trainer",
+					"description": "+2 Damage",
+					"type": 2,
+					"cost": 7,
+					"pic": "../sprites/cards/troll_trainer.png"
+				},
+				{
+					"id": "tower_gremlin",
+					"name": "Tower Gremlin",
+					"description": "2 Damage, +4 Wall, +2 Tower",
+					"type": 2,
+					"cost": 8,
+					"pic": "../sprites/cards/tower_gremlin.png"
+				},
+				{
+					"id": "full_moon",
+					"name": "Full Moon",
+					"description": "+1 to all player's Dungeon, You gain 3 recruits",
+					"type": 2,
+					"cost": 0,
+					"pic": "../sprites/cards/full_moon.png"
+				},
+				{
+					"id": "slasher",
+					"name": "Slasher",
+					"description": "6 Damage",
+					"type": 2,
+					"cost": 5,
+					"pic": "../sprites/cards/slasher.png"
+				},
+				{
+					"id": "ogre",
+					"name": "Ogre",
+					"description": "7 Damage",
+					"type": 2,
+					"cost": 6,
+					"pic": "../sprites/cards/ogre.png"
+				},
+				{
+					"id": "rabid_sheep",
+					"name": "Rabid Sheep",
+					"description": "6 Damage, Enemy loses 3 recruits",
+					"type": 2,
+					"cost": 6,
+					"pic": "../sprites/cards/rabid_sheep.png"
+				},
+				{
+					"id": "imp",
+					"name": "Imp",
+					"description": "6 Damage. All players lose 5 bricks, gems and recruits",
+					"type": 2,
+					"cost": 5,
+					"pic": "../sprites/cards/imp.png"
+				},
+				{
+					"id": "spizzer",
+					"name": "Spizzer",
+					"description": "If enemy wall = 0 then 10 damage, Else 6 damage",
+					"type": 2,
+					"cost": 8,
+					"pic": "../sprites/cards/spizzer.png"
+				},
+				{
+					"id": "werewolf",
+					"name": "Werewolf",
+					"description": "9 Damage",
+					"type": 2,
+					"cost": 9,
+					"pic": "../sprites/cards/warewolf.png"
+				},
+				{
+					"id": "corrosion_cloud",
+					"name": "Corrosion Cloud",
+					"description": "If enemy wall > 0 then 10 damage, Else 7 Damage",
+					"type": 2,
+					"cost": 11,
+					"pic": "../sprites/cards/corrosion_cloud.png"
+				},
+				{
+					"id": "unicorn",
+					"name": "Unicorn",
+					"description": "If magic > enemy magic then 12 Damage, Else 8 Damage",
+					"type": 2,
+					"cost": 9,
+					"pic": "../sprites/cards/unicorn.png"
+				},
+				{
+					"id": "elven_archers",
+					"name": "Elven Archers",
+					"description": "If wall > enemy wall then 6 Damage to enemy Tower, Else 8 Damage",
+					"type": 2,
+					"cost": 10,
+					"pic": "../sprites/cards/elven_archers.png"
+				},
+				{
+					"id": "succubus",
+					"name": "Succubus",
+					"description": "5 Damage to enemy tower, enemy loses 8 recruits.",
+					"type": 2,
+					"cost": 14,
+					"pic": "../sprites/cards/succubus.png"
+				},
+				{
+					"id": "rock_stompers",
+					"name": "Rock Stompers",
+					"description": "8 Damage, -1 Enemy quarry",
+					"type": 2,
+					"cost": 11,
+					"pic": "../sprites/cards/rock_stompers.png"
+				},
+				{
+					"id": "thief",
+					"name": "Thief",
+					"description": "Enemy loses 10 gems, 5 bricks, you gain 1/2 amt. round up",
+					"type": 2,
+					"cost": 12,
+					"pic": "../sprites/cards/thief.png"
+				},
+				{
+					"id": "stone_giant",
+					"name": "Stone Giant",
+					"description": "10 Damage, +4 Wall",
+					"type": 2,
+					"cost": 15,
+					"pic": "../sprites/cards/stone_giant.png"
+				},
+				{
+					"id": "vampire",
+					"name": "Vampire",
+					"description": "10 Damage, Enemy loses 5 recruits, -1 enemy Dungeon",
+					"type": 2,
+					"cost": 17,
+					"pic": "../sprites/cards/vampire.png"
+				},
+				{
+					"id": "dragon",
+					"name": "Dragon",
+					"description": "20 Damage, Enemy loses 10 gems, -1 enemy Dungeon",
+					"type": 2,
+					"cost": 25,
+					"pic": "../sprites/cards/dragon.png"
+				},
+				{
+					"id": "spearman",
+					"name": "Spearman",
+					"description": "If wall > enemy Wall do 3 Damage, Else do 2 Damage",
+					"type": 2,
+					"cost": 2,
+					"pic": "../sprites/cards/spearman.png"
+				},
+				{
+					"id": "gnome",
+					"name": "Gnome",
+					"description": "3 Damage, +1 Gem",
+					"type": 2,
+					"cost": 2,
+					"pic": "../sprites/cards/gnome.png"
+				},
+				{
+					"id": "berserker",
+					"name": "Berserker",
+					"description": "8 Damage, 3 Damage to your Tower",
+					"type": 2,
+					"cost": 4,
+					"pic": "../sprites/cards/berserker.png"
+				},
+				{
+					"id": "warlord",
+					"name": "Warlord",
+					"description": "13 Damage, You lose 3 gems",
+					"type": 2,
+					"cost": 13,
+					"pic": "../sprites/cards/warlord.png"
+				},
+				{
+					"id": "pegasus_lancer",
+					"name": "Pegasus Lancer",
+					"description": "12 Damage to enemy tower",
+					"type": 2,
+					"cost": 18,
+					"pic": "../sprites/cards/pegasus_lancer.png"
 				}
 			],
 			"separators": [],
