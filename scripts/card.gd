@@ -11,6 +11,7 @@ var card_art
 var card_func
 
 func _ready():
+	randomize()
 	# DB LOAD
 	var data_read = File.new()
 	data_read.open("res://db/base.cdb", File.READ)
@@ -46,11 +47,22 @@ func _ready():
 		$layout.texture = load("res://sprites/green_card_layout.png")
 
 func _on_card_input(event):
-	if Input.is_action_pressed("ui_lmb"):
+	if Input.is_action_just_released("ui_lmb"):
 		exec.parse(card_func)
 		exec.execute([card_func], self)
+		if card_layout == 0:
+			global.table.player_bricks -= card_cost
+		elif card_layout == 1:
+			global.table.player_gems -= card_cost
+		elif card_layout == 2:
+			global.table.player_recruits -= card_cost
+		queue_free()
 
-	if Input.is_action_pressed("ui_rmb"):
+	if Input.is_action_just_released("ui_rmb"):
+		if global.table.player_quarry < global.table.enemy_quarry:
+			add_player_quarry(2)
+		else:
+			add_player_quarry(1)
 		queue_free()
 
 func _on_card_mouse_entered():
@@ -75,43 +87,43 @@ func add_player_quarry(num):
 	global.table.player_quarry += num
 
 func add_player_bricks(num):
-	pass #TODO
+	global.table.player_bricks += num
 
 func add_player_magic(num):
-	pass #TODO
+	global.table.player_magic += num
 
 func add_player_gems(num):
-	pass #TODO
+	global.table.player_gems += num
 
 func add_player_dungeons(num):
-	pass #TODO
+	global.table.player_dungeon += num
 
 func add_player_recruits(num):
-	pass #TODO
+	global.table.player_recruits += num
 
 func remove_player_quarry(num):
-	pass
+	global.table.player_quarry -= num
 
 func remove_player_bricks(num):
-	pass
+	global.table.player_bricks -= num
 
 func remove_player_magic(num):
-	pass
+	global.table.player_magic -= num
 
 func remove_player_gems(num):
-	pass
+	global.table.player_gems -= num
 
 func remove_player_dungeons(num):
-	pass
+	global.table.player_dungeon -= num
 
 func remove_player_recruits(num):
-	pass
+	global.table.player_recruits -= num
 
 func damage_enemy_tower(hp):
-	pass #TODO
+	global.table.enemy_tower_hp -= hp
 
 func damage_enemy_wall(hp):
-	pass #TODO
+	global.table.enemy_wall_hp -= hp
 
 func heal_enemy_tower(hp):
 	global.table.enemy_tower_hp += hp
@@ -120,37 +132,54 @@ func heal_enemy_wall(hp):
 	global.table.enemy_wall_hp += hp
 
 func add_enemy_quarry(num):
-	pass
+	global.table.enemy_quarry += num
 
 func add_enemy_bricks(num):
-	pass #TODO
+	global.table.enemy_bricks += num
 
 func add_enemy_magic(num):
-	pass #TODO
+	global.table.enemy_magic += num
 
 func add_enemy_gems(num):
-	pass #TODO
+	global.table.enemy_gems += num
 
 func add_enemy_dungeons(num):
-	pass #TODO
+	global.table.enemy_dungeon += num
 
 func add_enemy_recruits(num):
-	pass #TODO
+	global.table.enemy_recruits += num
 
 func remove_enemy_quarry(num):
-	pass
+	global.table.enemy_quarry -= num
 
 func remove_enemy_bricks(num):
-	pass
+	global.table.enemy_bricks -= num
 
 func remove_enemy_magic(num):
-	pass
+	global.table.enemy_magic -= num
 
 func remove_enemy_gems(num):
-	pass
+	global.table.enemy_gems -= num
 
 func remove_enemy_dungeons(num):
-	pass
+	global.table.enemy_dungeon -= num
 
 func remove_enemy_recruits(num):
+	global.table.enemy_recruits -= num
+
+func play_again():
 	pass
+
+func ifelse(cond, iftrue, iffalse):
+	if cond:
+		iftrue
+		print("true")
+	else:
+		iffalse
+		print("false")
+
+func player_quarry():
+	return global.table.player_quarry
+
+func enemy_quarry():
+	return global.table.enemy_quarry

@@ -26,17 +26,20 @@ var enemy_gems = 10
 var enemy_dungeon = 5
 var enemy_recruits = 20
 
+func _input(event):
+	if Input.is_action_pressed("ui_reset"):
+		get_tree().reload_current_scene()
+
 func _ready():
 	global.table = self
 	$player_panel/player_name.text = player_name
 	$enemy_panel/enemy_name.text = enemy_name
-	
-	for i in 6:
-		var card_inst = card.instance()
-		$deck.add_child(card_inst)
 
 func _physics_process(delta):
 	update_stat_panels()
+	while get_tree().get_nodes_in_group("cards").size() != 6:
+		var card_inst = card.instance()
+		$deck.add_child(card_inst)
 
 func update_stat_panels():
 	$player_bricks_panel/per_turn.text = str(player_quarry)
