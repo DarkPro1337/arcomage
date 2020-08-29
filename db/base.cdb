@@ -396,7 +396,7 @@
 				{
 					"id": "power_burn",
 					"name": "Power Burn",
-					"description": "5 Damage to your tower +2 Magic",
+					"description": "5 Damage to your tower, +2 Magic",
 					"type": 1,
 					"cost": 3,
 					"pic": "../sprites/cards/power_burn.png"

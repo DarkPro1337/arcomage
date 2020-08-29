@@ -104,12 +104,15 @@ __meta__ = {
 }
 
 [node name="player_tower_panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 144.0
-margin_top = 296.0
+margin_top = -244.0
 margin_right = 200.0
-margin_bottom = 320.0
+margin_bottom = -220.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -130,12 +133,15 @@ __meta__ = {
 }
 
 [node name="player_wall_panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 224.0
-margin_top = 296.0
+margin_top = -244.0
 margin_right = 280.0
-margin_bottom = 320.0
+margin_bottom = -220.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -156,12 +162,17 @@ __meta__ = {
 }
 
 [node name="enemy_tower_panel" type="Panel" parent="."]
-margin_left = 680.0
-margin_top = 296.0
-margin_right = 736.0
-margin_bottom = 320.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -244.0
+margin_right = -144.0
+margin_bottom = -220.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -182,12 +193,17 @@ __meta__ = {
 }
 
 [node name="enemy_wall_panel" type="Panel" parent="."]
-margin_left = 760.0
-margin_top = 296.0
-margin_right = 816.0
-margin_bottom = 320.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -244.0
+margin_right = -224.0
+margin_bottom = -220.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 

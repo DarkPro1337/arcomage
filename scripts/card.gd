@@ -11,6 +11,9 @@ var card_layout
 var card_art
 var card_func
 
+var discardable = true
+var usable = true
+
 func _ready():
 	rng.randomize() # RANDOMIZE THE SEED
 	# DB LOAD
@@ -47,6 +50,14 @@ func _ready():
 	elif card_layout == 2:
 		$layout.texture = load("res://sprites/green_card_layout.png")
 
+func _physics_process(delta):
+	if card_layout == 0 and player_bricks() < card_cost:
+		usable = false
+		set_modulate(Color(0.5, 0.5, 0.5, 0.5))
+	else:
+		usable = true
+		set_modulate(Color(1, 1, 1, 1))
+
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
 		card_func(card_id)
@@ -54,7 +65,8 @@ func _on_card_input(event):
 		queue_free()
 
 	if Input.is_action_just_pressed("ui_rmb"):
-		queue_free()
+		if discardable == true: 
+			queue_free()
 
 func _on_card_mouse_entered():
 	$selector.show()
@@ -133,6 +145,277 @@ func card_func(id):
 			add_player_gems(5)
 		"reinforced_wall":
 			heal_player_wall(8)
+		"porticulus":
+			heal_player_wall(5)
+			add_player_dungeons(1)
+		"crystal_rocks":
+			heal_player_wall(7)
+			add_player_gems(7)
+		"harmonic_ore":
+			heal_player_wall(6)
+			heal_player_tower(3)
+		"mondo_wall":
+			heal_player_wall(12)
+		"focused_designs":
+			heal_player_wall(8)
+			heal_player_tower(5)
+		"great_wall":
+			heal_player_wall(15)
+		"rock_launcher":
+			heal_player_wall(6)
+			damage_enemy(10)
+		"dragons_heart":
+			heal_player_wall(20)
+			heal_player_tower(8)
+		"forced_labor":
+			heal_player_wall(9)
+			remove_player_recruits(5)
+		"rock_garden":
+			heal_player_wall(1)
+			heal_player_tower(1)
+			add_player_recruits(2)
+		"flood_water":
+			if player_wall() < enemy_wall():
+				remove_player_dungeons(1)
+				damage_player_tower(2)
+			elif player_wall() > enemy_wall():
+				remove_enemy_dungeons(1)
+				damage_enemy_tower(2)
+		"barracks":
+			add_player_recruits(6)
+			heal_player_wall(6)
+			if player_dungeon() < enemy_dungeon():
+				add_player_dungeons(1)
+		"battlements":
+			heal_player_wall(7)
+			damage_enemy(6)
+		"shift":
+			var player_wall = global.table.player_wall_hp
+			var enemy_wall = global.table.enemy_wall_hp
+			global.table.player_wall_hp = enemy_wall
+			global.table.enemy_wall_hp = player_wall
+		"quartz":
+			heal_player_tower(1)
+			play_again()
+		"smoky_quartz":
+			damage_enemy(1)
+			play_again()
+		"amethyst":
+			heal_player_tower(3)
+		"spell_weavers":
+			add_player_magic(1)
+		"prism":
+			draw_card(1)
+			discard_card(1)
+			play_again()
+		"lodestone":
+			heal_player_tower(3)
+			discardable = false
+		"solar_flare":
+			heal_player_tower(2)
+			damage_enemy_tower(2)
+		"crystal_matrix":
+			add_player_magic(1)
+			heal_player_tower(3)
+			heal_enemy_tower(1)
+		"gemstone_flaw":
+			damage_enemy_tower(3)
+		"ruby":
+			heal_player_tower(5)
+		"gem_spear":
+			damage_enemy_tower(5)
+		"power_burn":
+			damage_enemy_tower(5)
+			add_player_magic(2)
+		"harmonic_vibe":
+			add_player_magic(1)
+			heal_player_tower(3)
+			heal_player_wall(3)
+		"parity":
+			var highest
+			if player_magic() > enemy_magic():
+				highest = player_magic()
+			elif enemy_magic() > player_magic():
+				highest = enemy_magic()
+			global.table.player_magic = highest
+			global.table.enemy_magic = highest
+		"emerald":
+			heal_player_tower(8)
+		"pearl_of_wisdom":
+			heal_player_tower(5)
+			add_player_magic(1)
+		"shatterer":
+			remove_player_magic(1)
+			damage_enemy_tower(9)
+		"crumblestone":
+			heal_player_tower(5)
+			remove_enemy_bricks(6)
+		"sapphire":
+			heal_player_tower(11)
+		"discord":
+			damage_player_tower(7)
+			damage_enemy_tower(7)
+			remove_player_magic(1)
+			remove_enemy_magic(1)
+		"fire_ruby":
+			heal_player_tower(6)
+			damage_enemy_tower(4) # TODO: add function to damage ALL ENEMIES (3-4 multiplayer)
+		"quarrys_help":
+			heal_player_tower(7)
+			remove_player_bricks(10)
+		"crystal_shield":
+			heal_player_tower(8)
+			heal_player_wall(3)
+		"empathy_gem":
+			heal_player_tower(8)
+			add_player_dungeons(1)
+		"diamond":
+			heal_player_tower(15)
+		"sanctuary":
+			heal_player_tower(10)
+			heal_player_wall(5)
+			add_player_recruits(5)
+		"lava_jewel":
+			heal_player_tower(12)
+			damage_enemy(6) # TODO: add function to damage ALL ENEMIES (3-4 multiplayer)
+		"dragons_eye":
+			heal_player_tower(20)
+		"crystallize":
+			heal_player_tower(11)
+			damage_player_wall(6)
+		"bag_of_baubles":
+			if player_tower() < enemy_tower():
+				heal_player_tower(2)
+			else:
+				heal_player_tower(1)
+		"rainbow":
+			heal_player_tower(1)
+			heal_enemy_tower(1)
+			add_player_gems(3)
+		"apprentice":
+			heal_player_tower(4)
+			remove_player_recruits(3)
+			damage_enemy_tower(2)
+		"phase_jewel":
+			heal_player_tower(13)
+			add_player_recruits(6)
+			add_player_bricks(6)
+		"mad_cow_disease":
+			remove_player_recruits(6)
+			remove_enemy_recruits(6)
+		"faerie":
+			damage_enemy(2)
+			play_again()
+		"moody_goblins":
+			damage_enemy(4)
+			remove_player_gems(3)
+		"minotaur":
+			add_player_dungeons(1)
+		"elven_scout":
+			draw_card(1)
+			discard_card(1)
+			play_again()
+		"goblin_mob":
+			damage_enemy(6)
+			damage_player(3)
+		"goblin_archers":
+			damage_enemy_tower(3)
+			damage_player(1)
+		"shadow_faerie":
+			damage_enemy_tower(2)
+			play_again()
+		"orc":
+			damage_enemy(5)
+		"dwarves":
+			damage_enemy(4)
+			heal_player_wall(3)
+		"little_snakes":
+			damage_enemy_tower(4)
+		"troll_trainer":
+			damage_enemy(2)
+		"tower_gremlin":
+			damage_enemy(2)
+			heal_player_wall(4)
+			heal_player_tower(2)
+		"full_moon":
+			add_player_dungeons(1)
+			add_enemy_dungeons(1)
+			add_player_recruits(3)
+		"slasher":
+			damage_enemy(6)
+		"ogre":
+			damage_enemy(7)
+		"rabid_sheep":
+			damage_enemy(6)
+			remove_enemy_recruits(3)
+		"imp":
+			damage_enemy(6)
+			remove_player_bricks(5)
+			remove_enemy_bricks(5)
+			remove_player_gems(5)
+			remove_enemy_gems(5)
+			remove_player_recruits(5)
+			remove_enemy_recruits(5)
+		"spizzer":
+			if enemy_wall() == 0:
+				damage_enemy(10)
+			else:
+				damage_enemy(6)
+		"werewolf":
+			damage_enemy(9)
+		"corrosion_cloud":
+			if enemy_wall() > 0:
+				damage_enemy(10)
+			else:
+				damage_enemy(7)
+		"unicorn":
+			if player_magic() > enemy_magic():
+				damage_enemy(12)
+			else:
+				damage_enemy(8)
+		"elven_archers":
+			if player_wall() > enemy_wall():
+				damage_enemy_tower(6)
+			else:
+				damage_enemy(8)
+		"succubus":
+			damage_enemy_tower(5)
+			remove_enemy_recruits(8)
+		"rock_stompers":
+			damage_enemy(8)
+			remove_enemy_quarry(1)
+		"thief":
+			remove_enemy_gems(10)
+			remove_enemy_bricks(5)
+			add_player_gems(5)
+			add_player_bricks(2)
+		"stone_giant":
+			damage_enemy(10)
+			heal_player_wall(4)
+		"vampire":
+			damage_enemy(10)
+			remove_enemy_recruits(5)
+			remove_enemy_quarry(1)
+		"dragon":
+			damage_enemy(20)
+			remove_enemy_gems(10)
+			remove_enemy_dungeons(1)
+		"spearman":
+			if player_wall() > enemy_wall():
+				damage_enemy(3)
+			else:
+				damage_enemy(2)
+		"gnome":
+			damage_enemy(3)
+			add_player_gems(1)
+		"berserker":
+			damage_enemy(8)
+			damage_player_tower(3)
+		"warlord":
+			damage_enemy(13)
+			remove_player_gems(3)
+		"pegasus_lancer":
+			damage_enemy_tower(12)
 
 func damage_player_tower(hp):
 	global.table.player_tower_hp -= hp
@@ -145,6 +428,18 @@ func heal_player_tower(hp):
 
 func heal_player_wall(hp):
 	global.table.player_wall_hp += hp
+
+func damage_player(hp):
+	if global.table.player_wall_hp == 0:
+		global.table.player_tower_hp -= hp
+	else:
+		global.table.player_wall_hp -= hp
+
+func damage_enemy(hp):
+	if global.table.enemy_wall_hp == 0:
+		global.table.enemy_tower_hp -= hp
+	else:
+		global.table.enemy_wall_hp -= hp
 
 func add_player_quarry(num):
 	global.table.player_quarry += num
@@ -231,7 +526,13 @@ func remove_enemy_recruits(num):
 	global.table.enemy_recruits -= num
 
 func play_again():
-	pass
+	pass # TODO
+
+func draw_card(num):
+	pass # TODO
+
+func discard_card(num):
+	pass # TODO
 
 func player_quarry():
 	return global.table.player_quarry

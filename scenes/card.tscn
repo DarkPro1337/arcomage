@@ -10,8 +10,9 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
+corner_detail = 12
 shadow_color = Color( 0, 0, 0, 0.294118 )
-shadow_size = 4
+shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.964706, 0.964706, 0.964706, 1 )
@@ -34,12 +35,13 @@ size = 11
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 19
+size = 15
 font_data = ExtResource( 6 )
 
 [node name="card" type="Control" groups=[
 "cards",
 ]]
+modulate = Color( 0.792157, 0.792157, 0.792157, 0.490196 )
 margin_right = 135.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 135, 180 )
@@ -137,10 +139,10 @@ anchor_left = 0.03
 anchor_top = 0.589
 anchor_right = 0.97
 anchor_bottom = 0.911
-margin_left = -0.0500002
-margin_top = -0.0200195
+margin_left = -0.0499997
+margin_top = -0.0199966
 margin_right = 0.0500031
-margin_bottom = 0.0199738
+margin_bottom = 0.0200043
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0980392 )
@@ -155,17 +157,16 @@ __meta__ = {
 }
 
 [node name="cost" type="Label" parent="."]
-anchor_left = 0.798
+anchor_left = 0.8
 anchor_top = 0.85
-anchor_right = 0.968
-anchor_bottom = 0.978
-margin_left = 1.49876
-margin_top = 0.47139
-margin_right = 1.54875
-margin_bottom = 0.431396
+anchor_right = 0.978
+anchor_bottom = 0.983
+margin_left = -1.0
+margin_right = -0.0299988
+margin_bottom = -0.940002
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.105882 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0980392 )
 custom_constants/shadow_as_outline = 1
 text = "0"
 align = 1
