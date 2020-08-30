@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://images/Layout-edit.png" type="Texture" id=1]
 [ext_resource path="res://scripts/table.gd" type="Script" id=2]
@@ -6,9 +6,15 @@
 [ext_resource path="res://images/table_gradient.png" type="Texture" id=4]
 [ext_resource path="res://sprites/misc/gems.png" type="Texture" id=5]
 [ext_resource path="res://sprites/misc/recruits.png" type="Texture" id=6]
+[ext_resource path="res://scenes/player_tower.tscn" type="PackedScene" id=7]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://sprites/misc/bricks.png" type="Texture" id=10]
+[ext_resource path="res://sprites/tower_top_player.png" type="Texture" id=11]
+[ext_resource path="res://scenes/enemy_tower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/tower_top_enemy.png" type="Texture" id=13]
+[ext_resource path="res://scenes/player_wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/enemy_wall.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -16,6 +22,11 @@ shadow_size = 3
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+shadow_color = Color( 0, 0, 0, 0.603922 )
+shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.807843, 0.380392, 0.388235, 1 )
@@ -103,16 +114,87 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="player_tower" parent="." instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 194.0
+margin_top = -234.0
+margin_right = 239.0
+margin_bottom = -184.0
+rect_clip_content = false
+
+[node name="tower_head" type="TextureRect" parent="player_tower"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -0.999985
+margin_right = 11.0
+margin_bottom = 93.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_wall" parent="." instance=ExtResource( 14 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 265.0
+margin_top = -234.0
+margin_right = 289.0
+margin_bottom = -184.0
+
+[node name="enemy_tower" parent="." instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -149.0
+margin_top = -234.0
+margin_right = -104.0
+margin_bottom = -184.0
+rect_clip_content = false
+
+[node name="tower_head2" type="TextureRect" parent="enemy_tower"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -1.00002
+margin_right = 11.0
+margin_bottom = 93.0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_wall" parent="." instance=ExtResource( 15 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -234.0
+margin_right = -216.0
+margin_bottom = -184.0
+
 [node name="player_tower_panel" type="Panel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 144.0
-margin_top = -244.0
+margin_left = 145.0
+margin_top = -234.0
 margin_right = 200.0
-margin_bottom = -220.0
+margin_bottom = -210.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -135,10 +217,10 @@ __meta__ = {
 [node name="player_wall_panel" type="Panel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 224.0
-margin_top = -244.0
-margin_right = 280.0
-margin_bottom = -220.0
+margin_left = 225.0
+margin_top = -234.0
+margin_right = 281.0
+margin_bottom = -210.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -167,9 +249,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -200.0
-margin_top = -244.0
+margin_top = -234.0
 margin_right = -144.0
-margin_bottom = -220.0
+margin_bottom = -210.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -198,9 +280,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -280.0
-margin_top = -244.0
+margin_top = -234.0
 margin_right = -224.0
-margin_bottom = -220.0
+margin_bottom = -210.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -253,7 +335,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -213.0
+margin_top = -210.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
@@ -262,12 +344,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="shadow" type="Panel" parent="deck_background"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="deck" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -192.0
-margin_bottom = -5.0
 rect_clip_content = true
 alignment = 1
 __meta__ = {

@@ -3,7 +3,7 @@
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://sprites/brick_shortage.png" type="Texture" id=3]
-[ext_resource path="res://sprites/red_card_layout.png" type="Texture" id=4]
+[ext_resource path="res://sprites/red_card_layout_alt.png" type="Texture" id=4]
 [ext_resource path="res://scripts/card.gd" type="Script" id=5]
 [ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://sprites/card_back.png" type="Texture" id=7]
@@ -15,7 +15,7 @@ shadow_color = Color( 0, 0, 0, 0.294118 )
 shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.964706, 0.964706, 0.964706, 1 )
+bg_color = Color( 0.952941, 0.952941, 0.952941, 1 )
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_top = 1.0
@@ -31,7 +31,7 @@ size = 12
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 11
+size = 10
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -41,16 +41,16 @@ font_data = ExtResource( 6 )
 [node name="card" type="Control" groups=[
 "cards",
 ]]
-modulate = Color( 0.792157, 0.792157, 0.792157, 0.490196 )
-margin_right = 135.0
-margin_bottom = 180.0
+anchor_right = 0.140625
+anchor_bottom = 0.333333
 rect_min_size = Vector2( 135, 180 )
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ],
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="card_shadow" type="Panel" parent="."]
@@ -76,33 +76,34 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 135, 180 )
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="art_shadow" type="Panel" parent="."]
-anchor_left = 0.03
+anchor_left = 0.037
 anchor_top = 0.15
-anchor_right = 0.97
-anchor_bottom = 0.572
-margin_left = -0.0500002
+anchor_right = 0.963
+anchor_bottom = 0.561
+margin_left = 0.00500011
 margin_top = -1.90735e-06
-margin_right = 0.0500031
-margin_bottom = 0.0399933
+margin_right = -0.00500488
+margin_bottom = 0.019989
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="art" type="TextureRect" parent="."]
-anchor_left = 0.03
+anchor_left = 0.037
 anchor_top = 0.15
-anchor_right = 0.97
-anchor_bottom = 0.572
-margin_left = -0.0499997
+anchor_right = 0.963
+anchor_bottom = 0.561
+margin_left = 0.00500011
 margin_top = -1.90735e-06
-margin_right = 0.0500031
-margin_bottom = 0.0399933
+margin_right = -0.00500488
+margin_bottom = 0.019989
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
@@ -135,17 +136,17 @@ __meta__ = {
 }
 
 [node name="description" type="Label" parent="."]
-anchor_left = 0.03
+anchor_left = 0.052
 anchor_top = 0.589
-anchor_right = 0.97
+anchor_right = 0.948
 anchor_bottom = 0.911
-margin_left = -0.0499997
-margin_top = -0.0199966
-margin_right = 0.0500031
+margin_left = -0.02
+margin_top = -0.0200119
+margin_right = 0.019989
 margin_bottom = 0.0200043
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0980392 )
+custom_colors/font_color_shadow = Color( 0.498039, 0.498039, 0.498039, 0.0980392 )
 custom_constants/shadow_as_outline = 1
 text = "Все игроки теряют по 8 кирпичей."
 align = 1

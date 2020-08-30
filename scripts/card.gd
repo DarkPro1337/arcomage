@@ -44,25 +44,32 @@ func _ready():
 	$description.text = card_description
 	$cost.text = str(card_cost)
 	if card_layout == 0:
-		$layout.texture = load("res://sprites/red_card_layout.png")
+		$layout.texture = load("res://sprites/red_card_layout_alt.png")
 	elif card_layout == 1:
-		$layout.texture = load("res://sprites/blue_card_layout.png")
+		$layout.texture = load("res://sprites/blue_card_layout_alt.png")
 	elif card_layout == 2:
-		$layout.texture = load("res://sprites/green_card_layout.png")
+		$layout.texture = load("res://sprites/green_card_layout_alt.png")
 
-func _physics_process(delta):
-	if card_layout == 0 and player_bricks() < card_cost:
-		usable = false
-		set_modulate(Color(0.5, 0.5, 0.5, 0.5))
-	else:
-		usable = true
-		set_modulate(Color(1, 1, 1, 1))
+#func _physics_process(delta):
+#	if card_layout == 0 and player_bricks() < card_cost:
+#		usable = false
+#		set_modulate(Color(1, 1, 1, 0.5))
+#	elif card_layout == 1 and player_gems() < card_cost:
+#		usable = false
+#		set_modulate(Color(0.5, 0.5, 0.5, 0.5))
+#	elif card_layout == 2 and player_recruits() < card_cost:
+#		usable = false
+#		set_modulate(Color(0.5, 0.5, 0.5, 0.5))
+#	else:
+#		usable = true
+#		set_modulate(Color(1, 1, 1, 1))
 
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
-		card_func(card_id)
-		card_charge()
-		queue_free()
+		if usable == true:
+			card_func(card_id)
+			card_charge()
+			#queue_free()
 
 	if Input.is_action_just_pressed("ui_rmb"):
 		if discardable == true: 
@@ -210,7 +217,6 @@ func card_func(id):
 			play_again()
 		"lodestone":
 			heal_player_tower(3)
-			discardable = false
 		"solar_flare":
 			heal_player_tower(2)
 			damage_enemy_tower(2)

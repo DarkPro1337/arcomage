@@ -59,6 +59,10 @@ func update_stat_panels():
 	# PLAYER TOWER AND WALL
 	$player_tower_panel/tower_hp.text = str(player_tower_hp)
 	$player_wall_panel/wall_hp.text = str(player_wall_hp)
+	$player_tower.set_size(Vector2(45, player_tower_hp))
+	$player_wall.set_size(Vector2(24, player_wall_hp))
 	# ENEMY TOWER AND WALL
 	$enemy_tower_panel/tower_hp.text = str(enemy_tower_hp)
 	$enemy_wall_panel/wall_hp.text = str(enemy_wall_hp)
+	$enemy_tower.set_size(Vector2(45, enemy_tower_hp))
+	$enemy_wall.set_size(Vector2(24, enemy_wall_hp))
