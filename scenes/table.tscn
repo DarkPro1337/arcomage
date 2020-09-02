@@ -23,12 +23,12 @@ shadow_size = 3
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 shadow_color = Color( 0, 0, 0, 0.603922 )
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.807843, 0.380392, 0.388235, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -38,18 +38,18 @@ border_color = Color( 0.584314, 0.27451, 0.278431, 1 )
 border_blend = true
 shadow_size = 3
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 12
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 27
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.482353, 0.65098, 0.807843, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -59,7 +59,7 @@ border_color = Color( 0.376471, 0.505882, 0.627451, 1 )
 border_blend = true
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.482353, 0.65098, 0.482353, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -348,7 +348,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -357,7 +357,9 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -4.5
 margin_top = -192.0
+margin_right = 4.50006
 rect_clip_content = true
 alignment = 1
 __meta__ = {
@@ -369,7 +371,7 @@ margin_left = 16.0
 margin_top = 56.0
 margin_right = 104.0
 margin_bottom = 128.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -396,7 +398,7 @@ margin_top = 54.0
 margin_right = 84.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 47, 18 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "bricks"
 align = 2
@@ -410,7 +412,7 @@ margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
 text = "5"
 valign = 2
@@ -425,7 +427,7 @@ margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "20"
 valign = 2
@@ -440,7 +442,7 @@ margin_left = 16.0
 margin_top = 136.0
 margin_right = 104.0
 margin_bottom = 208.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -467,7 +469,7 @@ margin_left = 40.0
 margin_top = 54.0
 margin_right = 84.0
 margin_bottom = 72.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "gems"
 align = 2
@@ -478,7 +480,7 @@ margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
 text = "3"
 valign = 2
@@ -490,7 +492,7 @@ margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10"
 valign = 2
@@ -505,7 +507,7 @@ margin_left = 16.0
 margin_top = 216.0
 margin_right = 104.0
 margin_bottom = 288.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -532,7 +534,7 @@ margin_left = 40.0
 margin_top = 54.0
 margin_right = 84.0
 margin_bottom = 72.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "recruits"
 align = 2
@@ -546,7 +548,7 @@ margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
 text = "5"
 valign = 2
@@ -561,7 +563,7 @@ margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "20"
 valign = 2
@@ -578,7 +580,7 @@ margin_left = -104.0
 margin_top = 56.0
 margin_right = -16.0
 margin_bottom = 128.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -605,7 +607,7 @@ margin_left = 36.0
 margin_top = 54.0
 margin_right = 84.0
 margin_bottom = 72.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "bricks"
 align = 2
@@ -616,7 +618,7 @@ margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
 text = "5"
 valign = 2
@@ -628,7 +630,7 @@ margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "20"
 valign = 2
@@ -645,7 +647,7 @@ margin_left = -104.0
 margin_top = 136.0
 margin_right = -16.0
 margin_bottom = 208.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -674,7 +676,7 @@ anchor_right = 0.966
 anchor_bottom = 1.0
 margin_left = 0.00799942
 margin_right = -1.008
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "gems"
 align = 2
@@ -692,7 +694,7 @@ margin_left = 0.0159998
 margin_top = 0.0240002
 margin_right = 0.0319977
 margin_bottom = -0.0240021
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
 text = "3"
 valign = 2
@@ -708,7 +710,7 @@ margin_left = -0.0160003
 margin_top = -3.8147e-06
 margin_right = 0.00799942
 margin_bottom = -0.00800323
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10"
 valign = 2
@@ -725,7 +727,7 @@ margin_left = -104.0
 margin_top = 216.0
 margin_right = -16.0
 margin_bottom = 288.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -755,7 +757,7 @@ anchor_bottom = 1.0
 margin_left = -52.0
 margin_top = -18.0
 margin_right = -4.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "recruits"
 align = 2
@@ -773,7 +775,7 @@ margin_left = 0.0159998
 margin_top = 0.0240002
 margin_right = 0.0319977
 margin_bottom = -0.0240021
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
 text = "5"
 valign = 2
@@ -792,7 +794,7 @@ margin_left = -0.0160003
 margin_top = -3.8147e-06
 margin_right = 0.00799942
 margin_bottom = -1.008
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "20"
 valign = 2

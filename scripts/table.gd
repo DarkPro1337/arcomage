@@ -1,6 +1,5 @@
 extends Control
 
-var card = preload("res://scenes/card.tscn")
 var player_name = "DarkPro1337"
 var enemy_name = "COMPUTER"
 
@@ -34,12 +33,24 @@ func _ready():
 	global.table = self
 	$player_panel/player_name.text = player_name
 	$enemy_panel/enemy_name.text = enemy_name
+	while get_tree().get_nodes_in_group("cards").size() != 6:
+		var card = load("res://scenes/card.tscn")
+		var card_inst = card.instance()
+		$deck.add_child(card_inst)
 
 func _physics_process(delta):
 	update_stat_panels()
-	while get_tree().get_nodes_in_group("cards").size() != 6:
-		var card_inst = card.instance()
+
+func remove_card(card_name):
+	var card_prev = $deck.get_node(card_name)
+	var prev_pos = card_prev.get_position_in_parent()
+	print(prev_pos)
+	card_prev.queue_free()
+	if get_tree().get_nodes_in_group("cards").size() <= 6:
+		var card_next = load("res://scenes/card.tscn")
+		var card_inst = card_next.instance()
 		$deck.add_child(card_inst)
+		$deck.move_child(card_inst, prev_pos)
 
 func update_stat_panels():
 	# PLAYER STATS

@@ -9,7 +9,6 @@ var card_description
 var card_cost
 var card_layout
 var card_art
-var card_func
 
 var discardable = true
 var usable = true
@@ -37,6 +36,7 @@ func _ready():
 	card_description = card_data.get(random_card).description
 	card_cost = card_data.get(random_card).cost
 	card_layout = card_data.get(random_card).type
+	set_name(card_id)
 	
 	# CHANGING THE CARD LOOK
 	$name.text = card_name
@@ -69,11 +69,12 @@ func _on_card_input(event):
 		if usable == true:
 			card_func(card_id)
 			card_charge()
-			#queue_free()
+			print(rect_position)
+			global.table.remove_card(name)
 
 	if Input.is_action_just_pressed("ui_rmb"):
 		if discardable == true: 
-			queue_free()
+			global.table.remove_card(name)
 
 func _on_card_mouse_entered():
 	$selector.show()
@@ -239,9 +240,9 @@ func card_func(id):
 			heal_player_wall(3)
 		"parity":
 			var highest
-			if player_magic() > enemy_magic():
+			if player_magic() >= enemy_magic():
 				highest = player_magic()
-			elif enemy_magic() > player_magic():
+			elif enemy_magic() >= player_magic():
 				highest = enemy_magic()
 			global.table.player_magic = highest
 			global.table.enemy_magic = highest
