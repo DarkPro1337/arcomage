@@ -24,6 +24,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="logo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -296.0
+margin_top = 40.0
+margin_right = 296.0
+margin_bottom = 160.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="info" type="Button" parent="."]
 margin_left = 8.0
 margin_top = 8.0
@@ -100,20 +114,6 @@ hint_tooltip = "Выйти из игры."
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Выход"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -296.0
-margin_top = 40.0
-margin_right = 296.0
-margin_bottom = 160.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
