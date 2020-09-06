@@ -15,11 +15,15 @@ shadow_color = Color( 0, 0, 0, 0.294118 )
 shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.952941, 0.952941, 0.952941, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
+bg_color = Color( 0.952941, 0.952941, 0.952941, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -38,9 +42,7 @@ font_data = ExtResource( 1 )
 size = 15
 font_data = ExtResource( 6 )
 
-[node name="card" type="Control" groups=[
-"cards",
-]]
+[node name="card" type="Control"]
 anchor_right = 0.140625
 anchor_bottom = 0.333333
 margin_bottom = 0.000183105

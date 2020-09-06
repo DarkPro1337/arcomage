@@ -1,5 +1,8 @@
 extends Control
 
+onready var selector = get_node("selector")
+onready var card_back = get_node("card_back")
+
 var rng = RandomNumberGenerator.new()
 var card_data = {}
 
@@ -12,6 +15,7 @@ var card_art
 
 var discardable = true
 var usable = true
+var used = false
 
 func _ready():
 	rng.randomize() # RANDOMIZE THE SEED
@@ -50,37 +54,51 @@ func _ready():
 	elif card_layout == 2:
 		$layout.texture = load("res://sprites/green_card_layout_alt.png")
 
-#func _physics_process(delta):
-#	if card_layout == 0 and player_bricks() < card_cost:
-#		usable = false
-#		set_modulate(Color(1, 1, 1, 0.5))
-#	elif card_layout == 1 and player_gems() < card_cost:
-#		usable = false
-#		set_modulate(Color(0.5, 0.5, 0.5, 0.5))
-#	elif card_layout == 2 and player_recruits() < card_cost:
-#		usable = false
-#		set_modulate(Color(0.5, 0.5, 0.5, 0.5))
-#	else:
-#		usable = true
-#		set_modulate(Color(1, 1, 1, 1))
+func _physics_process(delta):
+	if is_in_group("player_card"):
+		if card_layout == 0 and player_bricks() < card_cost:
+			usable = false
+			set_modulate(Color(0.5, 0.5, 0.5))
+		elif card_layout == 1 and player_gems() < card_cost:
+			usable = false
+			set_modulate(Color(0.5, 0.5, 0.5))
+		elif card_layout == 2 and player_recruits() < card_cost:
+			usable = false
+			set_modulate(Color(0.5, 0.5, 0.5))
+		else:
+			usable = true
+			set_modulate(Color(1, 1, 1))
+		
+		if used == true:
+			set_modulate(Color(1, 1, 1))
+			selector.hide()
 
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
 		if usable == true:
 			card_func(card_id)
 			card_charge()
-			print(rect_position)
-			global.table.remove_card(name)
+			global.table.use_card(name)
 
 	if Input.is_action_just_pressed("ui_rmb"):
 		if discardable == true: 
 			global.table.remove_card(name)
 
 func _on_card_mouse_entered():
-	$selector.show()
+	if usable == true:
+		selector.self_modulate = Color(1, 1, 1)
+		selector.show()
+	elif usable == false:
+		selector.self_modulate = Color(1, 0, 0)
+		selector.show()
 
 func _on_card_mouse_exited():
-	$selector.hide()
+	if usable == true:
+		selector.modulate = Color(1, 1, 1)
+		selector.hide()
+	elif usable == false:
+		selector.modulate = Color(1, 0, 0)
+		selector.hide()
 
 func card_charge():
 	if card_layout == 0:
@@ -89,6 +107,19 @@ func card_charge():
 		global.table.player_gems -= card_cost
 	elif card_layout == 2:
 		global.table.player_recruits -= card_cost
+
+func bot_card_charge():
+	if card_layout == 0:
+		global.table.enemy_bricks -= card_cost
+	elif card_layout == 1:
+		global.table.enemy_gems -= card_cost
+	elif card_layout == 2:
+		global.table.enemy_recruits -= card_cost
+
+func bot_card_use():
+	card_func(card_id)
+	bot_card_charge()
+	global.table.bot_use_card(name)
 
 func card_func(id):
 	match id:
