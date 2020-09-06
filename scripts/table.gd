@@ -74,13 +74,22 @@ func use_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
-	var card_prev_pos = card_prev.rect_position
+	var card_prev_pos = card_prev.rect_global_position
 	card_prev.usable = false
 	card_prev.used = true
 	reparent(card_prev, table)
 	card_prev = get_node(card_name)
-	card_prev.rect_position = (get_viewport_rect().size / 2) - (card_prev.rect_size / 2)
-	card_prev.selector.hide()
+	card_prev.usable = false
+	card_prev.used = true
+	
+	# CARD ANIMATION WITH TWEEN
+	var tween = get_node("Tween")
+	tween.start()
+	tween.interpolate_property(card_prev, "rect_position",
+		card_prev_pos, (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50), 1,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(tween, "tween_completed")
+	
 	yield(get_tree().create_timer(1.0), "timeout")
 	card_prev.queue_free()
 	if $player_deck.get_child_count() <= 6:
@@ -88,6 +97,7 @@ func use_card(card_name):
 		var card_inst = card_next.instance()
 		$player_deck.add_child(card_inst)
 		$player_deck.move_child(card_inst, prev_pos)
+		card_inst.add_to_group("player_card")
 
 func remove_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
@@ -96,13 +106,13 @@ func remove_card(card_name):
 	var card_prev_pos = card_prev.rect_position
 	card_prev.usable = false
 	card_prev.used = true
-	card_prev.selector.hide()
 	card_prev.queue_free()
 	if $player_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		$player_deck.add_child(card_inst)
 		$player_deck.move_child(card_inst, prev_pos)
+		card_inst.add_to_group("player_card")
 
 func bot_use_card(card_name):
 	var card_prev = $enemy_deck.get_node(card_name)
@@ -113,7 +123,7 @@ func bot_use_card(card_name):
 	card_prev.used = true
 	reparent(card_prev, table)
 	card_prev = get_node(card_name)
-	card_prev.rect_position = (get_viewport_rect().size / 2) - (card_prev.rect_size / 2)
+	card_prev.rect_position = (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50)
 	card_prev.selector.hide()
 	yield(get_tree().create_timer(1.0), "timeout")
 	card_prev.queue_free()

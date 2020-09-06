@@ -59,15 +59,19 @@ func _physics_process(delta):
 		if card_layout == 0 and player_bricks() < card_cost:
 			usable = false
 			set_modulate(Color(0.5, 0.5, 0.5))
+			mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
 		elif card_layout == 1 and player_gems() < card_cost:
 			usable = false
 			set_modulate(Color(0.5, 0.5, 0.5))
+			mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
 		elif card_layout == 2 and player_recruits() < card_cost:
 			usable = false
 			set_modulate(Color(0.5, 0.5, 0.5))
+			mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
 		else:
 			usable = true
 			set_modulate(Color(1, 1, 1))
+			mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		
 		if used == true:
 			set_modulate(Color(1, 1, 1))
@@ -75,29 +79,33 @@ func _physics_process(delta):
 
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
-		if usable == true:
+		if usable == true and not used == true:
 			card_func(card_id)
 			card_charge()
 			global.table.use_card(name)
 
 	if Input.is_action_just_pressed("ui_rmb"):
-		if discardable == true: 
+		if discardable == true and not used == true: 
 			global.table.remove_card(name)
 
 func _on_card_mouse_entered():
-	if usable == true:
+	if usable == true and is_in_group("player_card"):
 		selector.self_modulate = Color(1, 1, 1)
 		selector.show()
-	elif usable == false:
+	elif usable == false and is_in_group("player_card"):
 		selector.self_modulate = Color(1, 0, 0)
 		selector.show()
+	if used == true and is_in_group("player_card"):
+		selector.hide()
 
 func _on_card_mouse_exited():
-	if usable == true:
+	if usable == true and is_in_group("player_card"):
 		selector.modulate = Color(1, 1, 1)
 		selector.hide()
-	elif usable == false:
+	elif usable == false and is_in_group("player_card"):
 		selector.modulate = Color(1, 0, 0)
+		selector.hide()
+	if used == true and is_in_group("player_card"):
 		selector.hide()
 
 func card_charge():

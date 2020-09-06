@@ -47,7 +47,6 @@ anchor_right = 0.140625
 anchor_bottom = 0.333333
 margin_bottom = 0.000183105
 rect_min_size = Vector2( 135, 180 )
-mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource( 5 )
