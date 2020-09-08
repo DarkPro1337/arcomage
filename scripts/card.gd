@@ -40,13 +40,15 @@ func _ready():
 	card_description = card_data.get(random_card).description
 	card_cost = card_data.get(random_card).cost
 	card_layout = card_data.get(random_card).type
-	set_name(card_id)
 	
 	# CHANGING THE CARD LOOK
 	$name.text = card_name
 	$art.texture = load(card_art)
 	$description.text = card_description
 	$cost.text = str(card_cost)
+	
+	set_name(card_id)
+	
 	if card_layout == 0:
 		$layout.texture = load("res://sprites/red_card_layout_alt.png")
 	elif card_layout == 1:
@@ -80,6 +82,7 @@ func _physics_process(delta):
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
 		if usable == true and not used == true:
+			print(is_in_group("player_card"))
 			card_func(card_id)
 			card_charge()
 			global.table.use_card(name)
@@ -125,6 +128,7 @@ func bot_card_charge():
 		global.table.enemy_recruits -= card_cost
 
 func bot_card_use():
+	print(is_in_group("enemy_card"))
 	card_func(card_id)
 	bot_card_charge()
 	global.table.bot_use_card(name)
@@ -464,112 +468,220 @@ func card_func(id):
 			damage_enemy_tower(12)
 
 func damage_player_tower(hp):
-	global.table.player_tower_hp -= hp
+	if player_card():
+		global.table.player_tower_hp -= hp
+	elif enemy_card():
+		global.table.enemy_tower_hp -= hp
 
 func damage_player_wall(hp):
-	global.table.player_wall_hp -= hp
-
-func heal_player_tower(hp):
-	global.table.player_tower_hp += hp
-
-func heal_player_wall(hp):
-	global.table.player_wall_hp += hp
-
-func damage_player(hp):
-	if global.table.player_wall_hp == 0:
-		global.table.player_tower_hp -= hp
-	else:
+	if player_card():
 		global.table.player_wall_hp -= hp
-
-func damage_enemy(hp):
-	if global.table.enemy_wall_hp == 0:
-		global.table.enemy_tower_hp -= hp
-	else:
+	elif enemy_card():
 		global.table.enemy_wall_hp -= hp
 
+func heal_player_tower(hp):
+	if player_card():
+		global.table.player_tower_hp += hp
+	elif enemy_card():
+		global.table.enemy_tower_hp += hp
+
+func heal_player_wall(hp):
+	if player_card():
+		global.table.player_wall_hp += hp
+	elif enemy_card():
+		global.table.enemy_wall_hp += hp
+
+func damage_player(hp):
+	if player_card():
+		if global.table.player_wall_hp == 0:
+			global.table.player_tower_hp -= hp
+		else:
+			global.table.player_wall_hp -= hp
+	elif enemy_card():
+		if global.table.enemy_wall_hp == 0:
+			global.table.enemy_tower_hp -= hp
+		else:
+			global.table.enemy_wall_hp -= hp
+
+func damage_enemy(hp):
+	if player_card():
+		if global.table.enemy_wall_hp == 0:
+			global.table.enemy_tower_hp -= hp
+		else:
+			global.table.enemy_wall_hp -= hp
+	elif enemy_card():
+		if global.table.player_wall_hp == 0:
+			global.table.player_tower_hp -= hp
+		else:
+			global.table.player_wall_hp -= hp
+
 func add_player_quarry(num):
-	global.table.player_quarry += num
+	if player_card():
+		global.table.player_quarry += num
+	elif enemy_card():
+		global.table.enemy_quarry += num
 
 func add_player_bricks(num):
-	global.table.player_bricks += num
+	if player_card():
+		global.table.player_bricks += num
+	elif enemy_card():
+		global.table.enemy_bricks += num
 
 func add_player_magic(num):
-	global.table.player_magic += num
+	if player_card():
+		global.table.player_magic += num
+	elif enemy_card():
+		global.table.enemy_magic += num
 
 func add_player_gems(num):
-	global.table.player_gems += num
+	if player_card():
+		global.table.player_gems += num
+	elif enemy_card():
+		global.table.enemy_gems += num
 
 func add_player_dungeons(num):
-	global.table.player_dungeon += num
+	if player_card():
+		global.table.player_dungeon += num
+	elif enemy_card():
+		global.table.enemy_dungeon += num
 
 func add_player_recruits(num):
-	global.table.player_recruits += num
+	if player_card():
+		global.table.player_recruits += num
+	elif enemy_card():
+		global.table.enemy_recruits += num
 
 func remove_player_quarry(num):
-	global.table.player_quarry -= num
+	if player_card():
+		global.table.player_quarry -= num
+	elif enemy_card():
+		global.table.enemy_quarry -= num
 
 func remove_player_bricks(num):
-	global.table.player_bricks -= num
+	if player_card():
+		global.table.player_bricks -= num
+	elif enemy_card():
+		global.table.enemy_bricks -= num
 
 func remove_player_magic(num):
-	global.table.player_magic -= num
+	if player_card():
+		global.table.player_magic -= num
+	elif enemy_card():
+		global.table.enemy_magic -= num
 
 func remove_player_gems(num):
-	global.table.player_gems -= num
+	if player_card():
+		global.table.player_gems -= num
+	elif enemy_card():
+		global.table.enemy_gems -= num
 
 func remove_player_dungeons(num):
-	global.table.player_dungeon -= num
+	if player_card():
+		global.table.player_dungeon -= num
+	elif enemy_card():
+		global.table.enemy_dungeon -= num
 
 func remove_player_recruits(num):
-	global.table.player_recruits -= num
+	if player_card():
+		global.table.player_recruits -= num
+	elif enemy_card():
+		global.table.enemy_recruits -= num
 
 func damage_enemy_tower(hp):
-	global.table.enemy_tower_hp -= hp
+	if player_card():
+		global.table.enemy_tower_hp -= hp
+	elif enemy_card():
+		global.table.player_tower_hp -= hp
 
 func damage_enemy_wall(hp):
-	global.table.enemy_wall_hp -= hp
+	if player_card():
+		global.table.enemy_wall_hp -= hp
+	elif enemy_card():
+		global.table.player_wall_hp -= hp
 
 func heal_enemy_tower(hp):
-	global.table.enemy_tower_hp += hp
+	if player_card():
+		global.table.enemy_tower_hp += hp
+	elif enemy_card():
+		global.table.player_tower_hp += hp
 
 func heal_enemy_wall(hp):
-	global.table.enemy_wall_hp += hp
+	if player_card():
+		global.table.enemy_wall_hp += hp
+	elif enemy_card():
+		global.table.player_wall_hp += hp
 
 func add_enemy_quarry(num):
-	global.table.enemy_quarry += num
+	if player_card():
+		global.table.enemy_quarry += num
+	elif enemy_card():
+		global.table.player_quarry += num
 
 func add_enemy_bricks(num):
-	global.table.enemy_bricks += num
+	if player_card():
+		global.table.enemy_bricks += num
+	elif enemy_card():
+		global.table.player_bricks += num
 
 func add_enemy_magic(num):
-	global.table.enemy_magic += num
+	if player_card():
+		global.table.enemy_magic += num
+	elif enemy_card():
+		global.table.player_magic += num
 
 func add_enemy_gems(num):
-	global.table.enemy_gems += num
+	if player_card():
+		global.table.enemy_gems += num
+	elif enemy_card():
+		global.table.player_gems += num
 
 func add_enemy_dungeons(num):
-	global.table.enemy_dungeon += num
+	if player_card():
+		global.table.enemy_dungeon += num
+	elif enemy_card():
+		global.table.player_dungeon += num
 
 func add_enemy_recruits(num):
-	global.table.enemy_recruits += num
+	if player_card():
+		global.table.enemy_recruits += num
+	elif enemy_card():
+		global.table.player_recruits += num
 
 func remove_enemy_quarry(num):
-	global.table.enemy_quarry -= num
+	if player_card():
+		global.table.enemy_quarry -= num
+	elif enemy_card():
+		global.table.player_quarry -= num
 
 func remove_enemy_bricks(num):
-	global.table.enemy_bricks -= num
+	if player_card():
+		global.table.enemy_bricks -= num
+	elif enemy_card():
+		global.table.player_bricks -= num
 
 func remove_enemy_magic(num):
-	global.table.enemy_magic -= num
+	if player_card():
+		global.table.enemy_magic -= num
+	elif enemy_card():
+		global.table.player_magic -= num
 
 func remove_enemy_gems(num):
-	global.table.enemy_gems -= num
+	if player_card():
+		global.table.enemy_gems -= num
+	elif enemy_card():
+		global.table.player_gems -= num
 
 func remove_enemy_dungeons(num):
-	global.table.enemy_dungeon -= num
+	if player_card():
+		global.table.enemy_dungeon -= num
+	elif enemy_card():
+		global.table.player_dungeon -= num
 
 func remove_enemy_recruits(num):
-	global.table.enemy_recruits -= num
+	if player_card():
+		global.table.enemy_recruits -= num
+	elif enemy_card():
+		global.table.player_recruits -= num
 
 func play_again():
 	pass # TODO
@@ -581,49 +693,103 @@ func discard_card(num):
 	pass # TODO
 
 func player_quarry():
-	return global.table.player_quarry
+	if player_card():
+		return global.table.player_quarry
+	elif enemy_card():
+		return global.table.enemy_quarry
 
 func player_bricks():
-	return global.table.player_bricks
+	if player_card():
+		return global.table.player_bricks
+	elif enemy_card():
+		return global.table.enemy_bricks
 
 func player_magic():
-	return global.table.player_magic
+	if player_card():
+		return global.table.player_magic
+	elif enemy_card():
+		return global.table.player_magic
 
 func player_gems():
-	return global.table.player_gems
+	if player_card():
+		return global.table.player_gems
+	elif enemy_card():
+		return global.table.player_gems
 
 func player_dungeon():
-	return global.table.player_dungeon
+	if player_card():
+		return global.table.player_dungeon
+	elif enemy_card():
+		return global.table.enemy_dungeon
 
 func player_recruits():
-	return global.table.player_recruits
+	if player_card():
+		return global.table.player_recruits
+	elif enemy_card():
+		return global.table.enemy_recruits
 
 func enemy_quarry():
-	return global.table.enemy_quarry
+	if player_card():
+		return global.table.enemy_quarry
+	elif enemy_card():
+		return global.table.player_quarry
 
 func enemy_bricks():
-	return global.table.enemy_bricks
+	if player_card():
+		return global.table.enemy_bricks
+	elif enemy_card():
+		return global.table.player_bricks
 
 func enemy_magic():
-	return global.table.enemy_magic
+	if player_card():
+		return global.table.enemy_magic
+	elif enemy_card():
+		return global.table.player_magic
 
 func enemy_gems():
-	return global.table.enemy_gems
+	if player_card():
+		return global.table.enemy_gems
+	elif enemy_card():
+		return global.table.player_gems
 
 func enemy_dungeon():
-	return global.table.enemy_dungeon
+	if player_card():
+		return global.table.enemy_dungeon
+	elif enemy_card():
+		return global.table.player_dungeon
 
 func enemy_recruits():
-	return global.table.enemy_recruits
+	if player_card():
+		return global.table.enemy_recruits
+	elif enemy_card():
+		return global.table.player_recruits
 
 func player_tower():
-	return global.table.player_tower_hp
+	if player_card():
+		return global.table.player_tower_hp
+	elif enemy_card():
+		return global.table.enemy_tower_hp
 
 func player_wall():
-	return global.table.player_wall_hp
+	if player_card():
+		return global.table.player_wall_hp
+	elif enemy_card():
+		return global.table.enemy_wall_hp
 
 func enemy_tower():
-	return global.table.enemy_tower_hp
+	if player_card():
+		return global.table.enemy_tower_hp
+	elif enemy_card():
+		return global.table.player_tower_hp
 
 func enemy_wall():
-	return global.table.enemy_wall_hp
+	if player_card():
+		return global.table.enemy_wall_hp
+	elif enemy_card():
+		return global.table.player_wall_hp
+
+func player_card():
+	return is_in_group("player_card")
+
+func enemy_card():
+	return is_in_group("enemy_card")
