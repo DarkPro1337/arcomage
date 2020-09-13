@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
@@ -41,6 +41,13 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=6]
 size = 15
 font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+outline_size = 2
+outline_color = Color( 0.117647, 0.117647, 0.117647, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="card" type="Control"]
 anchor_right = 0.140625
@@ -185,6 +192,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 7 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="discarded" type="Label" parent="."]
+visible = false
+margin_left = 20.0607
+margin_top = 22.0
+margin_right = 179.061
+margin_bottom = 46.0
+rect_rotation = 45.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.898039, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "DISCARDED"
+align = 1
+valign = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

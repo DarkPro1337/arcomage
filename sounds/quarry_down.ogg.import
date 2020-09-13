@@ -11,5 +11,5 @@ dest_files=[ "res://.import/quarry_down.ogg-b5ea57940ac8917c990317dab6ae98cd.ogg
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -1,16 +1,46 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/RobotoCondensed-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://images/arcomage_logo.png" type="Texture" id=2]
 [ext_resource path="res://images/Layout-edit_dark.png" type="Texture" id=3]
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=4]
 [ext_resource path="res://themes/main_menu_theme.tres" type="Theme" id=5]
+[ext_resource path="res://sounds/title.ogg" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -21,6 +51,7 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 7
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -38,28 +69,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="info" type="Button" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 56.0
-margin_bottom = 56.0
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
-text = "?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="new_game" type="Button" parent="."]
+[node name="menu_grid" type="GridContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -432.0
 margin_top = -92.0
-margin_right = -232.0
-margin_bottom = -40.0
+margin_right = 432.0
+margin_bottom = -44.0
+custom_constants/hseparation = 16
+columns = 4
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="new_game" type="Button" parent="menu_grid"]
+margin_right = 204.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Начинает новую игру с текущими настройками."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Начать игру"
@@ -67,16 +100,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="settings" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -208.0
-margin_top = -92.0
-margin_right = -8.0
-margin_bottom = -40.0
+[node name="settings" type="Button" parent="menu_grid"]
+margin_left = 220.0
+margin_right = 424.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Позволяет настроить правила игры."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Настройки"
@@ -84,16 +116,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="scores" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -92.0
-margin_right = 216.0
-margin_bottom = -40.0
+[node name="scores" type="Button" parent="menu_grid"]
+margin_left = 440.0
+margin_right = 644.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Открывает доску лидеров."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Рекорды"
@@ -101,23 +132,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="exit" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 240.0
-margin_top = -92.0
-margin_right = 440.0
-margin_bottom = -40.0
+[node name="exit" type="Button" parent="menu_grid"]
+margin_left = 660.0
+margin_right = 864.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Выйти из игры."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Выход"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="new_game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="scores" to="." method="_on_scores_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+anims/start = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"
+[connection signal="pressed" from="menu_grid/new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="menu_grid/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="menu_grid/scores" to="." method="_on_scores_pressed"]
+[connection signal="pressed" from="menu_grid/exit" to="." method="_on_exit_pressed"]

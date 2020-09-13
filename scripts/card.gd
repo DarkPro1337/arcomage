@@ -56,6 +56,7 @@ func _ready():
 	elif card_layout == 2:
 		$layout.texture = load("res://sprites/green_card_layout_alt.png")
 
+# DISABLING CARDS ON RUNTIME
 func _physics_process(delta):
 	if is_in_group("player_card"):
 		if card_layout == 0 and player_bricks() < card_cost:
@@ -79,18 +80,26 @@ func _physics_process(delta):
 			set_modulate(Color(1, 1, 1))
 			selector.hide()
 
+# PLAYER CARD USING
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
 		if usable == true and not used == true:
-			print(is_in_group("player_card"))
+			if is_in_group("player_card"):
+				print("PLAYER 1 USED CARD " + name)
+			else:
+				print("ERROR: CARD GROUP MISSED")
+			global.table.play_audio("deal")
 			card_func(card_id)
 			card_charge()
 			global.table.use_card(name)
 
 	if Input.is_action_just_pressed("ui_rmb"):
 		if discardable == true and not used == true: 
+			global.table.play_audio("deal")
+			$discarded.show()
 			global.table.remove_card(name)
 
+# CARD SELECTOR
 func _on_card_mouse_entered():
 	if usable == true and is_in_group("player_card"):
 		selector.self_modulate = Color(1, 1, 1)
@@ -111,28 +120,43 @@ func _on_card_mouse_exited():
 	if used == true and is_in_group("player_card"):
 		selector.hide()
 
+# CHARGE RESOURCES FROM PLAYER
 func card_charge():
 	if card_layout == 0:
 		global.table.player_bricks -= card_cost
+		if global.table.player_bricks < 0: global.table.player_bricks = 0
 	elif card_layout == 1:
 		global.table.player_gems -= card_cost
+		if global.table.player_gems < 0: global.table.player_gems = 0
 	elif card_layout == 2:
 		global.table.player_recruits -= card_cost
+		if global.table.player_recruits < 0: global.table.player_recruits = 0
 
+# CHARGE RESOURCES FROM BOT
 func bot_card_charge():
 	if card_layout == 0:
 		global.table.enemy_bricks -= card_cost
+		if global.table.enemy_bricks < 0: global.table.enemy_bricks = 0
 	elif card_layout == 1:
 		global.table.enemy_gems -= card_cost
+		if global.table.enemy_gems < 0: global.table.enemy_gems = 0
 	elif card_layout == 2:
 		global.table.enemy_recruits -= card_cost
+		if global.table.enemy_recruits < 0: global.table.enemy_recruits = 0
 
+# BOT CARD USING
 func bot_card_use():
-	print(is_in_group("enemy_card"))
+	if is_in_group("enemy_card"):
+		print("PLAYER 2 USED CARD " + name)
+	else:
+		print("ERROR: CARD GROUP MISSED")
+	global.table.play_audio("deal")
 	card_func(card_id)
 	bot_card_charge()
 	global.table.bot_use_card(name)
 
+# CARD FUNCS
+# TODO: MOVE TO SEPARATE SCRIPT
 func card_func(id):
 	match id:
 		"brick_shortage":
@@ -684,7 +708,10 @@ func remove_enemy_recruits(num):
 		global.table.player_recruits -= num
 
 func play_again():
-	pass # TODO
+	if player_card():
+		global.table.player_play_again = true
+	elif enemy_card():
+		global.table.enemy_play_again = true
 
 func draw_card(num):
 	pass # TODO
