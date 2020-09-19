@@ -88,14 +88,14 @@ func _on_card_input(event):
 				print("PLAYER 1 USED CARD " + name)
 			else:
 				print("ERROR: CARD GROUP MISSED")
-			global.table.play_audio("deal")
+			AudioStreamManager.play("res://sounds/deal.ogg")
 			card_func(card_id)
 			card_charge()
 			global.table.use_card(name)
 
 	if Input.is_action_just_pressed("ui_rmb"):
 		if discardable == true and not used == true: 
-			global.table.play_audio("deal")
+			AudioStreamManager.play("res://sounds/deal.ogg")
 			$discarded.show()
 			global.table.remove_card(name)
 
@@ -150,7 +150,7 @@ func bot_card_use():
 		print("PLAYER 2 USED CARD " + name)
 	else:
 		print("ERROR: CARD GROUP MISSED")
-	global.table.play_audio("deal")
+	AudioStreamManager.play("res://sounds/deal.ogg")
 	card_func(card_id)
 	bot_card_charge()
 	global.table.bot_use_card(name)
@@ -496,24 +496,28 @@ func damage_player_tower(hp):
 		global.table.player_tower_hp -= hp
 	elif enemy_card():
 		global.table.enemy_tower_hp -= hp
+	AudioStreamManager.play("res://sounds/damage.ogg")
 
 func damage_player_wall(hp):
 	if player_card():
 		global.table.player_wall_hp -= hp
 	elif enemy_card():
 		global.table.enemy_wall_hp -= hp
+	AudioStreamManager.play("res://sounds/damage.ogg")
 
 func heal_player_tower(hp):
 	if player_card():
 		global.table.player_tower_hp += hp
 	elif enemy_card():
 		global.table.enemy_tower_hp += hp
+	AudioStreamManager.play("res://sounds/up.ogg")
 
 func heal_player_wall(hp):
 	if player_card():
 		global.table.player_wall_hp += hp
 	elif enemy_card():
 		global.table.enemy_wall_hp += hp
+	AudioStreamManager.play("res://sounds/heal.ogg")
 
 func damage_player(hp):
 	if player_card():
@@ -526,6 +530,7 @@ func damage_player(hp):
 			global.table.enemy_tower_hp -= hp
 		else:
 			global.table.enemy_wall_hp -= hp
+	AudioStreamManager.play("res://sounds/damage.ogg")
 
 func damage_enemy(hp):
 	if player_card():
@@ -538,174 +543,203 @@ func damage_enemy(hp):
 			global.table.player_tower_hp -= hp
 		else:
 			global.table.player_wall_hp -= hp
+	AudioStreamManager.play("res://sounds/damage.ogg")
 
 func add_player_quarry(num):
 	if player_card():
 		global.table.player_quarry += num
 	elif enemy_card():
 		global.table.enemy_quarry += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_player_bricks(num):
 	if player_card():
 		global.table.player_bricks += num
 	elif enemy_card():
 		global.table.enemy_bricks += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_player_magic(num):
 	if player_card():
 		global.table.player_magic += num
 	elif enemy_card():
 		global.table.enemy_magic += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_player_gems(num):
 	if player_card():
 		global.table.player_gems += num
 	elif enemy_card():
 		global.table.enemy_gems += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_player_dungeons(num):
 	if player_card():
 		global.table.player_dungeon += num
 	elif enemy_card():
 		global.table.enemy_dungeon += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_player_recruits(num):
 	if player_card():
 		global.table.player_recruits += num
 	elif enemy_card():
 		global.table.enemy_recruits += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func remove_player_quarry(num):
 	if player_card():
 		global.table.player_quarry -= num
 	elif enemy_card():
 		global.table.enemy_quarry -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_player_bricks(num):
 	if player_card():
 		global.table.player_bricks -= num
 	elif enemy_card():
 		global.table.enemy_bricks -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_player_magic(num):
 	if player_card():
 		global.table.player_magic -= num
 	elif enemy_card():
 		global.table.enemy_magic -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_player_gems(num):
 	if player_card():
 		global.table.player_gems -= num
 	elif enemy_card():
 		global.table.enemy_gems -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_player_dungeons(num):
 	if player_card():
 		global.table.player_dungeon -= num
 	elif enemy_card():
 		global.table.enemy_dungeon -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_player_recruits(num):
 	if player_card():
 		global.table.player_recruits -= num
 	elif enemy_card():
 		global.table.enemy_recruits -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func damage_enemy_tower(hp):
 	if player_card():
 		global.table.enemy_tower_hp -= hp
 	elif enemy_card():
 		global.table.player_tower_hp -= hp
+	AudioStreamManager.play("res://sounds/damage.ogg")
 
 func damage_enemy_wall(hp):
 	if player_card():
 		global.table.enemy_wall_hp -= hp
 	elif enemy_card():
 		global.table.player_wall_hp -= hp
+	AudioStreamManager.play("res://sounds/damage.ogg")
 
 func heal_enemy_tower(hp):
 	if player_card():
 		global.table.enemy_tower_hp += hp
 	elif enemy_card():
 		global.table.player_tower_hp += hp
+	AudioStreamManager.play("res://sounds/up.ogg")
 
 func heal_enemy_wall(hp):
 	if player_card():
 		global.table.enemy_wall_hp += hp
 	elif enemy_card():
 		global.table.player_wall_hp += hp
+	AudioStreamManager.play("res://sounds/heal.ogg")
 
 func add_enemy_quarry(num):
 	if player_card():
 		global.table.enemy_quarry += num
 	elif enemy_card():
 		global.table.player_quarry += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_enemy_bricks(num):
 	if player_card():
 		global.table.enemy_bricks += num
 	elif enemy_card():
 		global.table.player_bricks += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_enemy_magic(num):
 	if player_card():
 		global.table.enemy_magic += num
 	elif enemy_card():
 		global.table.player_magic += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_enemy_gems(num):
 	if player_card():
 		global.table.enemy_gems += num
 	elif enemy_card():
 		global.table.player_gems += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_enemy_dungeons(num):
 	if player_card():
 		global.table.enemy_dungeon += num
 	elif enemy_card():
 		global.table.player_dungeon += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func add_enemy_recruits(num):
 	if player_card():
 		global.table.enemy_recruits += num
 	elif enemy_card():
 		global.table.player_recruits += num
+	AudioStreamManager.play("res://sounds/launch.ogg")
 
 func remove_enemy_quarry(num):
 	if player_card():
 		global.table.enemy_quarry -= num
 	elif enemy_card():
 		global.table.player_quarry -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_enemy_bricks(num):
 	if player_card():
 		global.table.enemy_bricks -= num
 	elif enemy_card():
 		global.table.player_bricks -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_enemy_magic(num):
 	if player_card():
 		global.table.enemy_magic -= num
 	elif enemy_card():
 		global.table.player_magic -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_enemy_gems(num):
 	if player_card():
 		global.table.enemy_gems -= num
 	elif enemy_card():
 		global.table.player_gems -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_enemy_dungeons(num):
 	if player_card():
 		global.table.enemy_dungeon -= num
 	elif enemy_card():
 		global.table.player_dungeon -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func remove_enemy_recruits(num):
 	if player_card():
 		global.table.enemy_recruits -= num
 	elif enemy_card():
 		global.table.player_recruits -= num
+	AudioStreamManager.play("res://sounds/quarry_down.ogg")
 
 func play_again():
 	if player_card():
