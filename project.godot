@@ -55,11 +55,17 @@ ui_reset={
  ]
 }
 
+[logging]
+
+file_logging/enable_file_logging.pc=false
+file_logging/log_path="user://logs/log.txt"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=1
+threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/shadows/filter_mode=0

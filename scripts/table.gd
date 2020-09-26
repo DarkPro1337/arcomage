@@ -35,6 +35,11 @@ var enemy_gems = 10
 var enemy_dungeon = 5
 var enemy_recruits = 20
 
+var time_start = 0
+var time_now = 0
+var elapsed = 0
+var str_elapsed = "00 : 00"
+
 func _input(event):
 	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()
@@ -63,7 +68,6 @@ func _ready():
 		$enemy_deck.add_child(card_inst)
 		card_inst.card_back.show()
 		card_inst.usable = false
-		card_inst.discardable = false
 
 func _physics_process(delta):
 	update_stat_panels()
@@ -74,9 +78,62 @@ func _physics_process(delta):
 		AI_ready = false
 		$player_deck.hide()
 		$enemy_deck.show()
-		var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-		yield(get_tree().create_timer(1), "timeout")
-		$enemy_deck.get_node(random_bot_card.name).bot_card_use()
+		#var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+		
+		var bot_atk_card_count = 0
+		var bot_def_card_count = 0
+		var bot_res_card_count = 0
+		
+		# GET CURRENT NUMBERS OF ATK, DEF AND RES CARDS IN DECK
+		for i in $enemy_deck.get_child_count():
+			var card = $enemy_deck.get_child(i)
+			if card.card_use == 0: #atk
+				bot_atk_card_count += 1
+			elif card.card_use == 1: #def
+				bot_def_card_count += 1
+			elif card.card_use == 2: #res
+				bot_res_card_count += 1
+		
+		# ARCOMAGE BOT v.0.1
+		# DON'T TRY TO UNDERSTAND THIS, LOL
+		for i in $enemy_deck.get_child_count():
+			var card = $enemy_deck.get_child(i)
+			if enemy_tower_hp > player_tower_hp and bot_atk_card_count != 0 and card.bot_usable == true:
+				if card.card_use == 0: #atk
+					yield(get_tree().create_timer(1), "timeout")
+					$enemy_deck.get_node(card.name).bot_card_use()
+					print("BOT: USING ATTACK CARD")
+					break
+			elif enemy_tower_hp < player_tower_hp and bot_def_card_count != 0 and card.bot_usable == true:
+				if card.card_use == 1: #def
+					yield(get_tree().create_timer(1), "timeout")
+					$enemy_deck.get_node(card.name).bot_card_use()
+					print("BOT: USING DEFENCE CARD")
+					break
+			elif enemy_tower_hp == player_tower_hp and bot_res_card_count != 0 and card.bot_usable == true:
+				if card.card_use == 2: #res
+					yield(get_tree().create_timer(1), "timeout")
+					$enemy_deck.get_node(card.name).bot_card_use()
+					print("BOT: USING RESORCE CARD")
+					break
+			else:
+				if card.bot_usable == false:
+					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+					yield(get_tree().create_timer(1), "timeout")
+					$enemy_deck.get_node(random_bot_card.name).bot_card_use()
+					print("BOT: NOT ENOUGH CARDS, USING RANDOM CARD")
+					break
+				else:
+					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+					if $enemy_deck.get_node(random_bot_card.name).discardable == true:
+						yield(get_tree().create_timer(1), "timeout")
+						$enemy_deck.get_node(random_bot_card.name).bot_card_remove()
+						print("BOT: NOT ENOUGH CARDS, DISCARD RANDOM CARD")
+						break
+					else:
+						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
+						continue
+		#$enemy_deck.get_node(random_bot_card.name).bot_card_use()
 
 func use_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
@@ -121,6 +178,7 @@ func remove_card(card_name):
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
 	var card_prev_pos = card_prev.rect_global_position
+	$deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.set_as_toplevel(true)
@@ -139,6 +197,7 @@ func remove_card(card_name):
 	
 	card_prev.queue_free()
 	add_resources(turn)
+	$deck_locker.hide()
 	turn = 1
 	if $player_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
@@ -152,6 +211,7 @@ func bot_use_card(card_name):
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
 	var card_prev_pos = card_prev.rect_global_position
+	$deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.card_back.hide()
@@ -172,6 +232,7 @@ func bot_use_card(card_name):
 	
 	card_prev.queue_free()
 	add_resources(turn)
+	$deck_locker.hide()
 	AI_ready = true
 	if enemy_play_again == true: 
 		turn = 1
@@ -192,16 +253,37 @@ func bot_remove_card(card_name):
 	var card_prev = $enemy_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
-	var card_prev_pos = card_prev.rect_position
+	var card_prev_pos = card_prev.rect_global_position
+	$deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
-	card_prev.selector.hide()
+	card_prev.card_back.hide()
+	card_prev.set_as_toplevel(true)
+	
+	var card_anim = get_node("card_anim")
+	card_anim.start()
+	card_anim.interpolate_property(card_prev, "rect_position",
+		card_prev_pos, $card_back.rect_global_position, 1,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(card_anim, "tween_completed")
+	
+	card_anim.interpolate_property(card_prev, "modulate",
+		Color(1,1,1,1), Color(1,1,1,0), 1,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(card_anim, "tween_completed")
+	
 	card_prev.queue_free()
+	add_resources(turn)
+	$deck_locker.hide()
+	AI_ready = true
+	turn = 0
 	if $enemy_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		$enemy_deck.add_child(card_inst)
 		$enemy_deck.move_child(card_inst, prev_pos)
+		card_inst.add_to_group("enemy_card")
+		card_inst.card_back.show()
 
 func update_stat_panels():
 	# PLAYER STATS
@@ -335,3 +417,9 @@ func emit_particles(type):
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
+
+func _on_Time_Elapsed_timeout():
+	elapsed += 1
+	var minutes = elapsed / 60
+	var seconds = elapsed % 60
+	str_elapsed = "%02d : %02d" % [minutes, seconds]

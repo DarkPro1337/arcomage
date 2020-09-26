@@ -12,9 +12,12 @@ var card_description
 var card_cost
 var card_layout
 var card_art
+var card_use
+var card_not_discardable
 
 var discardable = true
 var usable = true
+var bot_usable = true
 var used = false
 
 func _ready():
@@ -40,6 +43,8 @@ func _ready():
 	card_description = card_data.get(random_card).description
 	card_cost = card_data.get(random_card).cost
 	card_layout = card_data.get(random_card).type
+	card_use = card_data.get(random_card).use
+	card_not_discardable = card_data.get(random_card).not_discardable
 	
 	# CHANGING THE CARD LOOK
 	$name.text = card_name
@@ -48,6 +53,9 @@ func _ready():
 	$cost.text = str(card_cost)
 	
 	set_name(card_id)
+	
+	if card_not_discardable == true:
+		discardable = false
 	
 	if card_layout == 0:
 		$layout.texture = load("res://sprites/red_card_layout_alt.png")
@@ -79,22 +87,32 @@ func _physics_process(delta):
 		if used == true:
 			set_modulate(Color(1, 1, 1))
 			selector.hide()
+	
+	if is_in_group("enemy_card"):
+		if card_layout == 0 and enemy_bricks() < card_cost:
+			bot_usable = false
+		elif card_layout == 1 and enemy_gems() < card_cost:
+			bot_usable = false
+		elif card_layout == 2 and enemy_recruits() < card_cost:
+			bot_usable = false
+		else:
+			bot_usable = true
 
 # PLAYER CARD USING
 func _on_card_input(event):
 	if Input.is_action_just_pressed("ui_lmb"):
-		if usable == true and not used == true:
+		if usable == true and not used == true and is_in_group("player_card"):
 			if is_in_group("player_card"):
-				print("PLAYER 1 USED CARD " + name)
+				print_time("PLAYER 1 USED CARD " + name)
 			else:
-				print("ERROR: CARD GROUP MISSED")
+				print_time("ERROR: CARD GROUP MISSED")
 			AudioStreamManager.play("res://sounds/deal.ogg")
 			card_func(card_id)
 			card_charge()
 			global.table.use_card(name)
 
 	if Input.is_action_just_pressed("ui_rmb"):
-		if discardable == true and not used == true: 
+		if discardable == true and not used == true and is_in_group("player_card"): 
 			AudioStreamManager.play("res://sounds/deal.ogg")
 			$discarded.show()
 			global.table.remove_card(name)
@@ -147,13 +165,22 @@ func bot_card_charge():
 # BOT CARD USING
 func bot_card_use():
 	if is_in_group("enemy_card"):
-		print("PLAYER 2 USED CARD " + name)
+		print_time("PLAYER 2 USED CARD " + name)
 	else:
-		print("ERROR: CARD GROUP MISSED")
+		print_time("ERROR: CARD GROUP MISSED")
 	AudioStreamManager.play("res://sounds/deal.ogg")
 	card_func(card_id)
 	bot_card_charge()
 	global.table.bot_use_card(name)
+
+func bot_card_remove():
+	if is_in_group("enemy_card"):
+		print_time("PLAYER 2 USED CARD " + name)
+	else:
+		print_time("ERROR: CARD GROUP MISSED")
+	AudioStreamManager.play("res://sounds/deal.ogg")
+	$discarded.show()
+	global.table.bot_remove_card(name)
 
 # CARD FUNCS
 # TODO: MOVE TO SEPARATE SCRIPT
@@ -854,3 +881,6 @@ func player_card():
 
 func enemy_card():
 	return is_in_group("enemy_card")
+
+func print_time(message: String):
+	print("[" + str(global.table.str_elapsed) + "] " + str(message))
