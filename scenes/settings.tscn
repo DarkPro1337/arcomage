@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://themes/settings_theme.tres" type="Theme" id=1]
 [ext_resource path="res://images/Layout-edit_dark_blur.png" type="Texture" id=2]
@@ -14,6 +14,22 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="settings" type="Control"]
 anchor_right = 1.0
@@ -38,16 +54,18 @@ __meta__ = {
 }
 
 [node name="tab" type="TabContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -357.0
-margin_top = -247.0
-margin_right = 357.0
-margin_bottom = 151.0
+margin_left = -224.0
+margin_top = -222.0
+margin_right = 434.0
+margin_bottom = 162.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
+tabs_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,16 +74,16 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 39.0
+margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="graphics" type="VBoxContainer" parent="tab/Graphics"]
-margin_left = 108.0
-margin_top = 34.0
-margin_right = 595.0
-margin_bottom = 319.0
-custom_constants/separation = 25
+margin_left = 80.0
+margin_top = 84.0
+margin_right = 567.0
+margin_bottom = 289.0
+custom_constants/separation = 5
 
 [node name="fullscreen" type="HBoxContainer" parent="tab/Graphics/graphics"]
 margin_right = 487.0
@@ -85,9 +103,9 @@ toggle_mode = true
 text = "Enable"
 
 [node name="borderless" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 62.0
+margin_top = 42.0
 margin_right = 487.0
-margin_bottom = 99.0
+margin_bottom = 79.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/borderless"]
 margin_right = 115.0
@@ -103,9 +121,9 @@ toggle_mode = true
 text = "Enable"
 
 [node name="window_res" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 124.0
+margin_top = 84.0
 margin_right = 487.0
-margin_bottom = 161.0
+margin_bottom = 121.0
 
 [node name="label1" type="Label" parent="tab/Graphics/graphics/window_res"]
 margin_right = 151.0
@@ -151,32 +169,32 @@ margin_bottom = 37.0
 text = "Apply"
 
 [node name="vsync" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 186.0
+margin_top = 126.0
 margin_right = 487.0
-margin_bottom = 223.0
+margin_bottom = 163.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/vsync"]
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 37.0
-text = "Vsync:"
+text = "VSync:"
 align = 2
 
 [node name="button" type="Button" parent="tab/Graphics/graphics/vsync"]
-margin_left = 75.0
-margin_right = 152.0
+margin_left = 76.0
+margin_right = 153.0
 margin_bottom = 37.0
 toggle_mode = true
 text = "Enable"
 
 [node name="intro_skip" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 248.0
+margin_top = 168.0
 margin_right = 487.0
-margin_bottom = 285.0
+margin_bottom = 205.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/intro_skip"]
 margin_right = 105.0
 margin_bottom = 37.0
-text = "Skip intro:"
+text = "Skip Intro:"
 align = 2
 
 [node name="button" type="Button" parent="tab/Graphics/graphics/intro_skip"]
@@ -191,15 +209,15 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 39.0
+margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="starting_conditions" type="VBoxContainer" parent="tab/Starting Conditions"]
-margin_left = 61.0
-margin_top = 26.0
-margin_right = 642.0
-margin_bottom = 328.0
+margin_left = 33.0
+margin_top = 36.0
+margin_right = 614.0
+margin_bottom = 338.0
 
 [node name="main" type="GridContainer" parent="tab/Starting Conditions/starting_conditions"]
 margin_right = 581.0
@@ -470,15 +488,15 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 39.0
+margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="main" type="VBoxContainer" parent="tab/Play Conditions"]
-margin_left = 156.0
-margin_top = 46.0
-margin_right = 548.0
-margin_bottom = 308.0
+margin_left = 128.0
+margin_top = 56.0
+margin_right = 520.0
+margin_bottom = 318.0
 custom_constants/separation = 25
 
 [node name="autoget" type="VBoxContainer" parent="tab/Play Conditions/main"]
@@ -608,15 +626,15 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 39.0
+margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="main" type="VBoxContainer" parent="tab/Victory Conditions"]
-margin_left = 213.0
-margin_top = 138.0
-margin_right = 491.0
-margin_bottom = 216.0
+margin_left = 185.0
+margin_top = 148.0
+margin_right = 463.0
+margin_bottom = 226.0
 
 [node name="tower" type="HBoxContainer" parent="tab/Victory Conditions/main"]
 margin_right = 278.0
@@ -667,15 +685,15 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 39.0
+margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="main" type="VBoxContainer" parent="tab/Tavern Presets"]
-margin_left = 140.0
-margin_top = 158.0
-margin_right = 563.0
-margin_bottom = 195.0
+margin_left = 112.0
+margin_top = 168.0
+margin_right = 535.0
+margin_bottom = 205.0
 
 [node name="preset" type="HBoxContainer" parent="tab/Tavern Presets/main"]
 margin_right = 423.0
@@ -697,35 +715,95 @@ text = "Grogg's Grog (Stone City)"
 items = [ "None", null, false, 0, null, "On the House (Harmondale)", null, false, 1, null, "Griffin's Rest (Erathia)", null, false, 2, null, "Emerald Inn (Tularean Forest)", null, false, 3, null, "Snobbish Goblin (Deyja)", null, false, 4, null, "Familiar Place (Bracada Desert)", null, false, 5, null, "The Blessed Brew (Celeste)", null, false, 6, null, "The Vamyre Lounge (The Pit)", null, false, 7, null, "The Laughing Monk (EVermorn Island)", null, false, 8, null, "Fortune's Only (Barrow Downs)", null, false, 9, null, "The Loyal Mercenary (Tidewater)", null, false, 10, null, "The Potted Pixie (Avlee)", null, false, 11, null, "Grogg's Grog (Stone City)", null, false, 12, null ]
 selected = 12
 
-[node name="close" type="Button" parent="."]
+[node name="close" type="ToolButton" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -248.0
-margin_top = -92.0
-margin_right = -48.0
-margin_bottom = -44.0
+margin_left = -216.0
+margin_top = -60.0
+margin_right = -16.0
+margin_bottom = -12.0
 rect_min_size = Vector2( 200, 48 )
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 2
 
-[node name="reset" type="Button" parent="."]
+[node name="reset" type="ToolButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 48.0
-margin_top = -92.0
-margin_right = 248.0
-margin_bottom = -44.0
+margin_left = 16.0
+margin_top = -60.0
+margin_right = 216.0
+margin_bottom = -12.0
 rect_min_size = Vector2( 200, 48 )
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Reset Values"
+align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="buttons_container" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -464.0
+margin_top = -254.0
+margin_right = -232.0
+margin_bottom = 194.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons_grid" type="GridContainer" parent="buttons_container"]
+margin_left = 17.0
+margin_top = 123.0
+margin_right = 214.0
+margin_bottom = 324.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="window_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_right = 197.0
+margin_bottom = 37.0
+text = "Window Settings"
+
+[node name="starting_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_top = 41.0
+margin_right = 197.0
+margin_bottom = 78.0
+text = "Starting Conditions"
+
+[node name="play_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_top = 82.0
+margin_right = 197.0
+margin_bottom = 119.0
+text = "Play Conditions"
+
+[node name="victory_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_top = 123.0
+margin_right = 197.0
+margin_bottom = 160.0
+text = "Victory Conditions"
+
+[node name="tavern_presets" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_top = 164.0
+margin_right = 197.0
+margin_bottom = 201.0
+text = "Tavern Presets"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hide = SubResource( 4 )
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/starting_conditions" to="." method="_on_starting_conditions_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/play_conditions" to="." method="_on_play_conditions_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/victory_conditions" to="." method="_on_victory_conditions_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/tavern_presets" to="." method="_on_tavern_presets_pressed"]

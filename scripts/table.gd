@@ -2,6 +2,8 @@ extends Control
 
 var rng = RandomNumberGenerator.new()
 
+onready var particles = $particles
+
 var player_name = "DarkPro1337"
 var enemy_name = "COMPUTER"
 
@@ -78,8 +80,12 @@ func _physics_process(delta):
 		AI_ready = false
 		$player_deck.hide()
 		$enemy_deck.show()
-		#var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
 		
+		#var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+		#$enemy_deck.get_node(random_bot_card.name).bot_card_use()
+		
+		# ARCOMAGE BOT v.0.1
+		# DON'T TRY TO UNDERSTAND THIS, LOL
 		var bot_atk_card_count = 0
 		var bot_def_card_count = 0
 		var bot_res_card_count = 0
@@ -94,8 +100,6 @@ func _physics_process(delta):
 			elif card.card_use == 2: #res
 				bot_res_card_count += 1
 		
-		# ARCOMAGE BOT v.0.1
-		# DON'T TRY TO UNDERSTAND THIS, LOL
 		for i in $enemy_deck.get_child_count():
 			var card = $enemy_deck.get_child(i)
 			if enemy_tower_hp > player_tower_hp and bot_atk_card_count != 0 and card.bot_usable == true:
@@ -133,7 +137,6 @@ func _physics_process(delta):
 					else:
 						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
 						continue
-		#$enemy_deck.get_node(random_bot_card.name).bot_card_use()
 
 func use_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
@@ -333,93 +336,272 @@ func play_audio(audio_name: String): #TODO: FIX AUDIO
 
 func emit_particles(type):
 	match type:
+		# PLAYER AND ENEMY TOWER AND WALLS DAMAGE
 		"damage_player_tower":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $player_tower.rect_size / 2
-			particle_inst.gravity = Vector2(0, -50)
-			$player_tower.add_child(particle_inst)
+			particle_inst.position = $player_tower.rect_global_position - $player_tower.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"damage_player_wall":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $player_wall.rect_size / 2
-			particle_inst.gravity = Vector2(0, -50)
-			$player_wall.add_child(particle_inst)
+			particle_inst.position = $player_wall.rect_global_position - $player_wall.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"damage_enemy_tower":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $enemy_tower.rect_size / 2
-			particle_inst.gravity = Vector2(0, -50)
-			$enemy_tower.add_child(particle_inst)
+			particle_inst.position = $enemy_tower.rect_global_position - $enemy_tower.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"damage_enemy_wall":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $enemy_wall.rect_size / 2
-			particle_inst.gravity = Vector2(0, -50)
-			$enemy_wall.add_child(particle_inst)
+			particle_inst.position = $enemy_wall.rect_global_position - $enemy_wall.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		# PLAYER RESOURCES REMOVE
+		"remove_player_quarry":
+			var particle = load("res://scenes/particles/damage.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_bricks_panel/per_turn.rect_global_position + $player_bricks_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"remove_player_bricks":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $player_bricks_panel.rect_size / 2
-			$player_bricks_panel.add_child(particle_inst)
+			particle_inst.position = $player_bricks_panel/total.rect_global_position + $player_bricks_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"remove_player_magic":
+			var particle = load("res://scenes/particles/damage.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_gems_panel/per_turn.rect_global_position + $player_gems_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"remove_player_gems":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $player_gems_panel.rect_size / 2
-			$player_gems_panel.add_child(particle_inst)
+			particle_inst.position = $player_gems_panel/total.rect_global_position + $player_gems_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"remove_player_dungeons":
+			var particle = load("res://scenes/particles/damage.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_recruits_panel/per_turn.rect_global_position + $player_recruits_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"remove_player_recruits":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $player_recruits_panel.rect_size / 2
-			$player_recruits_panel.add_child(particle_inst)
+			particle_inst.position = $player_recruits_panel/total.rect_global_position + $player_recruits_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		# ENEMY RESOURCES REMOVE
+		"remove_enemy_quarry":
+			var particle = load("res://scenes/particles/damage.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_bricks_panel/per_turn.rect_global_position + $enemy_bricks_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"remove_enemy_bricks":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $enemy_bricks_panel.rect_size / 2
-			$enemy_bricks_panel.add_child(particle_inst)
+			particle_inst.position = $enemy_bricks_panel/total.rect_global_position + $enemy_bricks_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"remove_enemy_magic":
+			var particle = load("res://scenes/particles/damage.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_gems_panel/per_turn.rect_global_position + $enemy_gems_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"remove_enemy_gems":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $enemy_gems_panel.rect_size / 2
-			$enemy_gems_panel.add_child(particle_inst)
+			particle_inst.position = $enemy_gems_panel/total.rect_global_position + $enemy_gems_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"remove_enemy_dungeons":
+			var particle = load("res://scenes/particles/damage.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_recruits_panel/per_turn.rect_global_position + $enemy_recruits_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
 		"remove_enemy_recruits":
 			var particle = load("res://scenes/particles/damage.tscn")
 			var particle_inst = particle.instance()
-			particle_inst.position = $enemy_recruits_panel.rect_size / 2
-			$enemy_recruits_panel.add_child(particle_inst)
+			particle_inst.position = $enemy_recruits_panel/total.rect_global_position + $enemy_recruits_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
 			particle_inst.set_emitting(true)
 			yield(get_tree().create_timer(2), "timeout")
 			particle_inst.queue_free()
+		# PLAYER AND ENEMY TOWER AND WALLS HEAL
+		"heal_player_tower":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_tower.rect_global_position - $player_tower.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"heal_player_wall":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_wall.rect_global_position - $player_wall.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"heal_enemy_tower":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_tower.rect_global_position - $enemy_tower.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"heal_enemy_wall":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_wall.rect_global_position - $enemy_wall.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		# PLAYER RESOURCES ADD
+		"add_player_quarry":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_bricks_panel/per_turn.rect_global_position + $player_bricks_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_player_bricks":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_bricks_panel/total.rect_global_position + $player_bricks_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_player_magic":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_gems_panel/per_turn.rect_global_position + $player_gems_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_player_gems":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_gems_panel/total.rect_global_position + $player_gems_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_player_dungeons":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_recruits_panel/per_turn.rect_global_position + $player_recruits_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_player_recruits":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $player_recruits_panel/total.rect_global_position + $player_recruits_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		# ENEMY RESOURCES ADD
+		"add_enemy_quarry":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_bricks_panel/per_turn.rect_global_position + $enemy_bricks_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_enemy_bricks":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_bricks_panel/total.rect_global_position + $enemy_bricks_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_enemy_magic":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_gems_panel/per_turn.rect_global_position + $enemy_gems_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_enemy_gems":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_gems_panel/total.rect_global_position + $enemy_gems_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_enemy_dungeons":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_recruits_panel/per_turn.rect_global_position + $enemy_recruits_panel/per_turn.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		"add_enemy_recruits":
+			var particle = load("res://scenes/particles/heal.tscn")
+			var particle_inst = particle.instance()
+			particle_inst.position = $enemy_recruits_panel/total.rect_global_position + $enemy_recruits_panel/total.rect_size / 2
+			particles.add_child(particle_inst)
+			particle_inst.set_emitting(true)
+			yield(get_tree().create_timer(2), "timeout")
+			particle_inst.queue_free()
+		
 
 func _on_Time_Elapsed_timeout():
 	elapsed += 1
 	var minutes = elapsed / 60
 	var seconds = elapsed % 60
-	str_elapsed = "%02d : %02d" % [minutes, seconds]
+	str_elapsed = "%02d:%02d" % [minutes, seconds]

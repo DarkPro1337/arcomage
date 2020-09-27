@@ -3,7 +3,7 @@
 [node name="damage" type="CPUParticles2D"]
 scale = Vector2( 2, 2 )
 emitting = false
-amount = 64
+amount = 128
 lifetime = 2.0
 one_shot = true
 explosiveness = 0.9
