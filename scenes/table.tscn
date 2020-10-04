@@ -117,12 +117,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="card_back" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.4 )
-margin_left = 131.0
+[node name="graveyard" type="GridContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.5 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -349.0
 margin_top = 16.0
-margin_right = 266.0
-margin_bottom = 196.0
+margin_right = 349.0
+margin_bottom = 54.0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_back" type="TextureRect" parent="graveyard"]
+margin_right = 135.0
+margin_bottom = 180.0
 rect_min_size = Vector2( 135, 180 )
 texture = ExtResource( 16 )
 expand = true
@@ -884,6 +894,8 @@ __meta__ = {
 }
 
 [node name="card_anim" type="Tween" parent="."]
+
+[node name="graveyard_anim" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade"

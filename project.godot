@@ -58,8 +58,9 @@ ui_reset={
 
 [logging]
 
-file_logging/enable_file_logging.pc=false
-file_logging/log_path="user://logs/log.txt"
+file_logging/enable_file_logging=true
+file_logging/log_path="user://logs/last_session_log.txt"
+file_logging/max_log_files=1
 
 [rendering]
 
@@ -69,12 +70,23 @@ quality/intended_usage/framebuffer_allocation.mobile=1
 threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/directional_shadow/size=256
+quality/directional_shadow/size.mobile=256
+quality/shadow_atlas/size=256
+quality/shadow_atlas/size.mobile=256
+quality/shadow_atlas/quadrant_0_subdiv=0
+quality/shadow_atlas/quadrant_1_subdiv=0
+quality/shadow_atlas/quadrant_2_subdiv=0
+quality/shadow_atlas/quadrant_3_subdiv=0
 quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
+quality/reflections/irradiance_max_size=32
 quality/shading/force_vertex_shading.mobile=false
 quality/shading/force_lambert_over_burley.mobile=false
 quality/shading/force_blinn_over_ggx.mobile=false
 quality/depth_prepass/enable=false
+quality/reflections/atlas_size=0
+quality/reflections/atlas_subdiv=0
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

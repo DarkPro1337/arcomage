@@ -66,6 +66,9 @@ func _ready():
 
 # DISABLING CARDS ON RUNTIME
 func _physics_process(delta):
+	if get_parent().name == "graveyard":
+		print("true")
+	
 	if is_in_group("player_card"):
 		if card_layout == 0 and player_bricks() < card_cost:
 			usable = false

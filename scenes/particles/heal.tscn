@@ -4,7 +4,7 @@
 scale = Vector2( 2, 2 )
 emitting = false
 amount = 128
-lifetime = 2.0
+lifetime = 3.0
 one_shot = true
 explosiveness = 0.9
 randomness = 1.0

@@ -95,12 +95,11 @@ margin_bottom = 37.0
 text = "Fullscreen:"
 align = 2
 
-[node name="button" type="Button" parent="tab/Graphics/graphics/fullscreen"]
+[node name="button" type="CheckButton" parent="tab/Graphics/graphics/fullscreen"]
 margin_left = 117.0
-margin_right = 194.0
+margin_right = 171.0
 margin_bottom = 37.0
-toggle_mode = true
-text = "Enable"
+pressed = true
 
 [node name="borderless" type="HBoxContainer" parent="tab/Graphics/graphics"]
 margin_top = 42.0
