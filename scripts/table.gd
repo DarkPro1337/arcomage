@@ -44,6 +44,8 @@ var time_now = 0
 var elapsed = 0
 var str_elapsed = "00 : 00"
 
+signal graveyard_anim_ended
+
 func _input(event):
 	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()
@@ -52,7 +54,7 @@ func _ready():
 	global.table = self
 	rng.randomize()
 	turn = rng.randi_range(0, players.size() - 1)
-	
+	add_resources(turn)
 	$player_panel/player_name.text = player_name
 	$enemy_panel/enemy_name.text = enemy_name
 	
@@ -140,6 +142,7 @@ func _physics_process(delta):
 						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
 						continue
 
+# PLAYER USE CARD
 func use_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
 	var table = get_node(".")
@@ -148,14 +151,15 @@ func use_card(card_name):
 	$deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
-	card_prev.set_as_toplevel(true)
+	card_prev.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	
 	# CREATE CARD IN GRAVEYARD
 	var card_new = card_prev.duplicate(0)
 	graveyard.add_child(card_new, true)
 	card_new.get_node("selector").hide()
 	card_new.set_modulate(Color(1,1,1,0))
-	card_new.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	yield(graveyard, "sort_children") # FIX FOR GRAVEYARD MISSING NEW CARD POSITIONS
+	card_prev.set_as_toplevel(true)
 	
 	# CARD ANIMATION WITH TWEEN
 	var card_anim = get_node("card_anim")
@@ -178,16 +182,16 @@ func use_card(card_name):
 	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
 	card_new.set_modulate(Color(1,1,1,1))
-	add_resources(turn)
-	$deck_locker.hide()
 	if player_play_again == true: 
 		turn = 0
 		player_play_again = false
 	else:
+		add_resources(turn)
 		clear_graveyard()
-		yield(get_tree().create_timer((graveyard.get_child_count()-1) * 1.25), "timeout")
+		yield(self, "graveyard_anim_ended")
 		turn = 1
 	
+	$deck_locker.hide()
 	if $player_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
@@ -195,6 +199,7 @@ func use_card(card_name):
 		$player_deck.add_child(card_inst)
 		$player_deck.move_child(card_inst, prev_pos)
 
+# PLAYER DISCARD CARD
 func remove_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
 	var table = get_node(".")
@@ -203,23 +208,36 @@ func remove_card(card_name):
 	$deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
+	
+	# CREATE CARD IN GRAVEYARD
+	var card_new = card_prev.duplicate(0)
+	graveyard.add_child(card_new, true)
+	card_new.get_node("selector").hide()
+	card_new.set_modulate(Color(1,1,1,0))
+	card_new.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	yield(graveyard, "sort_children") # FIX FOR GRAVEYARD MISSING NEW CARD POSITIONS
 	card_prev.set_as_toplevel(true)
 	
+	# CARD ANIMATION WITH TWEEN
 	var card_anim = get_node("card_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
-		card_prev_pos, card_back.rect_global_position, 1,
+		card_prev_pos, card_new.rect_global_position, 1,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
 	card_anim.interpolate_property(card_prev, "modulate",
-		Color(1,1,1,1), Color(1,1,1,0), 1,
+		Color(1,1,1,1), Color(1,1,1,0.5), 0.25,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
+	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
+	card_new.set_modulate(Color(1,1,1,1))
 	add_resources(turn)
 	$deck_locker.hide()
+	clear_graveyard()
+	yield(self, "graveyard_anim_ended")
 	turn = 1
 	if $player_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
@@ -237,6 +255,13 @@ func bot_use_card(card_name):
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.card_back.hide()
+	
+	# CREATE CARD IN GRAVEYARD
+	var card_new = card_prev.duplicate(0)
+	graveyard.add_child(card_new, true)
+	card_new.get_node("selector").hide()
+	card_new.set_modulate(Color(1,1,1,0))
+	yield(graveyard, "sort_children") # FIX FOR GRAVEYARD MISSING NEW CARD POSITIONS
 	card_prev.set_as_toplevel(true)
 	
 	# CARD ANIMATION WITH TWEEN
@@ -247,20 +272,30 @@ func bot_use_card(card_name):
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
-	card_anim.interpolate_property(card_prev, "modulate",
-		Color(1,1,1,1), Color(1,1,1,0), 1,
+	card_anim.interpolate_property(card_prev, "rect_position",
+		card_prev.rect_global_position, card_new.rect_global_position, 1,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
+	card_anim.interpolate_property(card_prev, "modulate",
+		Color(1,1,1,1), Color(1,1,1,0.5), 1,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(card_anim, "tween_completed")
+	
+	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
-	add_resources(turn)
-	$deck_locker.hide()
-	AI_ready = true
+	card_new.set_modulate(Color(1,1,1,1))
+	
 	if enemy_play_again == true: 
 		turn = 1
 		enemy_play_again = false
 	else:
+		add_resources(turn)
+		clear_graveyard()
+		yield(self, "graveyard_anim_ended")
 		turn = 0
+	AI_ready = true
+	$deck_locker.hide()
 	if $enemy_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
@@ -353,7 +388,7 @@ func play_audio(audio_name: String): #TODO: FIX AUDIO
 	yield(player, "finished")
 	player.queue_free()
 
-func emit_particles(type):
+func emit_particles(type): # PARTICLE EMITTING
 	match type:
 		# PLAYER AND ENEMY TOWER AND WALLS DAMAGE
 		"damage_player_tower":
@@ -618,7 +653,7 @@ func emit_particles(type):
 			yield(get_tree().create_timer(3), "timeout")
 			particle_inst.queue_free()
 
-func _on_Time_Elapsed_timeout():
+func _on_Time_Elapsed_timeout(): # PLAYTIME FOR LEADERBOARD
 	elapsed += 1
 	var minutes = elapsed / 60
 	var seconds = elapsed % 60
@@ -633,10 +668,13 @@ func clear_graveyard():
 		card_anim.interpolate_property(card, "rect_position",
 			card.rect_position, card_back.rect_position, 1,
 			Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-		yield(card_anim, "tween_completed")
 		
 		card_anim.interpolate_property(card, "modulate",
-			Color(1,1,1,0.5), Color(1,1,1,0), 0.25,
+			Color(1,1,1,1), Color(1,1,1,0), 1.5,
 			Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-		yield(card_anim, "tween_completed")
+
+func _on_graveyard_anim_tween_all_completed():
+	for i in range(1, graveyard.get_child_count()):
+		var card = graveyard.get_child(i)
+		emit_signal("graveyard_anim_ended")
 		card.queue_free()

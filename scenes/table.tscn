@@ -912,4 +912,5 @@ __meta__ = {
 
 [node name="Time_Elapsed" type="Timer" parent="."]
 autostart = true
+[connection signal="tween_all_completed" from="graveyard_anim" to="." method="_on_graveyard_anim_tween_all_completed"]
 [connection signal="timeout" from="Time_Elapsed" to="." method="_on_Time_Elapsed_timeout"]
