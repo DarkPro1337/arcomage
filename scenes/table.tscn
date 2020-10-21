@@ -910,6 +910,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="pause_bg" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.75 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+
 [node name="Time_Elapsed" type="Timer" parent="."]
 autostart = true
 [connection signal="tween_all_completed" from="graveyard_anim" to="." method="_on_graveyard_anim_tween_all_completed"]

@@ -47,8 +47,8 @@ var str_elapsed = "00 : 00"
 signal graveyard_anim_ended
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_reset"):
-		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene("res://scenes/main_menu.tscn")
 
 func _ready():
 	global.table = self

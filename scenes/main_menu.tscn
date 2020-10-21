@@ -14,7 +14,33 @@ size = 20
 font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
@@ -29,8 +55,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "settings_show"
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("settings:modulate")
@@ -43,33 +68,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="main_menu" type="Control"]
@@ -117,7 +115,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.376471 )
 custom_constants/shadow_as_outline = 1
-text = "v.0.1"
+text = "v.0.5"
 align = 1
 valign = 1
 clip_text = true
@@ -137,7 +135,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.376471 )
 custom_constants/shadow_as_outline = 1
-text = "Build: 03102020"
+text = "Build: 06102020"
 valign = 1
 clip_text = true
 __meta__ = {
@@ -153,6 +151,7 @@ margin_left = -432.0
 margin_top = -92.0
 margin_right = 432.0
 margin_bottom = -44.0
+theme = ExtResource( 5 )
 custom_constants/hseparation = 16
 columns = 4
 __meta__ = {
@@ -170,7 +169,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Начать игру"
+text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,7 +185,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Настройки"
+text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -202,7 +201,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Рекорды"
+text = "Leaderboard"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -218,7 +217,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Выход"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -227,14 +226,16 @@ __meta__ = {
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="startup" type="AnimationPlayer" parent="."]
 autoplay = "start"
-anims/fade_out = SubResource( 2 )
-anims/settings_show = SubResource( 3 )
-anims/start = SubResource( 4 )
+anims/start = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fade_out = SubResource( 3 )
+anims/settings_show = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
