@@ -103,6 +103,14 @@ func _physics_process(delta):
 
 # PLAYER CARD USING
 func _on_card_input(event):
+	if global.table.player_discarding == true and (Input.is_action_just_pressed("ui_lmb") or Input.is_action_just_pressed("ui_rmb")):
+		if discardable == true and not used == true and is_in_group("player_card"): 
+			AudioStreamManager.play("res://sounds/deal.ogg")
+			$discarded.show()
+			global.table.remove_card(name)
+			global.table.draw_card_label.hide()
+			global.table.player_discarding = false
+	
 	if Input.is_action_just_pressed("ui_lmb"):
 		if usable == true and not used == true and is_in_group("player_card"):
 			if is_in_group("player_card"):
@@ -119,6 +127,7 @@ func _on_card_input(event):
 			AudioStreamManager.play("res://sounds/deal.ogg")
 			$discarded.show()
 			global.table.remove_card(name)
+
 
 # CARD SELECTOR
 func _on_card_mouse_entered():
@@ -855,10 +864,16 @@ func play_again():
 		global.table.enemy_play_again = true
 
 func draw_card(num):
-	pass # TODO
+	if player_card():
+		global.table.player_draw_card = true
+	if enemy_card():
+		global.table.enemy_draw_card = true
 
 func discard_card(num):
-	pass # TODO
+	if player_card():
+		global.table.player_discarding = true
+	if enemy_card():
+		global.table.enemy_discarding = true
 
 func player_quarry():
 	if player_card():

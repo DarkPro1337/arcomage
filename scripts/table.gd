@@ -5,17 +5,20 @@ var rng = RandomNumberGenerator.new()
 onready var particles = $particles
 onready var card_back = $graveyard/card_back
 onready var graveyard = $graveyard
+onready var draw_card_label = $draw_card_label
 
 var player_name = "DarkPro1337"
 var enemy_name = "COMPUTER"
 
-enum players {red, blue}
+enum players {red, blue} # TODO
 var turn
 var AI_ready = true
 var player_play_again = false
 var enemy_play_again = false
 var player_discarding = false
 var enemy_discarding = false
+var player_draw_card = false
+var enemy_draw_card = false
 
 # DEFAULT TOWER AND WALL HP
 var player_tower_hp = 50
@@ -88,7 +91,7 @@ func _physics_process(delta):
 		#var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
 		#$enemy_deck.get_node(random_bot_card.name).bot_card_use()
 		
-		# ARCOMAGE BOT v.0.1
+		# ARCOMAGE BOT v.0.2
 		# DON'T TRY TO UNDERSTAND THIS, LOL
 		var bot_atk_card_count = 0
 		var bot_def_card_count = 0
@@ -106,19 +109,19 @@ func _physics_process(delta):
 		
 		for i in $enemy_deck.get_child_count():
 			var card = $enemy_deck.get_child(i)
-			if enemy_tower_hp > player_tower_hp and bot_atk_card_count != 0 and card.bot_usable == true:
+			if (enemy_tower_hp + enemy_wall_hp) >= (player_tower_hp + player_wall_hp) and bot_atk_card_count != 0 and card.bot_usable == true:
 				if card.card_use == 0: #atk
 					yield(get_tree().create_timer(1), "timeout")
 					$enemy_deck.get_node(card.name).bot_card_use()
 					print("BOT: USING ATTACK CARD")
 					break
-			elif enemy_tower_hp < player_tower_hp and bot_def_card_count != 0 and card.bot_usable == true:
+			elif (enemy_tower_hp + enemy_wall_hp) <= (player_tower_hp + player_wall_hp) and bot_def_card_count != 0 and card.bot_usable == true:
 				if card.card_use == 1: #def
 					yield(get_tree().create_timer(1), "timeout")
 					$enemy_deck.get_node(card.name).bot_card_use()
 					print("BOT: USING DEFENCE CARD")
 					break
-			elif enemy_tower_hp == player_tower_hp and bot_res_card_count != 0 and card.bot_usable == true:
+			elif (enemy_tower_hp + enemy_wall_hp) == (player_tower_hp + player_wall_hp) and bot_res_card_count != 0 and card.bot_usable == true:
 				if card.card_use == 2: #res
 					yield(get_tree().create_timer(1), "timeout")
 					$enemy_deck.get_node(card.name).bot_card_use()
@@ -140,7 +143,6 @@ func _physics_process(delta):
 						break
 					else:
 						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
-						continue
 
 # PLAYER USE CARD
 func use_card(card_name):
@@ -182,7 +184,11 @@ func use_card(card_name):
 	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
 	card_new.set_modulate(Color(1,1,1,1))
-	if player_play_again == true: 
+	if player_discarding == true:
+		turn = 0
+		draw_card_label.show()
+		player_draw_card = false
+	elif player_play_again == true:
 		turn = 0
 		player_play_again = false
 	else:
@@ -234,11 +240,20 @@ func remove_card(card_name):
 	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
 	card_new.set_modulate(Color(1,1,1,1))
-	add_resources(turn)
-	$deck_locker.hide()
-	clear_graveyard()
-	yield(self, "graveyard_anim_ended")
-	turn = 1
+	if player_discarding == true:
+		turn = 0
+		draw_card_label.show()
+		player_draw_card = false
+	elif player_play_again == true:
+		turn = 0
+		player_play_again = false
+		$deck_locker.hide()
+	else:
+		add_resources(turn)
+		$deck_locker.hide()
+		clear_graveyard()
+		yield(self, "graveyard_anim_ended")
+		turn = 1
 	if $player_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
