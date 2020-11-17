@@ -16,11 +16,11 @@ var mute_sound = false
 var tower_levels = 50
 var wall_levels = 50
 var quarry_levels = 5
-var brick_quanity = 20
+var brick_quantity = 20
 var magic_levels = 3
-var gem_quanity = 10
+var gem_quantity = 10
 var dungeon_levels = 5
-var recruit_quianity = 20
+var recruit_quantity = 20
 
 # PLAY CONDITIONS
 var auto_bricks = 0

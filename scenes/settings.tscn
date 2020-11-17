@@ -71,7 +71,6 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -677,6 +676,7 @@ rounded = true
 align = 1
 
 [node name="Tavern_Presets" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

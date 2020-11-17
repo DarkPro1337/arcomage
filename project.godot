@@ -18,6 +18,8 @@ _global_script_class_icons={
 config/name="Arcomage"
 config/description="Arcomage fan-remake made on Godot Engine."
 run/main_scene="res://scenes/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Arcoamge"
 boot_splash/image="res://sprites/empty_splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
@@ -60,7 +62,7 @@ ui_reset={
 [logging]
 
 file_logging/enable_file_logging=true
-file_logging/log_path="user://logs/last_session_log.txt"
+file_logging/log_path="user://logs/session.log"
 file_logging/max_log_files=1
 
 [rendering]
