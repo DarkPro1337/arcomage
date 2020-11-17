@@ -70,13 +70,13 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 shadow_color = Color( 0, 0, 0, 0.603922 )
 shadow_size = 3
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=10]
 size = 32
-outline_size = 3
+outline_size = 1
+outline_color = Color( 0.109804, 0.109804, 0.109804, 0.45098 )
 font_data = ExtResource( 8 )
 
-[sub_resource type="Animation" id=10]
-resource_name = "fade"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -869,9 +869,10 @@ margin_left = -134.0
 margin_top = -262.0
 margin_right = 134.0
 margin_bottom = -224.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.698039, 0.368627, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.85098, 0.156863, 0.168627, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.105882 )
+custom_constants/shadow_as_outline = 1
 text = "DISCARD A CARD!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -924,7 +925,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade"
-anims/fade = SubResource( 10 )
+anims/fade = SubResource( 11 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

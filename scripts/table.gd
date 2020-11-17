@@ -109,7 +109,19 @@ func _physics_process(delta):
 		
 		for i in $enemy_deck.get_child_count():
 			var card = $enemy_deck.get_child(i)
-			if (enemy_tower_hp + enemy_wall_hp) >= (player_tower_hp + player_wall_hp) and bot_atk_card_count != 0 and card.bot_usable == true:
+			if enemy_discarding == true and card.bot_usable == true:
+				if card.card_use == 2: #res
+					yield(get_tree().create_timer(1), "timeout")
+					$enemy_deck.get_node(card.name).bot_card_remove()
+					print("BOT: REMOVING RESORCE CARD")
+					break
+				else:
+					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+					yield(get_tree().create_timer(1), "timeout")
+					$enemy_deck.get_node(random_bot_card.name).bot_card_remove()
+					print("BOT: NOT ENOUGH CARDS, DISCARD RANDOM CARD")
+					break
+			elif (enemy_tower_hp + enemy_wall_hp) >= (player_tower_hp + player_wall_hp) and bot_atk_card_count != 0 and card.bot_usable == true:
 				if card.card_use == 0: #atk
 					yield(get_tree().create_timer(1), "timeout")
 					$enemy_deck.get_node(card.name).bot_card_use()
@@ -143,6 +155,9 @@ func _physics_process(delta):
 						break
 					else:
 						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
+	
+	# END GAME
+	
 
 # PLAYER USE CARD
 func use_card(card_name):
@@ -330,25 +345,44 @@ func bot_remove_card(card_name):
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.card_back.hide()
+	
+	# CREATE CARD IN GRAVEYARD
+	var card_new = card_prev.duplicate(0)
+	graveyard.add_child(card_new, true)
+	card_new.get_node("selector").hide()
+	card_new.set_modulate(Color(1,1,1,0))
+	yield(graveyard, "sort_children") # FIX FOR GRAVEYARD MISSING NEW CARD POSITIONS
 	card_prev.set_as_toplevel(true)
 	
 	var card_anim = get_node("card_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
-		card_prev_pos, card_back.rect_global_position, 1,
+		card_prev.rect_global_position, card_new.rect_global_position, 1,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
 	card_anim.interpolate_property(card_prev, "modulate",
-		Color(1,1,1,1), Color(1,1,1,0), 1,
+		Color(1,1,1,1), Color(1,1,1,0.5), 0.25,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
+	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
-	add_resources(turn)
-	$deck_locker.hide()
-	AI_ready = true
-	turn = 0
+	card_new.set_modulate(Color(1,1,1,1))
+	if player_discarding == true:
+		turn = 0
+		draw_card_label.show()
+		player_draw_card = false
+	elif player_play_again == true:
+		turn = 0
+		player_play_again = false
+		$deck_locker.hide()
+	else:
+		add_resources(turn)
+		$deck_locker.hide()
+		clear_graveyard()
+		AI_ready = true
+		turn = 0
 	if $enemy_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
