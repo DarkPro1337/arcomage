@@ -6,6 +6,8 @@ onready var particles = $particles
 onready var card_back = $graveyard/card_back
 onready var graveyard = $graveyard
 onready var draw_card_label = $draw_card_label
+onready var endgame_screen = $endgame
+onready var time_elapsed = $Time_Elapsed
 
 var player_name = "DarkPro1337"
 var enemy_name = "COMPUTER"
@@ -45,7 +47,7 @@ var enemy_recruits = 20
 var time_start = 0
 var time_now = 0
 var elapsed = 0
-var str_elapsed = "00 : 00"
+var str_elapsed = "00:00"
 
 signal graveyard_anim_ended
 
@@ -114,6 +116,7 @@ func _physics_process(delta):
 					yield(get_tree().create_timer(1), "timeout")
 					$enemy_deck.get_node(card.name).bot_card_remove()
 					print("BOT: REMOVING RESORCE CARD")
+					enemy_discarding = false
 					break
 				else:
 					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
@@ -156,9 +159,34 @@ func _physics_process(delta):
 					else:
 						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
 	
-	# END GAME
-	
-
+	## END GAME
+	# TOWER BUILDING VICTORY FOR PLAYER AND ENEMY
+	if player_tower_hp >= cfg.tower_victory:
+		endgame_screen.set_winner(player_name, "BY A TOWER BUILDING VICTORY!!!", str_elapsed)
+		time_elapsed.stop()
+		get_tree().paused = true
+	if enemy_tower_hp >= cfg.tower_victory:
+		endgame_screen.set_winner(enemy_name, "BY A TOWER BUILDING VICTORY!!!", str_elapsed)
+		time_elapsed.stop()
+		get_tree().paused = true
+	# TOWER DESTRUCTION VICTORY FOR PLAYER AND ENEMY
+	if player_tower_hp <= 0:
+		endgame_screen.set_winner(player_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		time_elapsed.stop()
+		get_tree().paused = true
+	if enemy_tower_hp <= 0:
+		endgame_screen.set_winner(enemy_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		time_elapsed.stop()
+		get_tree().paused = true
+	# RESOURCE VICTORY FOR PLAYER AND ENEMY
+	if player_bricks >= cfg.resource_victory and player_gems >= cfg.resource_victory and player_recruits >= cfg.resource_victory:
+		endgame_screen.set_winner(player_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		time_elapsed.stop()
+		get_tree().paused = true
+	if enemy_bricks >= cfg.resource_victory and enemy_gems >= cfg.resource_victory and enemy_recruits >= cfg.resource_victory:
+		endgame_screen.set_winner(enemy_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		time_elapsed.stop()
+		get_tree().paused = true
 # PLAYER USE CARD
 func use_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
@@ -369,12 +397,12 @@ func bot_remove_card(card_name):
 	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
 	card_new.set_modulate(Color(1,1,1,1))
-	if player_discarding == true:
-		turn = 0
+	if enemy_discarding == true:
+		turn = 1
 		draw_card_label.show()
 		player_draw_card = false
-	elif player_play_again == true:
-		turn = 0
+	elif enemy_play_again == true:
+		turn = 1
 		player_play_again = false
 		$deck_locker.hide()
 	else:

@@ -51,6 +51,7 @@ func _on_close_pressed():
 func save_settings():
 	var c = ConfigFile.new()
 	var err = c.load(config_path)
+	# IF FILE DIDN'T EXIST - CREATE NEW ONE WITH DEFAULT SETTINGS
 	if err != OK:
 		# WINDOW SETTINGS
 		c.set_value("WINDOW", "fullscreen", cfg.fullscreen)
@@ -83,6 +84,7 @@ func save_settings():
 		# TAVERN PRESETS
 		c.set_value("TAVERN", "preset", cfg.current_tavern)
 		c.save(config_path)
+	# IF FILE EXISTS - REWRITE KEY VALUES
 	elif err == OK:
 		# WINDOW SETTINGS
 		c.set_value("WINDOW", "fullscreen", fullscreen_button.pressed)
@@ -119,6 +121,7 @@ func save_settings():
 func load_settings():
 	var c = ConfigFile.new()
 	var err = c.load(config_path)
+	# APPLY CURRENT SETTINGS FROM .INI FILE
 	if err == OK:
 		# WINDOW SETTINGS
 		cfg.fullscreen = c.get_value("WINDOW", "fullscreen")
@@ -188,16 +191,16 @@ func _on_window_pressed():
 	$tab.current_tab = 0
 
 func _on_starting_conditions_pressed():
-	$tab.current_tab = 1
-
-func _on_play_conditions_pressed():
 	$tab.current_tab = 2
 
-func _on_victory_conditions_pressed():
+func _on_play_conditions_pressed():
 	$tab.current_tab = 3
 
-func _on_tavern_presets_pressed():
+func _on_victory_conditions_pressed():
 	$tab.current_tab = 4
+
+func _on_tavern_presets_pressed():
+	$tab.current_tab = 5
 
 func _on_fullscreen_button_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
@@ -211,3 +214,7 @@ func _on_borderless_button_toggled(button_pressed):
 
 func _on_vsync_button_toggled(button_pressed):
 	OS.vsync_enabled = button_pressed
+
+func _on_winres_apply_pressed():
+	OS.set_window_size(Vector2(float(window_width_edit.text), float(window_height_edit.text)))
+	OS.set_window_position(OS.get_screen_size()*0.5 - OS.get_window_size()*0.5)

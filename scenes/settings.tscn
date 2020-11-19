@@ -71,6 +71,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -195,6 +196,136 @@ text = "Intro skip:"
 align = 2
 
 [node name="introskip_button" type="CheckButton" parent="tab/Graphics/graphics/intro_skip"]
+margin_left = 108.0
+margin_right = 162.0
+margin_bottom = 37.0
+
+[node name="Sound" type="CenterContainer" parent="tab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="graphics" type="VBoxContainer" parent="tab/Sound"]
+margin_left = 80.0
+margin_top = 84.0
+margin_right = 567.0
+margin_bottom = 289.0
+custom_constants/separation = 5
+
+[node name="fullscreen" type="HBoxContainer" parent="tab/Sound/graphics"]
+margin_right = 487.0
+margin_bottom = 37.0
+
+[node name="label" type="Label" parent="tab/Sound/graphics/fullscreen"]
+margin_right = 113.0
+margin_bottom = 37.0
+text = "Fullscreen:"
+align = 2
+
+[node name="fullscreen_button" type="CheckButton" parent="tab/Sound/graphics/fullscreen"]
+margin_left = 117.0
+margin_right = 171.0
+margin_bottom = 37.0
+
+[node name="borderless" type="HBoxContainer" parent="tab/Sound/graphics"]
+margin_top = 42.0
+margin_right = 487.0
+margin_bottom = 79.0
+
+[node name="label" type="Label" parent="tab/Sound/graphics/borderless"]
+margin_right = 115.0
+margin_bottom = 37.0
+text = "Borderless:"
+align = 2
+
+[node name="borderless_button" type="CheckButton" parent="tab/Sound/graphics/borderless"]
+margin_left = 119.0
+margin_right = 173.0
+margin_bottom = 37.0
+
+[node name="window_res" type="HBoxContainer" parent="tab/Sound/graphics"]
+margin_top = 84.0
+margin_right = 487.0
+margin_bottom = 121.0
+
+[node name="label1" type="Label" parent="tab/Sound/graphics/window_res"]
+margin_right = 151.0
+margin_bottom = 37.0
+text = "Window Width:"
+align = 2
+
+[node name="width" type="LineEdit" parent="tab/Sound/graphics/window_res"]
+margin_left = 155.0
+margin_right = 239.0
+margin_bottom = 37.0
+text = "960"
+align = 3
+max_length = 4
+clear_button_enabled = true
+placeholder_text = "1280"
+
+[node name="label2" type="Label" parent="tab/Sound/graphics/window_res"]
+margin_left = 243.0
+margin_right = 320.0
+margin_bottom = 37.0
+text = "Height:"
+align = 2
+
+[node name="height" type="LineEdit" parent="tab/Sound/graphics/window_res"]
+margin_left = 324.0
+margin_right = 408.0
+margin_bottom = 37.0
+text = "540"
+align = 3
+max_length = 4
+clear_button_enabled = true
+placeholder_text = "720"
+
+[node name="splitter" type="HSplitContainer" parent="tab/Sound/graphics/window_res"]
+margin_left = 412.0
+margin_right = 417.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="winres_apply" type="Button" parent="tab/Sound/graphics/window_res"]
+margin_left = 421.0
+margin_right = 487.0
+margin_bottom = 37.0
+text = "Apply"
+flat = true
+
+[node name="vsync" type="HBoxContainer" parent="tab/Sound/graphics"]
+margin_top = 126.0
+margin_right = 487.0
+margin_bottom = 163.0
+
+[node name="label" type="Label" parent="tab/Sound/graphics/vsync"]
+margin_right = 72.0
+margin_bottom = 37.0
+text = "VSync:"
+align = 2
+
+[node name="vsync_button" type="CheckButton" parent="tab/Sound/graphics/vsync"]
+margin_left = 76.0
+margin_right = 130.0
+margin_bottom = 37.0
+
+[node name="intro_skip" type="HBoxContainer" parent="tab/Sound/graphics"]
+margin_top = 168.0
+margin_right = 487.0
+margin_bottom = 205.0
+
+[node name="label" type="Label" parent="tab/Sound/graphics/intro_skip"]
+margin_right = 104.0
+margin_bottom = 37.0
+text = "Intro skip:"
+align = 2
+
+[node name="introskip_button" type="CheckButton" parent="tab/Sound/graphics/intro_skip"]
 margin_left = 108.0
 margin_right = 162.0
 margin_bottom = 37.0
@@ -804,6 +935,11 @@ anims/hide = SubResource( 4 )
 [connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]
 [connection signal="toggled" from="tab/Graphics/graphics/vsync/vsync_button" to="." method="_on_vsync_button_toggled"]
 [connection signal="toggled" from="tab/Graphics/graphics/intro_skip/introskip_button" to="." method="_on_introskip_button_toggled"]
+[connection signal="toggled" from="tab/Sound/graphics/fullscreen/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="tab/Sound/graphics/borderless/borderless_button" to="." method="_on_borderless_button_toggled"]
+[connection signal="pressed" from="tab/Sound/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]
+[connection signal="toggled" from="tab/Sound/graphics/vsync/vsync_button" to="." method="_on_vsync_button_toggled"]
+[connection signal="toggled" from="tab/Sound/graphics/intro_skip/introskip_button" to="." method="_on_introskip_button_toggled"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/starting_conditions" to="." method="_on_starting_conditions_pressed"]

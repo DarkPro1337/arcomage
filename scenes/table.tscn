@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://images/Layout-edit_dark.png" type="Texture" id=1]
 [ext_resource path="res://scripts/table.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/player_wall.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/enemy_wall.tscn" type="PackedScene" id=15]
 [ext_resource path="res://sprites/card_back.png" type="Texture" id=16]
+[ext_resource path="res://scenes/endgame.tscn" type="PackedScene" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -945,5 +946,8 @@ color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 
 [node name="Time_Elapsed" type="Timer" parent="."]
 autostart = true
+
+[node name="endgame" parent="." instance=ExtResource( 17 )]
+visible = false
 [connection signal="tween_all_completed" from="graveyard_anim" to="." method="_on_graveyard_anim_tween_all_completed"]
 [connection signal="timeout" from="Time_Elapsed" to="." method="_on_Time_Elapsed_timeout"]

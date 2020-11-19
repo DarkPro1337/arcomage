@@ -16,6 +16,7 @@ outline_color = Color( 0, 0, 0, 0.156863 )
 font_data = ExtResource( 3 )
 
 [node name="endgame" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
@@ -25,6 +26,7 @@ __meta__ = {
 }
 
 [node name="background" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.666667 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -223, 96 )
@@ -37,6 +39,7 @@ __meta__ = {
 }
 
 [node name="deck_background" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.666667 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
