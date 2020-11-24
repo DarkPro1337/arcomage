@@ -201,7 +201,6 @@ margin_right = 162.0
 margin_bottom = 37.0
 
 [node name="Sound" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -209,126 +208,82 @@ margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
 
-[node name="graphics" type="VBoxContainer" parent="tab/Sound"]
-margin_left = 80.0
-margin_top = 84.0
-margin_right = 567.0
-margin_bottom = 289.0
+[node name="sound" type="VBoxContainer" parent="tab/Sound"]
+margin_left = 179.0
+margin_top = 105.0
+margin_right = 468.0
+margin_bottom = 268.0
 custom_constants/separation = 5
 
-[node name="fullscreen" type="HBoxContainer" parent="tab/Sound/graphics"]
-margin_right = 487.0
+[node name="master" type="HBoxContainer" parent="tab/Sound/sound"]
+margin_right = 289.0
 margin_bottom = 37.0
+alignment = 2
 
-[node name="label" type="Label" parent="tab/Sound/graphics/fullscreen"]
-margin_right = 113.0
+[node name="label" type="Label" parent="tab/Sound/sound/master"]
+margin_left = 5.0
+margin_right = 85.0
 margin_bottom = 37.0
-text = "Fullscreen:"
+text = "Master:"
 align = 2
 
-[node name="fullscreen_button" type="CheckButton" parent="tab/Sound/graphics/fullscreen"]
-margin_left = 117.0
-margin_right = 171.0
+[node name="master_slider" type="HSlider" parent="tab/Sound/sound/master"]
+margin_left = 89.0
+margin_right = 289.0
 margin_bottom = 37.0
+rect_min_size = Vector2( 200, 37 )
+value = 100.0
 
-[node name="borderless" type="HBoxContainer" parent="tab/Sound/graphics"]
+[node name="music" type="HBoxContainer" parent="tab/Sound/sound"]
 margin_top = 42.0
-margin_right = 487.0
+margin_right = 289.0
 margin_bottom = 79.0
+alignment = 2
 
-[node name="label" type="Label" parent="tab/Sound/graphics/borderless"]
-margin_right = 115.0
+[node name="label" type="Label" parent="tab/Sound/sound/music"]
+margin_left = 13.0
+margin_right = 85.0
 margin_bottom = 37.0
-text = "Borderless:"
+text = "Music:"
 align = 2
 
-[node name="borderless_button" type="CheckButton" parent="tab/Sound/graphics/borderless"]
-margin_left = 119.0
-margin_right = 173.0
+[node name="music_slider" type="HSlider" parent="tab/Sound/sound/music"]
+margin_left = 89.0
+margin_right = 289.0
 margin_bottom = 37.0
+rect_min_size = Vector2( 200, 37 )
+value = 100.0
 
-[node name="window_res" type="HBoxContainer" parent="tab/Sound/graphics"]
+[node name="sounds" type="HBoxContainer" parent="tab/Sound/sound"]
 margin_top = 84.0
-margin_right = 487.0
+margin_right = 289.0
 margin_bottom = 121.0
+alignment = 2
 
-[node name="label1" type="Label" parent="tab/Sound/graphics/window_res"]
-margin_right = 151.0
+[node name="label" type="Label" parent="tab/Sound/sound/sounds"]
+margin_right = 85.0
 margin_bottom = 37.0
-text = "Window Width:"
+text = "Sounds:"
 align = 2
 
-[node name="width" type="LineEdit" parent="tab/Sound/graphics/window_res"]
-margin_left = 155.0
-margin_right = 239.0
+[node name="sounds_slider" type="HSlider" parent="tab/Sound/sound/sounds"]
+margin_left = 89.0
+margin_right = 289.0
 margin_bottom = 37.0
-text = "960"
-align = 3
-max_length = 4
-clear_button_enabled = true
-placeholder_text = "1280"
+rect_min_size = Vector2( 200, 37 )
+value = 100.0
 
-[node name="label2" type="Label" parent="tab/Sound/graphics/window_res"]
-margin_left = 243.0
-margin_right = 320.0
-margin_bottom = 37.0
-text = "Height:"
-align = 2
-
-[node name="height" type="LineEdit" parent="tab/Sound/graphics/window_res"]
-margin_left = 324.0
-margin_right = 408.0
-margin_bottom = 37.0
-text = "540"
-align = 3
-max_length = 4
-clear_button_enabled = true
-placeholder_text = "720"
-
-[node name="splitter" type="HSplitContainer" parent="tab/Sound/graphics/window_res"]
-margin_left = 412.0
-margin_right = 417.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 5, 0 )
-
-[node name="winres_apply" type="Button" parent="tab/Sound/graphics/window_res"]
-margin_left = 421.0
-margin_right = 487.0
-margin_bottom = 37.0
-text = "Apply"
-flat = true
-
-[node name="vsync" type="HBoxContainer" parent="tab/Sound/graphics"]
+[node name="mute" type="HBoxContainer" parent="tab/Sound/sound"]
 margin_top = 126.0
-margin_right = 487.0
+margin_right = 289.0
 margin_bottom = 163.0
+alignment = 1
 
-[node name="label" type="Label" parent="tab/Sound/graphics/vsync"]
-margin_right = 72.0
+[node name="mute_sound" type="CheckBox" parent="tab/Sound/sound/mute"]
+margin_left = 73.0
+margin_right = 215.0
 margin_bottom = 37.0
-text = "VSync:"
-align = 2
-
-[node name="vsync_button" type="CheckButton" parent="tab/Sound/graphics/vsync"]
-margin_left = 76.0
-margin_right = 130.0
-margin_bottom = 37.0
-
-[node name="intro_skip" type="HBoxContainer" parent="tab/Sound/graphics"]
-margin_top = 168.0
-margin_right = 487.0
-margin_bottom = 205.0
-
-[node name="label" type="Label" parent="tab/Sound/graphics/intro_skip"]
-margin_right = 104.0
-margin_bottom = 37.0
-text = "Intro skip:"
-align = 2
-
-[node name="introskip_button" type="CheckButton" parent="tab/Sound/graphics/intro_skip"]
-margin_left = 108.0
-margin_right = 162.0
-margin_bottom = 37.0
+text = "Mute Sound"
 
 [node name="Starting_Conditions" type="CenterContainer" parent="tab"]
 visible = false
@@ -341,18 +296,18 @@ margin_bottom = -5.0
 
 [node name="starting_conditions" type="VBoxContainer" parent="tab/Starting_Conditions"]
 margin_left = 33.0
-margin_top = 36.0
+margin_top = 54.0
 margin_right = 614.0
-margin_bottom = 338.0
+margin_bottom = 319.0
 
 [node name="main" type="GridContainer" parent="tab/Starting_Conditions/starting_conditions"]
 margin_right = 581.0
-margin_bottom = 160.0
+margin_bottom = 123.0
 columns = 3
 
 [node name="gameplay" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main"]
 margin_right = 200.0
-margin_bottom = 160.0
+margin_bottom = 123.0
 
 [node name="single_player" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
 margin_right = 200.0
@@ -392,29 +347,24 @@ text = "Single Click Mode"
 [node name="mute_sound" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
 margin_top = 123.0
 margin_right = 200.0
-margin_bottom = 160.0
-
-[node name="mute_sound" type="CheckBox" parent="tab/Starting_Conditions/starting_conditions/main/gameplay/mute_sound"]
-margin_right = 142.0
-margin_bottom = 37.0
-text = "Mute Sound"
+margin_bottom = 123.0
 
 [node name="split" type="HSplitContainer" parent="tab/Starting_Conditions/starting_conditions/main"]
 margin_left = 204.0
 margin_right = 264.0
-margin_bottom = 160.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 60, 0 )
 
 [node name="towers_walls" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main"]
 margin_left = 268.0
 margin_right = 511.0
-margin_bottom = 160.0
+margin_bottom = 123.0
 alignment = 1
 
 [node name="tower_levels" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls"]
-margin_top = 41.0
+margin_top = 22.0
 margin_right = 243.0
-margin_bottom = 78.0
+margin_bottom = 59.0
 alignment = 2
 
 [node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels"]
@@ -433,9 +383,9 @@ rounded = true
 align = 1
 
 [node name="wall_levels" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls"]
-margin_top = 82.0
+margin_top = 63.0
 margin_right = 243.0
-margin_bottom = 119.0
+margin_bottom = 100.0
 alignment = 2
 
 [node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels"]
@@ -455,15 +405,15 @@ rounded = true
 align = 1
 
 [node name="VSplitContainer" type="VSplitContainer" parent="tab/Starting_Conditions/starting_conditions"]
-margin_top = 164.0
+margin_top = 127.0
 margin_right = 581.0
-margin_bottom = 179.0
+margin_bottom = 142.0
 rect_min_size = Vector2( 0, 15 )
 
 [node name="gen_res" type="GridContainer" parent="tab/Starting_Conditions/starting_conditions"]
-margin_top = 183.0
+margin_top = 146.0
 margin_right = 581.0
-margin_bottom = 302.0
+margin_bottom = 265.0
 columns = 3
 
 [node name="generators" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res"]
@@ -890,9 +840,9 @@ __meta__ = {
 
 [node name="buttons_grid" type="GridContainer" parent="buttons_container"]
 margin_left = 17.0
-margin_top = 123.0
+margin_top = 103.0
 margin_right = 214.0
-margin_bottom = 324.0
+margin_bottom = 345.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -904,28 +854,34 @@ margin_right = 197.0
 margin_bottom = 37.0
 text = "Window Settings"
 
-[node name="starting_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
+[node name="sound_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
 margin_top = 41.0
 margin_right = 197.0
 margin_bottom = 78.0
-text = "Starting Conditions"
+text = "Sound Settings"
 
-[node name="play_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
+[node name="starting_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
 margin_top = 82.0
 margin_right = 197.0
 margin_bottom = 119.0
-text = "Play Conditions"
+text = "Starting Conditions"
 
-[node name="victory_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
+[node name="play_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
 margin_top = 123.0
 margin_right = 197.0
 margin_bottom = 160.0
-text = "Victory Conditions"
+text = "Play Conditions"
 
-[node name="tavern_presets" type="ToolButton" parent="buttons_container/buttons_grid"]
+[node name="victory_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
 margin_top = 164.0
 margin_right = 197.0
 margin_bottom = 201.0
+text = "Victory Conditions"
+
+[node name="tavern_presets" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_top = 205.0
+margin_right = 197.0
+margin_bottom = 242.0
 text = "Tavern Presets"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -935,13 +891,9 @@ anims/hide = SubResource( 4 )
 [connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]
 [connection signal="toggled" from="tab/Graphics/graphics/vsync/vsync_button" to="." method="_on_vsync_button_toggled"]
 [connection signal="toggled" from="tab/Graphics/graphics/intro_skip/introskip_button" to="." method="_on_introskip_button_toggled"]
-[connection signal="toggled" from="tab/Sound/graphics/fullscreen/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="toggled" from="tab/Sound/graphics/borderless/borderless_button" to="." method="_on_borderless_button_toggled"]
-[connection signal="pressed" from="tab/Sound/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]
-[connection signal="toggled" from="tab/Sound/graphics/vsync/vsync_button" to="." method="_on_vsync_button_toggled"]
-[connection signal="toggled" from="tab/Sound/graphics/intro_skip/introskip_button" to="." method="_on_introskip_button_toggled"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/sound_settings" to="." method="_on_sound_settings_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/starting_conditions" to="." method="_on_starting_conditions_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/play_conditions" to="." method="_on_play_conditions_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/victory_conditions" to="." method="_on_victory_conditions_pressed"]

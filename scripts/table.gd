@@ -50,6 +50,7 @@ var elapsed = 0
 var str_elapsed = "00:00"
 
 signal graveyard_anim_ended
+signal deck_anim_ended
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -187,6 +188,7 @@ func _physics_process(delta):
 		endgame_screen.set_winner(enemy_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
+
 # PLAYER USE CARD
 func use_card(card_name):
 	var card_prev = $player_deck.get_node(card_name)
@@ -239,7 +241,7 @@ func use_card(card_name):
 		clear_graveyard()
 		yield(self, "graveyard_anim_ended")
 		turn = 1
-	
+		
 	$deck_locker.hide()
 	if $player_deck.get_child_count() <= 6:
 		var card_next = load("res://scenes/card.tscn")

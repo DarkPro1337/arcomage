@@ -11,11 +11,15 @@ onready var window_width_edit = $tab/Graphics/graphics/window_res/width
 onready var window_height_edit = $tab/Graphics/graphics/window_res/height
 onready var vsync_button = $tab/Graphics/graphics/vsync/vsync_button
 onready var intro_skip_button = $tab/Graphics/graphics/intro_skip/introskip_button
+# SOUND SETTINGS
+onready var master_volume = $tab/Sound/sound/master/master_slider
+onready var music_volume = $tab/Sound/sound/music/music_slider
+onready var sound_volume = $tab/Sound/sound/sounds/sounds_slider
+onready var mute_sound = $tab/Sound/sound/mute/mute_sound
 # STARTING CONDITIONS
 onready var singleplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_player/singleplayer
 onready var multiplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/multi_player/multiplayer
 onready var single_click_mode_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_click/singleclick_mode
-onready var mute_sound = $tab/Starting_Conditions/starting_conditions/main/gameplay/mute_sound/mute_sound
 onready var tower_levels = $tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level
 onready var wall_levels = $tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level
 onready var quarry_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels/level
@@ -189,6 +193,9 @@ func update_controls():
 
 func _on_window_pressed():
 	$tab.current_tab = 0
+
+func _on_sound_settings_pressed():
+	$tab.current_tab = 1
 
 func _on_starting_conditions_pressed():
 	$tab.current_tab = 2

@@ -920,6 +920,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="deck_anim" type="Tween" parent="."]
+
 [node name="card_anim" type="Tween" parent="."]
 
 [node name="graveyard_anim" type="Tween" parent="."]

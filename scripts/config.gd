@@ -9,10 +9,15 @@ var window_height = 540
 var vsync = false
 var intro_skip = false
 
+# SOUND SETTINGS
+var master_volume = 100
+var music_volume = 100
+var sound_volume = 100
+var mute_sound = false
+
 # STARTING CONDITIONS
 var singleplayer = true
 var single_click = true
-var mute_sound = false
 var tower_levels = 50
 var wall_levels = 50
 var quarry_levels = 5
