@@ -1,21 +1,44 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://images/Layout-edit_dark_blur.png" type="Texture" id=1]
 [ext_resource path="res://images/arcomage_logo.png" type="Texture" id=2]
 [ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://images/godot_logo.png" type="Texture" id=5]
+[ext_resource path="res://images/gamejolt_logo.png" type="Texture" id=6]
+[ext_resource path="res://images/github_logo.png" type="Texture" id=7]
+[ext_resource path="res://images/trello_logo.png" type="Texture" id=8]
+[ext_resource path="res://images/bmc_logo.png" type="Texture" id=9]
+[ext_resource path="res://images/itch_logo.png" type="Texture" id=10]
+[ext_resource path="res://images/kofi_logo.png" type="Texture" id=11]
+[ext_resource path="res://images/patreon_logo.png" type="Texture" id=12]
+[ext_resource path="res://scripts/info.gd" type="Script" id=13]
+[ext_resource path="res://themes/main_menu_theme.tres" type="Theme" id=14]
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
+outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 21
+outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 21
+outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 4 )
 
 [node name="info" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -41,7 +64,7 @@ anchor_bottom = 0.5
 margin_left = -296.0
 margin_top = -246.0
 margin_right = 296.0
-margin_bottom = -126.0
+margin_bottom = -158.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
@@ -49,52 +72,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="original_info" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -456.0
-margin_top = -150.0
+margin_top = -158.0
 margin_right = 456.0
-margin_bottom = 250.0
-alignment = 1
+margin_bottom = 248.0
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer1" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 32.0
-margin_right = 312.0
-margin_bottom = 400.0
+[node name="original_lable" type="Label" parent="original_info"]
+margin_right = 912.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 912, 26 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
+custom_constants/shadow_as_outline = 1
+text = "ORIGINAL GAME DEVELOPERS:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="original_info"]
+margin_top = 26.0
+margin_right = 912.0
+margin_bottom = 402.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer1" type="CenterContainer" parent="original_info/HBoxContainer"]
+margin_left = 174.0
+margin_right = 454.0
+margin_bottom = 376.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="credits1" type="RichTextLabel" parent="HBoxContainer/CenterContainer1"]
-margin_top = 11.0
+[node name="credits1" type="RichTextLabel" parent="original_info/HBoxContainer/CenterContainer1"]
 margin_right = 280.0
-margin_bottom = 387.0
+margin_bottom = 376.0
 rect_min_size = Vector2( 280, 376 )
 custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.45098 )
 custom_constants/shadow_as_outline = 1
 bbcode_enabled = true
-bbcode_text = "[center][b][color=#CAC016]Executive Producer[/color][/b]
-[color=#16C8CA]Mark Caldwell[/color]
+bbcode_text = "[center][b]Executive Producer[/b]
+Mark Caldwell
 
-[b][color=#CAC016]Programming[/color][/b]
-[color=#16C8CA]James R. Morris II
+[b]Programming[/b]
+James R. Morris II
 Bob Young
-Grorge Ruof[/color]
+Grorge Ruof
 
-[b][color=#CAC016]Testing[/color][/b]
-[color=#16C8CA]Karl Drown
+[b]Testing[/b]
+Karl Drown
 Eric Williamson
 Joseph Buron
 Todd Smailes
-Ernie Gallardo[/color][/center]"
+Ernie Gallardo[/center]"
 text = "Executive Producer
 Mark Caldwell
 
@@ -115,38 +163,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 316.0
-margin_right = 596.0
-margin_bottom = 400.0
+[node name="CenterContainer2" type="CenterContainer" parent="original_info/HBoxContainer"]
+margin_left = 458.0
+margin_right = 738.0
+margin_bottom = 376.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="credits2" type="RichTextLabel" parent="HBoxContainer/CenterContainer2"]
-margin_top = 11.0
+[node name="credits2" type="RichTextLabel" parent="original_info/HBoxContainer/CenterContainer2"]
 margin_right = 280.0
-margin_bottom = 387.0
+margin_bottom = 376.0
 rect_min_size = Vector2( 280, 376 )
 custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
 custom_constants/shadow_as_outline = 1
 bbcode_enabled = true
-bbcode_text = "[center][b][color=#CAC016]Producer[/color][/b]
-[color=#16C8CA]Peter Ryu[/color]
+bbcode_text = "[center][b]Producer[/b]
+Peter Ryu
 
-[b][color=#CAC016]Art[/color][/b]
-[color=#16C8CA]William Chow
-Steve Jasper[/color]
+[b]Art[/b]
+William Chow
+Steve Jasper
 
-[b][color=#CAC016]Thanks to[/color][/b]
-[color=#16C8CA]Jim Cantrell
+[b]Thanks to[/b]
+Jim Cantrell
 Scott McDaniel
 John Morris
 John Machin
 James Dickinson
-Marcus @mplayer.com[/color][/center]"
+Marcus @mplayer.com[/center]"
 text = "Producer
 Peter Ryu
 
@@ -167,30 +214,304 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer3" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 600.0
-margin_right = 880.0
-margin_bottom = 400.0
+[node name="remake_info" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -456.0
+margin_top = -150.0
+margin_right = 456.0
+margin_bottom = 252.0
+alignment = 1
 __meta__ = {
-"_edit_lock_": true
+"_edit_use_anchors_": false
 }
 
-[node name="credits3" type="RichTextLabel" parent="HBoxContainer/CenterContainer3"]
-margin_top = 11.0
-margin_right = 280.0
-margin_bottom = 387.0
-rect_min_size = Vector2( 280, 376 )
-custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+[node name="text" type="VBoxContainer" parent="remake_info"]
+margin_top = 7.0
+margin_right = 912.0
+margin_bottom = 251.0
+rect_min_size = Vector2( 912, 244 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remake_author_label1" type="Label" parent="remake_info/text"]
+margin_top = 49.0
+margin_right = 912.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 912, 26 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
 custom_constants/shadow_as_outline = 1
-bbcode_enabled = true
-bbcode_text = "[center][b][color=#CAC016]Remaking[/color][/b]
-[color=#16C8CA]Artem Darkov @DarkPro1337[/color]"
-text = "Remaking
-Artem Darkov @DarkPro1337"
-scroll_active = false
+text = "REMAKE DEVELOPED BY:"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="author" type="Label" parent="remake_info/text"]
+margin_top = 79.0
+margin_right = 912.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 912, 26 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
+custom_constants/shadow_as_outline = 1
+text = "Artem Darkov @DarkPro1337"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="testing_label" type="Label" parent="remake_info/text"]
+margin_top = 109.0
+margin_right = 912.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 912, 26 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
+custom_constants/shadow_as_outline = 1
+text = "TESTING:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="tester1" type="Label" parent="remake_info/text"]
+margin_top = 139.0
+margin_right = 912.0
+margin_bottom = 165.0
+rect_min_size = Vector2( 912, 26 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
+custom_constants/shadow_as_outline = 1
+text = "TedCraft"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="tester2" type="Label" parent="remake_info/text"]
+margin_top = 169.0
+margin_right = 912.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 912, 26 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
+custom_constants/shadow_as_outline = 1
+text = "Zmeonysh"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="warning" type="VBoxContainer" parent="remake_info"]
+margin_top = 255.0
+margin_right = 912.0
+margin_bottom = 343.0
+rect_min_size = Vector2( 912, 88 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="remake_info/warning"]
+margin_top = 9.0
+margin_right = 912.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 912, 70 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
+custom_constants/shadow_as_outline = 1
+text = "This is fan reamke and not connected or affiliated with New World Computing or it's copyright holders (3DO and Ubisoft)."
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="logos" type="HBoxContainer" parent="remake_info"]
+margin_top = 347.0
+margin_right = 912.0
+margin_bottom = 395.0
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="engine" type="TextureButton" parent="remake_info/logos"]
+margin_left = 52.0
+margin_right = 176.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 124, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spliter1" type="HSplitContainer" parent="remake_info/logos"]
+margin_left = 201.0
+margin_right = 225.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 24, 24 )
+collapsed = true
+dragger_visibility = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="github" type="TextureButton" parent="remake_info/logos"]
+margin_left = 250.0
+margin_right = 298.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trello" type="TextureButton" parent="remake_info/logos"]
+margin_left = 323.0
+margin_right = 371.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itch" type="TextureButton" parent="remake_info/logos"]
+margin_left = 396.0
+margin_right = 444.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gamejolt" type="TextureButton" parent="remake_info/logos"]
+margin_left = 469.0
+margin_right = 517.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spliter2" type="HSplitContainer" parent="remake_info/logos"]
+margin_left = 542.0
+margin_right = 566.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 24, 24 )
+collapsed = true
+dragger_visibility = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bmc" type="TextureButton" parent="remake_info/logos"]
+margin_left = 591.0
+margin_right = 639.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="patreon" type="TextureButton" parent="remake_info/logos"]
+margin_left = 664.0
+margin_right = 712.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kofi" type="TextureButton" parent="remake_info/logos"]
+margin_left = 737.0
+margin_right = 785.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spliter3" type="HSplitContainer" parent="remake_info/logos"]
+margin_left = 810.0
+margin_right = 860.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 50, 24 )
+collapsed = true
+dragger_visibility = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 821.0
+margin_top = 488.0
+margin_right = 946.0
+margin_bottom = 525.0
+theme = ExtResource( 14 )
+custom_fonts/font = SubResource( 3 )
+text = "Next"
+flat = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="remake_info/logos/engine" to="." method="_on_engine_pressed"]
+[connection signal="pressed" from="remake_info/logos/github" to="." method="_on_github_pressed"]
+[connection signal="pressed" from="remake_info/logos/trello" to="." method="_on_trello_pressed"]
+[connection signal="pressed" from="remake_info/logos/itch" to="." method="_on_itch_pressed"]
+[connection signal="pressed" from="remake_info/logos/gamejolt" to="." method="_on_gamejolt_pressed"]
+[connection signal="pressed" from="remake_info/logos/bmc" to="." method="_on_bmc_pressed"]
+[connection signal="pressed" from="remake_info/logos/patreon" to="." method="_on_patreon_pressed"]
+[connection signal="pressed" from="remake_info/logos/kofi" to="." method="_on_kofi_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

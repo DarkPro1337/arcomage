@@ -45,6 +45,7 @@ func _ready():
 	update_controls()
 	$tab/Graphics/graphics/window_res/height.text = str(OS.get_window_size().y)
 	$tab/Graphics/graphics/window_res/width.text = str(OS.get_window_size().x)
+	print(AudioServer.get_bus_volume_db(0))
 
 func _on_close_pressed():
 	anim.play("hide")
@@ -64,6 +65,11 @@ func save_settings():
 		c.set_value("WINDOW", "height", cfg.window_height)
 		c.set_value("WINDOW", "vsync", cfg.vsync)
 		c.set_value("WINDOW", "intro_skip", cfg.intro_skip)
+		# AUDIO SETTINGS
+		c.set_value("AUDIO", "master", cfg.master_volume)
+		c.set_value("AUDIO", "music", cfg.music_volume)
+		c.set_value("AUDIO", "sounds", cfg.sound_volume)
+		c.set_value("AUDIO", "mute", cfg.mute_sound)
 		# STARTING CONDITIONS
 		c.set_value("START", "singleplayer", cfg.singleplayer)
 		c.set_value("START", "single_click_mode", cfg.single_click)
@@ -97,6 +103,11 @@ func save_settings():
 		c.set_value("WINDOW", "height", int(window_height_edit.text))
 		c.set_value("WINDOW", "vsync", vsync_button.pressed)
 		c.set_value("WINDOW", "intro_skip", intro_skip_button.pressed)
+		# AUDIO SETTINGS
+		c.set_value("AUDIO", "master", master_volume.value)
+		c.set_value("AUDIO", "music", music_volume.value)
+		c.set_value("AUDIO", "sounds", sound_volume.value)
+		c.set_value("AUDIO", "mute", mute_sound.pressed)
 		# STARTING CONDITIONS
 		c.set_value("START", "singleplayer", singleplayer_button.pressed)
 		c.set_value("START", "single_click_mode", single_click_mode_button.pressed)
@@ -134,6 +145,11 @@ func load_settings():
 		cfg.window_height = c.get_value("WINDOW", "height")
 		cfg.vsync = c.get_value("WINDOW", "vsync")
 		cfg.intro_skip = c.get_value("WINDOW", "intro_skip")
+		# AUDIO SETTINGS
+		cfg.master_volume = c.get_value("AUDIO", "master")
+		cfg.music_volume = c.get_value("AUDIO", "music")
+		cfg.sound_volume = c.get_value("AUDIO", "sounds")
+		cfg.mute_sound = c.get_value("AUDIO", "mute")
 		# STARTING CONDITIONS
 		cfg.singleplayer = c.get_value("START", "singleplayer")
 		cfg.single_click = c.get_value("START", "single_click_mode")
@@ -167,6 +183,11 @@ func update_controls():
 	window_height_edit.text = str(cfg.window_height)
 	vsync_button.pressed = cfg.vsync
 	intro_skip_button.pressed = cfg.intro_skip
+	# AUDIO SETTINGS
+	master_volume.value = float(cfg.master_volume)
+	music_volume.value = float(cfg.music_volume)
+	sound_volume.value = float(cfg.sound_volume)
+	mute_sound.pressed = cfg.mute_sound
 	# STARTING CONDITIONS
 	#TODO: SINGLEPLAYER AND MULTIPLAYER RADIO BUTTONS STATE, AFTER MULTIPLAYER UPDATE
 	single_click_mode_button.pressed = cfg.single_click
@@ -225,3 +246,12 @@ func _on_vsync_button_toggled(button_pressed):
 func _on_winres_apply_pressed():
 	OS.set_window_size(Vector2(float(window_width_edit.text), float(window_height_edit.text)))
 	OS.set_window_position(OS.get_screen_size()*0.5 - OS.get_window_size()*0.5)
+
+func _on_master_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(0, linear2db(master_volume.value))
+
+func _on_music_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(1, linear2db(music_volume.value))
+
+func _on_sounds_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(2, linear2db(sound_volume.value))

@@ -921,10 +921,13 @@ __meta__ = {
 }
 
 [node name="deck_anim" type="Tween" parent="."]
+process_priority = 1
 
 [node name="card_anim" type="Tween" parent="."]
+process_priority = 2
 
 [node name="graveyard_anim" type="Tween" parent="."]
+process_priority = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade"

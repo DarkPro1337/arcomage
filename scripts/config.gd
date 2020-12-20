@@ -10,9 +10,9 @@ var vsync = false
 var intro_skip = false
 
 # SOUND SETTINGS
-var master_volume = 100
-var music_volume = 100
-var sound_volume = 100
+var master_volume = 0.4
+var music_volume = 1
+var sound_volume = 1
 var mute_sound = false
 
 # STARTING CONDITIONS

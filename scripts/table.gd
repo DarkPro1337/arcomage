@@ -159,6 +159,7 @@ func _physics_process(delta):
 						break
 					else:
 						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
+						continue
 	
 	## END GAME
 	# TOWER BUILDING VICTORY FOR PLAYER AND ENEMY
@@ -181,11 +182,11 @@ func _physics_process(delta):
 		get_tree().paused = true
 	# RESOURCE VICTORY FOR PLAYER AND ENEMY
 	if player_bricks >= cfg.resource_victory and player_gems >= cfg.resource_victory and player_recruits >= cfg.resource_victory:
-		endgame_screen.set_winner(player_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(player_name, "BY A RESOURCE VICTORY!!!", str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 	if enemy_bricks >= cfg.resource_victory and enemy_gems >= cfg.resource_victory and enemy_recruits >= cfg.resource_victory:
-		endgame_screen.set_winner(enemy_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(enemy_name, "BY A RESOURCE VICTORY!!!", str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 
@@ -212,7 +213,7 @@ func use_card(card_name):
 	var card_anim = get_node("card_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
-		card_prev_pos, (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50), 1,
+		card_prev_pos, (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50), 1.25,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
@@ -273,7 +274,7 @@ func remove_card(card_name):
 	var card_anim = get_node("card_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
-		card_prev_pos, card_new.rect_global_position, 1,
+		card_prev_pos, card_new.rect_global_position, 1.25,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
@@ -328,7 +329,7 @@ func bot_use_card(card_name):
 	var card_anim = get_node("card_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
-		card_prev_pos, (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50), 1,
+		card_prev_pos, (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50), 1.25,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
@@ -387,7 +388,7 @@ func bot_remove_card(card_name):
 	var card_anim = get_node("card_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
-		card_prev.rect_global_position, card_new.rect_global_position, 1,
+		card_prev.rect_global_position, card_new.rect_global_position, 1.25,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
@@ -411,6 +412,7 @@ func bot_remove_card(card_name):
 		add_resources(turn)
 		$deck_locker.hide()
 		clear_graveyard()
+		yield(self, "graveyard_anim_ended")
 		AI_ready = true
 		turn = 0
 	if $enemy_deck.get_child_count() <= 6:
@@ -739,18 +741,19 @@ func _on_Time_Elapsed_timeout(): # PLAYTIME FOR LEADERBOARD
 	str_elapsed = "%02d:%02d" % [minutes, seconds]
 
 func clear_graveyard():
-	for i in range(1, graveyard.get_child_count()):
-		var card = graveyard.get_child(i)
-		var card_anim = get_node("graveyard_anim")
-		card_anim.start()
-		
-		card_anim.interpolate_property(card, "rect_position",
-			card.rect_position, card_back.rect_position, 1,
-			Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-		
-		card_anim.interpolate_property(card, "modulate",
-			Color(1,1,1,1), Color(1,1,1,0), 1.5,
-			Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	if graveyard.get_child_count() >= 2:
+		for i in range(1, graveyard.get_child_count()):
+			var card = graveyard.get_child(i)
+			var card_anim = get_node("graveyard_anim")
+			card_anim.start()
+			
+			card_anim.interpolate_property(card, "rect_position",
+				card.rect_position, card_back.rect_position, 1,
+				Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+			
+			card_anim.interpolate_property(card, "modulate",
+				Color(1,1,1,1), Color(1,1,1,0), 1.5,
+				Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 
 func _on_graveyard_anim_tween_all_completed():
 	for i in range(1, graveyard.get_child_count()):

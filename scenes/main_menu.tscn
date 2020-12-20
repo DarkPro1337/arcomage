@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fonts/RobotoCondensed-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://images/arcomage_logo.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://sounds/title.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/settings.tscn" type="PackedScene" id=7]
 [ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scenes/info.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -134,7 +135,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.376471 )
 custom_constants/shadow_as_outline = 1
-text = "Build: 17112020"
+text = "Build: 19122020"
 valign = 1
 clip_text = true
 __meta__ = {
@@ -146,21 +147,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -432.0
-margin_top = -92.0
-margin_right = 432.0
-margin_bottom = -44.0
+margin_left = -192.0
+margin_top = -372.0
+margin_right = 192.0
+margin_bottom = -36.0
 theme = ExtResource( 5 )
-custom_constants/hseparation = 16
-columns = 4
+custom_constants/vseparation = -36
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="new_game" type="Button" parent="menu_grid"]
-margin_right = 204.0
-margin_bottom = 48.0
+margin_top = 24.0
+margin_right = 384.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Начинает новую игру с текущими настройками."
 mouse_default_cursor_shape = 2
@@ -174,9 +175,9 @@ __meta__ = {
 }
 
 [node name="settings" type="Button" parent="menu_grid"]
-margin_left = 220.0
-margin_right = 424.0
-margin_bottom = 48.0
+margin_top = 84.0
+margin_right = 384.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Позволяет настроить правила игры."
 mouse_default_cursor_shape = 2
@@ -190,9 +191,9 @@ __meta__ = {
 }
 
 [node name="scores" type="Button" parent="menu_grid"]
-margin_left = 440.0
-margin_right = 644.0
-margin_bottom = 48.0
+margin_top = 144.0
+margin_right = 384.0
+margin_bottom = 192.0
 rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Открывает доску лидеров."
 mouse_default_cursor_shape = 2
@@ -205,10 +206,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="credits" type="Button" parent="menu_grid"]
+margin_top = 204.0
+margin_right = 384.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 200, 48 )
+hint_tooltip = "Открывает титры."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="exit" type="Button" parent="menu_grid"]
-margin_left = 660.0
-margin_right = 864.0
-margin_bottom = 48.0
+margin_top = 264.0
+margin_right = 384.0
+margin_bottom = 312.0
 rect_min_size = Vector2( 200, 48 )
 hint_tooltip = "Выйти из игры."
 mouse_default_cursor_shape = 2
@@ -221,6 +238,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="info" parent="." instance=ExtResource( 9 )]
+visible = false
+
 [node name="settings" parent="." instance=ExtResource( 7 )]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -230,11 +250,12 @@ autoplay = "start"
 anims/start = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_priority = 1
 anims/fade_out = SubResource( 3 )
 anims/settings_show = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -251,4 +272,5 @@ bus = "Music"
 [connection signal="pressed" from="menu_grid/new_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="menu_grid/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="menu_grid/scores" to="." method="_on_scores_pressed"]
+[connection signal="pressed" from="menu_grid/credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="menu_grid/exit" to="." method="_on_exit_pressed"]

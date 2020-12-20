@@ -2,6 +2,7 @@ extends Control
 
 onready var settings = $settings
 onready var anim = $AnimationPlayer
+onready var info = $info
 
 func _on_new_game_pressed():
 	anim.play("fade_out")
@@ -17,3 +18,6 @@ func _on_scores_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+func _on_credits_pressed():
+	info.show()

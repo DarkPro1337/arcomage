@@ -71,7 +71,6 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -201,6 +200,7 @@ margin_right = 162.0
 margin_bottom = 37.0
 
 [node name="Sound" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -232,7 +232,9 @@ margin_left = 89.0
 margin_right = 289.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 200, 37 )
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="music" type="HBoxContainer" parent="tab/Sound/sound"]
 margin_top = 42.0
@@ -252,7 +254,9 @@ margin_left = 89.0
 margin_right = 289.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 200, 37 )
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="sounds" type="HBoxContainer" parent="tab/Sound/sound"]
 margin_top = 84.0
@@ -271,7 +275,9 @@ margin_left = 89.0
 margin_right = 289.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 200, 37 )
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="mute" type="HBoxContainer" parent="tab/Sound/sound"]
 margin_top = 126.0
@@ -788,7 +794,7 @@ margin_right = 423.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 340, 0 )
 text = "None"
-items = [ "None", null, false, 0, null, "On the House (Harmondale)", null, false, 1, null, "Griffin's Rest (Erathia)", null, false, 2, null, "Emerald Inn (Tularean Forest)", null, false, 3, null, "Snobbish Goblin (Deyja)", null, false, 4, null, "Familiar Place (Bracada Desert)", null, false, 5, null, "The Blessed Brew (Celeste)", null, false, 6, null, "The Vamyre Lounge (The Pit)", null, false, 7, null, "The Laughing Monk (EVermorn Island)", null, false, 8, null, "Fortune's Only (Barrow Downs)", null, false, 9, null, "The Loyal Mercenary (Tidewater)", null, false, 10, null, "The Potted Pixie (Avlee)", null, false, 11, null, "Grogg's Grog (Stone City)", null, false, 12, null ]
+items = [ "None", null, false, 0, null, "On the House (Harmondale)", null, false, 1, null, "Griffin's Rest (Erathia)", null, false, 2, null, "Emerald Inn (Tularean Forest)", null, false, 3, null, "Snobbish Goblin (Deyja)", null, false, 4, null, "Familiar Place (Bracada Desert)", null, false, 5, null, "The Blessed Brew (Celeste)", null, false, 6, null, "The Vamyre Lounge (The Pit)", null, false, 7, null, "The Laughing Monk (Evermorn Island)", null, false, 8, null, "Fortune's Folly (Nighon)", null, false, 9, null, "Miner's Only (Barrow Downs)", null, false, 10, null, "The Loyal Mercenary (Tidewater)", null, false, 11, null, "The Potted Pixie (Avlee)", null, false, 12, null, "Grogg's Grog (Stone City)", null, false, 13, null ]
 selected = 0
 
 [node name="close" type="ToolButton" parent="."]
@@ -891,6 +897,9 @@ anims/hide = SubResource( 4 )
 [connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]
 [connection signal="toggled" from="tab/Graphics/graphics/vsync/vsync_button" to="." method="_on_vsync_button_toggled"]
 [connection signal="toggled" from="tab/Graphics/graphics/intro_skip/introskip_button" to="." method="_on_introskip_button_toggled"]
+[connection signal="value_changed" from="tab/Sound/sound/master/master_slider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="tab/Sound/sound/music/music_slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="tab/Sound/sound/sounds/sounds_slider" to="." method="_on_sounds_slider_value_changed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/sound_settings" to="." method="_on_sound_settings_pressed"]

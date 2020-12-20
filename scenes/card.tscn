@@ -30,19 +30,19 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 shadow_color = Color( 0, 0, 0, 0.529412 )
 shadow_size = 3
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 12
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 10
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 15
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 20
 outline_size = 2
 outline_color = Color( 0.117647, 0.117647, 0.117647, 1 )
@@ -130,7 +130,7 @@ margin_top = -0.0200009
 margin_right = 0.019989
 margin_bottom = 0.0399971
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0784314 )
 custom_constants/shadow_as_outline = 1
@@ -153,7 +153,7 @@ margin_left = -0.02
 margin_top = -0.0200119
 margin_right = 0.019989
 margin_bottom = 0.0200043
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.498039, 0.498039, 0.498039, 0.0980392 )
 custom_constants/shadow_as_outline = 1
@@ -174,7 +174,7 @@ anchor_bottom = 0.983
 margin_left = -1.0
 margin_right = -0.0299988
 margin_bottom = -0.940002
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0980392 )
 custom_constants/shadow_as_outline = 1
@@ -203,7 +203,7 @@ margin_top = 22.0
 margin_right = 179.061
 margin_bottom = 46.0
 rect_rotation = 45.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.898039, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "DISCARDED"
