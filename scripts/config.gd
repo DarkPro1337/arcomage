@@ -40,3 +40,6 @@ var resource_victory = 300
 
 # TAVERN PRESETS
 var current_tavern = 0
+
+# LANGUAGE SETTINGS
+var locale = 0

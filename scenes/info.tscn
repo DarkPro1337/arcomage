@@ -26,12 +26,12 @@ size = 21
 outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 21
 outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 24
 font_data = ExtResource( 4 )
 
@@ -73,7 +73,6 @@ __meta__ = {
 }
 
 [node name="original_info" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -94,7 +93,7 @@ rect_min_size = Vector2( 912, 26 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
 custom_constants/shadow_as_outline = 1
-text = "ORIGINAL GAME DEVELOPERS:"
+text = "ORIGINAL_GAMEDEVS"
 align = 1
 valign = 1
 __meta__ = {
@@ -215,6 +214,7 @@ __meta__ = {
 }
 
 [node name="remake_info" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -246,7 +246,7 @@ rect_min_size = Vector2( 912, 26 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
 custom_constants/shadow_as_outline = 1
-text = "REMAKE DEVELOPED BY:"
+text = "REMAKE_DEV"
 align = 1
 valign = 1
 __meta__ = {
@@ -278,7 +278,7 @@ rect_min_size = Vector2( 912, 26 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
 custom_constants/shadow_as_outline = 1
-text = "TESTING:"
+text = "TESTING"
 align = 1
 valign = 1
 __meta__ = {
@@ -333,10 +333,10 @@ margin_top = 9.0
 margin_right = 912.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 912, 70 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
 custom_constants/shadow_as_outline = 1
-text = "This is fan reamke and not connected or affiliated with New World Computing or it's copyright holders (3DO and Ubisoft)."
+text = "WARINING_TEXT"
 align = 1
 valign = 1
 autowrap = true
@@ -499,8 +499,8 @@ margin_top = 488.0
 margin_right = 946.0
 margin_bottom = 525.0
 theme = ExtResource( 14 )
-custom_fonts/font = SubResource( 3 )
-text = "Next"
+custom_fonts/font = SubResource( 4 )
+text = "NEXT"
 flat = true
 align = 2
 __meta__ = {

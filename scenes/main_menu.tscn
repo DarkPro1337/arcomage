@@ -169,7 +169,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Start Game"
+text = "START_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -185,7 +185,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Settings"
+text = "SETTINGS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -201,7 +201,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Leaderboard"
+text = "LEADERBOARD"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -217,7 +217,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Credits"
+text = "CREDITS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -233,7 +233,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
-text = "Exit"
+text = "EXIT"
 __meta__ = {
 "_edit_use_anchors_": false
 }

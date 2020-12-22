@@ -10,7 +10,7 @@ onready var endgame_screen = $endgame
 onready var time_elapsed = $Time_Elapsed
 
 var player_name = "DarkPro1337"
-var enemy_name = "COMPUTER"
+var enemy_name = tr("COMPUTER")
 
 enum players {red, blue} # TODO
 var turn
@@ -164,29 +164,29 @@ func _physics_process(delta):
 	## END GAME
 	# TOWER BUILDING VICTORY FOR PLAYER AND ENEMY
 	if player_tower_hp >= cfg.tower_victory:
-		endgame_screen.set_winner(player_name, "BY A TOWER BUILDING VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(player_name, tr("TOWER_VICTORY_MSG"), str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 	if enemy_tower_hp >= cfg.tower_victory:
-		endgame_screen.set_winner(enemy_name, "BY A TOWER BUILDING VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(enemy_name, tr("TOWER_VICTORY_MSG"), str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 	# TOWER DESTRUCTION VICTORY FOR PLAYER AND ENEMY
 	if player_tower_hp <= 0:
-		endgame_screen.set_winner(player_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(player_name, tr("TOWER_DESTROY_MSG"), str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 	if enemy_tower_hp <= 0:
-		endgame_screen.set_winner(enemy_name, "BY A TOWER DESTRUCTION VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(enemy_name, tr("TOWER_DESTROY_MSG"), str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 	# RESOURCE VICTORY FOR PLAYER AND ENEMY
 	if player_bricks >= cfg.resource_victory and player_gems >= cfg.resource_victory and player_recruits >= cfg.resource_victory:
-		endgame_screen.set_winner(player_name, "BY A RESOURCE VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(player_name, tr("RESOURCE_VICTORY_MSG"), str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 	if enemy_bricks >= cfg.resource_victory and enemy_gems >= cfg.resource_victory and enemy_recruits >= cfg.resource_victory:
-		endgame_screen.set_winner(enemy_name, "BY A RESOURCE VICTORY!!!", str_elapsed)
+		endgame_screen.set_winner(enemy_name, tr("RESOURCE_VICTORY_MSG"), str_elapsed)
 		time_elapsed.stop()
 		get_tree().paused = true
 

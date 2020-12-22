@@ -39,6 +39,8 @@ onready var win_tower = $tab/Victory_Conditions/main/tower/level
 onready var win_resources = $tab/Victory_Conditions/main/resource/level
 # TAVERN PRESETS
 onready var tavern_preset = $tab/Tavern_Presets/main/preset/tavern_option
+# LANGUAGE SETTINGS
+onready var language = $tab/Language_Settings/main/language/lang_option
 
 func _ready():
 	load_settings()
@@ -93,6 +95,8 @@ func save_settings():
 		c.set_value("VICTORY", "resource_victory", cfg.resource_victory)
 		# TAVERN PRESETS
 		c.set_value("TAVERN", "preset", cfg.current_tavern)
+		# LANGUAGE SETTINGS
+		c.set_value("LANGUAGE", "locale", cfg.locale)
 		c.save(config_path)
 	# IF FILE EXISTS - REWRITE KEY VALUES
 	elif err == OK:
@@ -230,6 +234,9 @@ func _on_victory_conditions_pressed():
 func _on_tavern_presets_pressed():
 	$tab.current_tab = 5
 
+func _on_language_settings_pressed():
+	$tab.current_tab = 6
+
 func _on_fullscreen_button_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
 	if button_pressed == true:
@@ -255,3 +262,14 @@ func _on_music_slider_value_changed(value):
 
 func _on_sounds_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(2, linear2db(sound_volume.value))
+
+func _on_lang_option_item_selected(index):
+	match index:
+		0:
+			TranslationServer.set_locale("en")
+		1:
+			TranslationServer.set_locale("ru")
+		2:
+			TranslationServer.set_locale("uk")
+		3:
+			TranslationServer.set_locale("pl")

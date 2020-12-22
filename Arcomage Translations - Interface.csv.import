@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation" ]
+
+source_file="res://Arcomage Translations - Interface.csv"
+dest_files=[ "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

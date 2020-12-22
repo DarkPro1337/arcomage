@@ -20,6 +20,7 @@ config/description="Arcomage fan-remake made on Godot Engine."
 run/main_scene="res://scenes/main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Arcoamge"
+run/low_processor_mode=true
 boot_splash/image="res://sprites/empty_splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
@@ -58,6 +59,11 @@ ui_reset={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[locale]
+
+translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation" )
+locale_filter=[ 0, [ "en", "pl", "ru", "uk" ] ]
 
 [logging]
 
