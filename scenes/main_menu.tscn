@@ -40,6 +40,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.5
@@ -116,7 +128,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.376471 )
 custom_constants/shadow_as_outline = 1
-text = "v.0.5-alpha"
+text = "v.0.2-alpha"
 valign = 1
 clip_text = true
 __meta__ = {
@@ -135,7 +147,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.376471 )
 custom_constants/shadow_as_outline = 1
-text = "Build: 19122020"
+text = "Build: 04062021"
 valign = 1
 clip_text = true
 __meta__ = {
@@ -255,7 +267,7 @@ anims/fade_out = SubResource( 3 )
 anims/settings_show = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -267,8 +279,8 @@ __meta__ = {
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
 bus = "Music"
+
 [connection signal="pressed" from="menu_grid/new_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="menu_grid/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="menu_grid/scores" to="." method="_on_scores_pressed"]

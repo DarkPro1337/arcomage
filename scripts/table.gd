@@ -9,7 +9,7 @@ onready var draw_card_label = $draw_card_label
 onready var endgame_screen = $endgame
 onready var time_elapsed = $Time_Elapsed
 
-var player_name = "DarkPro1337"
+var player_name = "PLAYER"
 var enemy_name = tr("COMPUTER")
 
 enum players {red, blue} # TODO

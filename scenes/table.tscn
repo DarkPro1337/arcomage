@@ -953,5 +953,6 @@ autostart = true
 
 [node name="endgame" parent="." instance=ExtResource( 17 )]
 visible = false
+
 [connection signal="tween_all_completed" from="graveyard_anim" to="." method="_on_graveyard_anim_tween_all_completed"]
 [connection signal="timeout" from="Time_Elapsed" to="." method="_on_Time_Elapsed_timeout"]
