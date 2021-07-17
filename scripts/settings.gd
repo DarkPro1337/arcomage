@@ -47,7 +47,15 @@ func _ready():
 	update_controls()
 	$tab/Graphics/graphics/window_res/height.text = str(OS.get_window_size().y)
 	$tab/Graphics/graphics/window_res/width.text = str(OS.get_window_size().x)
-	print(AudioServer.get_bus_volume_db(0))
+	match cfg.locale:
+		0:
+			TranslationServer.set_locale("en")
+		1:
+			TranslationServer.set_locale("ru")
+		2:
+			TranslationServer.set_locale("uk")
+		3:
+			TranslationServer.set_locale("pl")
 
 func _on_close_pressed():
 	anim.play("hide")
@@ -135,6 +143,8 @@ func save_settings():
 		c.set_value("VICTORY", "resource_victory", int(win_resources.value))
 		# TAVERN PRESETS
 		c.set_value("TAVERN", "preset", tavern_preset.selected)
+		# LANGUAGE SETTINGS
+		c.set_value("LANGUAGE", "locale", language.selected)
 		c.save(config_path)
 
 func load_settings():
@@ -177,6 +187,8 @@ func load_settings():
 		cfg.resource_victory = c.get_value("VICTORY", "resource_victory")
 		# TAVERN PRESETS
 		cfg.current_tavern = c.get_value("TAVERN", "preset")
+		# LANGUAGE SETTINGS
+		cfg.locale = c.get_value("LANGUAGE", "locale")
 
 # UPDATE BUTTONS STATE
 func update_controls():
@@ -215,6 +227,8 @@ func update_controls():
 	win_resources.value = cfg.resource_victory
 	# TAVERN PRESETS
 	tavern_preset.selected = cfg.current_tavern
+	# LANGUAGE
+	language.selected = cfg.locale
 
 func _on_window_pressed():
 	$tab.current_tab = 0

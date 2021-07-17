@@ -397,6 +397,7 @@ margin_right = 104.0
 margin_bottom = 288.0
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -467,6 +468,7 @@ margin_right = 104.0
 margin_bottom = 208.0
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -531,6 +533,7 @@ margin_right = 104.0
 margin_bottom = 128.0
 custom_styles/panel = SubResource( 8 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 

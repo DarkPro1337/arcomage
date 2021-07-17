@@ -1,7 +1,7 @@
 extends Control
 
 onready var settings = $settings
-onready var anim = $AnimationPlayer
+onready var anim = $menuAnim
 onready var info = $info
 
 func _on_new_game_pressed():

@@ -926,6 +926,7 @@ text = "LANGUAGE_SETTINGS"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 4 )
+
 [connection signal="toggled" from="tab/Graphics/graphics/fullscreen/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="tab/Graphics/graphics/borderless/borderless_button" to="." method="_on_borderless_button_toggled"]
 [connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]

@@ -62,7 +62,10 @@ ui_reset={
 [locale]
 
 translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation" )
-locale_filter=[ 0, [ "en", "pl", "ru", "uk" ] ]
+locale_filter=[ 1, [ "en", "pl", "ru", "uk" ] ]
+translation_remaps={
+"res://db/base.cdb": PoolStringArray( "res://db/base_ru.cdb:ru", "res://db/base_uk.cdb:uk", "res://db/base_pl.cdb:pl" )
+}
 
 [logging]
 
