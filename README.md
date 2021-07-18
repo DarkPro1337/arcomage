@@ -1,5 +1,6 @@
 # Arcomage fan-remake made on Godot Engine
 ![Arcomage Logo](images/arcomage_logo.png)
+## Description
 #### Loved by many card mini-game from Might and Magic 7 and 8 returns with updated graphics as standalone game!
 Arcomage is a computer card game for two players. Each player has a random set of 6 cards, a tower, a wall, three types of resources and their generators.
 
@@ -26,3 +27,10 @@ At the beginning of each turn, the generators increase the amount of the player'
 * destruction of the enemy tower
 
 As a rule, cards that require the same type of resources are similar in action. Gems - increase the tower, bricks - walls, animals - to deal damage to the enemy. The damage can be directed specifically at a tower or wall, or be of a general nature. In the second case, the wall takes the damage first, then the tower.
+
+## Requirements
+* **GPU:** OpenGL 2.1 support
+
+## Compilation and editing
+* [**Godot** v.3.3.2 stable](https://downloads.tuxfamily.org/godotengine/3.3.2/)
+* [**CastleDB** v.1.5](http://castledb.org/)
