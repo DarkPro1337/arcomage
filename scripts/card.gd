@@ -24,7 +24,19 @@ func _ready():
 	rng.randomize() # RANDOMIZE THE SEED
 	# DB LOAD
 	var data_read = File.new()
-	data_read.open("res://db/base.cdb", File.READ)
+	
+	# CARDS DB LOCALE HANDLE
+	if TranslationServer.get_locale() == "en":
+		data_read.open("res://db/base.cdb", File.READ)
+	elif TranslationServer.get_locale() == "ru":
+		data_read.open("res://db/base_ru.cdb", File.READ)
+	elif TranslationServer.get_locale() == "uk":
+		data_read.open("res://db/base.cdb", File.READ)
+	elif TranslationServer.get_locale() == "uk":
+		data_read.open("res://db/base.cdb", File.READ)
+	else:
+		data_read.open("res://db/base.cdb", File.READ)
+	
 	var data_cdb = parse_json(data_read.get_as_text())
 	data_read.close()
 	for sheet in data_cdb["sheets"]:

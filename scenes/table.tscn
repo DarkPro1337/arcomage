@@ -201,9 +201,9 @@ __meta__ = {
 [node name="player_tower" parent="." instance=ExtResource( 7 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 194.0
+margin_left = 193.555
 margin_top = -234.0
-margin_right = 239.0
+margin_right = 238.555
 margin_bottom = -184.0
 rect_clip_content = false
 
@@ -391,6 +391,7 @@ __meta__ = {
 }
 
 [node name="player_recruits_panel" type="Panel" parent="."]
+visible = false
 margin_left = 16.0
 margin_top = 216.0
 margin_right = 104.0
@@ -462,6 +463,7 @@ __meta__ = {
 }
 
 [node name="player_gems_panel" type="Panel" parent="."]
+visible = false
 margin_left = 16.0
 margin_top = 136.0
 margin_right = 104.0
@@ -527,6 +529,7 @@ __meta__ = {
 }
 
 [node name="player_bricks_panel" type="Panel" parent="."]
+visible = false
 margin_left = 16.0
 margin_top = 56.0
 margin_right = 104.0
@@ -558,6 +561,7 @@ margin_top = 54.0
 margin_right = 84.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "bricks"
@@ -587,6 +591,219 @@ margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
 margin_bottom = 73.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_bricks_panel_alt" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 55.0
+margin_right = 104.0
+margin_bottom = 140.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_bricks_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.176
+anchor_right = 0.966
+anchor_bottom = 0.776
+margin_left = 0.0079999
+margin_top = 0.039999
+margin_right = -0.00800323
+margin_bottom = 0.0400009
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_bricks_panel_alt"]
+margin_left = 2.0
+margin_right = 85.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "BRICKS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_bricks_panel_alt"]
+margin_left = 6.0
+margin_top = 37.0
+margin_right = 56.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_bricks_panel_alt"]
+margin_left = 5.0
+margin_top = 66.0
+margin_right = 36.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_bricks_panel_alt2" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 146.0
+margin_right = 104.0
+margin_bottom = 231.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_bricks_panel_alt2"]
+anchor_left = 0.034
+anchor_top = 0.176
+anchor_right = 0.966
+anchor_bottom = 0.776
+margin_left = 0.0079999
+margin_top = 0.039999
+margin_right = -0.00800323
+margin_bottom = 0.0400009
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_bricks_panel_alt2"]
+margin_left = 2.0
+margin_right = 85.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "GEMS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_bricks_panel_alt2"]
+margin_left = 6.0
+margin_top = 37.0
+margin_right = 56.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_bricks_panel_alt2"]
+margin_left = 5.0
+margin_top = 66.0
+margin_right = 36.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_bricks_panel_alt3" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 237.0
+margin_right = 104.0
+margin_bottom = 322.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_bricks_panel_alt3"]
+anchor_left = 0.034
+anchor_top = 0.176
+anchor_right = 0.966
+anchor_bottom = 0.776
+margin_left = 0.0079999
+margin_top = 0.039999
+margin_right = -0.00800323
+margin_bottom = 0.0400009
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_bricks_panel_alt3"]
+margin_left = 2.0
+margin_right = 85.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "RECRUITS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_bricks_panel_alt3"]
+margin_left = 6.0
+margin_top = 37.0
+margin_right = 56.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_bricks_panel_alt3"]
+margin_left = 5.0
+margin_top = 66.0
+margin_right = 36.0
+margin_bottom = 85.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "20"
