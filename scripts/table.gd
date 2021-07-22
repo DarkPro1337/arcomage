@@ -9,7 +9,49 @@ onready var draw_card_label = $draw_card_label
 onready var endgame_screen = $endgame
 onready var time_elapsed = $Time_Elapsed
 
-var player_name = "DARKPRO1337"
+# PLAYER STATS PANEL
+onready var player_bricks_panel = $player_bricks_panel
+onready var player_bricks_per_panel = $player_bricks_panel/per_turn.text
+onready var player_bricks_total_panel = $player_bricks_panel/total.text
+onready var player_gems_panel = $player_gems_panel
+onready var player_gems_per_panel = $player_gems_panel/per_turn.text
+onready var player_gems_total_panel = $player_gems_panel/total.text
+onready var player_recruits_panel = $player_recruits_panel
+onready var player_recruits_per_panel = $player_recruits_panel/per_turn.text
+onready var player_recruits_total_panel = $player_recruits_panel/total.text
+# ENEMY STATS PANEL
+onready var enemy_bricks_panel = $enemy_bricks_panel
+onready var enemy_bricks_per_panel = $enemy_bricks_panel/per_turn.text
+onready var enemy_bricks_total_panel = $enemy_bricks_panel/total.text
+onready var enemy_gems_panel = $enemy_gems_panel
+onready var enemy_gems_per_panel = $enemy_gems_panel/per_turn.text
+onready var enemy_gems_total_panel = $enemy_gems_panel/total.text
+onready var enemy_recruits_panel = $enemy_recruits_panel
+onready var enemy_recruits_per_panel = $enemy_recruits_panel/per_turn.text
+onready var enemy_recruits_total_panel = $enemy_recruits_panel/total.text
+# PLAYER STATS PANEL ALTERNATIVE
+onready var player_bricks_panel_alt = $player_bricks_panel_alt
+onready var player_bricks_per_panel_alt = $player_bricks_panel_alt/per_turn.text
+onready var player_bricks_total_panel_alt = $player_bricks_panel_alt/total.text
+onready var player_gems_panel_alt = $player_gems_panel_alt
+onready var player_gems_per_panel_alt = $player_gems_panel_alt/per_turn.text
+onready var player_gems_total_panel_alt = $player_gems_panel_alt/total.text
+onready var player_recruits_panel_alt = $player_recruits_panel_alt
+onready var player_recruits_per_panel_alt = $player_recruits_panel_alt/per_turn.text
+onready var player_recruits_total_panel_alt = $player_recruits_panel_alt/total.text
+# ENEMY STATS PANEL ALTERNATIVE
+onready var enemy_bricks_panel_alt = $enemy_bricks_panel_alt
+onready var enemy_bricks_per_panel_alt = $enemy_bricks_panel_alt/per_turn.text
+onready var enemy_bricks_total_panel_alt = $enemy_bricks_panel_alt/total.text
+onready var enemy_gems_panel_alt = $enemy_gems_panel_alt
+onready var enemy_gems_per_panel_alt = $enemy_gems_panel_alt/per_turn.text
+onready var enemy_gems_total_panel_alt = $enemy_gems_panel_alt/total.text
+onready var enemy_recruits_panel_alt = $enemy_recruits_panel_alt
+onready var enemy_recruits_per_panel_alt = $enemy_recruits_panel_alt/per_turn.text
+onready var enemy_recruits_total_panel_alt = $enemy_recruits_panel_alt/total.text
+
+# PLAYER NAMES
+var player_name = "DarkPro1337"
 var enemy_name = tr("COMPUTER")
 
 enum players {red, blue} # TODO
@@ -23,26 +65,26 @@ var player_draw_card = false
 var enemy_draw_card = false
 
 # DEFAULT TOWER AND WALL HP
-var player_tower_hp = 50
-var player_wall_hp = 50
+var player_tower_hp = cfg.tower_levels
+var player_wall_hp = cfg.wall_levels
 
-var enemy_tower_hp = 50
-var enemy_wall_hp = 50
+var enemy_tower_hp = cfg.tower_levels
+var enemy_wall_hp = cfg.wall_levels
 
 # DEFAULT RESOURCES
-var player_quarry = 5
-var player_bricks = 20
-var player_magic = 3
-var player_gems = 10
-var player_dungeon = 5
-var player_recruits = 20
+var player_quarry = cfg.quarry_levels
+var player_bricks = cfg.brick_quantity
+var player_magic = cfg.magic_levels
+var player_gems = cfg.gem_quantity
+var player_dungeon = cfg.dungeon_levels
+var player_recruits = cfg.recruit_quantity
 
-var enemy_quarry = 5
-var enemy_bricks = 20
-var enemy_magic = 3
-var enemy_gems = 10
-var enemy_dungeon = 5
-var enemy_recruits = 20
+var enemy_quarry = cfg.quarry_levels
+var enemy_bricks = cfg.brick_quantity
+var enemy_magic = cfg.magic_levels
+var enemy_gems = cfg.gem_quantity
+var enemy_dungeon = cfg.dungeon_levels
+var enemy_recruits = cfg.recruit_quantity
 
 var time_start = 0
 var time_now = 0
@@ -61,11 +103,12 @@ func _ready():
 	rng.randomize()
 	turn = rng.randi_range(0, players.size() - 1)
 	add_resources(turn)
+	locale_stat_panels()
 	$player_panel/player_name.text = player_name
 	$enemy_panel/enemy_name.text = enemy_name
 	
 	# PLAYER START DECK GENERATION
-	while $player_deck.get_child_count() != 6:
+	while $player_deck.get_child_count() != cfg.cards_in_hand:
 		var card = load("res://scenes/card.tscn")
 		var card_inst = card.instance()
 		card_inst.add_to_group("player_card")
@@ -73,7 +116,7 @@ func _ready():
 		card_inst.usable = true
 	
 	# ENEMY START DECK GENERATION
-	while $enemy_deck.get_child_count() != 6:
+	while $enemy_deck.get_child_count() != cfg.cards_in_hand:
 		var card = load("res://scenes/card.tscn")
 		var card_inst = card.instance()
 		card_inst.add_to_group("enemy_card")
@@ -244,7 +287,7 @@ func use_card(card_name):
 		turn = 1
 		
 	$deck_locker.hide()
-	if $player_deck.get_child_count() <= 6:
+	if $player_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		card_inst.add_to_group("player_card")
@@ -300,7 +343,7 @@ func remove_card(card_name):
 		clear_graveyard()
 		yield(self, "graveyard_anim_ended")
 		turn = 1
-	if $player_deck.get_child_count() <= 6:
+	if $player_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		$player_deck.add_child(card_inst)
@@ -357,7 +400,7 @@ func bot_use_card(card_name):
 		turn = 0
 	AI_ready = true
 	$deck_locker.hide()
-	if $enemy_deck.get_child_count() <= 6:
+	if $enemy_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		card_inst.add_to_group("enemy_card")
@@ -415,7 +458,7 @@ func bot_remove_card(card_name):
 		yield(self, "graveyard_anim_ended")
 		AI_ready = true
 		turn = 0
-	if $enemy_deck.get_child_count() <= 6:
+	if $enemy_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		$enemy_deck.add_child(card_inst)
@@ -425,19 +468,31 @@ func bot_remove_card(card_name):
 
 func update_stat_panels():
 	# PLAYER STATS
-	$player_bricks_panel/per_turn.text = str(player_quarry)
-	$player_bricks_panel/total.text = str(player_bricks)
-	$player_gems_panel/per_turn.text = str(player_magic)
-	$player_gems_panel/total.text = str(player_gems)
-	$player_recruits_panel/per_turn.text = str(player_dungeon)
-	$player_recruits_panel/total.text = str(player_recruits)
+	player_bricks_per_panel = str(player_quarry)
+	player_bricks_per_panel_alt = str(player_quarry)
+	player_bricks_total_panel = str(player_bricks)
+	player_bricks_total_panel_alt = str(player_bricks)
+	player_gems_per_panel = str(player_magic)
+	player_gems_per_panel_alt = str(player_magic)
+	player_gems_total_panel = str(player_gems)
+	player_gems_total_panel_alt = str(player_gems)
+	player_recruits_per_panel = str(player_dungeon)
+	player_recruits_per_panel_alt = str(player_dungeon)
+	player_recruits_total_panel = str(player_recruits)
+	player_recruits_total_panel_alt = str(player_recruits)
 	# ENEMY STATS
-	$enemy_bricks_panel/per_turn.text = str(enemy_quarry)
-	$enemy_bricks_panel/total.text = str(enemy_bricks)
-	$enemy_gems_panel/per_turn.text = str(enemy_magic)
-	$enemy_gems_panel/total.text = str(enemy_gems)
-	$enemy_recruits_panel/per_turn.text = str(enemy_dungeon)
-	$enemy_recruits_panel/total.text = str(enemy_recruits)
+	enemy_bricks_per_panel = str(enemy_quarry)
+	enemy_bricks_per_panel_alt = str(enemy_quarry)
+	enemy_bricks_total_panel = str(enemy_bricks)
+	enemy_bricks_total_panel_alt = str(enemy_bricks)
+	enemy_gems_per_panel = str(enemy_magic)
+	enemy_gems_per_panel_alt = str(enemy_magic)
+	enemy_gems_total_panel = str(enemy_gems)
+	enemy_gems_total_panel_alt = str(enemy_gems)
+	enemy_recruits_per_panel = str(enemy_dungeon)
+	enemy_recruits_per_panel_alt = str(enemy_dungeon)
+	enemy_recruits_total_panel = str(enemy_recruits)
+	enemy_recruits_total_panel_alt = str(enemy_recruits)
 	# PLAYER TOWER AND WALL
 	$player_tower_panel/tower_hp.text = str(player_tower_hp)
 	$player_wall_panel/wall_hp.text = str(player_wall_hp)
@@ -448,6 +503,50 @@ func update_stat_panels():
 	$enemy_wall_panel/wall_hp.text = str(enemy_wall_hp)
 	$enemy_tower.set_size(Vector2(45, enemy_tower_hp))
 	$enemy_wall.set_size(Vector2(24, enemy_wall_hp))
+
+func locale_stat_panels():
+	if TranslationServer.get_locale() == "en":
+		switch_stat_panels(false)
+	elif TranslationServer.get_locale() == "ru":
+		switch_stat_panels(true)
+	elif TranslationServer.get_locale() == "uk":
+		switch_stat_panels(true)
+	elif TranslationServer.get_locale() == "uk":
+		switch_stat_panels(true)
+	else:
+		switch_stat_panels(true)
+
+func switch_stat_panels(do):
+	if do == false:
+		# SHOW
+		player_bricks_panel.show()
+		player_gems_panel.show()
+		player_recruits_panel.show()
+		enemy_bricks_panel.show()
+		enemy_gems_panel.show()
+		enemy_recruits_panel.show()
+		# HIDE
+		player_bricks_panel_alt.hide()
+		player_gems_panel_alt.hide()
+		player_recruits_panel_alt.hide()
+		enemy_bricks_panel_alt.hide()
+		enemy_gems_panel_alt.hide()
+		enemy_recruits_panel_alt.hide()
+	elif do == true:
+		# SHOW
+		player_bricks_panel_alt.show()
+		player_gems_panel_alt.show()
+		player_recruits_panel_alt.show()
+		enemy_bricks_panel_alt.show()
+		enemy_gems_panel_alt.show()
+		enemy_recruits_panel_alt.show()
+		# HIDE
+		player_bricks_panel.hide()
+		player_gems_panel.hide()
+		player_recruits_panel.hide()
+		enemy_bricks_panel.hide()
+		enemy_gems_panel.hide()
+		enemy_recruits_panel.hide()
 
 func add_resources(turn):
 	if turn == 0:

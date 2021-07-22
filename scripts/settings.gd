@@ -287,3 +287,12 @@ func _on_lang_option_item_selected(index):
 			TranslationServer.set_locale("uk")
 		3:
 			TranslationServer.set_locale("pl")
+
+func _on_cards_in_hand_value_changed(value):
+	cfg.cards_in_hand = value
+
+func _on_tower_levels_value_changed(value):
+	cfg.tower_levels = value
+
+func _on_wall_levels_value_changed(value):
+	cfg.wall_levels = value

@@ -74,3 +74,10 @@ WARINING_TEXT,This is fan reamke and not connected or affiliated with New World 
 NEXT,Next,Далее,Далі,Dalej
 LANGUAGE_SETTINGS,Language Settings,Настройки языка,Налаштування мови,Ustawienia języka
 LANGUAGE,Language:,Язык:,Мова:,Język:
+APPLY,Apply,Применить,,
+TIME,TIME:,ВРЕМЯ:,,
+START_GAME_TOOLTIP,Starts a new game with the current settings.,Начинает новую игру с текущими настройками.,,
+SETTINGS_TOOLTIP,Allows you to customize the rules of the game.,Позволяет настроить правила игры.,,
+LEADERBOARD_TOOLTIP,Opens the leaderboard.,Открывает доску лидеров.,,
+CREDITS_TOOLTIP,Opens credits.,Открывает титры.,,
+EXIT_TOOLTIP,Quit the game.,Выйти из игры.,,

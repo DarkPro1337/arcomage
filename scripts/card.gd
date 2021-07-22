@@ -31,9 +31,9 @@ func _ready():
 	elif TranslationServer.get_locale() == "ru":
 		data_read.open("res://db/base_ru.cdb", File.READ)
 	elif TranslationServer.get_locale() == "uk":
-		data_read.open("res://db/base.cdb", File.READ)
+		data_read.open("res://db/base_uk.cdb", File.READ)
 	elif TranslationServer.get_locale() == "uk":
-		data_read.open("res://db/base.cdb", File.READ)
+		data_read.open("res://db/base_pl.cdb", File.READ)
 	else:
 		data_read.open("res://db/base.cdb", File.READ)
 	

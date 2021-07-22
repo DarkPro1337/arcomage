@@ -71,6 +71,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -292,7 +293,6 @@ margin_bottom = 37.0
 text = "MUTE_SOUND"
 
 [node name="Starting_Conditions" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -935,6 +935,9 @@ anims/hide = SubResource( 4 )
 [connection signal="value_changed" from="tab/Sound/sound/master/master_slider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="tab/Sound/sound/music/music_slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="tab/Sound/sound/sounds/sounds_slider" to="." method="_on_sounds_slider_value_changed"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level" to="." method="_on_tower_levels_value_changed"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level" to="." method="_on_wall_levels_value_changed"]
+[connection signal="value_changed" from="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level" to="." method="_on_cards_in_hand_value_changed"]
 [connection signal="item_selected" from="tab/Language_Settings/main/language/lang_option" to="." method="_on_lang_option_item_selected"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
