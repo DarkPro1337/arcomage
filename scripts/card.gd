@@ -324,7 +324,7 @@ func card_func(id):
 			heal_player_tower(1)
 			play_again()
 		"smoky_quartz": #35
-			damage_enemy(1)
+			damage_enemy_tower(1)
 			play_again()
 		"amethyst": #36
 			heal_player_tower(3)

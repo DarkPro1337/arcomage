@@ -35,7 +35,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 2 ),
+"times": PoolRealArray( 0, 0.3, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -98,6 +98,7 @@ tracks/0/keys = {
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true,
@@ -279,7 +280,6 @@ anims/fade_out = SubResource( 3 )
 anims/settings_show = SubResource( 4 )
 
 [node name="startupRect" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

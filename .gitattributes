@@ -1,3 +1,5 @@
+* text=auto eol=lf
+
 *.gd eol=lf
 *.tscn eol=lf
 *.cfg eol=lf

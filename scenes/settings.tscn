@@ -71,7 +71,6 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -80,14 +79,14 @@ margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="graphics" type="VBoxContainer" parent="tab/Graphics"]
-margin_left = 21.0
-margin_top = 84.0
-margin_right = 627.0
-margin_bottom = 289.0
+margin_left = 16.0
+margin_top = 105.0
+margin_right = 632.0
+margin_bottom = 268.0
 custom_constants/separation = 5
 
 [node name="fullscreen" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_right = 606.0
+margin_right = 616.0
 margin_bottom = 37.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/fullscreen"]
@@ -103,7 +102,7 @@ margin_bottom = 37.0
 
 [node name="borderless" type="HBoxContainer" parent="tab/Graphics/graphics"]
 margin_top = 42.0
-margin_right = 606.0
+margin_right = 616.0
 margin_bottom = 79.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/borderless"]
@@ -119,7 +118,7 @@ margin_bottom = 37.0
 
 [node name="window_res" type="HBoxContainer" parent="tab/Graphics/graphics"]
 margin_top = 84.0
-margin_right = 606.0
+margin_right = 616.0
 margin_bottom = 121.0
 
 [node name="label1" type="Label" parent="tab/Graphics/graphics/window_res"]
@@ -163,14 +162,14 @@ rect_min_size = Vector2( 5, 0 )
 
 [node name="winres_apply" type="Button" parent="tab/Graphics/graphics/window_res"]
 margin_left = 540.0
-margin_right = 606.0
+margin_right = 616.0
 margin_bottom = 37.0
-text = "Apply"
+text = "APPLY"
 flat = true
 
 [node name="vsync" type="HBoxContainer" parent="tab/Graphics/graphics"]
 margin_top = 126.0
-margin_right = 606.0
+margin_right = 616.0
 margin_bottom = 163.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/vsync"]
@@ -185,6 +184,7 @@ margin_right = 133.0
 margin_bottom = 37.0
 
 [node name="intro_skip" type="HBoxContainer" parent="tab/Graphics/graphics"]
+visible = false
 margin_top = 168.0
 margin_right = 606.0
 margin_bottom = 205.0
@@ -293,6 +293,7 @@ margin_bottom = 37.0
 text = "MUTE_SOUND"
 
 [node name="Starting_Conditions" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -347,6 +348,7 @@ margin_bottom = 119.0
 [node name="singleclick_mode" type="CheckBox" parent="tab/Starting_Conditions/starting_conditions/main/gameplay/single_click"]
 margin_right = 234.0
 margin_bottom = 37.0
+disabled = true
 pressed = true
 text = "SINGLE_CLICK_MODE"
 
@@ -693,6 +695,7 @@ margin_left = 101.0
 margin_right = 326.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 225, 0 )
+disabled = true
 text = "AI_AUTO"
 items = [ "AI_AUTO", null, false, 0, null, "AI_ATTACK", null, false, 1, null, "AI_DEFENCE", null, false, 2, null, "AI_RANDOM", null, false, 3, null ]
 selected = 0
@@ -787,6 +790,7 @@ margin_left = 92.0
 margin_right = 432.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 340, 0 )
+disabled = true
 text = "NONE"
 items = [ "NONE", null, false, 0, null, "TAVERN_HARMONDALE", null, false, 1, null, "TAVERN_ERATHIA", null, false, 2, null, "TAVERN_TULAREAN_FOREST", null, false, 3, null, "TAVERN_DEYJA", null, false, 4, null, "TAVERN_BRACADA_DESERT", null, false, 5, null, "TAVERN_CELESTE", null, false, 6, null, "TAVERN_PIT", null, false, 7, null, "TAVERN_EVERMORN_ISLAND", null, false, 8, null, "TAVERN_NIGHON", null, false, 9, null, "TAVERN_BARROW_DOWNS", null, false, 10, null, "TAVERN_TIDEWATER", null, false, 11, null, "TAVERN_AVLEE", null, false, 12, null, "TAVERN_STONE_CITY", null, false, 13, null ]
 selected = 0

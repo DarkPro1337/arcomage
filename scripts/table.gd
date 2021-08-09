@@ -11,44 +11,44 @@ onready var time_elapsed = $Time_Elapsed
 
 # PLAYER STATS PANEL
 onready var player_bricks_panel = $player_bricks_panel
-onready var player_bricks_per_panel = $player_bricks_panel/per_turn.text
-onready var player_bricks_total_panel = $player_bricks_panel/total.text
+onready var player_bricks_per_panel = $player_bricks_panel/per_turn
+onready var player_bricks_total_panel = $player_bricks_panel/total
 onready var player_gems_panel = $player_gems_panel
-onready var player_gems_per_panel = $player_gems_panel/per_turn.text
-onready var player_gems_total_panel = $player_gems_panel/total.text
+onready var player_gems_per_panel = $player_gems_panel/per_turn
+onready var player_gems_total_panel = $player_gems_panel/total
 onready var player_recruits_panel = $player_recruits_panel
-onready var player_recruits_per_panel = $player_recruits_panel/per_turn.text
-onready var player_recruits_total_panel = $player_recruits_panel/total.text
+onready var player_recruits_per_panel = $player_recruits_panel/per_turn
+onready var player_recruits_total_panel = $player_recruits_panel/total
 # ENEMY STATS PANEL
 onready var enemy_bricks_panel = $enemy_bricks_panel
-onready var enemy_bricks_per_panel = $enemy_bricks_panel/per_turn.text
-onready var enemy_bricks_total_panel = $enemy_bricks_panel/total.text
+onready var enemy_bricks_per_panel = $enemy_bricks_panel/per_turn
+onready var enemy_bricks_total_panel = $enemy_bricks_panel/total
 onready var enemy_gems_panel = $enemy_gems_panel
-onready var enemy_gems_per_panel = $enemy_gems_panel/per_turn.text
-onready var enemy_gems_total_panel = $enemy_gems_panel/total.text
+onready var enemy_gems_per_panel = $enemy_gems_panel/per_turn
+onready var enemy_gems_total_panel = $enemy_gems_panel/total
 onready var enemy_recruits_panel = $enemy_recruits_panel
-onready var enemy_recruits_per_panel = $enemy_recruits_panel/per_turn.text
-onready var enemy_recruits_total_panel = $enemy_recruits_panel/total.text
+onready var enemy_recruits_per_panel = $enemy_recruits_panel/per_turn
+onready var enemy_recruits_total_panel = $enemy_recruits_panel/total
 # PLAYER STATS PANEL ALTERNATIVE
 onready var player_bricks_panel_alt = $player_bricks_panel_alt
-onready var player_bricks_per_panel_alt = $player_bricks_panel_alt/per_turn.text
-onready var player_bricks_total_panel_alt = $player_bricks_panel_alt/total.text
+onready var player_bricks_per_panel_alt = $player_bricks_panel_alt/per_turn
+onready var player_bricks_total_panel_alt = $player_bricks_panel_alt/total
 onready var player_gems_panel_alt = $player_gems_panel_alt
-onready var player_gems_per_panel_alt = $player_gems_panel_alt/per_turn.text
-onready var player_gems_total_panel_alt = $player_gems_panel_alt/total.text
+onready var player_gems_per_panel_alt = $player_gems_panel_alt/per_turn
+onready var player_gems_total_panel_alt = $player_gems_panel_alt/total
 onready var player_recruits_panel_alt = $player_recruits_panel_alt
-onready var player_recruits_per_panel_alt = $player_recruits_panel_alt/per_turn.text
-onready var player_recruits_total_panel_alt = $player_recruits_panel_alt/total.text
+onready var player_recruits_per_panel_alt = $player_recruits_panel_alt/per_turn
+onready var player_recruits_total_panel_alt = $player_recruits_panel_alt/total
 # ENEMY STATS PANEL ALTERNATIVE
 onready var enemy_bricks_panel_alt = $enemy_bricks_panel_alt
-onready var enemy_bricks_per_panel_alt = $enemy_bricks_panel_alt/per_turn.text
-onready var enemy_bricks_total_panel_alt = $enemy_bricks_panel_alt/total.text
+onready var enemy_bricks_per_panel_alt = $enemy_bricks_panel_alt/per_turn
+onready var enemy_bricks_total_panel_alt = $enemy_bricks_panel_alt/total
 onready var enemy_gems_panel_alt = $enemy_gems_panel_alt
-onready var enemy_gems_per_panel_alt = $enemy_gems_panel_alt/per_turn.text
-onready var enemy_gems_total_panel_alt = $enemy_gems_panel_alt/total.text
+onready var enemy_gems_per_panel_alt = $enemy_gems_panel_alt/per_turn
+onready var enemy_gems_total_panel_alt = $enemy_gems_panel_alt/total
 onready var enemy_recruits_panel_alt = $enemy_recruits_panel_alt
-onready var enemy_recruits_per_panel_alt = $enemy_recruits_panel_alt/per_turn.text
-onready var enemy_recruits_total_panel_alt = $enemy_recruits_panel_alt/total.text
+onready var enemy_recruits_per_panel_alt = $enemy_recruits_panel_alt/per_turn
+onready var enemy_recruits_total_panel_alt = $enemy_recruits_panel_alt/total
 
 # PLAYER NAMES
 var player_name = "DarkPro1337"
@@ -152,6 +152,7 @@ func _physics_process(delta):
 				bot_def_card_count += 1
 			elif card.card_use == 2: #res
 				bot_res_card_count += 1
+			print("ATK: " + str(bot_atk_card_count) + " DEF: " + str(bot_def_card_count) + " RES: " + str(bot_res_card_count))
 		
 		for i in $enemy_deck.get_child_count():
 			var card = $enemy_deck.get_child(i)
@@ -200,9 +201,6 @@ func _physics_process(delta):
 						$enemy_deck.get_node(random_bot_card.name).bot_card_remove()
 						print("BOT: NOT ENOUGH CARDS, DISCARD RANDOM CARD")
 						break
-					else:
-						print("BOT: NOT DISCARDABLE CARD, CONTINUE")
-						continue
 	
 	## END GAME
 	# TOWER BUILDING VICTORY FOR PLAYER AND ENEMY
@@ -468,31 +466,31 @@ func bot_remove_card(card_name):
 
 func update_stat_panels():
 	# PLAYER STATS
-	player_bricks_per_panel = str(player_quarry)
-	player_bricks_per_panel_alt = str(player_quarry)
-	player_bricks_total_panel = str(player_bricks)
-	player_bricks_total_panel_alt = str(player_bricks)
-	player_gems_per_panel = str(player_magic)
-	player_gems_per_panel_alt = str(player_magic)
-	player_gems_total_panel = str(player_gems)
-	player_gems_total_panel_alt = str(player_gems)
-	player_recruits_per_panel = str(player_dungeon)
-	player_recruits_per_panel_alt = str(player_dungeon)
-	player_recruits_total_panel = str(player_recruits)
-	player_recruits_total_panel_alt = str(player_recruits)
+	player_bricks_per_panel.text = str(player_quarry)
+	player_bricks_per_panel_alt.text = str(player_quarry)
+	player_bricks_total_panel.text = str(player_bricks)
+	player_bricks_total_panel_alt.text = str(player_bricks)
+	player_gems_per_panel.text = str(player_magic)
+	player_gems_per_panel_alt.text = str(player_magic)
+	player_gems_total_panel.text = str(player_gems)
+	player_gems_total_panel_alt.text = str(player_gems)
+	player_recruits_per_panel.text = str(player_dungeon)
+	player_recruits_per_panel_alt.text = str(player_dungeon)
+	player_recruits_total_panel.text = str(player_recruits)
+	player_recruits_total_panel_alt.text = str(player_recruits)
 	# ENEMY STATS
-	enemy_bricks_per_panel = str(enemy_quarry)
-	enemy_bricks_per_panel_alt = str(enemy_quarry)
-	enemy_bricks_total_panel = str(enemy_bricks)
-	enemy_bricks_total_panel_alt = str(enemy_bricks)
-	enemy_gems_per_panel = str(enemy_magic)
-	enemy_gems_per_panel_alt = str(enemy_magic)
-	enemy_gems_total_panel = str(enemy_gems)
-	enemy_gems_total_panel_alt = str(enemy_gems)
-	enemy_recruits_per_panel = str(enemy_dungeon)
-	enemy_recruits_per_panel_alt = str(enemy_dungeon)
-	enemy_recruits_total_panel = str(enemy_recruits)
-	enemy_recruits_total_panel_alt = str(enemy_recruits)
+	enemy_bricks_per_panel.text = str(enemy_quarry)
+	enemy_bricks_per_panel_alt.text = str(enemy_quarry)
+	enemy_bricks_total_panel.text = str(enemy_bricks)
+	enemy_bricks_total_panel_alt.text = str(enemy_bricks)
+	enemy_gems_per_panel.text = str(enemy_magic)
+	enemy_gems_per_panel_alt.text = str(enemy_magic)
+	enemy_gems_total_panel.text = str(enemy_gems)
+	enemy_gems_total_panel_alt.text = str(enemy_gems)
+	enemy_recruits_per_panel.text = str(enemy_dungeon)
+	enemy_recruits_per_panel_alt.text = str(enemy_dungeon)
+	enemy_recruits_total_panel.text = str(enemy_recruits)
+	enemy_recruits_total_panel_alt.text = str(enemy_recruits)
 	# PLAYER TOWER AND WALL
 	$player_tower_panel/tower_hp.text = str(player_tower_hp)
 	$player_wall_panel/wall_hp.text = str(player_wall_hp)
