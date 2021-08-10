@@ -28,6 +28,7 @@ func _on_credits_pressed():
 
 func alert(text: String, title: String='Message') -> void:
 	var dialog = AcceptDialog.new()
+	dialog.theme = load("res://themes/main_menu_theme.tres")
 	dialog.dialog_text = text
 	dialog.window_title = title
 	dialog.connect('modal_closed', dialog, 'queue_free')
