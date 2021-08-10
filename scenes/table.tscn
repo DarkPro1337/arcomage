@@ -1387,6 +1387,9 @@ process_priority = 2
 [node name="graveyard_anim" type="Tween" parent="."]
 process_priority = 1
 
+[node name="newcard_anim" type="Tween" parent="."]
+process_priority = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade"
 anims/fade = SubResource( 14 )

@@ -134,8 +134,8 @@ func _physics_process(delta):
 		$player_deck.hide()
 		$enemy_deck.show()
 		
-		#var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-		#$enemy_deck.get_node(random_bot_card.name).bot_card_use()
+#		var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+#		$enemy_deck.get_node(random_bot_card.name).bot_card_use()
 		
 		# ARCOMAGE BOT v.0.2
 		# DON'T TRY TO UNDERSTAND THIS, LOL
@@ -252,6 +252,7 @@ func use_card(card_name):
 	
 	# CARD ANIMATION WITH TWEEN
 	var card_anim = get_node("card_anim")
+	var newcard_anim = get_node("newcard_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
 		card_prev_pos, (get_viewport_rect().size / 2) - (card_prev.rect_size / 2) + Vector2(0, -50), 1.25,
@@ -269,8 +270,9 @@ func use_card(card_name):
 	yield(card_anim, "tween_completed")
 	
 	card_prev.set_as_toplevel(false)
-	card_prev.queue_free()
+	$player_deck.get_node(card_prev.name).modulate = Color(1,1,1,0)
 	card_new.set_modulate(Color(1,1,1,1))
+	
 	if player_discarding == true:
 		turn = 0
 		draw_card_label.show()
@@ -283,7 +285,28 @@ func use_card(card_name):
 		clear_graveyard()
 		yield(self, "graveyard_anim_ended")
 		turn = 1
-		
+	
+	# ADDING A NEW CARD TO DECK
+	# animation and instancing itself
+	var card_dummy = load("res://scenes/card.tscn")
+	var card_dummy_inst = card_dummy.instance()
+	card_dummy_inst.get_node("card_back").show()
+	card_dummy_inst.name = "Dummy Card"
+	card_dummy_inst.set_as_toplevel(true)
+	card_dummy_inst.usable = false
+	card_dummy_inst.set_global_position(graveyard.get_node("card_back").get_global_position())
+	var card_dummy_pos = card_dummy_inst.get_global_position()
+	table.add_child(card_dummy_inst)
+	newcard_anim.start()
+	play_audio("deal")
+	newcard_anim.interpolate_property(card_dummy_inst, "rect_position",
+		card_dummy_pos, card_prev_pos, 1.0,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(newcard_anim, "tween_completed")
+	
+	card_dummy_inst.queue_free()
+	card_prev.queue_free()
+	
 	$deck_locker.hide()
 	if $player_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
