@@ -14,8 +14,8 @@ func _input(event):
 
 func load_build_number():
 	var file = File.new()
-	if file.file_exists("res://build.dat"):
-		file.open("res://build.dat", File.READ)
+	if file.file_exists("res://build.tres"):
+		file.open("res://build.tres", File.READ)
 		var content = file.get_as_text()
 		file.close()
 		return content

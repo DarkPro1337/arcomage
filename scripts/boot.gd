@@ -24,7 +24,7 @@ func build_number():
 # Save build number as file
 func save_build_number(build_number):
 	var file = File.new()
-	file.open("res://build.dat", File.WRITE)
+	file.open("res://build.tres", File.WRITE)
 	file.store_string(build_number)
 	file.close()
 
