@@ -296,3 +296,6 @@ func _on_tower_levels_value_changed(value):
 
 func _on_wall_levels_value_changed(value):
 	cfg.wall_levels = value
+
+func _on_introskip_button_toggled(button_pressed):
+	cfg.intro_skip = button_pressed

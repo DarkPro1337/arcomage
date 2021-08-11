@@ -71,7 +71,6 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -81,9 +80,9 @@ margin_bottom = -5.0
 
 [node name="graphics" type="VBoxContainer" parent="tab/Graphics"]
 margin_left = 16.0
-margin_top = 105.0
+margin_top = 84.0
 margin_right = 632.0
-margin_bottom = 268.0
+margin_bottom = 289.0
 custom_constants/separation = 5
 
 [node name="fullscreen" type="HBoxContainer" parent="tab/Graphics/graphics"]
@@ -185,9 +184,8 @@ margin_right = 133.0
 margin_bottom = 37.0
 
 [node name="intro_skip" type="HBoxContainer" parent="tab/Graphics/graphics"]
-visible = false
 margin_top = 168.0
-margin_right = 606.0
+margin_right = 616.0
 margin_bottom = 205.0
 
 [node name="label" type="Label" parent="tab/Graphics/graphics/intro_skip"]
@@ -564,6 +562,7 @@ rounded = true
 align = 1
 
 [node name="Play_Conditions" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -856,8 +855,10 @@ margin_top = -59.0
 margin_right = 491.0
 margin_bottom = -11.0
 rect_min_size = Vector2( 200, 48 )
+hint_tooltip = "Work in progress..."
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 3 )
+disabled = true
 text = "RESTORE_DEFAULTS"
 align = 0
 __meta__ = {

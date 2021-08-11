@@ -15,8 +15,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Arcomage"
-config/description="Arcomage fan-remake made on Godot Engine."
-run/main_scene="res://scenes/main_menu.tscn"
+config/description="Open-source Arcomage fan-remake made on Godot Engine."
+run/main_scene="res://scenes/boot.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Arcoamge"
 run/low_processor_mode=true
@@ -25,11 +25,13 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 config/macos_native_icon="res://icon.icns"
 config/windows_native_icon="res://icon.ico"
+config/version="0.3-alpha"
 
 [autoload]
 
 global="*res://scripts/global.gd"
 cfg="*res://scripts/config.gd"
+settings="*res://scenes/settings.tscn"
 AudioStreamManager="*res://scripts/audio_manager.gd"
 
 [display]
