@@ -40,3 +40,13 @@ func _on_patreon_pressed():
 
 func _on_kofi_pressed():
 	OS.shell_open("https://ko-fi.com/darkpro1337")
+
+func _on_author_gui_input(event):
+	if (event is InputEventMouseButton && event.pressed && event.button_index == 1):
+		OS.shell_open("https://darkpro1337.github.io")
+
+func _on_author_mouse_entered():
+	$remake_info/text/author.modulate = Color("ff993f")
+
+func _on_author_mouse_exited():
+	$remake_info/text/author.modulate = Color("ffffff")

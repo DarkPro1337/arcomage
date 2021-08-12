@@ -81,3 +81,6 @@ SETTINGS_TOOLTIP,Allows you to customize the rules of the game.,Позволяе
 LEADERBOARD_TOOLTIP,Opens the leaderboard.,Открывает доску лидеров.,,
 CREDITS_TOOLTIP,Opens credits.,Открывает титры.,,
 EXIT_TOOLTIP,Quit the game.,Выйти из игры.,,
+WORK_IN_PROGRESS,Work in progress...,Работа в процессе...,,
+SETTINGS_WARNING,Some settings may not be avalible or not working correctly for now.,Некоторые настройки сейчас могут быть недоступны или работать некорректно.,,
+TRANSLATION_MAY_CONTAIN_ERRORS,Translation may contain errors.,Перевод может содержать ошибки.,Переклад може містити помилки.,Tłumaczenie może zawierać błędy.

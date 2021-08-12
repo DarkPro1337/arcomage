@@ -41,6 +41,7 @@ onready var win_resources = $tab/Victory_Conditions/main/resource/level
 onready var tavern_preset = $tab/Tavern_Presets/main/preset/tavern_option
 # LANGUAGE SETTINGS
 onready var language = $tab/Language_Settings/main/language/lang_option
+onready var lang_errors = $tab/Language_Settings/main/lang_errors
 
 func _ready():
 	load_settings()
@@ -281,12 +282,16 @@ func _on_lang_option_item_selected(index):
 	match index:
 		0:
 			TranslationServer.set_locale("en")
+			lang_errors.hide()
 		1:
 			TranslationServer.set_locale("ru")
+			lang_errors.hide()
 		2:
 			TranslationServer.set_locale("uk")
+			lang_errors.show()
 		3:
 			TranslationServer.set_locale("pl")
+			lang_errors.show()
 
 func _on_cards_in_hand_value_changed(value):
 	cfg.cards_in_hand = value

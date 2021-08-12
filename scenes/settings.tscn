@@ -9,7 +9,7 @@
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="ButtonGroup" id=2]
+[sub_resource type="ButtonGroup" id=6]
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -75,6 +75,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -328,7 +329,7 @@ margin_right = 174.0
 margin_bottom = 37.0
 disabled = true
 pressed = true
-group = SubResource( 2 )
+group = SubResource( 6 )
 text = "SINGLEPLAYER"
 
 [node name="multi_player" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
@@ -340,7 +341,7 @@ margin_bottom = 78.0
 margin_right = 165.0
 margin_bottom = 37.0
 disabled = true
-group = SubResource( 2 )
+group = SubResource( 6 )
 text = "MULTIPLAYER"
 
 [node name="single_click" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
@@ -799,7 +800,6 @@ items = [ "NONE", null, false, 0, null, "TAVERN_HARMONDALE", null, false, 1, nul
 selected = 0
 
 [node name="Language_Settings" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -833,6 +833,15 @@ text = "English"
 items = [ "English", null, false, 0, null, "Русский", null, false, 1, null, "Українська", null, false, 2, null, "Polski", null, false, 3, null ]
 selected = 0
 
+[node name="lang_errors" type="Label" parent="tab/Language_Settings/main"]
+visible = false
+margin_top = 41.0
+margin_right = 459.0
+margin_bottom = 78.0
+text = "TRANSLATION_MAY_CONTAIN_ERRORS"
+align = 1
+autowrap = true
+
 [node name="close" type="ToolButton" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -859,7 +868,7 @@ margin_top = -59.0
 margin_right = 491.0
 margin_bottom = -11.0
 rect_min_size = Vector2( 200, 48 )
-hint_tooltip = "Work in progress..."
+hint_tooltip = "WORK_IN_PROGRESS"
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 3 )
 disabled = true
@@ -942,7 +951,7 @@ anchor_right = 1.0
 margin_top = 12.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 5 )
-text = "Some settings may not be avalible or not working correctly for now."
+text = "SETTINGS_WARNING"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

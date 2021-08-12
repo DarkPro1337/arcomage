@@ -270,8 +270,34 @@ func use_card(card_name):
 	yield(card_anim, "tween_completed")
 	
 	card_prev.set_as_toplevel(false)
-	$player_deck.get_node(card_prev.name).modulate = Color(1,1,1,0)
+	card_prev.queue_free()
+	
+	var card_temp_file = load("res://scenes/card.tscn")
+	var card_temp = card_temp_file.instance()
+	card_temp.set_modulate(Color(1,1,1,0))
+	$player_deck.add_child(card_temp)
+	$player_deck.move_child(card_temp, prev_pos)
+	
 	card_new.set_modulate(Color(1,1,1,1))
+	
+	# ADDING A NEW CARD TO DECK
+	# animation and instancing itself
+	var card_dummy = load("res://scenes/card.tscn")
+	var card_dummy_inst = card_dummy.instance()
+	card_dummy_inst.get_node("card_back").show()
+	card_dummy_inst.name = "Dummy Card"
+	card_dummy_inst.set_as_toplevel(true)
+	card_dummy_inst.usable = false
+	card_dummy_inst.set_global_position(graveyard.get_node("card_back").get_global_position())
+	var card_dummy_pos = card_dummy_inst.get_global_position()
+	table.add_child(card_dummy_inst)
+	play_audio("deal")
+	newcard_anim.start()
+	newcard_anim.interpolate_property(card_dummy_inst, "rect_position",
+		card_dummy_pos, card_prev_pos, 1.0,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(newcard_anim, "tween_completed")
+	
 	
 	if player_discarding == true:
 		turn = 0
@@ -286,32 +312,13 @@ func use_card(card_name):
 		yield(self, "graveyard_anim_ended")
 		turn = 1
 	
-	# ADDING A NEW CARD TO DECK
-	# animation and instancing itself
-	var card_dummy = load("res://scenes/card.tscn")
-	var card_dummy_inst = card_dummy.instance()
-	card_dummy_inst.get_node("card_back").show()
-	card_dummy_inst.name = "Dummy Card"
-	card_dummy_inst.set_as_toplevel(true)
-	card_dummy_inst.usable = false
-	card_dummy_inst.set_global_position(graveyard.get_node("card_back").get_global_position())
-	var card_dummy_pos = card_dummy_inst.get_global_position()
-	table.add_child(card_dummy_inst)
-	newcard_anim.start()
-	play_audio("deal")
-	newcard_anim.interpolate_property(card_dummy_inst, "rect_position",
-		card_dummy_pos, card_prev_pos, 1.0,
-		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-	yield(newcard_anim, "tween_completed")
-	
-	card_dummy_inst.queue_free()
-	card_prev.queue_free()
-	
 	$deck_locker.hide()
 	if $player_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		card_inst.add_to_group("player_card")
+		card_dummy_inst.queue_free()
+		card_temp.queue_free()
 		$player_deck.add_child(card_inst)
 		$player_deck.move_child(card_inst, prev_pos)
 

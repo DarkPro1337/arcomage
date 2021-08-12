@@ -86,7 +86,7 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 135, 180 )
 texture = ExtResource( 4 )
 expand = true
-stretch_mode = 5
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -23,7 +23,7 @@ func _on_settings_pressed():
 	anim.play("settings_show")
 
 func _on_scores_pressed():
-	alert("Work in progress...", "Oops")
+	alert(tr("WORK_IN_PROGRESS"), "Oops")
 
 func _on_exit_pressed():
 	get_tree().quit()
