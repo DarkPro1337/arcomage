@@ -43,3 +43,6 @@ var current_tavern = 0
 
 # LANGUAGE SETTINGS
 var locale = 0
+
+# PLAYER SETTINGS
+var nickname = "Player"

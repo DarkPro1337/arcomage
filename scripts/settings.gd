@@ -42,8 +42,13 @@ onready var tavern_preset = $tab/Tavern_Presets/main/preset/tavern_option
 # LANGUAGE SETTINGS
 onready var language = $tab/Language_Settings/main/language/lang_option
 onready var lang_errors = $tab/Language_Settings/main/lang_errors
+# PLAYER SETTINGS
+onready var nickname = $tab/Player_Settings/main/nickname/edit
 
 func _ready():
+	if get_parent().name != "main_menu":
+		hide()
+	
 	load_settings()
 	update_controls()
 	$tab/Graphics/graphics/window_res/height.text = str(OS.get_window_size().y)
@@ -57,6 +62,8 @@ func _ready():
 			TranslationServer.set_locale("uk")
 		3:
 			TranslationServer.set_locale("pl")
+		4:
+			TranslationServer.set_locale("da")
 
 func _on_close_pressed():
 	anim.play("hide")
@@ -106,6 +113,8 @@ func save_settings():
 		c.set_value("TAVERN", "preset", cfg.current_tavern)
 		# LANGUAGE SETTINGS
 		c.set_value("LANGUAGE", "locale", cfg.locale)
+		# PLAYER SETTINGS
+		c.set_value("PLAYER", "nickname", cfg.nickname)
 		c.save(config_path)
 	# IF FILE EXISTS - REWRITE KEY VALUES
 	elif err == OK:
@@ -146,6 +155,8 @@ func save_settings():
 		c.set_value("TAVERN", "preset", tavern_preset.selected)
 		# LANGUAGE SETTINGS
 		c.set_value("LANGUAGE", "locale", language.selected)
+		# PLAYER SETTINGS
+		c.set_value("PLAYER", "nickname", nickname.text)
 		c.save(config_path)
 
 func load_settings():
@@ -189,7 +200,13 @@ func load_settings():
 		# TAVERN PRESETS
 		cfg.current_tavern = c.get_value("TAVERN", "preset")
 		# LANGUAGE SETTINGS
+		if not c.has_section_key("PLAYER", "nickname"):
+			c.set_value("LANGUAGE", "locale", language.selected)
 		cfg.locale = c.get_value("LANGUAGE", "locale")
+		# PLAYER SETTINGS
+		if not c.has_section_key("PLAYER", "nickname"):
+			c.set_value("PLAYER", "nickname", nickname.text)
+		cfg.nickname = c.get_value("PLAYER", "nickname")
 
 # UPDATE BUTTONS STATE
 func update_controls():
@@ -230,6 +247,8 @@ func update_controls():
 	tavern_preset.selected = cfg.current_tavern
 	# LANGUAGE
 	language.selected = cfg.locale
+	# PLAYER SETTINGS
+	nickname.text = cfg.nickname
 
 func _on_window_pressed():
 	$tab.current_tab = 0
@@ -251,6 +270,9 @@ func _on_tavern_presets_pressed():
 
 func _on_language_settings_pressed():
 	$tab.current_tab = 6
+
+func _on_player_settings_pressed():
+	$tab.current_tab = 7
 
 func _on_fullscreen_button_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
@@ -292,6 +314,9 @@ func _on_lang_option_item_selected(index):
 		3:
 			TranslationServer.set_locale("pl")
 			lang_errors.show()
+		4:
+			TranslationServer.set_locale("da")
+			lang_errors.show()
 
 func _on_cards_in_hand_value_changed(value):
 	cfg.cards_in_hand = value
@@ -304,3 +329,6 @@ func _on_wall_levels_value_changed(value):
 
 func _on_introskip_button_toggled(button_pressed):
 	cfg.intro_skip = button_pressed
+
+func _on_nickname_text_changed(new_text):
+	cfg.nickname = new_text

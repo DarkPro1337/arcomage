@@ -9,7 +9,7 @@
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="ButtonGroup" id=6]
+[sub_resource type="ButtonGroup" id=2]
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -329,7 +329,7 @@ margin_right = 174.0
 margin_bottom = 37.0
 disabled = true
 pressed = true
-group = SubResource( 6 )
+group = SubResource( 2 )
 text = "SINGLEPLAYER"
 
 [node name="multi_player" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
@@ -341,7 +341,7 @@ margin_bottom = 78.0
 margin_right = 165.0
 margin_bottom = 37.0
 disabled = true
-group = SubResource( 6 )
+group = SubResource( 2 )
 text = "MULTIPLAYER"
 
 [node name="single_click" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
@@ -800,6 +800,7 @@ items = [ "NONE", null, false, 0, null, "TAVERN_HARMONDALE", null, false, 1, nul
 selected = 0
 
 [node name="Language_Settings" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -830,7 +831,7 @@ margin_right = 459.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 340, 0 )
 text = "English"
-items = [ "English", null, false, 0, null, "Русский", null, false, 1, null, "Українська", null, false, 2, null, "Polski", null, false, 3, null ]
+items = [ "English", null, false, 0, null, "Русский", null, false, 1, null, "Українська", null, false, 2, null, "Polski", null, false, 3, null, "Dansk", null, false, 4, null ]
 selected = 0
 
 [node name="lang_errors" type="Label" parent="tab/Language_Settings/main"]
@@ -841,6 +842,38 @@ margin_bottom = 78.0
 text = "TRANSLATION_MAY_CONTAIN_ERRORS"
 align = 1
 autowrap = true
+
+[node name="Player_Settings" type="CenterContainer" parent="tab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="main" type="VBoxContainer" parent="tab/Player_Settings"]
+margin_left = 94.0
+margin_top = 168.0
+margin_right = 553.0
+margin_bottom = 205.0
+
+[node name="nickname" type="HBoxContainer" parent="tab/Player_Settings/main"]
+margin_right = 459.0
+margin_bottom = 37.0
+alignment = 2
+
+[node name="label" type="Label" parent="tab/Player_Settings/main/nickname"]
+margin_right = 115.0
+margin_bottom = 37.0
+text = "NICKNAME"
+align = 2
+
+[node name="edit" type="LineEdit" parent="tab/Player_Settings/main/nickname"]
+margin_left = 119.0
+margin_right = 459.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 340, 0 )
+text = "Player"
 
 [node name="close" type="ToolButton" parent="."]
 anchor_left = 1.0
@@ -892,9 +925,9 @@ __meta__ = {
 }
 
 [node name="buttons_grid" type="GridContainer" parent="buttons_container"]
-margin_top = 82.0
+margin_top = 62.0
 margin_right = 245.0
-margin_bottom = 365.0
+margin_bottom = 386.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -942,6 +975,12 @@ margin_right = 245.0
 margin_bottom = 283.0
 text = "LANGUAGE_SETTINGS"
 
+[node name="player_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
+margin_top = 287.0
+margin_right = 245.0
+margin_bottom = 324.0
+text = "PLAYER_SETTINGS"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 4 )
 
@@ -969,6 +1008,7 @@ __meta__ = {
 [connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level" to="." method="_on_wall_levels_value_changed"]
 [connection signal="value_changed" from="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level" to="." method="_on_cards_in_hand_value_changed"]
 [connection signal="item_selected" from="tab/Language_Settings/main/language/lang_option" to="." method="_on_lang_option_item_selected"]
+[connection signal="text_changed" from="tab/Player_Settings/main/nickname/edit" to="." method="_on_nickname_text_changed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/sound_settings" to="." method="_on_sound_settings_pressed"]
@@ -977,3 +1017,4 @@ __meta__ = {
 [connection signal="pressed" from="buttons_container/buttons_grid/victory_conditions" to="." method="_on_victory_conditions_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/tavern_presets" to="." method="_on_tavern_presets_pressed"]
 [connection signal="pressed" from="buttons_container/buttons_grid/language_settings" to="." method="_on_language_settings_pressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/player_settings" to="." method="_on_player_settings_pressed"]

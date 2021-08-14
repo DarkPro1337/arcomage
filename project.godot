@@ -63,8 +63,8 @@ ui_reset={
 
 [locale]
 
-translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation" )
-locale_filter=[ 1, [ "en", "pl", "ru", "uk" ] ]
+translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation", "res://Arcomage Translations - Interface.da.translation" )
+locale_filter=[ 1, [ "da", "en", "pl", "ru", "uk" ] ]
 translation_remaps={
 }
 
@@ -72,7 +72,6 @@ translation_remaps={
 
 file_logging/enable_file_logging=true
 file_logging/log_path="user://logs/session.log"
-file_logging/max_log_files=1
 
 [rendering]
 

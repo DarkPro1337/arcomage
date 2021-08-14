@@ -12,6 +12,7 @@ func _ready():
 	build_number.text = "Build: " + str(global.build)
 	get_tree().paused = false
 	#$menu_grid/new_game.emit_signal("pressed")
+	print(global.time() + "Main menu loaded.")
 
 func _on_new_game_pressed():
 	anim.play("fade_out")

@@ -32,7 +32,7 @@ func _ready():
 		data_read.open("res://db/base_ru.cdb", File.READ)
 	elif TranslationServer.get_locale() == "uk":
 		data_read.open("res://db/base_uk.cdb", File.READ)
-	elif TranslationServer.get_locale() == "uk":
+	elif TranslationServer.get_locale() == "pl":
 		data_read.open("res://db/base_pl.cdb", File.READ)
 	else:
 		data_read.open("res://db/base.cdb", File.READ)

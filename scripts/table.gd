@@ -51,7 +51,7 @@ onready var enemy_recruits_per_panel_alt = $enemy_recruits_panel_alt/per_turn
 onready var enemy_recruits_total_panel_alt = $enemy_recruits_panel_alt/total
 
 # PLAYER NAMES
-var player_name = "DarkPro1337"
+var player_name = cfg.nickname
 var enemy_name = tr("COMPUTER")
 
 enum players {red, blue} # TODO
@@ -291,13 +291,12 @@ func use_card(card_name):
 	card_dummy_inst.set_global_position(graveyard.get_node("card_back").get_global_position())
 	var card_dummy_pos = card_dummy_inst.get_global_position()
 	table.add_child(card_dummy_inst)
-	play_audio("deal")
+	AudioStreamManager.play("res://sounds/deal.ogg")
 	newcard_anim.start()
 	newcard_anim.interpolate_property(card_dummy_inst, "rect_position",
 		card_dummy_pos, card_prev_pos, 1.0,
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(newcard_anim, "tween_completed")
-	
 	
 	if player_discarding == true:
 		turn = 0
