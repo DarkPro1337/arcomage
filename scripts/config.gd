@@ -31,7 +31,7 @@ var recruit_quantity = 20
 var auto_bricks = 0
 var auto_gems = 0
 var auto_recruits = 0
-var cards_in_hand = 5
+var cards_in_hand = 6
 var ai_type = 0
 
 # VICTORY CONDITIONS

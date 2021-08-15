@@ -165,48 +165,79 @@ func load_settings():
 	# APPLY CURRENT SETTINGS FROM .INI FILE
 	if err == OK:
 		# WINDOW SETTINGS
+		has_key_else_set(c, "WINDOW", "fullscreen", fullscreen_button.pressed)
 		cfg.fullscreen = c.get_value("WINDOW", "fullscreen")
+		has_key_else_set(c, "WINDOW", "borderless", borderless_button.pressed)
 		cfg.borderless = c.get_value("WINDOW", "borderless")
+		has_key_else_set(c, "WINDOW", "width", window_width_edit.text)
 		cfg.window_width = c.get_value("WINDOW", "width")
+		has_key_else_set(c, "WINDOW", "height", window_height_edit.text)
 		cfg.window_height = c.get_value("WINDOW", "height")
+		has_key_else_set(c, "WINDOW", "vsync", vsync_button.pressed)
 		cfg.vsync = c.get_value("WINDOW", "vsync")
+		has_key_else_set(c, "WINDOW", "intro_skip", intro_skip_button.pressed)
 		cfg.intro_skip = c.get_value("WINDOW", "intro_skip")
 		# AUDIO SETTINGS
+		has_key_else_set(c, "AUDIO", "master", master_volume.value)
 		cfg.master_volume = c.get_value("AUDIO", "master")
+		has_key_else_set(c, "AUDIO", "music", music_volume.value)
 		cfg.music_volume = c.get_value("AUDIO", "music")
+		has_key_else_set(c, "AUDIO", "sounds", sound_volume.value)
 		cfg.sound_volume = c.get_value("AUDIO", "sounds")
+		has_key_else_set(c, "AUDIO", "mute", mute_sound.pressed)
 		cfg.mute_sound = c.get_value("AUDIO", "mute")
 		# STARTING CONDITIONS
+		has_key_else_set(c, "START", "singleplayer", singleplayer_button.pressed)
 		cfg.singleplayer = c.get_value("START", "singleplayer")
+		has_key_else_set(c, "START", "single_click_mode", single_click_mode_button.pressed)
 		cfg.single_click = c.get_value("START", "single_click_mode")
+		has_key_else_set(c, "START", "mute_sound", mute_sound.pressed)
 		cfg.mute_sound = c.get_value("START", "mute_sound")
+		has_key_else_set(c, "START", "tower_levels", tower_levels.value)
 		cfg.tower_levels = c.get_value("START", "tower_levels")
+		has_key_else_set(c, "START", "wall_levels", wall_levels.value)
 		cfg.wall_levels = c.get_value("START", "wall_levels")
+		has_key_else_set(c, "START", "quarry_levels", quarry_levels.value)
 		cfg.quarry_levels = c.get_value("START", "quarry_levels")
+		has_key_else_set(c, "START", "brick_quantity", brick_quantity.value)
 		cfg.brick_quantity = c.get_value("START", "brick_quantity")
+		has_key_else_set(c, "START", "magic_levels", magic_levels.value)
 		cfg.magic_levels = c.get_value("START", "magic_levels")
+		has_key_else_set(c, "START", "gem_quantity", gem_quantity.value)
 		cfg.gem_quantity = c.get_value("START", "gem_quantity")
+		has_key_else_set(c, "START", "dungeon_levels", dungeon_levels.value)
 		cfg.dungeon_levels = c.get_value("START", "dungeon_levels")
+		has_key_else_set(c, "START", "recruit_quantity", recruit_quantity.value)
 		cfg.recruit_quantity = c.get_value("START", "recruit_quantity")
 		# PLAY CONDITIONS
+		has_key_else_set(c, "PLAY", "auto_bricks", auto_bricks.value)
 		cfg.auto_bricks = c.get_value("PLAY", "auto_bricks")
+		has_key_else_set(c, "PLAY", "auto_gems", auto_gems.value)
 		cfg.auto_gems = c.get_value("PLAY", "auto_gems")
+		has_key_else_set(c, "PLAY", "auto_recruits", auto_recruits.value)
 		cfg.auto_recruits = c.get_value("PLAY", "auto_recruits")
+		has_key_else_set(c, "PLAY", "cards_in_hand", cards_in_hand.value)
 		cfg.cards_in_hand = c.get_value("PLAY", "cards_in_hand")
+		has_key_else_set(c, "PLAY", "ai", ai.selected)
 		cfg.ai_type = c.get_value("PLAY", "ai")
 		# VICTORY CONDITIONS
+		has_key_else_set(c, "VICTORY", "tower_victory", win_tower.value)
 		cfg.tower_victory = c.get_value("VICTORY", "tower_victory")
+		has_key_else_set(c, "VICTORY", "resource_victory", win_resources.value)
 		cfg.resource_victory = c.get_value("VICTORY", "resource_victory")
 		# TAVERN PRESETS
+		has_key_else_set(c, "TAVERN", "preset", tavern_preset.selected)
 		cfg.current_tavern = c.get_value("TAVERN", "preset")
 		# LANGUAGE SETTINGS
-		if not c.has_section_key("PLAYER", "nickname"):
-			c.set_value("LANGUAGE", "locale", language.selected)
+		has_key_else_set(c, "LANGUAGE", "locale", language.selected)
 		cfg.locale = c.get_value("LANGUAGE", "locale")
 		# PLAYER SETTINGS
-		if not c.has_section_key("PLAYER", "nickname"):
-			c.set_value("PLAYER", "nickname", nickname.text)
+		has_key_else_set(c, "PLAYER", "nickname", nickname.text)
 		cfg.nickname = c.get_value("PLAYER", "nickname")
+
+func has_key_else_set(c: ConfigFile, SECTION: String, key: String, set_to):
+	if not c.has_section_key(SECTION, key): 
+		c.set_value(SECTION, key, set_to)
 
 # UPDATE BUTTONS STATE
 func update_controls():
@@ -224,6 +255,7 @@ func update_controls():
 	mute_sound.pressed = cfg.mute_sound
 	# STARTING CONDITIONS
 	#TODO: SINGLEPLAYER AND MULTIPLAYER RADIO BUTTONS STATE, AFTER MULTIPLAYER UPDATE
+	#singleplayer_button.pressed = cfg.singleplayer
 	single_click_mode_button.pressed = cfg.single_click
 	mute_sound.pressed = cfg.mute_sound
 	tower_levels.value = cfg.tower_levels
