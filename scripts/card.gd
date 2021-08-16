@@ -66,8 +66,7 @@ func _ready():
 	
 	set_name(card_id)
 	
-	if card_not_discardable == true:
-		discardable = false
+	if card_not_discardable == true: discardable = false
 	
 	if card_layout == 0:
 		$layout.texture = load("res://sprites/red_card_layout_alt.png")

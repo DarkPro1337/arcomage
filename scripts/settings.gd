@@ -5,6 +5,7 @@ var config_path = "user://settings.ini"
 onready var anim = $AnimationPlayer
 # INTERACTIVE CONTROL ELEMENTS VARIABLES BELOW
 # WINDOW SETTINGS
+onready var window_settings_button = $buttons_container/buttons_grid/window_settings
 onready var fullscreen_button = $tab/Graphics/graphics/fullscreen/fullscreen_button
 onready var borderless_button = $tab/Graphics/graphics/borderless/borderless_button
 onready var window_width_edit = $tab/Graphics/graphics/window_res/width
@@ -12,11 +13,13 @@ onready var window_height_edit = $tab/Graphics/graphics/window_res/height
 onready var vsync_button = $tab/Graphics/graphics/vsync/vsync_button
 onready var intro_skip_button = $tab/Graphics/graphics/intro_skip/introskip_button
 # SOUND SETTINGS
+onready var sound_settings_button = $buttons_container/buttons_grid/sound_settings
 onready var master_volume = $tab/Sound/sound/master/master_slider
 onready var music_volume = $tab/Sound/sound/music/music_slider
 onready var sound_volume = $tab/Sound/sound/sounds/sounds_slider
 onready var mute_sound = $tab/Sound/sound/mute/mute_sound
 # STARTING CONDITIONS
+onready var starting_conditions_button = $buttons_container/buttons_grid/starting_conditions
 onready var singleplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_player/singleplayer
 onready var multiplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/multi_player/multiplayer
 onready var single_click_mode_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_click/singleclick_mode
@@ -29,20 +32,25 @@ onready var gem_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/
 onready var dungeon_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/dungeon_levels3/level
 onready var recruit_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quanity/level
 # PLAY CONDITIONS
+onready var play_conditions_button = $buttons_container/buttons_grid/play_conditions
 onready var auto_bricks = $tab/Play_Conditions/main/autoget/bricks/level
 onready var auto_gems = $tab/Play_Conditions/main/autoget/gems/level
 onready var auto_recruits = $tab/Play_Conditions/main/autoget/recruits/level
 onready var cards_in_hand = $tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level
 onready var ai = $tab/Play_Conditions/main/cardsnum_and_ai/AI/mode
 # VICTORY CONDITIONS
+onready var victory_conditions_button = $buttons_container/buttons_grid/victory_conditions
 onready var win_tower = $tab/Victory_Conditions/main/tower/level
 onready var win_resources = $tab/Victory_Conditions/main/resource/level
 # TAVERN PRESETS
+onready var tavern_presets_button = $buttons_container/buttons_grid/tavern_presets
 onready var tavern_preset = $tab/Tavern_Presets/main/preset/tavern_option
 # LANGUAGE SETTINGS
+onready var language_settings_button = $buttons_container/buttons_grid/language_settings
 onready var language = $tab/Language_Settings/main/language/lang_option
 onready var lang_errors = $tab/Language_Settings/main/lang_errors
 # PLAYER SETTINGS
+onready var player_settings_button = $buttons_container/buttons_grid/player_settings
 onready var nickname = $tab/Player_Settings/main/nickname/edit
 
 func _ready():

@@ -9,7 +9,7 @@
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="ButtonGroup" id=6]
+[sub_resource type="ButtonGroup" id=2]
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -328,7 +328,7 @@ margin_right = 174.0
 margin_bottom = 37.0
 disabled = true
 pressed = true
-group = SubResource( 6 )
+group = SubResource( 2 )
 text = "SINGLEPLAYER"
 
 [node name="multi_player" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
@@ -340,7 +340,7 @@ margin_bottom = 78.0
 margin_right = 165.0
 margin_bottom = 37.0
 disabled = true
-group = SubResource( 6 )
+group = SubResource( 2 )
 text = "MULTIPLAYER"
 
 [node name="single_click" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]

@@ -534,12 +534,6 @@ func update_stat_panels():
 func locale_stat_panels():
 	if TranslationServer.get_locale() == "en":
 		switch_stat_panels(false)
-	elif TranslationServer.get_locale() == "ru":
-		switch_stat_panels(true)
-	elif TranslationServer.get_locale() == "uk":
-		switch_stat_panels(true)
-	elif TranslationServer.get_locale() == "uk":
-		switch_stat_panels(true)
 	else:
 		switch_stat_panels(true)
 

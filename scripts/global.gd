@@ -27,4 +27,4 @@ func load_build_number():
 		return content
 	else:
 		return "ERROR"
-		print("Warning! build.dat file missing.")
+		print("Warning! build.tres file missing.")
