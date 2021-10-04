@@ -1,7 +1,9 @@
 extends Control
 
+# RANDOMIZER INIT
 var rng = RandomNumberGenerator.new()
 
+# MISC OBJECT LINKS
 onready var particles = $particles
 onready var card_back = $graveyard/card_back
 onready var graveyard = $graveyard
@@ -9,7 +11,7 @@ onready var draw_card_label = $draw_card_label
 onready var endgame_screen = $endgame
 onready var time_elapsed = $Time_Elapsed
 
-# PLAYER STATS PANEL
+# PLAYER STATS PANEL LINKS
 onready var player_bricks_panel = $player_bricks_panel
 onready var player_bricks_per_panel = $player_bricks_panel/per_turn
 onready var player_bricks_total_panel = $player_bricks_panel/total
@@ -19,7 +21,7 @@ onready var player_gems_total_panel = $player_gems_panel/total
 onready var player_recruits_panel = $player_recruits_panel
 onready var player_recruits_per_panel = $player_recruits_panel/per_turn
 onready var player_recruits_total_panel = $player_recruits_panel/total
-# ENEMY STATS PANEL
+# ENEMY STATS PANEL LINKS
 onready var enemy_bricks_panel = $enemy_bricks_panel
 onready var enemy_bricks_per_panel = $enemy_bricks_panel/per_turn
 onready var enemy_bricks_total_panel = $enemy_bricks_panel/total
@@ -29,7 +31,7 @@ onready var enemy_gems_total_panel = $enemy_gems_panel/total
 onready var enemy_recruits_panel = $enemy_recruits_panel
 onready var enemy_recruits_per_panel = $enemy_recruits_panel/per_turn
 onready var enemy_recruits_total_panel = $enemy_recruits_panel/total
-# PLAYER STATS PANEL ALTERNATIVE
+# PLAYER STATS PANEL ALTERNATIVE LINKS
 onready var player_bricks_panel_alt = $player_bricks_panel_alt
 onready var player_bricks_per_panel_alt = $player_bricks_panel_alt/per_turn
 onready var player_bricks_total_panel_alt = $player_bricks_panel_alt/total
@@ -39,7 +41,7 @@ onready var player_gems_total_panel_alt = $player_gems_panel_alt/total
 onready var player_recruits_panel_alt = $player_recruits_panel_alt
 onready var player_recruits_per_panel_alt = $player_recruits_panel_alt/per_turn
 onready var player_recruits_total_panel_alt = $player_recruits_panel_alt/total
-# ENEMY STATS PANEL ALTERNATIVE
+# ENEMY STATS PANEL ALTERNATIVE LINKS
 onready var enemy_bricks_panel_alt = $enemy_bricks_panel_alt
 onready var enemy_bricks_per_panel_alt = $enemy_bricks_panel_alt/per_turn
 onready var enemy_bricks_total_panel_alt = $enemy_bricks_panel_alt/total
@@ -54,15 +56,15 @@ onready var enemy_recruits_total_panel_alt = $enemy_recruits_panel_alt/total
 var player_name = cfg.nickname
 var enemy_name = tr("COMPUTER")
 
-enum players {red, blue} # TODO
-var turn
-var AI_ready = true
-var player_play_again = false
-var enemy_play_again = false
-var player_discarding = false
-var enemy_discarding = false
-var player_draw_card = false
-var enemy_draw_card = false
+enum players {red, blue} # TODO: Multiplayer enum for players UIDs
+var turn # Represents which player's turn now.
+var AI_ready = true # AI toggle, currently hardcoded.
+var player_play_again = false # Should player play again instead of switching turn.
+var enemy_play_again = false # Should enemy play again instead of switching turn.
+var player_discarding = false # Should player discard a card instead of switching turn.
+var enemy_discarding = false # Should enemy discard a card instead of switching turn.
+var player_draw_card = false # Should player draw a card instead of switching turn.
+var enemy_draw_card = false # Should enemy draw a card instead of switching turn.
 
 # DEFAULT TOWER AND WALL HP
 var player_tower_hp = cfg.tower_levels
@@ -86,58 +88,76 @@ var enemy_gems = cfg.gem_quantity
 var enemy_dungeon = cfg.dungeon_levels
 var enemy_recruits = cfg.recruit_quantity
 
-var time_start = 0
-var time_now = 0
-var elapsed = 0
-var str_elapsed = "00:00"
+var time_start = 0 # From what value should timer start.
+var time_now = 0 # Represents current timer value.
+var elapsed = 0 # Represents elapsed time value.
+var str_elapsed = "00:00" # Represents elapsed time string in 00:00 format.
 
-signal graveyard_anim_ended
-signal deck_anim_ended
+signal graveyard_anim_ended # Signal that represents graveyard animation ended.
+signal deck_anim_ended # Signal that represents table deck animation ended.
 
+# TODO: ui_cancel should open menu with:
+## RESUME - resumes the game and closes menu
+## SETTINGS - oppens game settings which didn't require game to restart.
+## STATS - oppens current game statistics.
+## EXIT - ending the current game and return to main menu.
+
+# For now - it's only placeholder for moving back to main menu.
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://scenes/main_menu.tscn")
 
+# Complete actions on start of current game.
 func _ready():
-	global.table = self
-	rng.randomize()
-	turn = rng.randi_range(0, players.size() - 1)
-	add_resources(turn)
-	locale_stat_panels()
-	$player_panel/player_name.text = player_name
-	$enemy_panel/enemy_name.text = enemy_name
+	global.table = self # Declare global link to the current game table.
+	rng.randomize() # Randomize timer.
+	turn = rng.randi_range(0, players.size() - 1) # "Roll the dice", or in other word - randomize which player's first turn.
+	add_resources(turn) # Add resources to the first player.
+	locale_stat_panels() # Decide how should panels look like based on selected locale.
+	$player_panel/player_name.text = player_name # Insert current RED player nickname.
+	$enemy_panel/enemy_name.text = enemy_name # Insert current BLUE player nickname.
 	
 	# PLAYER START DECK GENERATION
+	## Generates required ammount of cards to the player in a loop, which is declared by user config.
+	## For multiplayer: Config priority to the host.
 	while $player_deck.get_child_count() != cfg.cards_in_hand:
 		var card = load("res://scenes/card.tscn")
-		var card_inst = card.instance()
-		card_inst.add_to_group("player_card")
-		$player_deck.add_child(card_inst)
-		card_inst.usable = true
+		var card_inst = card.instance() # Card instansing.
+		card_inst.add_to_group("player_card") # Add card to player group for separating.
+		$player_deck.add_child(card_inst) # Add instance to the player deck.
+		card_inst.usable = true # TODO: Should be reworked.
 	
 	# ENEMY START DECK GENERATION
+	## Generates required ammount of cards to the enemy in a loop, which is declared by user config.
+	## For multiplayer: Config priority to the host.
 	while $enemy_deck.get_child_count() != cfg.cards_in_hand:
 		var card = load("res://scenes/card.tscn")
-		var card_inst = card.instance()
-		card_inst.add_to_group("enemy_card")
-		$enemy_deck.add_child(card_inst)
-		card_inst.card_back.show()
-		card_inst.usable = false
+		var card_inst = card.instance() # Card instansing.
+		card_inst.add_to_group("enemy_card") # Add card to enemy group for separating.
+		$enemy_deck.add_child(card_inst) # Add instance to the player deck.
+		card_inst.card_back.show() # Hide BLUE card wih card back, in other words - "flip it". TODO: Should be reworked.
+		card_inst.usable = false # Makes BLUE cards not usable for RED player. TODO: Should be reworked.
 
 func _physics_process(delta):
-	update_stat_panels()
+	update_stat_panels() # Update stats panels call.
+	# Always check which player should make it's turn.
 	if turn == 0:
+		# Toggle deck visablity.
 		$player_deck.show()
 		$enemy_deck.hide()
 	elif turn == 1 and AI_ready == true:
+		# Togble deck visablity.
+		# Toggle AI.
+		# TODO: Should be rewokred.
 		AI_ready = false
 		$player_deck.hide()
 		$enemy_deck.show()
 		
-#		var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-#		$enemy_deck.get_node(random_bot_card.name).bot_card_use()
+		# TODO: Add RANDOM behaviour to the AI and rework it.
+		# var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
+		# $enemy_deck.get_node(random_bot_card.name).bot_card_use()
 		
-		# ARCOMAGE BOT v.0.2
+		# ARCOMAGE BOT v.0.2 (semi stable, testing needed)
 		# DON'T TRY TO UNDERSTAND THIS, LOL
 		var bot_atk_card_count = 0
 		var bot_def_card_count = 0
@@ -154,6 +174,8 @@ func _physics_process(delta):
 				bot_res_card_count += 1
 			print("ATK: " + str(bot_atk_card_count) + " DEF: " + str(bot_def_card_count) + " RES: " + str(bot_res_card_count))
 		
+		# Decide which card should be played or discarded based on current tower or wall HP and resources values.
+		# Also it prints states for the log.
 		for i in $enemy_deck.get_child_count():
 			var card = $enemy_deck.get_child(i)
 			if enemy_discarding == true and card.bot_usable == true:
@@ -203,6 +225,7 @@ func _physics_process(delta):
 						break
 	
 	## END GAME
+	# Shows a floting window containing info about endgame.
 	# TOWER BUILDING VICTORY FOR PLAYER AND ENEMY
 	if player_tower_hp >= cfg.tower_victory:
 		endgame_screen.set_winner(player_name, tr("TOWER_VICTORY_MSG"), str_elapsed)
@@ -298,6 +321,15 @@ func use_card(card_name):
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(newcard_anim, "tween_completed")
 	
+	if $player_deck.get_child_count() <= cfg.cards_in_hand:
+		var card_next = load("res://scenes/card.tscn")
+		var card_inst = card_next.instance()
+		card_inst.add_to_group("player_card")
+		card_dummy_inst.queue_free()
+		card_temp.queue_free()
+		$player_deck.add_child(card_inst)
+		$player_deck.move_child(card_inst, prev_pos)
+	
 	if player_discarding == true:
 		turn = 0
 		draw_card_label.show()
@@ -312,14 +344,7 @@ func use_card(card_name):
 		turn = 1
 	
 	$deck_locker.hide()
-	if $player_deck.get_child_count() <= cfg.cards_in_hand:
-		var card_next = load("res://scenes/card.tscn")
-		var card_inst = card_next.instance()
-		card_inst.add_to_group("player_card")
-		card_dummy_inst.queue_free()
-		card_temp.queue_free()
-		$player_deck.add_child(card_inst)
-		$player_deck.move_child(card_inst, prev_pos)
+	
 
 # PLAYER DISCARD CARD
 func remove_card(card_name):
