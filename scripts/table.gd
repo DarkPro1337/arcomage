@@ -1,3 +1,4 @@
+class_name Table
 extends Control
 
 # RANDOMIZER INIT
@@ -10,6 +11,13 @@ onready var graveyard = $graveyard
 onready var draw_card_label = $draw_card_label
 onready var endgame_screen = $endgame
 onready var time_elapsed = $Time_Elapsed
+
+# TABLE LINKS
+onready var player_deck = $player_deck
+onready var enemy_deck = $enemy_deck
+onready var ui_player_name = $player_panel/player_name
+onready var ui_enemy_name = $enemy_panel/enemy_name
+onready var deck_locker = $deck_locker
 
 # PLAYER STATS PANEL LINKS
 onready var player_bricks_panel = $player_bricks_panel
@@ -51,6 +59,8 @@ onready var enemy_gems_total_panel_alt = $enemy_gems_panel_alt/total
 onready var enemy_recruits_panel_alt = $enemy_recruits_panel_alt
 onready var enemy_recruits_per_panel_alt = $enemy_recruits_panel_alt/per_turn
 onready var enemy_recruits_total_panel_alt = $enemy_recruits_panel_alt/total
+# UI LINKS
+onready var ingame_menu = $ingame_menu
 
 # PLAYER NAMES
 var player_name = cfg.nickname
@@ -96,16 +106,11 @@ var str_elapsed = "00:00" # Represents elapsed time string in 00:00 format.
 signal graveyard_anim_ended # Signal that represents graveyard animation ended.
 signal deck_anim_ended # Signal that represents table deck animation ended.
 
-# TODO: ui_cancel should open menu with:
-## RESUME - resumes the game and closes menu
-## SETTINGS - oppens game settings which didn't require game to restart.
-## STATS - oppens current game statistics.
-## EXIT - ending the current game and return to main menu.
-
 # For now - it's only placeholder for moving back to main menu.
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene("res://scenes/main_menu.tscn")
+		ingame_menu.show()
+		get_tree().paused = true
 
 # Complete actions on start of current game.
 func _ready():
@@ -114,27 +119,27 @@ func _ready():
 	turn = rng.randi_range(0, players.size() - 1) # "Roll the dice", or in other word - randomize which player's first turn.
 	add_resources(turn) # Add resources to the first player.
 	locale_stat_panels() # Decide how should panels look like based on selected locale.
-	$player_panel/player_name.text = player_name # Insert current RED player nickname.
-	$enemy_panel/enemy_name.text = enemy_name # Insert current BLUE player nickname.
+	ui_player_name.text = player_name # Insert current RED player nickname.
+	ui_enemy_name.text = enemy_name # Insert current BLUE player nickname.
 	
 	# PLAYER START DECK GENERATION
 	## Generates required ammount of cards to the player in a loop, which is declared by user config.
 	## For multiplayer: Config priority to the host.
-	while $player_deck.get_child_count() != cfg.cards_in_hand:
+	while player_deck.get_child_count() != cfg.cards_in_hand:
 		var card = load("res://scenes/card.tscn")
 		var card_inst = card.instance() # Card instansing.
 		card_inst.add_to_group("player_card") # Add card to player group for separating.
-		$player_deck.add_child(card_inst) # Add instance to the player deck.
+		player_deck.add_child(card_inst) # Add instance to the player deck.
 		card_inst.usable = true # TODO: Should be reworked.
 	
 	# ENEMY START DECK GENERATION
 	## Generates required ammount of cards to the enemy in a loop, which is declared by user config.
 	## For multiplayer: Config priority to the host.
-	while $enemy_deck.get_child_count() != cfg.cards_in_hand:
+	while enemy_deck.get_child_count() != cfg.cards_in_hand:
 		var card = load("res://scenes/card.tscn")
 		var card_inst = card.instance() # Card instansing.
 		card_inst.add_to_group("enemy_card") # Add card to enemy group for separating.
-		$enemy_deck.add_child(card_inst) # Add instance to the player deck.
+		enemy_deck.add_child(card_inst) # Add instance to the player deck.
 		card_inst.card_back.show() # Hide BLUE card wih card back, in other words - "flip it". TODO: Should be reworked.
 		card_inst.usable = false # Makes BLUE cards not usable for RED player. TODO: Should be reworked.
 
@@ -143,86 +148,86 @@ func _physics_process(delta):
 	# Always check which player should make it's turn.
 	if turn == 0:
 		# Toggle deck visablity.
-		$player_deck.show()
-		$enemy_deck.hide()
+		player_deck.show()
+		enemy_deck.hide()
 	elif turn == 1 and AI_ready == true:
 		# Togble deck visablity.
 		# Toggle AI.
 		# TODO: Should be rewokred.
 		AI_ready = false
-		$player_deck.hide()
-		$enemy_deck.show()
+		player_deck.hide()
+		enemy_deck.show()
 		
-		# TODO: Add RANDOM behaviour to the AI and rework it.
-		# var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-		# $enemy_deck.get_node(random_bot_card.name).bot_card_use()
-		
-		# ARCOMAGE BOT v.0.2 (semi stable, testing needed)
+		# ARCOMAGE BOT v.0.3 (stable)
 		# DON'T TRY TO UNDERSTAND THIS, LOL
-		var bot_atk_card_count = 0
-		var bot_def_card_count = 0
-		var bot_res_card_count = 0
-		
-		# GET CURRENT NUMBERS OF ATK, DEF AND RES CARDS IN DECK
-		for i in $enemy_deck.get_child_count():
-			var card = $enemy_deck.get_child(i)
-			if card.card_use == 0: #atk
-				bot_atk_card_count += 1
-			elif card.card_use == 1: #def
-				bot_def_card_count += 1
-			elif card.card_use == 2: #res
-				bot_res_card_count += 1
-			print("ATK: " + str(bot_atk_card_count) + " DEF: " + str(bot_def_card_count) + " RES: " + str(bot_res_card_count))
-		
-		# Decide which card should be played or discarded based on current tower or wall HP and resources values.
-		# Also it prints states for the log.
-		for i in $enemy_deck.get_child_count():
-			var card = $enemy_deck.get_child(i)
-			if enemy_discarding == true and card.bot_usable == true:
-				if card.card_use == 2: #res
-					yield(get_tree().create_timer(1), "timeout")
-					$enemy_deck.get_node(card.name).bot_card_remove()
-					print("BOT: REMOVING RESORCE CARD")
-					enemy_discarding = false
-					break
-				else:
-					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-					yield(get_tree().create_timer(1), "timeout")
-					$enemy_deck.get_node(random_bot_card.name).bot_card_remove()
-					print("BOT: NOT ENOUGH CARDS, DISCARD RANDOM CARD")
-					break
-			elif (enemy_tower_hp + enemy_wall_hp) >= (player_tower_hp + player_wall_hp) and bot_atk_card_count != 0 and card.bot_usable == true:
+		if cfg.ai_type == 0:
+			var bot_atk_card_count = 0
+			var bot_def_card_count = 0
+			var bot_res_card_count = 0
+			# GET CURRENT NUMBERS OF ATK, DEF AND RES CARDS IN DECK
+			for i in enemy_deck.get_child_count():
+				var card = enemy_deck.get_child(i)
 				if card.card_use == 0: #atk
-					yield(get_tree().create_timer(1), "timeout")
-					$enemy_deck.get_node(card.name).bot_card_use()
-					print("BOT: USING ATTACK CARD")
-					break
-			elif (enemy_tower_hp + enemy_wall_hp) <= (player_tower_hp + player_wall_hp) and bot_def_card_count != 0 and card.bot_usable == true:
-				if card.card_use == 1: #def
-					yield(get_tree().create_timer(1), "timeout")
-					$enemy_deck.get_node(card.name).bot_card_use()
-					print("BOT: USING DEFENCE CARD")
-					break
-			elif (enemy_tower_hp + enemy_wall_hp) == (player_tower_hp + player_wall_hp) and bot_res_card_count != 0 and card.bot_usable == true:
-				if card.card_use == 2: #res
-					yield(get_tree().create_timer(1), "timeout")
-					$enemy_deck.get_node(card.name).bot_card_use()
-					print("BOT: USING RESORCE CARD")
-					break
-			else:
-				if card.bot_usable == false:
-					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-					yield(get_tree().create_timer(1), "timeout")
-					$enemy_deck.get_node(random_bot_card.name).bot_card_use()
-					print("BOT: NOT ENOUGH CARDS, USING RANDOM CARD")
-					break
-				else:
-					var random_bot_card = $enemy_deck.get_child(rng.randi_range(0, $enemy_deck.get_child_count() - 1))
-					if $enemy_deck.get_node(random_bot_card.name).discardable == true:
+					bot_atk_card_count += 1
+				elif card.card_use == 1: #def
+					bot_def_card_count += 1
+				elif card.card_use == 2: #res
+					bot_res_card_count += 1
+				print("ATK: " + str(bot_atk_card_count) + " DEF: " + str(bot_def_card_count) + " RES: " + str(bot_res_card_count))
+			
+			# Decide which card should be played or discarded based on current tower or wall HP and resources values.
+			# Also it prints states for the log.
+			for i in enemy_deck.get_child_count():
+				var card = enemy_deck.get_child(i)
+				if enemy_discarding == true and card.bot_usable == true:
+					if card.card_use == 2: #res
 						yield(get_tree().create_timer(1), "timeout")
-						$enemy_deck.get_node(random_bot_card.name).bot_card_remove()
+						enemy_deck.get_node(card.name).bot_card_remove()
+						print("BOT: REMOVING RESORCE CARD")
+						enemy_discarding = false
+						break
+					else:
+						var random_bot_card = enemy_deck.get_child(rng.randi_range(0, enemy_deck.get_child_count() - 1))
+						yield(get_tree().create_timer(1), "timeout")
+						enemy_deck.get_node(random_bot_card.name).bot_card_remove()
 						print("BOT: NOT ENOUGH CARDS, DISCARD RANDOM CARD")
 						break
+				elif (enemy_tower_hp + enemy_wall_hp) >= (player_tower_hp + player_wall_hp) and bot_atk_card_count != 0 and card.bot_usable == true:
+					if card.card_use == 0: #atk
+						yield(get_tree().create_timer(1), "timeout")
+						enemy_deck.get_node(card.name).bot_card_use()
+						print("BOT: USING ATTACK CARD")
+						break
+				elif (enemy_tower_hp + enemy_wall_hp) <= (player_tower_hp + player_wall_hp) and bot_def_card_count != 0 and card.bot_usable == true:
+					if card.card_use == 1: #def
+						yield(get_tree().create_timer(1), "timeout")
+						enemy_deck.get_node(card.name).bot_card_use()
+						print("BOT: USING DEFENCE CARD")
+						break
+				elif (enemy_tower_hp + enemy_wall_hp) == (player_tower_hp + player_wall_hp) and bot_res_card_count != 0 and card.bot_usable == true:
+					if card.card_use == 2: #res
+						yield(get_tree().create_timer(1), "timeout")
+						enemy_deck.get_node(card.name).bot_card_use()
+						print("BOT: USING RESORCE CARD")
+						break
+				else:
+					if card.bot_usable == false:
+						var random_bot_card = enemy_deck.get_child(rng.randi_range(0, enemy_deck.get_child_count() - 1))
+						yield(get_tree().create_timer(1), "timeout")
+						enemy_deck.get_node(random_bot_card.name).bot_card_use()
+						print("BOT: NOT ENOUGH CARDS, USING RANDOM CARD")
+						break
+					else:
+						var random_bot_card = enemy_deck.get_child(rng.randi_range(0, enemy_deck.get_child_count() - 1))
+						if enemy_deck.get_node(random_bot_card.name).discardable == true:
+							yield(get_tree().create_timer(1), "timeout")
+							enemy_deck.get_node(random_bot_card.name).bot_card_remove()
+							print("BOT: NOT ENOUGH CARDS, DISCARD RANDOM CARD")
+							break
+		elif cfg.ai_type == 3:
+			var random_bot_card = enemy_deck.get_child(rng.randi_range(0, enemy_deck.get_child_count() - 1))
+			enemy_deck.get_node(random_bot_card.name).bot_card_use()
+			print("RANDOM")
 	
 	## END GAME
 	# Shows a floting window containing info about endgame.
@@ -256,11 +261,11 @@ func _physics_process(delta):
 
 # PLAYER USE CARD
 func use_card(card_name):
-	var card_prev = $player_deck.get_node(card_name)
+	var card_prev = player_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
 	var card_prev_pos = card_prev.rect_global_position
-	$deck_locker.show()
+	deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.mouse_default_cursor_shape = Control.CURSOR_ARROW
@@ -274,6 +279,7 @@ func use_card(card_name):
 	card_prev.set_as_toplevel(true)
 	
 	# CARD ANIMATION WITH TWEEN
+	# used three tweens for centering the card, moving it to graveyard and fading it away.
 	var card_anim = get_node("card_anim")
 	var newcard_anim = get_node("newcard_anim")
 	card_anim.start()
@@ -292,14 +298,16 @@ func use_card(card_name):
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(card_anim, "tween_completed")
 	
+	# remove card_prev and remove it from top level
 	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
 	
+	# creating temp card
 	var card_temp_file = load("res://scenes/card.tscn")
 	var card_temp = card_temp_file.instance()
 	card_temp.set_modulate(Color(1,1,1,0))
-	$player_deck.add_child(card_temp)
-	$player_deck.move_child(card_temp, prev_pos)
+	player_deck.add_child(card_temp)
+	player_deck.move_child(card_temp, prev_pos)
 	
 	card_new.set_modulate(Color(1,1,1,1))
 	
@@ -321,14 +329,14 @@ func use_card(card_name):
 		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	yield(newcard_anim, "tween_completed")
 	
-	if $player_deck.get_child_count() <= cfg.cards_in_hand:
+	if player_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
 		card_inst.add_to_group("player_card")
 		card_dummy_inst.queue_free()
 		card_temp.queue_free()
-		$player_deck.add_child(card_inst)
-		$player_deck.move_child(card_inst, prev_pos)
+		player_deck.add_child(card_inst)
+		player_deck.move_child(card_inst, prev_pos)
 	
 	if player_discarding == true:
 		turn = 0
@@ -343,16 +351,15 @@ func use_card(card_name):
 		yield(self, "graveyard_anim_ended")
 		turn = 1
 	
-	$deck_locker.hide()
-	
+	deck_locker.hide()
 
 # PLAYER DISCARD CARD
 func remove_card(card_name):
-	var card_prev = $player_deck.get_node(card_name)
+	var card_prev = player_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
 	var card_prev_pos = card_prev.rect_global_position
-	$deck_locker.show()
+	deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
 	
@@ -367,6 +374,7 @@ func remove_card(card_name):
 	
 	# CARD ANIMATION WITH TWEEN
 	var card_anim = get_node("card_anim")
+	var newcard_anim = get_node("newcard_anim")
 	card_anim.start()
 	card_anim.interpolate_property(card_prev, "rect_position",
 		card_prev_pos, card_new.rect_global_position, 1.25,
@@ -381,6 +389,41 @@ func remove_card(card_name):
 	card_prev.set_as_toplevel(false)
 	card_prev.queue_free()
 	card_new.set_modulate(Color(1,1,1,1))
+	
+	# creating temp card
+	var card_temp_file = load("res://scenes/card.tscn")
+	var card_temp = card_temp_file.instance()
+	card_temp.set_modulate(Color(1,1,1,0))
+	player_deck.add_child(card_temp)
+	player_deck.move_child(card_temp, prev_pos)
+	
+	# ADDING A NEW CARD TO DECK
+	# animation and instancing itself
+	var card_dummy = load("res://scenes/card.tscn")
+	var card_dummy_inst = card_dummy.instance()
+	card_dummy_inst.get_node("card_back").show()
+	card_dummy_inst.name = "Dummy Card"
+	card_dummy_inst.set_as_toplevel(true)
+	card_dummy_inst.usable = false
+	card_dummy_inst.set_global_position(graveyard.get_node("card_back").get_global_position())
+	var card_dummy_pos = card_dummy_inst.get_global_position()
+	table.add_child(card_dummy_inst)
+	AudioStreamManager.play("res://sounds/deal.ogg")
+	newcard_anim.start()
+	newcard_anim.interpolate_property(card_dummy_inst, "rect_position",
+		card_dummy_pos, card_prev_pos, 1.0,
+		Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	yield(newcard_anim, "tween_completed")
+	
+	if player_deck.get_child_count() <= cfg.cards_in_hand:
+		var card_next = load("res://scenes/card.tscn")
+		var card_inst = card_next.instance()
+		card_inst.add_to_group("player_card")
+		card_dummy_inst.queue_free()
+		card_temp.queue_free()
+		player_deck.add_child(card_inst)
+		player_deck.move_child(card_inst, prev_pos)
+	
 	if player_discarding == true:
 		turn = 0
 		draw_card_label.show()
@@ -388,26 +431,23 @@ func remove_card(card_name):
 	elif player_play_again == true:
 		turn = 0
 		player_play_again = false
-		$deck_locker.hide()
+		deck_locker.hide()
 	else:
 		add_resources(turn)
-		$deck_locker.hide()
+		deck_locker.hide()
 		clear_graveyard()
 		yield(self, "graveyard_anim_ended")
 		turn = 1
-	if $player_deck.get_child_count() <= cfg.cards_in_hand:
-		var card_next = load("res://scenes/card.tscn")
-		var card_inst = card_next.instance()
-		$player_deck.add_child(card_inst)
-		$player_deck.move_child(card_inst, prev_pos)
-		card_inst.add_to_group("player_card")
+	
+	deck_locker.hide()
 
+# BOT USE CARD
 func bot_use_card(card_name):
-	var card_prev = $enemy_deck.get_node(card_name)
+	var card_prev = enemy_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
 	var card_prev_pos = card_prev.rect_global_position
-	$deck_locker.show()
+	deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.card_back.hide()
@@ -442,6 +482,16 @@ func bot_use_card(card_name):
 	card_prev.queue_free()
 	card_new.set_modulate(Color(1,1,1,1))
 	
+	if enemy_deck.get_child_count() <= cfg.cards_in_hand:
+		var card_next = load("res://scenes/card.tscn")
+		var card_inst = card_next.instance()
+		card_inst.add_to_group("enemy_card")
+		enemy_deck.add_child(card_inst)
+		enemy_deck.move_child(card_inst, prev_pos)
+		card_inst.card_back.show()
+		card_inst.usable = false
+		card_inst.discardable = false
+	
 	if enemy_play_again == true: 
 		turn = 1
 		enemy_play_again = false
@@ -451,23 +501,15 @@ func bot_use_card(card_name):
 		yield(self, "graveyard_anim_ended")
 		turn = 0
 	AI_ready = true
-	$deck_locker.hide()
-	if $enemy_deck.get_child_count() <= cfg.cards_in_hand:
-		var card_next = load("res://scenes/card.tscn")
-		var card_inst = card_next.instance()
-		card_inst.add_to_group("enemy_card")
-		$enemy_deck.add_child(card_inst)
-		$enemy_deck.move_child(card_inst, prev_pos)
-		card_inst.card_back.show()
-		card_inst.usable = false
-		card_inst.discardable = false
+	deck_locker.hide()
 
+# BOT DISCARD CARD
 func bot_remove_card(card_name):
-	var card_prev = $enemy_deck.get_node(card_name)
+	var card_prev = enemy_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
 	var card_prev_pos = card_prev.rect_global_position
-	$deck_locker.show()
+	deck_locker.show()
 	card_prev.usable = false
 	card_prev.used = true
 	card_prev.card_back.hide()
@@ -502,19 +544,19 @@ func bot_remove_card(card_name):
 	elif enemy_play_again == true:
 		turn = 1
 		player_play_again = false
-		$deck_locker.hide()
+		deck_locker.hide()
 	else:
 		add_resources(turn)
-		$deck_locker.hide()
+		deck_locker.hide()
 		clear_graveyard()
 		yield(self, "graveyard_anim_ended")
 		AI_ready = true
 		turn = 0
-	if $enemy_deck.get_child_count() <= cfg.cards_in_hand:
+	if enemy_deck.get_child_count() <= cfg.cards_in_hand:
 		var card_next = load("res://scenes/card.tscn")
 		var card_inst = card_next.instance()
-		$enemy_deck.add_child(card_inst)
-		$enemy_deck.move_child(card_inst, prev_pos)
+		enemy_deck.add_child(card_inst)
+		enemy_deck.move_child(card_inst, prev_pos)
 		card_inst.add_to_group("enemy_card")
 		card_inst.card_back.show()
 

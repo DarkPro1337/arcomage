@@ -8,8 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "Card",
+"language": "GDScript",
+"path": "res://scripts/card.gd"
+}, {
+"base": "Control",
+"class": "Table",
+"language": "GDScript",
+"path": "res://scripts/table.gd"
+} ]
 _global_script_class_icons={
+"Card": "",
+"Table": ""
 }
 
 [application]
@@ -57,7 +69,7 @@ ui_rmb={
 }
 ui_reset={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -98,6 +110,8 @@ quality/shading/force_lambert_over_burley.mobile=false
 quality/shading/force_blinn_over_ggx.mobile=false
 quality/depth_prepass/enable=false
 quality/filters/anisotropic_filter_level=1
+quality/spatial_partitioning/use_bvh=false
+quality/lightmapping/use_bicubic_sampling=false
 quality/reflections/atlas_size=0
 quality/reflections/atlas_subdiv=0
 quality/depth/hdr=false

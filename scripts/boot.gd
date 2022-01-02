@@ -8,7 +8,7 @@ func _init():
 # Print version and buld and decide where we want player to start...
 func _ready():
 	print(global.time() + "Arcoamge v." + ProjectSettings.get_setting("application/config/version") + " loaded!")
-	print("Build number: " + str(global.build))
+	print(global.time() + "Build number: " + str(global.build))
 	print(global.time() + "Boot loaded.")
 	if cfg.intro_skip == false:
 		get_tree().change_scene("res://scenes/intro.tscn")

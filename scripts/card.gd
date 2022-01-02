@@ -1,3 +1,4 @@
+class_name Card
 extends Control
 
 onready var selector = get_node("selector")
@@ -19,6 +20,7 @@ var discardable = true
 var usable = true
 var bot_usable = true
 var used = false
+var ui_card_uppercase_text = true
 
 func _ready():
 	rng.randomize() # RANDOMIZE THE SEED
@@ -28,14 +30,19 @@ func _ready():
 	# CARDS DB LOCALE HANDLE
 	if TranslationServer.get_locale() == "en":
 		data_read.open("res://db/base.cdb", File.READ)
+		ui_card_uppercase_text = true
 	elif TranslationServer.get_locale() == "ru":
 		data_read.open("res://db/base_ru.cdb", File.READ)
+		ui_card_uppercase_text = false
 	elif TranslationServer.get_locale() == "uk":
 		data_read.open("res://db/base_uk.cdb", File.READ)
+		ui_card_uppercase_text = false
 	elif TranslationServer.get_locale() == "pl":
 		data_read.open("res://db/base_pl.cdb", File.READ)
+		ui_card_uppercase_text = false
 	else:
 		data_read.open("res://db/base.cdb", File.READ)
+		ui_card_uppercase_text = true
 	
 	var data_cdb = parse_json(data_read.get_as_text())
 	data_read.close()
@@ -63,6 +70,7 @@ func _ready():
 	$art.texture = load(card_art)
 	$description.text = card_description
 	$cost.text = str(card_cost)
+	$name.uppercase = ui_card_uppercase_text
 	
 	set_name(card_id)
 	

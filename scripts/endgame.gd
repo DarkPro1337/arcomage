@@ -5,6 +5,9 @@ onready var winned_by_what = $by_what
 onready var playtime = $time
 onready var anim = $anim
 
+func _ready():
+	self.set_as_toplevel(true)
+
 func set_winner(nickname, by_what, time):
 	show()
 	winner_nickname.text = nickname

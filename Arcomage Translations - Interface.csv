@@ -25,7 +25,7 @@ MUSIC,Music:,Музыка:,Музика:,Muzyka:,Musik:
 SOUNDS,Sounds:,Звуки:,Звуки:,Dźwięk:,Lyd:
 MUTE_SOUND,Mute Sound,Заглушить звук,Заглушити звук,Zagłuszyć dźwięk,Lydløs
 SINGLEPLAYER,Single Player,Одиночная игра,Одиночна гра,Gra pojedyncza,Single Player
-MULTIPLAYER,Multi Player,Сетевая игра,Багатокористувацька,Multiplayer,Multi Plater
+MULTIPLAYER,Multi Player,Сетевая игра,Багатокористувацька,Multiplayer,Multi Player
 SINGLE_CLICK_MODE,Single Click Mode,Одиночный клик,Режим одиночного клацання,Tryb Pojedynczego Kliknięcia,Enkelt Klik Instilling
 TOWER_LEVELS,Tower Levels:,Высота башни,Висота вежі:,Wysokość wieży:,Tårn Niveau:
 WALL_LEVELS,Wall Levels:,Высота стены,Висота стіни:,Wysokość ściany:,Mur Niveau:
@@ -85,6 +85,9 @@ WORK_IN_PROGRESS,Work in progress...,Работа в процессе...,,,Under
 SETTINGS_WARNING,Some settings may not be avalible or not working correctly for now.,Некоторые настройки сейчас могут быть недоступны или работать некорректно.,,,Nogle indstillinger er muligvis ikke tilgængelig eller virker ikke ordenligt lige nu.
 TRANSLATION_MAY_CONTAIN_ERRORS,Translation may contain errors.,Перевод может содержать ошибки.,Переклад може містити помилки.,Tłumaczenie może zawierać błędy.,Oversættelse kan indeholde fejl.
 DISCARDED,DISCARDED,СБРОШЕНА,,,Kasseret
-THANKS_FOR_TRANSLATION,Thanks for translation:,Спасибо за перевод:,,,
-PLAYER_SETTINGS,Player Settings,Настройки игрока,,,
-NICKNAME,Nickname:,Никнейм:,,,
+THANKS_FOR_TRANSLATION,Thanks for translation:,Спасибо за перевод:,,,Tak for oversættelsen:
+PLAYER_SETTINGS,Player Settings,Настройки игрока,,,Spiller Instillinger:
+NICKNAME,Nickname:,Никнейм:,,,Kaldenavn:
+GAME_IS_PAUSED,Game is paused,Игра на паузе,,,
+RESUME,Resume,Продолжить,,,
+STATS,Stats,Статистика,,,

@@ -75,6 +75,7 @@ __meta__ = {
 }
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -698,9 +699,8 @@ margin_left = 101.0
 margin_right = 326.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 225, 0 )
-disabled = true
 text = "AI_AUTO"
-items = [ "AI_AUTO", null, false, 0, null, "AI_ATTACK", null, false, 1, null, "AI_DEFENCE", null, false, 2, null, "AI_RANDOM", null, false, 3, null ]
+items = [ "AI_AUTO", null, false, 0, null, "AI_ATTACK", null, true, 1, null, "AI_DEFENCE", null, true, 2, null, "AI_RANDOM", null, false, 3, null ]
 selected = 0
 
 [node name="Victory_Conditions" type="CenterContainer" parent="tab"]
@@ -843,7 +843,6 @@ align = 1
 autowrap = true
 
 [node name="Player_Settings" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1007,6 +1006,7 @@ __meta__ = {
 [connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level" to="." method="_on_tower_levels_value_changed"]
 [connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level" to="." method="_on_wall_levels_value_changed"]
 [connection signal="value_changed" from="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level" to="." method="_on_cards_in_hand_value_changed"]
+[connection signal="item_selected" from="tab/Play_Conditions/main/cardsnum_and_ai/AI/mode" to="." method="_on_AI_mode_changed"]
 [connection signal="item_selected" from="tab/Language_Settings/main/language/lang_option" to="." method="_on_lang_option_item_selected"]
 [connection signal="text_changed" from="tab/Player_Settings/main/nickname/edit" to="." method="_on_nickname_text_changed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
