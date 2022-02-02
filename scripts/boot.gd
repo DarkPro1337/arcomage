@@ -10,6 +10,7 @@ func _ready():
 	print(global.time() + "Arcoamge v." + ProjectSettings.get_setting("application/config/version") + " loaded!")
 	print(global.time() + "Build number: " + str(global.build))
 	print(global.time() + "Boot loaded.")
+	print(global.time() + "IP: " + Network.ip_address)
 	if cfg.intro_skip == false:
 		get_tree().change_scene("res://scenes/intro.tscn")
 		print(global.time() + "Loading to the Intro...")

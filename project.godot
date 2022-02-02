@@ -44,6 +44,7 @@ config/version="0.3-alpha"
 global="*res://scripts/global.gd"
 cfg="*res://scripts/config.gd"
 settings="*res://scenes/settings.tscn"
+Network="*res://scripts/network.gd"
 AudioStreamManager="*res://scripts/audio_manager.gd"
 
 [display]

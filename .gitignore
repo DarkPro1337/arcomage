@@ -16,3 +16,4 @@ mono_crash.*.json
 .directory
 *~
 *.md5
+build.tres

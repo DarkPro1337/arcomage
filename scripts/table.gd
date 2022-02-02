@@ -261,6 +261,7 @@ func _physics_process(delta):
 
 # PLAYER USE CARD
 func use_card(card_name):
+	# CARD INIT
 	var card_prev = player_deck.get_node(card_name)
 	var table = get_node(".")
 	var prev_pos = card_prev.get_position_in_parent()
