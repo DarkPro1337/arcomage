@@ -9,6 +9,7 @@ onready var bg = $bg
 # WINDOW SETTINGS
 onready var window_settings = $tab/Graphics
 onready var window_settings_button = $buttons_container/buttons_grid/window_settings
+onready var fullscreen_block = $tab/Graphics/graphics/fullscreen
 onready var fullscreen_button = $tab/Graphics/graphics/fullscreen/fullscreen_button
 onready var borderless_button = $tab/Graphics/graphics/borderless/borderless_button
 onready var window_width_edit = $tab/Graphics/graphics/window_res/width
@@ -344,6 +345,10 @@ func _on_fullscreen_button_toggled(button_pressed):
 
 func _on_borderless_button_toggled(button_pressed):
 	OS.window_borderless = button_pressed
+	if button_pressed == true and fullscreen_button.pressed == true:
+		fullscreen_block.hide()
+	else:
+		fullscreen_block.show()
 
 func _on_vsync_button_toggled(button_pressed):
 	OS.vsync_enabled = button_pressed
