@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/RobotoCondensed-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://images/arcomage_logo.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/settings.tscn" type="PackedScene" id=7]
 [ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://scenes/info.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/network_setup.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -200,7 +201,7 @@ margin_top = 64.0
 margin_right = 384.0
 margin_bottom = 112.0
 rect_min_size = Vector2( 200, 48 )
-hint_tooltip = "START_GAME_TOOLTIP"
+hint_tooltip = "MULTIPLAYER_GAME_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
@@ -282,6 +283,9 @@ visible = false
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 
+[node name="network_setup" parent="." instance=ExtResource( 10 )]
+visible = false
+
 [node name="startupAnim" type="AnimationPlayer" parent="."]
 autoplay = "start"
 anims/start = SubResource( 2 )
@@ -319,6 +323,7 @@ stream = ExtResource( 6 )
 bus = "Music"
 
 [connection signal="pressed" from="menu_grid/new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="menu_grid/multiplayer_game" to="." method="_on_multiplayer_game_pressed"]
 [connection signal="pressed" from="menu_grid/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="menu_grid/scores" to="." method="_on_scores_pressed"]
 [connection signal="pressed" from="menu_grid/credits" to="." method="_on_credits_pressed"]

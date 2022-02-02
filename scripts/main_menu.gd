@@ -1,6 +1,7 @@
 extends Control
 
 onready var settings = $settings
+onready var network_setup = $network_setup
 onready var startup = $startupAnim
 onready var anim = $menuAnim
 onready var info = $info
@@ -18,6 +19,9 @@ func _on_new_game_pressed():
 	anim.play("fade_out")
 	yield(anim, "animation_finished")
 	get_tree().change_scene("res://scenes/table.tscn")
+
+func _on_multiplayer_game_pressed():
+	network_setup.show()
 
 func _on_settings_pressed():
 	settings.show()

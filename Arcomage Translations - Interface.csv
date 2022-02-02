@@ -88,6 +88,13 @@ DISCARDED,DISCARDED,СБРОШЕНА,,,Kasseret
 THANKS_FOR_TRANSLATION,Thanks for translation:,Спасибо за перевод:,,,Tak for oversættelsen:
 PLAYER_SETTINGS,Player Settings,Настройки игрока,,,Spiller Instillinger:
 NICKNAME,Nickname:,Никнейм:,,,Kaldenavn:
-GAME_IS_PAUSED,Game is paused,Игра на паузе,,,
-RESUME,Resume,Продолжить,,,
-STATS,Stats,Статистика,,,
+GAME_IS_PAUSED,Game is paused,Игра на паузе,,,Spillet er på pause
+RESUME,Resume,Продолжить,,,Fortsæt
+STATS,Stats,Статистика,,,Statistikker
+MULTIPLAYER_GAME,Multiplayer Game,Мультиплеер,,,
+CREATE_SERVER,Create Server,Создать сервер,,,
+JOIN_SERVER,Join Server,Присоединиться,,,
+ENTER_IP_ADDRESS,Enter IP Address,Введите IP адрес сервера,,,
+IP_ADDRESS_NOT_FOUND,IP Address not found!,IP адрес не найден!,,,
+CANCEL,Cancel,Отмена,,,
+MULTIPLAYER_GAME_TOOLTIP,Opens multiplayer game creation and connection screen.,Открывает экран создания и подключения многопользовательской игры.,,,
