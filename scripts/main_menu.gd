@@ -5,7 +5,7 @@ onready var network_setup = $network_setup
 onready var startup = $startupAnim
 onready var anim = $menuAnim
 onready var info = $info
-onready var version = $ver
+onready var version = $logo/ver
 onready var build_number = $build
 
 func _ready():

@@ -4,6 +4,11 @@ var table
 var settings
 var build
 
+var player_info = {
+	name = "Player",
+	net_id = 1
+}
+
 func _ready():
 	OS.set_low_processor_usage_mode(true)
 	build = load_build_number()

@@ -116,13 +116,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="logo" type="TextureRect" parent="."]
+[node name="logo" type="Control" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -296.0
-margin_top = 40.0
+margin_top = -228.0
 margin_right = 296.0
-margin_bottom = 160.0
+margin_bottom = -108.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -296.0
+margin_top = -60.0
+margin_right = 296.0
+margin_bottom = 60.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
@@ -130,13 +146,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ver" type="Label" parent="."]
+[node name="ver" type="Label" parent="logo"]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = 208.0
-margin_top = 128.0
-margin_right = 308.0
-margin_bottom = 152.0
+anchor_bottom = 0.5
+margin_left = 203.0
+margin_top = 25.0
+margin_right = 303.0
+margin_bottom = 49.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.376471 )
 custom_constants/shadow_as_outline = 1
@@ -167,13 +185,13 @@ __meta__ = {
 
 [node name="menu_grid" type="VBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -192.0
-margin_top = -381.0
+margin_top = -108.0
 margin_right = 192.0
-margin_bottom = -25.0
+margin_bottom = 248.0
 theme = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true,
