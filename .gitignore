@@ -18,3 +18,4 @@ mono_crash.*.json
 *.md5
 build.tres
 .idea
+.vs
