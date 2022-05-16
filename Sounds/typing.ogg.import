@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/typing.ogg-b86daf497ca2cdacd499dadc402633f8.oggstr"
+
+[deps]
+
+source_file="res://Sounds/typing.ogg"
+dest_files=[ "res://.import/typing.ogg-b86daf497ca2cdacd499dadc402633f8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

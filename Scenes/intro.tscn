@@ -1,0 +1,242 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Images/Intro/godot_logo_large.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Intro.cs" type="Script" id=3]
+[ext_resource path="res://Images/Intro/darkpro1337_avatar.png" type="Texture" id=4]
+[ext_resource path="res://Images/Intro/nwc.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 7.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("godot_logo:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0, 0.2, 0.8, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 2, 2, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 294, 427.9 ), Vector2( 294, 404.578 ), Vector2( 294, 404.578 ), Vector2( 294, 218 ), Vector2( 294, 218 ), Vector2( 294, 11.9004 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("godot_logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dev_logo:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 3.1, 4.3, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 2, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 294, 355 ), Vector2( 294, 355 ), Vector2( 294, 203 ), Vector2( 294, 203 ), Vector2( 294, 35 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("dev_logo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5, 3.1, 4.3, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("nwc_logo:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.9, 5.5, 6.8, 7.4 ),
+"transitions": PoolRealArray( 1, 1, 2, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 232.5, 426 ), Vector2( 232.5, 426 ), Vector2( 232.5, 218 ), Vector2( 232.5, 218 ), Vector2( 232.5, 10 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("nwc_logo:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4.9, 5.5, 6.8, 7.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.529739
+margin_bottom = 0.529724
+color = Color( 0, 0, 0, 1 )
+
+[node name="godot_logo" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -186.0
+margin_top = 134.578
+margin_right = 186.0
+margin_bottom = 238.578
+rect_pivot_offset = Vector2( 186, 52 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="madeon" type="Label" parent="godot_logo"]
+self_modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 62.5
+margin_top = -52.5
+margin_right = 145.5
+margin_bottom = -23.5
+rect_pivot_offset = Vector2( -64.5824, 48.9445 )
+custom_fonts/font = SubResource( 1 )
+text = "made on"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dev_logo" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -186.0
+margin_top = 85.0
+margin_right = 186.0
+margin_bottom = 218.999
+rect_pivot_offset = Vector2( 182.791, 67.9054 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="darkpro1337" type="Label" parent="dev_logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -73.0
+margin_top = 71.5
+margin_right = 73.0
+margin_bottom = 104.5
+rect_pivot_offset = Vector2( 69.7908, -11.1305 )
+custom_fonts/font = SubResource( 2 )
+text = "DarkPro1337"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="madeby" type="Label" parent="dev_logo"]
+self_modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.5
+margin_top = -100.5
+margin_right = 41.5
+margin_bottom = -71.5
+rect_pivot_offset = Vector2( 42.0663, 40.0536 )
+custom_fonts/font = SubResource( 1 )
+text = "made by"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nwc_logo" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -247.5
+margin_top = 156.0
+margin_right = 247.5
+margin_bottom = 260.0
+rect_pivot_offset = Vector2( 186, 52 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="in honor" type="Label" parent="nwc_logo"]
+self_modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 94.5
+margin_top = -52.0
+margin_right = 223.5
+margin_bottom = -23.0
+rect_pivot_offset = Vector2( -96.6838, 53.3769 )
+custom_fonts/font = SubResource( 1 )
+text = "in honor of"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "init"
+anims/init = SubResource( 3 )
+
+[connection signal="animation_finished" from="anim" to="." method="OnAnimPlayerAnimationFinished"]

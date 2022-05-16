@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/launch.ogg-03912a30504496ed1c7eb482415fab91.oggstr"
+
+[deps]
+
+source_file="res://Sounds/launch.ogg"
+dest_files=[ "res://.import/launch.ogg-03912a30504496ed1c7eb482415fab91.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

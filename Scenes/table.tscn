@@ -1,0 +1,1426 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Images/Layout-edit_dark.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/table.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Images/table_gradient_dark.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Misc/gems.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Misc/recruits.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/player_tower.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Sprites/Misc/bricks.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/tower_top_player.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/enemy_tower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sprites/tower_top_enemy.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/player_wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/enemy_wall.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Sprites/card_back.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/endgame.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/ingame_menu.tscn" type="PackedScene" id=18]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+shadow_size = 3
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.482353, 0.65098, 0.482353, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.341176, 0.462745, 0.341176, 1 )
+border_blend = true
+shadow_size = 3
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 27
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.482353, 0.65098, 0.807843, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.376471, 0.505882, 0.627451, 1 )
+border_blend = true
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.807843, 0.380392, 0.388235, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.27451, 0.278431, 1 )
+border_blend = true
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.482353, 0.65098, 0.482353, 0.843137 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.482353, 0.65098, 0.807843, 0.843137 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.807843, 0.380392, 0.388235, 0.843137 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+shadow_color = Color( 0, 0, 0, 0.603922 )
+shadow_size = 3
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
+outline_size = 1
+outline_color = Color( 0.109804, 0.109804, 0.109804, 0.45098 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="table" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="graveyard" type="GridContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.5 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -349.0
+margin_top = 17.0
+margin_right = 349.0
+margin_bottom = 197.0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_back" type="TextureRect" parent="graveyard"]
+margin_right = 135.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 135, 180 )
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_panel" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 48.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_name" type="Label" parent="player_panel"]
+margin_left = 8.0
+margin_right = 96.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "player_name"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 48.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_name" type="Label" parent="enemy_panel"]
+margin_left = 8.0
+margin_right = 96.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "enemy_name"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_tower" parent="." instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 193.555
+margin_top = -234.0
+margin_right = 238.555
+margin_bottom = -184.0
+rect_clip_content = false
+
+[node name="tower_head" type="TextureRect" parent="player_tower"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -0.999985
+margin_right = 11.0
+margin_bottom = 93.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_wall" parent="." instance=ExtResource( 14 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 265.0
+margin_top = -234.0
+margin_right = 289.0
+margin_bottom = -184.0
+
+[node name="enemy_tower" parent="." instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -149.0
+margin_top = -234.0
+margin_right = -104.0
+margin_bottom = -184.0
+rect_clip_content = false
+
+[node name="tower_head2" type="TextureRect" parent="enemy_tower"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -1.00002
+margin_right = 11.0
+margin_bottom = 93.0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_wall" parent="." instance=ExtResource( 15 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -234.0
+margin_right = -216.0
+margin_bottom = -184.0
+
+[node name="player_tower_panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 145.0
+margin_top = -234.0
+margin_right = 200.0
+margin_bottom = -210.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="tower_hp" type="Label" parent="player_tower_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "50"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_wall_panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 225.0
+margin_top = -234.0
+margin_right = 281.0
+margin_bottom = -210.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="wall_hp" type="Label" parent="player_wall_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "50"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_tower_panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -234.0
+margin_right = -144.0
+margin_bottom = -210.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="tower_hp" type="Label" parent="enemy_tower_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "50"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_wall_panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -234.0
+margin_right = -224.0
+margin_bottom = -210.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="wall_hp" type="Label" parent="enemy_wall_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "50"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_recruits_panel" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 216.0
+margin_right = 104.0
+margin_bottom = 288.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_recruits_panel"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_recruits_panel"]
+margin_left = 33.0
+margin_top = 54.0
+margin_right = 85.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "recruits"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_recruits_panel"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_recruits_panel"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_gems_panel" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 136.0
+margin_right = 104.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_gems_panel"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_gems_panel"]
+margin_left = 33.0
+margin_top = 54.0
+margin_right = 84.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "gems"
+align = 2
+valign = 1
+
+[node name="per_turn" type="Label" parent="player_gems_panel"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "3"
+valign = 2
+autowrap = true
+clip_text = true
+
+[node name="total" type="Label" parent="player_gems_panel"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "10"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_bricks_panel" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 56.0
+margin_right = 104.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_bricks_panel"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0239999
+margin_right = -0.00800323
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_bricks_panel"]
+margin_left = 33.0
+margin_top = 54.0
+margin_right = 84.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "bricks"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_bricks_panel"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_bricks_panel"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_recruits_panel_alt" type="Panel" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 216.0
+margin_right = 104.0
+margin_bottom = 288.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_recruits_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_recruits_panel_alt"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 87.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 9 )
+text = "RECRUITS"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_recruits_panel_alt"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_recruits_panel_alt"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_gems_panel_alt" type="Panel" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 136.0
+margin_right = 104.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_gems_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_gems_panel_alt"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 87.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 10 )
+text = "GEMS"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_gems_panel_alt"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "3"
+valign = 2
+autowrap = true
+clip_text = true
+
+[node name="total" type="Label" parent="player_gems_panel_alt"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "10"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_bricks_panel_alt" type="Panel" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 56.0
+margin_right = 104.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="player_bricks_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0239999
+margin_right = -0.00800323
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="player_bricks_panel_alt"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 87.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 11 )
+text = "BRICKS"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="player_bricks_panel_alt"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="player_bricks_panel_alt"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_recruits_panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 216.0
+margin_right = -16.0
+margin_bottom = 288.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="enemy_recruits_panel"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="enemy_recruits_panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -52.0
+margin_top = -18.0
+margin_right = -4.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "recruits"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="enemy_recruits_panel"]
+anchor_left = 0.068
+anchor_top = 0.333
+anchor_right = 0.636
+anchor_bottom = 0.792
+margin_left = 0.0159998
+margin_top = 0.0240002
+margin_right = 0.0319977
+margin_bottom = -0.0240021
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="enemy_recruits_panel"]
+anchor_left = 0.057
+anchor_top = 0.75
+anchor_right = 0.409
+anchor_bottom = 1.014
+margin_left = -0.0160003
+margin_top = -3.8147e-06
+margin_right = 0.00799942
+margin_bottom = -1.008
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_gems_panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 136.0
+margin_right = -16.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="enemy_gems_panel"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="enemy_gems_panel"]
+anchor_left = 0.409
+anchor_top = 0.75
+anchor_right = 0.966
+anchor_bottom = 1.0
+margin_left = 0.00799942
+margin_right = -1.008
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "gems"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="enemy_gems_panel"]
+anchor_left = 0.068
+anchor_top = 0.333
+anchor_right = 0.636
+anchor_bottom = 0.792
+margin_left = 0.0159998
+margin_top = 0.0240002
+margin_right = 0.0319977
+margin_bottom = -0.0240021
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "3"
+valign = 2
+autowrap = true
+clip_text = true
+
+[node name="total" type="Label" parent="enemy_gems_panel"]
+anchor_left = 0.057
+anchor_top = 0.75
+anchor_right = 0.409
+anchor_bottom = 1.014
+margin_left = -0.0160003
+margin_top = -3.8147e-06
+margin_right = 0.00799942
+margin_bottom = -0.00800323
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "10"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_bricks_panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 56.0
+margin_right = -16.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="enemy_bricks_panel"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="enemy_bricks_panel"]
+margin_left = 36.0
+margin_top = 54.0
+margin_right = 84.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "bricks"
+align = 2
+valign = 1
+
+[node name="per_turn" type="Label" parent="enemy_bricks_panel"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+
+[node name="total" type="Label" parent="enemy_bricks_panel"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_recruits_panel_alt" type="Panel" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 216.0
+margin_right = -16.0
+margin_bottom = 288.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="enemy_recruits_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="enemy_recruits_panel_alt"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 87.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 9 )
+text = "RECRUITS"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="enemy_recruits_panel_alt"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="enemy_recruits_panel_alt"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_gems_panel_alt" type="Panel" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 136.0
+margin_right = -16.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="enemy_gems_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0240002
+margin_right = -0.00800323
+margin_bottom = -3.8147e-06
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="enemy_gems_panel_alt"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 87.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 10 )
+text = "GEMS"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="enemy_gems_panel_alt"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "3"
+valign = 2
+autowrap = true
+clip_text = true
+
+[node name="total" type="Label" parent="enemy_gems_panel_alt"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "10"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_bricks_panel_alt" type="Panel" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 56.0
+margin_right = -16.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="enemy_bricks_panel_alt"]
+anchor_left = 0.034
+anchor_top = 0.042
+anchor_right = 0.966
+anchor_bottom = 0.75
+margin_left = 0.0079999
+margin_top = -0.0239999
+margin_right = -0.00800323
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="enemy_bricks_panel_alt"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 87.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 47, 0 )
+rect_clip_content = true
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 11 )
+text = "BRICKS"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="per_turn" type="Label" parent="enemy_bricks_panel_alt"]
+margin_left = 6.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "5"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="enemy_bricks_panel_alt"]
+margin_left = 5.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "20"
+valign = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="particles" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.5
+margin_bottom = -0.5
+rect_clip_content = true
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="deck_background" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -210.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="Panel" parent="deck_background"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="draw_card_label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -134.0
+margin_top = -262.0
+margin_right = 134.0
+margin_bottom = -224.0
+custom_colors/font_color = Color( 0.85098, 0.156863, 0.168627, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.105882 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 13 )
+text = "DISCARD A CARD!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_deck" type="HBoxContainer" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.5
+margin_top = -192.0
+margin_right = 4.50006
+rect_clip_content = true
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_deck" type="HBoxContainer" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.5
+margin_top = -192.0
+margin_right = 4.50006
+margin_bottom = 0.000305176
+rect_clip_content = true
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deck_locker" type="ColorRect" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.5
+margin_top = -192.0
+margin_right = 4.5
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deck_anim" type="Tween" parent="."]
+process_priority = 1
+
+[node name="card_anim" type="Tween" parent="."]
+process_priority = 2
+
+[node name="graveyard_anim" type="Tween" parent="."]
+process_priority = 1
+
+[node name="newcard_anim" type="Tween" parent="."]
+process_priority = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade"
+anims/fade = SubResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause_bg" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.75 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+
+[node name="Time_Elapsed" type="Timer" parent="."]
+autostart = true
+
+[node name="endgame" parent="." instance=ExtResource( 17 )]
+visible = false
+
+[node name="ingame_menu" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[connection signal="tween_all_completed" from="graveyard_anim" to="." method="_on_graveyard_anim_tween_all_completed"]
+[connection signal="timeout" from="Time_Elapsed" to="." method="_on_Time_Elapsed_timeout"]
