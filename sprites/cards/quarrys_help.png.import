@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quarrys_help.png-17bb61eac4dfe2f76ae39ccfd34fb136.stex"
+path="res://.import/quarrys_help.png-a00642c1f10fa2c1e2ad0f8e7c1beab7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/quarrys_help.png"
-dest_files=[ "res://.import/quarrys_help.png-17bb61eac4dfe2f76ae39ccfd34fb136.stex" ]
+source_file="res://Sprites/Cards/quarrys_help.png"
+dest_files=[ "res://.import/quarrys_help.png-a00642c1f10fa2c1e2ad0f8e7c1beab7.stex" ]
 
 [params]
 

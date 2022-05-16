@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mit_logo.png-4f60c14df8a2b1ff2d9135ac25b3a493.stex"
+path="res://.import/mit_logo.png-4513a6f04d7c3ccc0163e182589065ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mit_logo.png"
-dest_files=[ "res://.import/mit_logo.png-4f60c14df8a2b1ff2d9135ac25b3a493.stex" ]
+source_file="res://Images/mit_logo.png"
+dest_files=[ "res://.import/mit_logo.png-4513a6f04d7c3ccc0163e182589065ce.stex" ]
 
 [params]
 

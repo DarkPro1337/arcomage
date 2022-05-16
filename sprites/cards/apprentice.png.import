@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/apprentice.png-8e29a204ce111ecddcb9d54f038b96c2.stex"
+path="res://.import/apprentice.png-608ee427764df5c178dc76cd06539577.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/apprentice.png"
-dest_files=[ "res://.import/apprentice.png-8e29a204ce111ecddcb9d54f038b96c2.stex" ]
+source_file="res://Sprites/Cards/apprentice.png"
+dest_files=[ "res://.import/apprentice.png-608ee427764df5c178dc76cd06539577.stex" ]
 
 [params]
 

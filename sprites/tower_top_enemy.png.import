@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tower_top_enemy.png-7dbdef2bb699f0c77000c1d55a658215.stex"
+path="res://.import/tower_top_enemy.png-ce7f5f47fc596de773fdf65128c3adcb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tower_top_enemy.png"
-dest_files=[ "res://.import/tower_top_enemy.png-7dbdef2bb699f0c77000c1d55a658215.stex" ]
+source_file="res://Sprites/tower_top_enemy.png"
+dest_files=[ "res://.import/tower_top_enemy.png-ce7f5f47fc596de773fdf65128c3adcb.stex" ]
 
 [params]
 

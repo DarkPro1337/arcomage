@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pearl_of_wisdom.png-06fdbb81f7685028688237123f44abc6.stex"
+path="res://.import/pearl_of_wisdom.png-80438406a96772643785062c47d4a6f6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/pearl_of_wisdom.png"
-dest_files=[ "res://.import/pearl_of_wisdom.png-06fdbb81f7685028688237123f44abc6.stex" ]
+source_file="res://Sprites/Cards/pearl_of_wisdom.png"
+dest_files=[ "res://.import/pearl_of_wisdom.png-80438406a96772643785062c47d4a6f6.stex" ]
 
 [params]
 

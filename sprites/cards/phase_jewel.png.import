@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/phase_jewel.png-6980218413d7d5f9677e6f63771ba71e.stex"
+path="res://.import/phase_jewel.png-4f240cb699de4014b48d41b4ab899006.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/phase_jewel.png"
-dest_files=[ "res://.import/phase_jewel.png-6980218413d7d5f9677e6f63771ba71e.stex" ]
+source_file="res://Sprites/Cards/phase_jewel.png"
+dest_files=[ "res://.import/phase_jewel.png-4f240cb699de4014b48d41b4ab899006.stex" ]
 
 [params]
 

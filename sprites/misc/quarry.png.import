@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quarry.png-68cdf019c35c8ec5f222ae89b68bf6d2.stex"
+path="res://.import/quarry.png-5209cfb47af14ef96216fe5f60015475.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/misc/quarry.png"
-dest_files=[ "res://.import/quarry.png-68cdf019c35c8ec5f222ae89b68bf6d2.stex" ]
+source_file="res://Sprites/Misc/quarry.png"
+dest_files=[ "res://.import/quarry.png-5209cfb47af14ef96216fe5f60015475.stex" ]
 
 [params]
 

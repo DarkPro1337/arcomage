@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/darkpro1337_avatar.png-fd9d6608b6ad6e04a61937e232c362f2.stex"
+path="res://.import/darkpro1337_avatar.png-d1b483e33457e2fb451c374a115287bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/intro/darkpro1337_avatar.png"
-dest_files=[ "res://.import/darkpro1337_avatar.png-fd9d6608b6ad6e04a61937e232c362f2.stex" ]
+source_file="res://Images/Intro/darkpro1337_avatar.png"
+dest_files=[ "res://.import/darkpro1337_avatar.png-d1b483e33457e2fb451c374a115287bf.stex" ]
 
 [params]
 

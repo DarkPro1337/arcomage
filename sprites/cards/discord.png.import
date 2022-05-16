@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/discord.png-c81d5f53b52e14d005f5b2e188af4bd2.stex"
+path="res://.import/discord.png-5d9dc8509cb036fa23a238feccdcfcef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/discord.png"
-dest_files=[ "res://.import/discord.png-c81d5f53b52e14d005f5b2e188af4bd2.stex" ]
+source_file="res://Sprites/Cards/discord.png"
+dest_files=[ "res://.import/discord.png-5d9dc8509cb036fa23a238feccdcfcef.stex" ]
 
 [params]
 

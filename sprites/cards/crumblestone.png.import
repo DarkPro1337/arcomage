@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crumblestone.png-feb9b3ec5d6e16a7725ff22d073cab8d.stex"
+path="res://.import/crumblestone.png-d7a1f9ad3224dc351c42f8255386ec9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/crumblestone.png"
-dest_files=[ "res://.import/crumblestone.png-feb9b3ec5d6e16a7725ff22d073cab8d.stex" ]
+source_file="res://Sprites/Cards/crumblestone.png"
+dest_files=[ "res://.import/crumblestone.png-d7a1f9ad3224dc351c42f8255386ec9f.stex" ]
 
 [params]
 

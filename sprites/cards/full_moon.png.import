@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/full_moon.png-bafbf119df2d62a2d7558f362fa96ec9.stex"
+path="res://.import/full_moon.png-53d7ae3c2cd04469de0f2534929484df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/full_moon.png"
-dest_files=[ "res://.import/full_moon.png-bafbf119df2d62a2d7558f362fa96ec9.stex" ]
+source_file="res://Sprites/Cards/full_moon.png"
+dest_files=[ "res://.import/full_moon.png-53d7ae3c2cd04469de0f2534929484df.stex" ]
 
 [params]
 

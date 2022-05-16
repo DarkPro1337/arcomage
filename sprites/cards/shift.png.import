@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shift.png-62de019cdbccf5bd6abcadfdeba81ae2.stex"
+path="res://.import/shift.png-83eee8f21c9e0178ecc95d634d02ac56.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/shift.png"
-dest_files=[ "res://.import/shift.png-62de019cdbccf5bd6abcadfdeba81ae2.stex" ]
+source_file="res://Sprites/Cards/shift.png"
+dest_files=[ "res://.import/shift.png-83eee8f21c9e0178ecc95d634d02ac56.stex" ]
 
 [params]
 

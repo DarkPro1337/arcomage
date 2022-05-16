@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://images/intro/godot_logo_large.png" type="Texture" id=2]
-[ext_resource path="res://scripts/intro.gd" type="Script" id=3]
-[ext_resource path="res://images/intro/darkpro1337_avatar.png" type="Texture" id=4]
-[ext_resource path="res://images/intro/nwc.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Images/Intro/godot_logo_large.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Intro.cs" type="Script" id=3]
+[ext_resource path="res://Images/Intro/darkpro1337_avatar.png" type="Texture" id=4]
+[ext_resource path="res://Images/Intro/nwc.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -97,9 +97,6 @@ tracks/5/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -115,9 +112,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -186.0
-margin_top = -258.1
+margin_top = 134.578
 margin_right = 186.0
-margin_bottom = -154.1
+margin_bottom = 238.578
 rect_pivot_offset = Vector2( 186, 52 )
 texture = ExtResource( 2 )
 expand = true
@@ -153,9 +150,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -186.0
-margin_top = -235.0
+margin_top = 85.0
 margin_right = 186.0
-margin_bottom = -101.001
+margin_bottom = 218.999
 rect_pivot_offset = Vector2( 182.791, 67.9054 )
 texture = ExtResource( 4 )
 expand = true
@@ -207,9 +204,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -247.5
-margin_top = -260.0
+margin_top = 156.0
 margin_right = 247.5
-margin_bottom = -156.0
+margin_bottom = 260.0
 rect_pivot_offset = Vector2( 186, 52 )
 texture = ExtResource( 5 )
 expand = true
@@ -242,4 +239,4 @@ __meta__ = {
 autoplay = "init"
 anims/init = SubResource( 3 )
 
-[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="animation_finished" from="anim" to="." method="OnAnimPlayerAnimationFinished"]

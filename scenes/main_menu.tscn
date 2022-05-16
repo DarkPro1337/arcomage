@@ -1,19 +1,19 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://fonts/RobotoCondensed-Regular.tres" type="DynamicFont" id=1]
-[ext_resource path="res://images/arcomage_logo.png" type="Texture" id=2]
-[ext_resource path="res://images/Layout-edit_dark.png" type="Texture" id=3]
-[ext_resource path="res://scripts/main_menu.gd" type="Script" id=4]
-[ext_resource path="res://themes/main_menu_theme.tres" type="Theme" id=5]
-[ext_resource path="res://sounds/title.ogg" type="AudioStream" id=6]
-[ext_resource path="res://scenes/settings.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://scenes/info.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/network_setup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Themes/main_menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Sounds/title.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/settings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/network_setup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/info.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/MainMenu.cs" type="Script" id=7]
+[ext_resource path="res://Images/Layout-edit_dark.png" type="Texture" id=8]
+[ext_resource path="res://Images/arcomage_logo.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.tres" type="DynamicFont" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
-font_data = ExtResource( 8 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=2]
 length = 2.0
@@ -99,7 +99,7 @@ tracks/0/keys = {
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -108,7 +108,7 @@ __meta__ = {
 [node name="background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 3 )
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 7
 __meta__ = {
@@ -139,7 +139,7 @@ margin_left = -296.0
 margin_top = -60.0
 margin_right = 296.0
 margin_bottom = 60.0
-texture = ExtResource( 2 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -192,10 +192,9 @@ margin_left = -192.0
 margin_top = -108.0
 margin_right = 192.0
 margin_bottom = 248.0
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
 [node name="new_game" type="Button" parent="menu_grid"]
@@ -207,8 +206,8 @@ hint_tooltip = "START_GAME_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "START_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -223,8 +222,8 @@ hint_tooltip = "MULTIPLAYER_GAME_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "MULTIPLAYER_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -239,8 +238,8 @@ hint_tooltip = "SETTINGS_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "SETTINGS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -255,8 +254,8 @@ hint_tooltip = "LEADERBOARD_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "LEADERBOARD"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,8 +270,8 @@ hint_tooltip = "CREDITS_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "CREDITS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -287,21 +286,21 @@ hint_tooltip = "EXIT_TOOLTIP"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "EXIT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="info" parent="." instance=ExtResource( 9 )]
+[node name="info" parent="." instance=ExtResource( 5 )]
 visible = false
 
-[node name="settings" parent="." instance=ExtResource( 7 )]
+[node name="settings" parent="." instance=ExtResource( 3 )]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="network_setup" parent="." instance=ExtResource( 10 )]
+[node name="network_setup" parent="." instance=ExtResource( 4 )]
 visible = false
 
 [node name="startupAnim" type="AnimationPlayer" parent="."]
@@ -337,12 +336,12 @@ __meta__ = {
 }
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 2 )
 bus = "Music"
 
-[connection signal="pressed" from="menu_grid/new_game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="menu_grid/multiplayer_game" to="." method="_on_multiplayer_game_pressed"]
-[connection signal="pressed" from="menu_grid/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="menu_grid/scores" to="." method="_on_scores_pressed"]
-[connection signal="pressed" from="menu_grid/credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="menu_grid/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="menu_grid/new_game" to="." method="OnNewGamePressed"]
+[connection signal="pressed" from="menu_grid/multiplayer_game" to="." method="OnMultiplayerGamePressed"]
+[connection signal="pressed" from="menu_grid/settings" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="menu_grid/scores" to="." method="OnScoresPressed"]
+[connection signal="pressed" from="menu_grid/credits" to="." method="OnCreditsPressed"]
+[connection signal="pressed" from="menu_grid/exit" to="." method="OnExitPressed"]

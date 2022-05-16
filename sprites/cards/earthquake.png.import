@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/earthquake.png-786cc033121dfd67fff40a0fc85e27b8.stex"
+path="res://.import/earthquake.png-fb3f9b159d6dc0ae084aa17e29ccd521.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/earthquake.png"
-dest_files=[ "res://.import/earthquake.png-786cc033121dfd67fff40a0fc85e27b8.stex" ]
+source_file="res://Sprites/Cards/earthquake.png"
+dest_files=[ "res://.import/earthquake.png-fb3f9b159d6dc0ae084aa17e29ccd521.stex" ]
 
 [params]
 

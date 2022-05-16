@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/table_gradient_dark.png-ff3cbbd239e3291fc4595735511dde0e.stex"
+path="res://.import/table_gradient_dark.png-3cbe75c2b6248474c197b21d8d402826.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/table_gradient_dark.png"
-dest_files=[ "res://.import/table_gradient_dark.png-ff3cbbd239e3291fc4595735511dde0e.stex" ]
+source_file="res://Images/table_gradient_dark.png"
+dest_files=[ "res://.import/table_gradient_dark.png-3cbe75c2b6248474c197b21d8d402826.stex" ]
 
 [params]
 

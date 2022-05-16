@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lava_jewel.png-33ceccde0e34848f7067c416a85c3fc2.stex"
+path="res://.import/lava_jewel.png-ae35ed1f18f8c32d7b0ecf1c36c12917.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/lava_jewel.png"
-dest_files=[ "res://.import/lava_jewel.png-33ceccde0e34848f7067c416a85c3fc2.stex" ]
+source_file="res://Sprites/Cards/lava_jewel.png"
+dest_files=[ "res://.import/lava_jewel.png-ae35ed1f18f8c32d7b0ecf1c36c12917.stex" ]
 
 [params]
 

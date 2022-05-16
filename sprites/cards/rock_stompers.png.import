@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rock_stompers.png-14ea68161c5da6695148d9c25d463ba0.stex"
+path="res://.import/rock_stompers.png-4313e51aec04a710dd4b9d8ef32e5c25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/rock_stompers.png"
-dest_files=[ "res://.import/rock_stompers.png-14ea68161c5da6695148d9c25d463ba0.stex" ]
+source_file="res://Sprites/Cards/rock_stompers.png"
+dest_files=[ "res://.import/rock_stompers.png-4313e51aec04a710dd4b9d8ef32e5c25.stex" ]
 
 [params]
 

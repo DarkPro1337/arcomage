@@ -7,7 +7,7 @@ var borderless = false
 var window_width = 960
 var window_height = 540
 var vsync = false
-var intro_skip = false
+var intro_skip = true
 
 # SOUND SETTINGS
 var master_volume = 0.4

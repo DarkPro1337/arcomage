@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elven_archers.png-a6851c520872ded39c475c585fb4420d.stex"
+path="res://.import/elven_archers.png-d6313f76e76d868327627907c5cae402.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/elven_archers.png"
-dest_files=[ "res://.import/elven_archers.png-a6851c520872ded39c475c585fb4420d.stex" ]
+source_file="res://Sprites/Cards/elven_archers.png"
+dest_files=[ "res://.import/elven_archers.png-d6313f76e76d868327627907c5cae402.stex" ]
 
 [params]
 

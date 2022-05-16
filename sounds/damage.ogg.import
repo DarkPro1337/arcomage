@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/damage.ogg-290acc5db9a4ffb5ab142d4897791cf7.oggstr"
+path="res://.import/damage.ogg-0845488dd35b4e9372bdcb85841a0063.oggstr"
 
 [deps]
 
-source_file="res://sounds/damage.ogg"
-dest_files=[ "res://.import/damage.ogg-290acc5db9a4ffb5ab142d4897791cf7.oggstr" ]
+source_file="res://Sounds/damage.ogg"
+dest_files=[ "res://.import/damage.ogg-0845488dd35b4e9372bdcb85841a0063.oggstr" ]
 
 [params]
 

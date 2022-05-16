@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Layout-edit_dark_blur.png-8efe9d20e74123b7b1319150bc499667.stex"
+path="res://.import/Layout-edit_dark_blur.png-f18b6040d8b56214b194af12615f255a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Layout-edit_dark_blur.png"
-dest_files=[ "res://.import/Layout-edit_dark_blur.png-8efe9d20e74123b7b1319150bc499667.stex" ]
+source_file="res://Images/Layout-edit_dark_blur.png"
+dest_files=[ "res://.import/Layout-edit_dark_blur.png-f18b6040d8b56214b194af12615f255a.stex" ]
 
 [params]
 

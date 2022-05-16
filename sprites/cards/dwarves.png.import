@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dwarves.png-249ec2d5a621e055d6987fd1efa577cd.stex"
+path="res://.import/dwarves.png-417f6b6772b65c511598480bc08e8414.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/dwarves.png"
-dest_files=[ "res://.import/dwarves.png-249ec2d5a621e055d6987fd1efa577cd.stex" ]
+source_file="res://Sprites/Cards/dwarves.png"
+dest_files=[ "res://.import/dwarves.png-417f6b6772b65c511598480bc08e8414.stex" ]
 
 [params]
 

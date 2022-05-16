@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pegasus_lancer.png-ad0174681638b23a5daecb7f3fe839ac.stex"
+path="res://.import/pegasus_lancer.png-7571de1872043cb092ddec20a4d5d340.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/pegasus_lancer.png"
-dest_files=[ "res://.import/pegasus_lancer.png-ad0174681638b23a5daecb7f3fe839ac.stex" ]
+source_file="res://Sprites/Cards/pegasus_lancer.png"
+dest_files=[ "res://.import/pegasus_lancer.png-7571de1872043cb092ddec20a4d5d340.stex" ]
 
 [params]
 

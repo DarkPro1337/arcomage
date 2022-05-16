@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gamejolt_logo.png-2d85b3db8d8757360930beb791a42f3c.stex"
+path="res://.import/gamejolt_logo.png-6ed1f3739c561d644563a944e31407ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/gamejolt_logo.png"
-dest_files=[ "res://.import/gamejolt_logo.png-2d85b3db8d8757360930beb791a42f3c.stex" ]
+source_file="res://Images/gamejolt_logo.png"
+dest_files=[ "res://.import/gamejolt_logo.png-6ed1f3739c561d644563a944e31407ca.stex" ]
 
 [params]
 

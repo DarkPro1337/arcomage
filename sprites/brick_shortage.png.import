@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/brick_shortage.png-8b54b66d871ba67bc2704107c51131b5.stex"
+path="res://.import/brick_shortage.png-de7d5762b0196031411df2d35f763bc2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/brick_shortage.png"
-dest_files=[ "res://.import/brick_shortage.png-8b54b66d871ba67bc2704107c51131b5.stex" ]
+source_file="res://Sprites/brick_shortage.png"
+dest_files=[ "res://.import/brick_shortage.png-de7d5762b0196031411df2d35f763bc2.stex" ]
 
 [params]
 

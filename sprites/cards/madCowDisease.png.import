@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/madCowDisease.png-a03fc5f6db4b1a5b4dcbd5e2392ff44f.stex"
+path="res://.import/madCowDisease.png-0e7c70d4785efabf1b4fde3fc516a355.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/madCowDisease.png"
-dest_files=[ "res://.import/madCowDisease.png-a03fc5f6db4b1a5b4dcbd5e2392ff44f.stex" ]
+source_file="res://Sprites/Cards/madCowDisease.png"
+dest_files=[ "res://.import/madCowDisease.png-0e7c70d4785efabf1b4fde3fc516a355.stex" ]
 
 [params]
 

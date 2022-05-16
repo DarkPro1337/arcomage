@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quartz.png-02e5def5db50754178b9c05e91218f7a.stex"
+path="res://.import/quartz.png-86f1d379de59250b656b74b377531027.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/quartz.png"
-dest_files=[ "res://.import/quartz.png-02e5def5db50754178b9c05e91218f7a.stex" ]
+source_file="res://Sprites/Cards/quartz.png"
+dest_files=[ "res://.import/quartz.png-86f1d379de59250b656b74b377531027.stex" ]
 
 [params]
 

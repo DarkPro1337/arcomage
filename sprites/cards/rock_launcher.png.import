@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rock_launcher.png-d23201a6418b5747a61751a1ca9c7d59.stex"
+path="res://.import/rock_launcher.png-82332f0f7ffda4e288e990462c51ba54.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/rock_launcher.png"
-dest_files=[ "res://.import/rock_launcher.png-d23201a6418b5747a61751a1ca9c7d59.stex" ]
+source_file="res://Sprites/Cards/rock_launcher.png"
+dest_files=[ "res://.import/rock_launcher.png-82332f0f7ffda4e288e990462c51ba54.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruby.png-de36044f0ee934ac77b68e893a244435.stex"
+path="res://.import/ruby.png-1cc25ca368baf5143417de8442fdb625.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/ruby.png"
-dest_files=[ "res://.import/ruby.png-de36044f0ee934ac77b68e893a244435.stex" ]
+source_file="res://Sprites/Cards/ruby.png"
+dest_files=[ "res://.import/ruby.png-1cc25ca368baf5143417de8442fdb625.stex" ]
 
 [params]
 

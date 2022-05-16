@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gnome.png-7c3bf1a4c52b6977e2c174ef17e5053a.stex"
+path="res://.import/gnome.png-0ff3f36ef96b75ce4dba9de50f3ac4b8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/gnome.png"
-dest_files=[ "res://.import/gnome.png-7c3bf1a4c52b6977e2c174ef17e5053a.stex" ]
+source_file="res://Sprites/Cards/gnome.png"
+dest_files=[ "res://.import/gnome.png-0ff3f36ef96b75ce4dba9de50f3ac4b8.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://themes/main_menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Themes/main_menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/loading_screen.gd" type="Script" id=2]
 
 [node name="loading_screen" type="Control"]

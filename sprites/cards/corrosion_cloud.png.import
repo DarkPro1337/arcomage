@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/corrosion_cloud.png-37f44e12df9d55382caae2f1fc225f98.stex"
+path="res://.import/corrosion_cloud.png-dd79a94cc891ca1b1f16ba70af62a415.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/corrosion_cloud.png"
-dest_files=[ "res://.import/corrosion_cloud.png-37f44e12df9d55382caae2f1fc225f98.stex" ]
+source_file="res://Sprites/Cards/corrosion_cloud.png"
+dest_files=[ "res://.import/corrosion_cloud.png-dd79a94cc891ca1b1f16ba70af62a415.stex" ]
 
 [params]
 

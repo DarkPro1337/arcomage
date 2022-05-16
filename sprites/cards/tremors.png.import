@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tremors.png-9a550ca07c8d4ded527e3f3d259c0980.stex"
+path="res://.import/tremors.png-97fc280e77b8285cb0360b35b51c94c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/tremors.png"
-dest_files=[ "res://.import/tremors.png-9a550ca07c8d4ded527e3f3d259c0980.stex" ]
+source_file="res://Sprites/Cards/tremors.png"
+dest_files=[ "res://.import/tremors.png-97fc280e77b8285cb0360b35b51c94c2.stex" ]
 
 [params]
 

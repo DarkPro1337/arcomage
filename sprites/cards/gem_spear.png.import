@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gem_spear.png-0ad347a262e01337dbb25f6d10b39c14.stex"
+path="res://.import/gem_spear.png-831eeeb3686e6456b422431668b8ef0c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/gem_spear.png"
-dest_files=[ "res://.import/gem_spear.png-0ad347a262e01337dbb25f6d10b39c14.stex" ]
+source_file="res://Sprites/Cards/gem_spear.png"
+dest_files=[ "res://.import/gem_spear.png-831eeeb3686e6456b422431668b8ef0c.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/heal.ogg-dddf900ecde3f20fac350badd130aa5c.oggstr"
+path="res://.import/heal.ogg-d55ef161d7fc8cc58c42292b22ed7c25.oggstr"
 
 [deps]
 
-source_file="res://sounds/heal.ogg"
-dest_files=[ "res://.import/heal.ogg-dddf900ecde3f20fac350badd130aa5c.oggstr" ]
+source_file="res://Sounds/heal.ogg"
+dest_files=[ "res://.import/heal.ogg-d55ef161d7fc8cc58c42292b22ed7c25.oggstr" ]
 
 [params]
 

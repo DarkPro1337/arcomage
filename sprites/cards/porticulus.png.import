@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/porticulus.png-db61d2c234a3628d4e20b5253a839390.stex"
+path="res://.import/porticulus.png-43a9a4ec5d7b1bdbf7fc4824ff98bd42.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/porticulus.png"
-dest_files=[ "res://.import/porticulus.png-db61d2c234a3628d4e20b5253a839390.stex" ]
+source_file="res://Sprites/Cards/porticulus.png"
+dest_files=[ "res://.import/porticulus.png-43a9a4ec5d7b1bdbf7fc4824ff98bd42.stex" ]
 
 [params]
 

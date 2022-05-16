@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/warewolf.png-f936a1795f232a7d27c74a6a805bf8f5.stex"
+path="res://.import/warewolf.png-605dcae30578d8d9a9e29124d68d457b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/warewolf.png"
-dest_files=[ "res://.import/warewolf.png-f936a1795f232a7d27c74a6a805bf8f5.stex" ]
+source_file="res://Sprites/Cards/warewolf.png"
+dest_files=[ "res://.import/warewolf.png-605dcae30578d8d9a9e29124d68d457b.stex" ]
 
 [params]
 

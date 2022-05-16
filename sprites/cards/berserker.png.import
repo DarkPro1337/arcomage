@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/berserker.png-e96563af9c9a58e97ef8acbfff2e83a4.stex"
+path="res://.import/berserker.png-947a3f5f431528f306a4b5dc0d6cfb05.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/berserker.png"
-dest_files=[ "res://.import/berserker.png-e96563af9c9a58e97ef8acbfff2e83a4.stex" ]
+source_file="res://Sprites/Cards/berserker.png"
+dest_files=[ "res://.import/berserker.png-947a3f5f431528f306a4b5dc0d6cfb05.stex" ]
 
 [params]
 

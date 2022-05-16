@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spizzer.png-33149f01054b5840821a38de73426603.stex"
+path="res://.import/spizzer.png-bb3559e1d6c0a131740722bce7ebb15b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/spizzer.png"
-dest_files=[ "res://.import/spizzer.png-33149f01054b5840821a38de73426603.stex" ]
+source_file="res://Sprites/Cards/spizzer.png"
+dest_files=[ "res://.import/spizzer.png-bb3559e1d6c0a131740722bce7ebb15b.stex" ]
 
 [params]
 

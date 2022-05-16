@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragon.png-79ec55b3ff6dec0737287911dd6de1a8.stex"
+path="res://.import/dragon.png-8b4b05e9c8285fb31a05caca20081ecd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/dragon.png"
-dest_files=[ "res://.import/dragon.png-79ec55b3ff6dec0737287911dd6de1a8.stex" ]
+source_file="res://Sprites/Cards/dragon.png"
+dest_files=[ "res://.import/dragon.png-8b4b05e9c8285fb31a05caca20081ecd.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/empathy_gem.png-ace2913189bf83a61a1af3fe6a34f39b.stex"
+path="res://.import/empathy_gem.png-e4b714b044e9900b3c28ef6e1a6d55d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/empathy_gem.png"
-dest_files=[ "res://.import/empathy_gem.png-ace2913189bf83a61a1af3fe6a34f39b.stex" ]
+source_file="res://Sprites/Cards/empathy_gem.png"
+dest_files=[ "res://.import/empathy_gem.png-e4b714b044e9900b3c28ef6e1a6d55d1.stex" ]
 
 [params]
 

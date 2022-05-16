@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mondoWall.png-f6d336d0e9631ac47747a81655d70a13.stex"
+path="res://.import/mondoWall.png-4ba6b0f7978d64aee213280d9652513d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/mondoWall.png"
-dest_files=[ "res://.import/mondoWall.png-f6d336d0e9631ac47747a81655d70a13.stex" ]
+source_file="res://Sprites/Cards/mondoWall.png"
+dest_files=[ "res://.import/mondoWall.png-4ba6b0f7978d64aee213280d9652513d.stex" ]
 
 [params]
 

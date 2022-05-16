@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/patreon_logo.png-f89134366fa268637dfc6f71d89aafa1.stex"
+path="res://.import/patreon_logo.png-bbf02cc4ecd045b0c00ebe55f8c25f19.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/patreon_logo.png"
-dest_files=[ "res://.import/patreon_logo.png-f89134366fa268637dfc6f71d89aafa1.stex" ]
+source_file="res://Images/patreon_logo.png"
+dest_files=[ "res://.import/patreon_logo.png-bbf02cc4ecd045b0c00ebe55f8c25f19.stex" ]
 
 [params]
 

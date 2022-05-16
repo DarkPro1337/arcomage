@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tower_gremlin.png-87781c550a2873a7ed1512950d134f4c.stex"
+path="res://.import/tower_gremlin.png-4213f342d84bf43e137317f9a0badcab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/tower_gremlin.png"
-dest_files=[ "res://.import/tower_gremlin.png-87781c550a2873a7ed1512950d134f4c.stex" ]
+source_file="res://Sprites/Cards/tower_gremlin.png"
+dest_files=[ "res://.import/tower_gremlin.png-4213f342d84bf43e137317f9a0badcab.stex" ]
 
 [params]
 

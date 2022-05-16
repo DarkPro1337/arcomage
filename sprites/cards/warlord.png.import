@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/warlord.png-3d98199198acc93b6b4cb497baf069ad.stex"
+path="res://.import/warlord.png-74e88ff80766d9d2bf79f77280050dba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/warlord.png"
-dest_files=[ "res://.import/warlord.png-3d98199198acc93b6b4cb497baf069ad.stex" ]
+source_file="res://Sprites/Cards/warlord.png"
+dest_files=[ "res://.import/warlord.png-74e88ff80766d9d2bf79f77280050dba.stex" ]
 
 [params]
 

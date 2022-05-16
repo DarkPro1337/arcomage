@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://themes/settings_theme.tres" type="Theme" id=1]
-[ext_resource path="res://images/Layout-edit_dark_blur.png" type="Texture" id=2]
-[ext_resource path="res://fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scripts/settings.gd" type="Script" id=4]
+[ext_resource path="res://Themes/settings_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Images/Layout-edit_dark_blur.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/Settings.cs" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -70,12 +70,8 @@ margin_bottom = 162.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
 tabs_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Graphics" type="CenterContainer" parent="tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -502,19 +498,19 @@ margin_left = 313.0
 margin_right = 637.0
 margin_bottom = 119.0
 
-[node name="brick_quanity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
+[node name="brick_quantity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
 margin_right = 324.0
 margin_bottom = 37.0
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quanity"]
+[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity"]
 margin_left = 25.0
 margin_right = 220.0
 margin_bottom = 37.0
 text = "BRICK_QUANTITIES"
 align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quanity"]
+[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity"]
 margin_left = 224.0
 margin_right = 324.0
 margin_bottom = 37.0
@@ -523,20 +519,20 @@ value = 20.0
 rounded = true
 align = 1
 
-[node name="gem_quanity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
+[node name="gem_quantity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
 margin_top = 41.0
 margin_right = 324.0
 margin_bottom = 78.0
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quanity"]
+[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity"]
 margin_left = 40.0
 margin_right = 220.0
 margin_bottom = 37.0
 text = "GEM_QUANTITIES"
 align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quanity"]
+[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity"]
 margin_left = 224.0
 margin_right = 324.0
 margin_bottom = 37.0
@@ -545,19 +541,19 @@ value = 10.0
 rounded = true
 align = 1
 
-[node name="recruit_quanity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
+[node name="recruit_quantity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
 margin_top = 82.0
 margin_right = 324.0
 margin_bottom = 119.0
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quanity"]
+[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity"]
 margin_right = 220.0
 margin_bottom = 37.0
 text = "RECRUIT_QUANTITIES"
 align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quanity"]
+[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity"]
 margin_left = 224.0
 margin_right = 324.0
 margin_bottom = 37.0
@@ -809,9 +805,10 @@ margin_bottom = -5.0
 
 [node name="main" type="VBoxContainer" parent="tab/Language_Settings"]
 margin_left = 94.0
-margin_top = 168.0
+margin_top = 148.0
 margin_right = 553.0
-margin_bottom = 205.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 0, 78 )
 
 [node name="language" type="HBoxContainer" parent="tab/Language_Settings/main"]
 margin_right = 459.0
@@ -843,6 +840,7 @@ align = 1
 autowrap = true
 
 [node name="Player_Settings" type="CenterContainer" parent="tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -888,9 +886,6 @@ theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 3 )
 text = "SAVE_AND_CLOSE"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="reset" type="ToolButton" parent="."]
 anchor_top = 1.0
@@ -906,9 +901,6 @@ custom_fonts/font = SubResource( 3 )
 disabled = true
 text = "RESTORE_DEFAULTS"
 align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="buttons_container" type="CenterContainer" parent="."]
 anchor_left = 0.5
@@ -991,30 +983,39 @@ margin_bottom = 64.0
 custom_fonts/font = SubResource( 5 )
 text = "SETTINGS_WARNING"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[connection signal="toggled" from="tab/Graphics/graphics/fullscreen/fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="toggled" from="tab/Graphics/graphics/borderless/borderless_button" to="." method="_on_borderless_button_toggled"]
-[connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="_on_winres_apply_pressed"]
-[connection signal="toggled" from="tab/Graphics/graphics/vsync/vsync_button" to="." method="_on_vsync_button_toggled"]
-[connection signal="toggled" from="tab/Graphics/graphics/intro_skip/introskip_button" to="." method="_on_introskip_button_toggled"]
-[connection signal="value_changed" from="tab/Sound/sound/master/master_slider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="tab/Sound/sound/music/music_slider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="tab/Sound/sound/sounds/sounds_slider" to="." method="_on_sounds_slider_value_changed"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level" to="." method="_on_tower_levels_value_changed"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level" to="." method="_on_wall_levels_value_changed"]
-[connection signal="value_changed" from="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level" to="." method="_on_cards_in_hand_value_changed"]
-[connection signal="item_selected" from="tab/Play_Conditions/main/cardsnum_and_ai/AI/mode" to="." method="_on_AI_mode_changed"]
-[connection signal="item_selected" from="tab/Language_Settings/main/language/lang_option" to="." method="_on_lang_option_item_selected"]
-[connection signal="text_changed" from="tab/Player_Settings/main/nickname/edit" to="." method="_on_nickname_text_changed"]
-[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="_on_window_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/sound_settings" to="." method="_on_sound_settings_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/starting_conditions" to="." method="_on_starting_conditions_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/play_conditions" to="." method="_on_play_conditions_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/victory_conditions" to="." method="_on_victory_conditions_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/tavern_presets" to="." method="_on_tavern_presets_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/language_settings" to="." method="_on_language_settings_pressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/player_settings" to="." method="_on_player_settings_pressed"]
+[connection signal="toggled" from="tab/Graphics/graphics/fullscreen/fullscreen_button" to="." method="OnFullscreenButtonToggled"]
+[connection signal="toggled" from="tab/Graphics/graphics/borderless/borderless_button" to="." method="OnBorderlessButtonToggled"]
+[connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="OnWindowResolutionApplyPressed"]
+[connection signal="toggled" from="tab/Graphics/graphics/vsync/vsync_button" to="." method="OnVsyncButtonToggled"]
+[connection signal="toggled" from="tab/Graphics/graphics/intro_skip/introskip_button" to="." method="OnIntroSkipButtonToggled"]
+[connection signal="value_changed" from="tab/Sound/sound/master/master_slider" to="." method="OnMasterSliderValueChanged"]
+[connection signal="value_changed" from="tab/Sound/sound/music/music_slider" to="." method="OnMusicSliderValueChanged"]
+[connection signal="value_changed" from="tab/Sound/sound/sounds/sounds_slider" to="." method="OnSoundsSliderValueChanged"]
+[connection signal="toggled" from="tab/Sound/sound/mute/mute_sound" to="." method="OnMuteSoundToggled"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level" to="." method="OnTowerLevelsValueChanged"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level" to="." method="OnWallLevelsValueChanged"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels/level" to="." method="OnQuarryLevelsValueChanged"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels/level" to="." method="OnMagicLevelsValueChanged"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity/level" to="." method="OnBrickQuantityValueChanged"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity/level" to="." method="OnGemQuantityValueChanged"]
+[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity/level" to="." method="OnRecruitQuantityValueChanged"]
+[connection signal="value_changed" from="tab/Play_Conditions/main/autoget/bricks/level" to="." method="OnAutoGetBricksValueChanged"]
+[connection signal="value_changed" from="tab/Play_Conditions/main/autoget/gems/level" to="." method="OnAutoGetGemsValueChanged"]
+[connection signal="value_changed" from="tab/Play_Conditions/main/autoget/recruits/level" to="." method="OnAutoGetRecruitsValueChanged"]
+[connection signal="value_changed" from="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level" to="." method="OnCardsInHandValueChanged"]
+[connection signal="item_selected" from="tab/Play_Conditions/main/cardsnum_and_ai/AI/mode" to="." method="OnAiModeChanged"]
+[connection signal="value_changed" from="tab/Victory_Conditions/main/tower/level" to="." method="OnTowerVictoryValueChanged"]
+[connection signal="value_changed" from="tab/Victory_Conditions/main/resource/level" to="." method="OnResourceVictoryValueChanged"]
+[connection signal="item_selected" from="tab/Tavern_Presets/main/preset/tavern_option" to="." method="OnTavernPresetSelected"]
+[connection signal="item_selected" from="tab/Language_Settings/main/language/lang_option" to="." method="OnLanguageSelected"]
+[connection signal="text_changed" from="tab/Player_Settings/main/nickname/edit" to="." method="OnNicknameTextChanged"]
+[connection signal="pressed" from="close" to="." method="OnClosePressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="OnWindowSettingsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/sound_settings" to="." method="OnSoundSettingsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/starting_conditions" to="." method="OnStartingConditionsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/play_conditions" to="." method="OnPlayConditionsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/victory_conditions" to="." method="OnVictoryConditionsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/tavern_presets" to="." method="OnTavernPresetsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/language_settings" to="." method="OnLanguageSettingsPressed"]
+[connection signal="pressed" from="buttons_container/buttons_grid/player_settings" to="." method="OnPlayerSettingsPressed"]

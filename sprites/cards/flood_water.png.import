@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flood_water.png-7342e8fad3b90431c45353d6ccab32ad.stex"
+path="res://.import/flood_water.png-cd1248c3f81b797c181c0bfb8b9efe6b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/flood_water.png"
-dest_files=[ "res://.import/flood_water.png-7342e8fad3b90431c45353d6ccab32ad.stex" ]
+source_file="res://Sprites/Cards/flood_water.png"
+dest_files=[ "res://.import/flood_water.png-cd1248c3f81b797c181c0bfb8b9efe6b.stex" ]
 
 [params]
 

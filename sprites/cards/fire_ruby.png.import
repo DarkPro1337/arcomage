@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_ruby.png-6828d028d03e04c2c81d15d6443f9eb1.stex"
+path="res://.import/fire_ruby.png-1700fb87a344f24ddb0f289cab37970e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/fire_ruby.png"
-dest_files=[ "res://.import/fire_ruby.png-6828d028d03e04c2c81d15d6443f9eb1.stex" ]
+source_file="res://Sprites/Cards/fire_ruby.png"
+dest_files=[ "res://.import/fire_ruby.png-1700fb87a344f24ddb0f289cab37970e.stex" ]
 
 [params]
 

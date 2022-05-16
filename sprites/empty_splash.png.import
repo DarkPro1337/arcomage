@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/empty_splash.png-54ae13d3cb2dca0ceaf25e59c7d0c627.stex"
+path="res://.import/empty_splash.png-967d2c03a57952128f18a0dfee603629.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/empty_splash.png"
-dest_files=[ "res://.import/empty_splash.png-54ae13d3cb2dca0ceaf25e59c7d0c627.stex" ]
+source_file="res://Sprites/empty_splash.png"
+dest_files=[ "res://.import/empty_splash.png-967d2c03a57952128f18a0dfee603629.stex" ]
 
 [params]
 

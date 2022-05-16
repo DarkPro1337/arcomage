@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/faerie.png-d9d5362bc0dc564e401fd80c23cb8970.stex"
+path="res://.import/faerie.png-edce4dc59aabd872192e8e79d025b541.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/faerie.png"
-dest_files=[ "res://.import/faerie.png-d9d5362bc0dc564e401fd80c23cb8970.stex" ]
+source_file="res://Sprites/Cards/faerie.png"
+dest_files=[ "res://.import/faerie.png-edce4dc59aabd872192e8e79d025b541.stex" ]
 
 [params]
 

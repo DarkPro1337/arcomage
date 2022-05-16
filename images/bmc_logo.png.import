@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bmc_logo.png-eb94f4b6035d7d2629134c332a7fefd2.stex"
+path="res://.import/bmc_logo.png-05fa02f572511868363b730554345a1f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/bmc_logo.png"
-dest_files=[ "res://.import/bmc_logo.png-eb94f4b6035d7d2629134c332a7fefd2.stex" ]
+source_file="res://Images/bmc_logo.png"
+dest_files=[ "res://.import/bmc_logo.png-05fa02f572511868363b730554345a1f.stex" ]
 
 [params]
 

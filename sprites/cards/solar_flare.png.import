@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/solar_flare.png-7a01691b2b3db2d7b67a44675627ed25.stex"
+path="res://.import/solar_flare.png-284a5fa5a886c6ad17c8cfc5844c7eaa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/solar_flare.png"
-dest_files=[ "res://.import/solar_flare.png-7a01691b2b3db2d7b67a44675627ed25.stex" ]
+source_file="res://Sprites/Cards/solar_flare.png"
+dest_files=[ "res://.import/solar_flare.png-284a5fa5a886c6ad17c8cfc5844c7eaa.stex" ]
 
 [params]
 

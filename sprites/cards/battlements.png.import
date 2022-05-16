@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/battlements.png-123d042e2561c19e05b93074c2d55245.stex"
+path="res://.import/battlements.png-b11802954ae33c425e2c656f182c1f1f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/battlements.png"
-dest_files=[ "res://.import/battlements.png-123d042e2561c19e05b93074c2d55245.stex" ]
+source_file="res://Sprites/Cards/battlements.png"
+dest_files=[ "res://.import/battlements.png-b11802954ae33c425e2c656f182c1f1f.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/updown.png-485e2f1b0e7bac25d4dab4f015b2be33.stex"
+path="res://.import/updown.png-00d88445d6462a3e92d0c19b98a1a369.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://themes/updown.png"
-dest_files=[ "res://.import/updown.png-485e2f1b0e7bac25d4dab4f015b2be33.stex" ]
+source_file="res://Themes/updown.png"
+dest_files=[ "res://.import/updown.png-00d88445d6462a3e92d0c19b98a1a369.stex" ]
 
 [params]
 

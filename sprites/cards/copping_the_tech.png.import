@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/copping_the_tech.png-2792d1751bbe179d65228e1576cb05d4.stex"
+path="res://.import/copping_the_tech.png-fe1d0b4e3a6157742ab7728cd117745a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/copping_the_tech.png"
-dest_files=[ "res://.import/copping_the_tech.png-2792d1751bbe179d65228e1576cb05d4.stex" ]
+source_file="res://Sprites/Cards/copping_the_tech.png"
+dest_files=[ "res://.import/copping_the_tech.png-fe1d0b4e3a6157742ab7728cd117745a.stex" ]
 
 [params]
 

@@ -2,7 +2,9 @@
 ![Arcomage Logo](images/arcomage_logo.png)
 ## Description
 **Loved by many card mini-game from Might and Magic 7 and 8 returns with updated graphics as standalone game!**
+
 ![Arcomage Screenshot](images/arcomage_tn.png)
+
 Arcomage is a computer card game for two players. Each player has a random set of 6 cards, a tower, a wall, three types of resources and their generators.
 
 **Resources:**
@@ -37,5 +39,7 @@ As a rule, cards that require the same type of resources are similar in action. 
 * **GPU:** OpenGL 2.1 support
 
 ## Compilation and editing
-* [**Godot** v.3.3.2 stable](https://downloads.tuxfamily.org/godotengine/3.3.2/)
+* [**Godot** v.3.4.4 stable mono](https://downloads.tuxfamily.org/godotengine/3.4.4/)
+* [**.NET** Core SDK](https://dotnet.microsoft.com/download/dotnet-core)
+* Recommended [**Rider**](https://www.jetbrains.com/rider/download) or [**VS Code**](https://code.visualstudio.com/download) external editors with Godot C# extensions ([learn here](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_basics.html#configuring-an-external-editor)).
 * [**CastleDB** v.1.5](http://castledb.org/)

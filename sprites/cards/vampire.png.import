@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/vampire.png-2186baa3bdbbf5ec051208b22e5c690f.stex"
+path="res://.import/vampire.png-ca8367a185fe4392d5ca425b7cf6ef3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/vampire.png"
-dest_files=[ "res://.import/vampire.png-2186baa3bdbbf5ec051208b22e5c690f.stex" ]
+source_file="res://Sprites/Cards/vampire.png"
+dest_files=[ "res://.import/vampire.png-ca8367a185fe4392d5ca425b7cf6ef3e.stex" ]
 
 [params]
 

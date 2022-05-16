@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bag_of_baubles.png-d857db6b0495e3733503e47ccb089aa4.stex"
+path="res://.import/bag_of_baubles.png-583995eddad8aec174525e44b738aa4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/bag_of_baubles.png"
-dest_files=[ "res://.import/bag_of_baubles.png-d857db6b0495e3733503e47ccb089aa4.stex" ]
+source_file="res://Sprites/Cards/bag_of_baubles.png"
+dest_files=[ "res://.import/bag_of_baubles.png-583995eddad8aec174525e44b738aa4d.stex" ]
 
 [params]
 

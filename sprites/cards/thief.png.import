@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thief.png-71fee26c3c4498a528c728721f939491.stex"
+path="res://.import/thief.png-8d35e810d5bb51529fd1d6349d126041.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/thief.png"
-dest_files=[ "res://.import/thief.png-71fee26c3c4498a528c728721f939491.stex" ]
+source_file="res://Sprites/Cards/thief.png"
+dest_files=[ "res://.import/thief.png-8d35e810d5bb51529fd1d6349d126041.stex" ]
 
 [params]
 

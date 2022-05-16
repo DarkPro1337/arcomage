@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/foundations.png-83651f3c772b99031c27920dcb9e321c.stex"
+path="res://.import/foundations.png-0ef1ec7f0e73c242948373735d9e9dee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/foundations.png"
-dest_files=[ "res://.import/foundations.png-83651f3c772b99031c27920dcb9e321c.stex" ]
+source_file="res://Sprites/Cards/foundations.png"
+dest_files=[ "res://.import/foundations.png-0ef1ec7f0e73c242948373735d9e9dee.stex" ]
 
 [params]
 

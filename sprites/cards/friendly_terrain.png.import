@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/friendly_terrain.png-88623242974b076dcbe85169f38c0731.stex"
+path="res://.import/friendly_terrain.png-4279b98c02adbbc4a8e4a068eda4ce16.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/friendly_terrain.png"
-dest_files=[ "res://.import/friendly_terrain.png-88623242974b076dcbe85169f38c0731.stex" ]
+source_file="res://Sprites/Cards/friendly_terrain.png"
+dest_files=[ "res://.import/friendly_terrain.png-4279b98c02adbbc4a8e4a068eda4ce16.stex" ]
 
 [params]
 

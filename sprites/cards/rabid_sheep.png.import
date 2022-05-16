@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rabid_sheep.png-8925827e538882e3d9285b0dffa3544d.stex"
+path="res://.import/rabid_sheep.png-edb31288f9fe26ed7cb929b151435640.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/rabid_sheep.png"
-dest_files=[ "res://.import/rabid_sheep.png-8925827e538882e3d9285b0dffa3544d.stex" ]
+source_file="res://Sprites/Cards/rabid_sheep.png"
+dest_files=[ "res://.import/rabid_sheep.png-edb31288f9fe26ed7cb929b151435640.stex" ]
 
 [params]
 

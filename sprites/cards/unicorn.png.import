@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unicorn.png-891d386dcd1663ab0704d2593cfa172b.stex"
+path="res://.import/unicorn.png-c2303769776196114afceacdfa4b4f71.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/unicorn.png"
-dest_files=[ "res://.import/unicorn.png-891d386dcd1663ab0704d2593cfa172b.stex" ]
+source_file="res://Sprites/Cards/unicorn.png"
+dest_files=[ "res://.import/unicorn.png-c2303769776196114afceacdfa4b4f71.stex" ]
 
 [params]
 

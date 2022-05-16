@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://images/Layout-edit_dark.png" type="Texture" id=1]
-[ext_resource path="res://images/table_gradient_dark.png" type="Texture" id=2]
-[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scripts/endgame.gd" type="Script" id=4]
+[ext_resource path="res://Images/Layout-edit_dark.png" type="Texture" id=1]
+[ext_resource path="res://Images/table_gradient_dark.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/endgame.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )

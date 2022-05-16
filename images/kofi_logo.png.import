@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kofi_logo.png-d00d8f2641c6fb01b4b3a9c88bba8401.stex"
+path="res://.import/kofi_logo.png-e4a93d937cf6082517b19a64bb20334a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/kofi_logo.png"
-dest_files=[ "res://.import/kofi_logo.png-d00d8f2641c6fb01b4b3a9c88bba8401.stex" ]
+source_file="res://Images/kofi_logo.png"
+dest_files=[ "res://.import/kofi_logo.png-e4a93d937cf6082517b19a64bb20334a.stex" ]
 
 [params]
 

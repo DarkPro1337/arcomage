@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/orc.png-98f7d8008fda9a0d7f0a8789a8589ad3.stex"
+path="res://.import/orc.png-ee4ee85819d64597362772147aa5e265.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/orc.png"
-dest_files=[ "res://.import/orc.png-98f7d8008fda9a0d7f0a8789a8589ad3.stex" ]
+source_file="res://Sprites/Cards/orc.png"
+dest_files=[ "res://.import/orc.png-ee4ee85819d64597362772147aa5e265.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rock_garden.png-63e2980004609bc241645cfb51465618.stex"
+path="res://.import/rock_garden.png-09ebc137f5f840135fc7b99e30332834.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/rock_garden.png"
-dest_files=[ "res://.import/rock_garden.png-63e2980004609bc241645cfb51465618.stex" ]
+source_file="res://Sprites/Cards/rock_garden.png"
+dest_files=[ "res://.import/rock_garden.png-09ebc137f5f840135fc7b99e30332834.stex" ]
 
 [params]
 

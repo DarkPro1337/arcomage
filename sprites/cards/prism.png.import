@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prism.png-2075731d69f9b3689b414bbf50063955.stex"
+path="res://.import/prism.png-49ac3937004f2136fc16847e617895f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/prism.png"
-dest_files=[ "res://.import/prism.png-2075731d69f9b3689b414bbf50063955.stex" ]
+source_file="res://Sprites/Cards/prism.png"
+dest_files=[ "res://.import/prism.png-49ac3937004f2136fc16847e617895f3.stex" ]
 
 [params]
 

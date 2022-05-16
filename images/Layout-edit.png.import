@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Layout-edit.png-6ef4a376b2eaf4b9b8444635b2552de8.stex"
+path="res://.import/Layout-edit.png-222cbc74b98ecd5310b4dd23c4b17260.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Layout-edit.png"
-dest_files=[ "res://.import/Layout-edit.png-6ef4a376b2eaf4b9b8444635b2552de8.stex" ]
+source_file="res://Images/Layout-edit.png"
+dest_files=[ "res://.import/Layout-edit.png-222cbc74b98ecd5310b4dd23c4b17260.stex" ]
 
 [params]
 

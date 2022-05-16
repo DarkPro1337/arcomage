@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moody_goblins.png-b680cbdd5146c25c4b4b101a26bdc6d9.stex"
+path="res://.import/moody_goblins.png-f8f9083caf46cd4de3d2ffa0fc26ba2d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/moody_goblins.png"
-dest_files=[ "res://.import/moody_goblins.png-b680cbdd5146c25c4b4b101a26bdc6d9.stex" ]
+source_file="res://Sprites/Cards/moody_goblins.png"
+dest_files=[ "res://.import/moody_goblins.png-f8f9083caf46cd4de3d2ffa0fc26ba2d.stex" ]
 
 [params]
 

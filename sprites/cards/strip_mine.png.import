@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/strip_mine.png-25f9316b9e2057eade40cb6058609d44.stex"
+path="res://.import/strip_mine.png-d55613907f126b091aa4b4914c0a31de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/strip_mine.png"
-dest_files=[ "res://.import/strip_mine.png-25f9316b9e2057eade40cb6058609d44.stex" ]
+source_file="res://Sprites/Cards/strip_mine.png"
+dest_files=[ "res://.import/strip_mine.png-d55613907f126b091aa4b4914c0a31de.stex" ]
 
 [params]
 

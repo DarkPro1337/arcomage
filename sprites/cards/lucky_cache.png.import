@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lucky_cache.png-2680e3e912fe1053ab3a218e6bb62015.stex"
+path="res://.import/lucky_cache.png-e4b06d7372c99817821f8742ce845b61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/lucky_cache.png"
-dest_files=[ "res://.import/lucky_cache.png-2680e3e912fe1053ab3a218e6bb62015.stex" ]
+source_file="res://Sprites/Cards/lucky_cache.png"
+dest_files=[ "res://.import/lucky_cache.png-e4b06d7372c99817821f8742ce845b61.stex" ]
 
 [params]
 

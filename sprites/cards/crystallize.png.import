@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crystallize.png-de5b9b2f676ce44c556db0754968a403.stex"
+path="res://.import/crystallize.png-ba787140cb17a9b51a33df85b9dd1c33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/crystallize.png"
-dest_files=[ "res://.import/crystallize.png-de5b9b2f676ce44c556db0754968a403.stex" ]
+source_file="res://Sprites/Cards/crystallize.png"
+dest_files=[ "res://.import/crystallize.png-ba787140cb17a9b51a33df85b9dd1c33.stex" ]
 
 [params]
 

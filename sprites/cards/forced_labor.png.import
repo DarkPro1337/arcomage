@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forced_labor.png-5751225729f9b55375274d317dfa2fdd.stex"
+path="res://.import/forced_labor.png-442b0efa44b77f899aebef6e6cd2afd9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/forced_labor.png"
-dest_files=[ "res://.import/forced_labor.png-5751225729f9b55375274d317dfa2fdd.stex" ]
+source_file="res://Sprites/Cards/forced_labor.png"
+dest_files=[ "res://.import/forced_labor.png-442b0efa44b77f899aebef6e6cd2afd9.stex" ]
 
 [params]
 

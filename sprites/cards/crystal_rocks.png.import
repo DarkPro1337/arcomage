@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crystal_rocks.png-d60eb00a0e03680dc3b9b24c7233cb89.stex"
+path="res://.import/crystal_rocks.png-05aee04f3060e8d4971153dd98df06d5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/crystal_rocks.png"
-dest_files=[ "res://.import/crystal_rocks.png-d60eb00a0e03680dc3b9b24c7233cb89.stex" ]
+source_file="res://Sprites/Cards/crystal_rocks.png"
+dest_files=[ "res://.import/crystal_rocks.png-05aee04f3060e8d4971153dd98df06d5.stex" ]
 
 [params]
 

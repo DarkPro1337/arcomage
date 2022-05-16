@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/harmonic_ore.png-119e770e1fc281c76db1b077c000d3c6.stex"
+path="res://.import/harmonic_ore.png-b76535819b4c6d3cc253fcdfc268be40.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/harmonic_ore.png"
-dest_files=[ "res://.import/harmonic_ore.png-119e770e1fc281c76db1b077c000d3c6.stex" ]
+source_file="res://Sprites/Cards/harmonic_ore.png"
+dest_files=[ "res://.import/harmonic_ore.png-b76535819b4c6d3cc253fcdfc268be40.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shatterer.png-1b68b2bbb18973b982a1b6495c8f1d19.stex"
+path="res://.import/shatterer.png-2f919e6bd0df5223a8390630021cb30c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/shatterer.png"
-dest_files=[ "res://.import/shatterer.png-1b68b2bbb18973b982a1b6495c8f1d19.stex" ]
+source_file="res://Sprites/Cards/shatterer.png"
+dest_files=[ "res://.import/shatterer.png-2f919e6bd0df5223a8390630021cb30c.stex" ]
 
 [params]
 

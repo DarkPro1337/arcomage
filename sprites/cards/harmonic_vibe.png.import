@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/harmonic_vibe.png-67a6d75a5158a307f9fbec50aa4498f0.stex"
+path="res://.import/harmonic_vibe.png-c42ecc444de36bb7611963fe255a3b71.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/harmonic_vibe.png"
-dest_files=[ "res://.import/harmonic_vibe.png-67a6d75a5158a307f9fbec50aa4498f0.stex" ]
+source_file="res://Sprites/Cards/harmonic_vibe.png"
+dest_files=[ "res://.import/harmonic_vibe.png-c42ecc444de36bb7611963fe255a3b71.stex" ]
 
 [params]
 

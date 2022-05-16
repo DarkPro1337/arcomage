@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/quarry_down.ogg-b5ea57940ac8917c990317dab6ae98cd.oggstr"
+path="res://.import/quarry_down.ogg-0f026756dd69e256ee0889adb2d14365.oggstr"
 
 [deps]
 
-source_file="res://sounds/quarry_down.ogg"
-dest_files=[ "res://.import/quarry_down.ogg-b5ea57940ac8917c990317dab6ae98cd.oggstr" ]
+source_file="res://Sounds/quarry_down.ogg"
+dest_files=[ "res://.import/quarry_down.ogg-0f026756dd69e256ee0889adb2d14365.oggstr" ]
 
 [params]
 

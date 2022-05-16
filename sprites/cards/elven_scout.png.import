@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elven_scout.png-0c4aebb206d0d6e7727c47ac70e27488.stex"
+path="res://.import/elven_scout.png-ac587830b9c74be034b585b6d8d494e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/elven_scout.png"
-dest_files=[ "res://.import/elven_scout.png-0c4aebb206d0d6e7727c47ac70e27488.stex" ]
+source_file="res://Sprites/Cards/elven_scout.png"
+dest_files=[ "res://.import/elven_scout.png-ac587830b9c74be034b585b6d8d494e2.stex" ]
 
 [params]
 

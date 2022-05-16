@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragons_eye.png-5bef25ac2a3db78dfa115b54577f395e.stex"
+path="res://.import/dragons_eye.png-1903b4c9651f0cab0ecbf9eb281b3173.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/dragons_eye.png"
-dest_files=[ "res://.import/dragons_eye.png-5bef25ac2a3db78dfa115b54577f395e.stex" ]
+source_file="res://Sprites/Cards/dragons_eye.png"
+dest_files=[ "res://.import/dragons_eye.png-1903b4c9651f0cab0ecbf9eb281b3173.stex" ]
 
 [params]
 

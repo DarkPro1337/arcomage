@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lightning_shard.png-e7fefd7394f923d613fd0aa836307a74.stex"
+path="res://.import/lightning_shard.png-3d2dc8f7321983045a9fdfe1e86a664f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/lightning_shard.png"
-dest_files=[ "res://.import/lightning_shard.png-e7fefd7394f923d613fd0aa836307a74.stex" ]
+source_file="res://Sprites/Cards/lightning_shard.png"
+dest_files=[ "res://.import/lightning_shard.png-3d2dc8f7321983045a9fdfe1e86a664f.stex" ]
 
 [params]
 

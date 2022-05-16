@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/goblin_mob.png-96a3f91a3f0ba5b7830d5a50ed3fbf5f.stex"
+path="res://.import/goblin_mob.png-996cfc689e00bfebcd55b2d7ea5ac4b0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/goblin_mob.png"
-dest_files=[ "res://.import/goblin_mob.png-96a3f91a3f0ba5b7830d5a50ed3fbf5f.stex" ]
+source_file="res://Sprites/Cards/goblin_mob.png"
+dest_files=[ "res://.import/goblin_mob.png-996cfc689e00bfebcd55b2d7ea5ac4b0.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rainbow.png-0ae3f4c9b50d6f6db7b86f86431ae68d.stex"
+path="res://.import/rainbow.png-196d93183275a2b79964ab1c18572ad7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/rainbow.png"
-dest_files=[ "res://.import/rainbow.png-0ae3f4c9b50d6f6db7b86f86431ae68d.stex" ]
+source_file="res://Sprites/Cards/rainbow.png"
+dest_files=[ "res://.import/rainbow.png-196d93183275a2b79964ab1c18572ad7.stex" ]
 
 [params]
 

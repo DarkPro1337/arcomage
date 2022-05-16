@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/updown_vectorized.png-022c56bf0a042ed2e91a5c748a73a876.stex"
+path="res://.import/updown_vectorized.png-0f11051dc4349c73bef330a83a49af46.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://themes/updown_vectorized.png"
-dest_files=[ "res://.import/updown_vectorized.png-022c56bf0a042ed2e91a5c748a73a876.stex" ]
+source_file="res://Themes/updown_vectorized.png"
+dest_files=[ "res://.import/updown_vectorized.png-0f11051dc4349c73bef330a83a49af46.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green_card_layout_alt.png-ca33b6ab02160eac6a16d0ada6c2f913.stex"
+path="res://.import/green_card_layout_alt.png-fe07d2694f9a7ebd8e75bb07abe492d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/green_card_layout_alt.png"
-dest_files=[ "res://.import/green_card_layout_alt.png-ca33b6ab02160eac6a16d0ada6c2f913.stex" ]
+source_file="res://Sprites/green_card_layout_alt.png"
+dest_files=[ "res://.import/green_card_layout_alt.png-fe07d2694f9a7ebd8e75bb07abe492d7.stex" ]
 
 [params]
 

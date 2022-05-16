@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arcomage_tn.png-503ef28350dda6bbd603fe967c4ec47a.stex"
+path="res://.import/arcomage_tn.png-35dc23b553080725dd8ade2c9d579e1b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/arcomage_tn.png"
-dest_files=[ "res://.import/arcomage_tn.png-503ef28350dda6bbd603fe967c4ec47a.stex" ]
+source_file="res://Images/arcomage_tn.png"
+dest_files=[ "res://.import/arcomage_tn.png-35dc23b553080725dd8ade2c9d579e1b.stex" ]
 
 [params]
 

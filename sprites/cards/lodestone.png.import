@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lodestone.png-0407d615b2093af893d756a4a9b46de0.stex"
+path="res://.import/lodestone.png-ccaf4b7f582f379543d72272bbe8661e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/lodestone.png"
-dest_files=[ "res://.import/lodestone.png-0407d615b2093af893d756a4a9b46de0.stex" ]
+source_file="res://Sprites/Cards/lodestone.png"
+dest_files=[ "res://.import/lodestone.png-ccaf4b7f582f379543d72272bbe8661e.stex" ]
 
 [params]
 

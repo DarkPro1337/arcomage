@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/troll_trainer.png-263322d92514bd9c788bc5568473ff4f.stex"
+path="res://.import/troll_trainer.png-3de169f76e6a92beab9c96066218d06a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cards/troll_trainer.png"
-dest_files=[ "res://.import/troll_trainer.png-263322d92514bd9c788bc5568473ff4f.stex" ]
+source_file="res://Sprites/Cards/troll_trainer.png"
+dest_files=[ "res://.import/troll_trainer.png-3de169f76e6a92beab9c96066218d06a.stex" ]
 
 [params]
 
