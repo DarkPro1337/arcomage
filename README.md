@@ -1,9 +1,9 @@
 # Arcomage fan-remake made on Godot Engine
-![Arcomage Logo](images/arcomage_logo.png)
+![Arcomage Logo](Images/arcomage_logo.png)
 ## Description
 **Loved by many card mini-game from Might and Magic 7 and 8 returns with updated graphics as standalone game!**
 
-![Arcomage Screenshot](images/arcomage_tn.png)
+![Arcomage Screenshot](Images/arcomage_tn.png)
 
 Arcomage is a computer card game for two players. Each player has a random set of 6 cards, a tower, a wall, three types of resources and their generators.
 
