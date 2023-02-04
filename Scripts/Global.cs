@@ -5,14 +5,14 @@ namespace Arcomage.Scripts
 {
     public class Global : Node
     {
-        public static PackedScene Table { get; set; }
-        public static PackedScene Settings { get; set; }
-        public static string BuildNumber => "000000";
+        public static Table Table { get; set; }
+        public static Settings Settings { get; set; }
+        public static string BuildNumber { get; set; }
 
         public override void _Ready()
         {
             OS.LowProcessorUsageMode = true;
-            LoadBuildNumber();
+            BuildNumber = LoadBuildNumber();
         }
 
         public static void Log(string text) {

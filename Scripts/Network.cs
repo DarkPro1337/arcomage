@@ -28,7 +28,6 @@ namespace Arcomage.Scripts
         public override void _Ready()
         {
             IpAddress = GetLocalIpAddress();
-        
             GetTree().Connect("network_peer_connected", this, nameof(OnPlayerConnected));
             GetTree().Connect("network_peer_disconnected", this, nameof(OnPlayerDisconnected));
             GetTree().Connect("connected_to_server", this, nameof(OnConnectedToServer));

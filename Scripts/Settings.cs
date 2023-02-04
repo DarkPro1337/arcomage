@@ -176,7 +176,7 @@ namespace Arcomage.Scripts
                 _introSkip.Hide();
                 _reset.Hide();
             }
-            else if (GetParent().Name != "main_menu")
+            else if (GetParent().Name != "MainMenu")
             {
                 Hide();
             }
@@ -496,21 +496,27 @@ namespace Arcomage.Scripts
             {
                 case Locale.en:
                     TranslationServer.SetLocale("en");
+                    _languageErrors.Hide();
                     break;
                 case Locale.ru:
                     TranslationServer.SetLocale("ru");
+                    _languageErrors.Show();
                     break;
                 case Locale.uk:
                     TranslationServer.SetLocale("uk");
+                    _languageErrors.Show();
                     break;
                 case Locale.pl:
                     TranslationServer.SetLocale("pl");
+                    _languageErrors.Show();
                     break;
                 case Locale.da:
                     TranslationServer.SetLocale("da");
+                    _languageErrors.Show();
                     break;
                 default:
                     TranslationServer.SetLocale("en");
+                    _languageErrors.Show();
                     break;
             }
         }

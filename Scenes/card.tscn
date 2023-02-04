@@ -4,7 +4,7 @@
 [ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/brick_shortage.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/red_card_layout_alt.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/card.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Сard.cs" type="Script" id=5]
 [ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Sprites/card_back.png" type="Texture" id=7]
 
@@ -67,9 +67,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="selector" type="Panel" parent="."]
 visible = false
@@ -87,9 +84,6 @@ rect_min_size = Vector2( 135, 180 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="art_shadow" type="Panel" parent="."]
 anchor_left = 0.037
@@ -97,13 +91,9 @@ anchor_top = 0.15
 anchor_right = 0.963
 anchor_bottom = 0.561
 margin_left = 0.00500011
-margin_top = -1.90735e-06
 margin_right = -0.00500488
 margin_bottom = 0.019989
 custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="art" type="TextureRect" parent="."]
 anchor_left = 0.037
@@ -111,60 +101,49 @@ anchor_top = 0.15
 anchor_right = 0.963
 anchor_bottom = 0.561
 margin_left = 0.00500011
-margin_top = -1.90735e-06
 margin_right = -0.00500488
 margin_bottom = 0.019989
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="Label" parent="."]
-anchor_left = 0.052
-anchor_top = 0.039
-anchor_right = 0.948
-anchor_bottom = 0.122
-margin_left = -0.02
-margin_top = -0.0200009
-margin_right = 0.019989
-margin_bottom = 0.0399971
+anchor_left = 0.044
+anchor_top = 0.033
+anchor_right = 0.956
+anchor_bottom = 0.128
+margin_left = 0.0599999
+margin_top = 0.0599999
+margin_right = -0.0599976
+margin_bottom = -0.0400009
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0784314 )
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 4 )
-text = "Кирпич треснул"
+text = "Card Name"
 align = 1
 valign = 1
 clip_text = true
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="description" type="Label" parent="."]
-anchor_left = 0.052
+anchor_left = 0.037
 anchor_top = 0.589
-anchor_right = 0.948
-anchor_bottom = 0.911
-margin_left = -0.02
+anchor_right = 0.963
+anchor_bottom = 0.872
+margin_left = 0.00500011
 margin_top = -0.0200119
-margin_right = 0.019989
-margin_bottom = 0.0200043
+margin_right = -0.00500488
+margin_bottom = 0.0399933
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.498039, 0.498039, 0.498039, 0.0980392 )
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 5 )
-text = "Все игроки теряют по 8 кирпичей."
+text = "Card Description"
 align = 1
 valign = 1
 autowrap = true
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="cost" type="Label" parent="."]
 anchor_left = 0.8
@@ -182,9 +161,6 @@ text = "0"
 align = 1
 valign = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="card_back" type="TextureRect" parent="."]
 visible = false
@@ -210,9 +186,6 @@ text = "DISCARDED"
 align = 1
 valign = 1
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="gui_input" from="." to="." method="_on_card_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_card_mouse_entered"]

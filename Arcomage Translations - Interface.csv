@@ -24,8 +24,8 @@ MASTER,Master:,Общий:,Загальний:,Generał:,Master:
 MUSIC,Music:,Музыка:,Музика:,Muzyka:,Musik:
 SOUNDS,Sounds:,Звуки:,Звуки:,Dźwięk:,Lyd:
 MUTE_SOUND,Mute Sound,Заглушить звук,Заглушити звук,Zagłuszyć dźwięk,Lydløs
-SINGLEPLAYER,Single Player,Одиночная игра,Одиночна гра,Gra pojedyncza,Single Player
-MULTIPLAYER,Multi Player,Сетевая игра,Багатокористувацька,Multiplayer,Multi Player
+SINGLEPLAYER,Single Player,Одиночная игра,Одиночна гра,Gra pojedyncza,Singleplayer
+MULTIPLAYER,Multi Player,Сетевая игра,Багатокористувацька,Multiplayer,Multiplayer
 SINGLE_CLICK_MODE,Single Click Mode,Одиночный клик,Режим одиночного клацання,Tryb Pojedynczego Kliknięcia,Enkelt Klik Instilling
 TOWER_LEVELS,Tower Levels:,Высота башни,Висота вежі:,Wysokość wieży:,Tårn Niveau:
 WALL_LEVELS,Wall Levels:,Высота стены,Висота стіни:,Wysokość ściany:,Mur Niveau:
@@ -74,27 +74,27 @@ WARNING_TEXT,This is fan remake and not connected or affiliated with New World C
 NEXT,Next,Далее,Далі,Dalej,Næste
 LANGUAGE_SETTINGS,Language Settings,Настройки языка,Налаштування мови,Ustawienia języka,Sprog Instillinger
 LANGUAGE,Language:,Язык:,Мова:,Język:,Sprog:
-APPLY,Apply,Применить,,,Tilføj
-TIME,TIME:,ВРЕМЯ:,,,TID:
-START_GAME_TOOLTIP,Starts a new game with the current settings.,Начинает новую игру с текущими настройками.,,,Start nyt spil med nuværende indstillinger.
-SETTINGS_TOOLTIP,Allows you to customize the rules of the game.,Позволяет настроить правила игры.,,,Tillader dig at rette på spillets regler.
-LEADERBOARD_TOOLTIP,Opens the leaderboard.,Открывает доску лидеров.,,,Åbner point tavle
-CREDITS_TOOLTIP,Opens credits.,Открывает титры.,,,Åbner credits.
-EXIT_TOOLTIP,Quit the game.,Выйти из игры.,,,Afslutter spillet.
-WORK_IN_PROGRESS,Work in progress...,Работа в процессе...,,,Under udvikling...
-SETTINGS_WARNING,Some settings may not be avalible or not working correctly for now.,Некоторые настройки сейчас могут быть недоступны или работать некорректно.,,,Nogle indstillinger er muligvis ikke tilgængelig eller virker ikke ordenligt lige nu.
+APPLY,Apply,Применить,Використати,Zastosować,Tilføj
+TIME,TIME:,ВРЕМЯ:,ЧАС:,CZAS:,TID:
+START_GAME_TOOLTIP,Starts a new game with the current settings.,Начинает новую игру с текущими настройками.,Начинає нову гру з актуальними настройками.,Rozpoczyna nową grę z bieżącymi ustawieniami.,Start nyt spil med nuværende indstillinger.
+SETTINGS_TOOLTIP,Allows you to customize the rules of the game.,Позволяет настроить правила игры.,Дозволяє настроїти правила гри.,Pozwala ustalać zasady gry.,Tillader dig at rette på spillets regler.
+LEADERBOARD_TOOLTIP,Opens the leaderboard.,Открывает доску лидеров.,Відкриває дошку лідерів.,Otwiera tablicę liderów.,Åbner point tavle
+CREDITS_TOOLTIP,Opens credits.,Открывает титры.,Відкриває титри.,Otwiera kredyty.,Åbner credits.
+EXIT_TOOLTIP,Quit the game.,Выйти из игры.,Вийти з гри.,Wyjdź z gry.,Afslutter spillet.
+WORK_IN_PROGRESS,Work in progress...,Работа в процессе...,Робота в процесі...,Praca w toku...,Under udvikling...
+SETTINGS_WARNING,Some settings may not be avalible or not working correctly for now.,Некоторые настройки сейчас могут быть недоступны или работать некорректно.,Деякі установки зараз можуть бути недоступні або працювати некоректно.,Niektóre ustawienia mogą być teraz niedostępne lub działać poprawnie.,Nogle indstillinger er muligvis ikke tilgængelig eller virker ikke ordenligt lige nu.
 TRANSLATION_MAY_CONTAIN_ERRORS,Translation may contain errors.,Перевод может содержать ошибки.,Переклад може містити помилки.,Tłumaczenie może zawierać błędy.,Oversættelse kan indeholde fejl.
-DISCARDED,DISCARDED,СБРОШЕНА,,,Kasseret
-THANKS_FOR_TRANSLATION,Thanks for translation:,Спасибо за перевод:,,,Tak for oversættelsen:
-PLAYER_SETTINGS,Player Settings,Настройки игрока,,,Spiller Instillinger:
-NICKNAME,Nickname:,Никнейм:,,,Kaldenavn:
-GAME_IS_PAUSED,Game is paused,Игра на паузе,,,Spillet er på pause
-RESUME,Resume,Продолжить,,,Fortsæt
-STATS,Stats,Статистика,,,Statistikker
-MULTIPLAYER_GAME,Multiplayer Game,Мультиплеер,,,
-CREATE_SERVER,Create Server,Создать сервер,,,
-JOIN_SERVER,Join Server,Присоединиться,,,
-ENTER_IP_ADDRESS,Enter IP Address,Введите IP адрес сервера,,,
-IP_ADDRESS_NOT_FOUND,IP Address not found!,IP адрес не найден!,,,
-CANCEL,Cancel,Отмена,,,
-MULTIPLAYER_GAME_TOOLTIP,Opens multiplayer game creation and connection screen.,Открывает экран создания и подключения многопользовательской игры.,,,
+DISCARDED,DISCARDED,СБРОШЕНА,СКИНУТА,RESETOWANIE,Kasseret
+THANKS_FOR_TRANSLATION,Thanks for translation:,Спасибо за перевод:,Дякую за переклад:,Dzięki za tłumaczenie:,Tak for oversættelsen:
+PLAYER_SETTINGS,Player Settings,Настройки игрока,Налаштування гравця,Ustawienia odtwarzacza,Spiller Instillinger:
+NICKNAME,Nickname:,Никнейм:,Псевдонім:,Przezwisko:,Kaldenavn:
+GAME_IS_PAUSED,Game is paused,Игра на паузе,Гра на паузі,Wstrzymaj grę,Spillet er på pause
+RESUME,Resume,Продолжить,Продовжити,Przystępować,Fortsæt
+STATS,Stats,Статистика,Статистика,Statystyka,Statistikker
+MULTIPLAYER_GAME,Multiplayer Game,Мультиплеер,Мультіплеєр,Gra Wieloosobowa,Multiplayer Spil
+CREATE_SERVER,Create Server,Создать сервер,Створити сервер,Utwórz serwer,Lav Server
+JOIN_SERVER,Join Server,Присоединиться,Приєднатися,Przystąp,Deltag Server
+ENTER_IP_ADDRESS,Enter IP Address,Введите IP адрес сервера,Введіть IP-адресу сервера,Wpisz adres IP serwera,Indtast IP Adresse
+IP_ADDRESS_NOT_FOUND,IP Address not found!,IP адрес не найден!,IP адрес не знайдений!,Nie znaleziono adresu IP!,IP Adresse ikke fundet!
+CANCEL,Cancel,Отмена,Відміна,Zniesienie,Afbryd
+MULTIPLAYER_GAME_TOOLTIP,Opens multiplayer game creation and connection screen.,Открывает экран создания и подключения многопользовательской игры.,Відкриває екран створення і підключення багатокористувацької гри.,Otwiera ekran tworzenia i łączenia gry wieloosobowej.,Åbner multiplayer oprettelses- og forbindelsesskærm

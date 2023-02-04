@@ -1,30 +1,28 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Images/Layout-edit_dark.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/table.gd" type="Script" id=2]
-[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Images/table_gradient_dark.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Misc/gems.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Misc/recruits.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/player_tower.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Sprites/Misc/bricks.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/tower_top_player.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/enemy_tower.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Sprites/tower_top_enemy.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/player_wall.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/enemy_wall.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Sprites/card_back.png" type="Texture" id=16]
-[ext_resource path="res://Scenes/endgame.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/ingame_menu.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/enemy_tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/player_tower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/player_wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/enemy_wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/tower_top_player.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Misc/recruits.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/tower_top_enemy.png" type="Texture" id=10]
+[ext_resource path="res://Images/Layout-edit_dark.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/card_back.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Misc/bricks.png" type="Texture" id=13]
+[ext_resource path="res://Images/table_gradient_dark.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Misc/gems.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Table.cs" type="Script" id=16]
+[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
 shadow_size = 3
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.482353, 0.65098, 0.482353, 1 )
@@ -38,14 +36,14 @@ shadow_size = 3
 
 [sub_resource type="DynamicFont" id=4]
 size = 12
-font_data = ExtResource( 9 )
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 27
-font_data = ExtResource( 8 )
+font_data = ExtResource( 17 )
 
 [sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 8 )
+font_data = ExtResource( 17 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.482353, 0.65098, 0.807843, 1 )
@@ -85,7 +83,7 @@ shadow_size = 3
 size = 32
 outline_size = 1
 outline_color = Color( 0.109804, 0.109804, 0.109804, 0.45098 )
-font_data = ExtResource( 8 )
+font_data = ExtResource( 17 )
 
 [sub_resource type="Animation" id=14]
 tracks/0/type = "value"
@@ -113,20 +111,20 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[node name="table" type="Control"]
+[node name="Table" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 7
 __meta__ = {
@@ -134,7 +132,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="graveyard" type="GridContainer" parent="."]
+[node name="Graveyard" type="GridContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.5 )
 anchor_left = 0.5
 anchor_right = 0.5
@@ -147,27 +145,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="card_back" type="TextureRect" parent="graveyard"]
+[node name="CardBack" type="TextureRect" parent="Graveyard"]
 margin_right = 135.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 135, 180 )
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_panel" type="Panel" parent="."]
+[node name="RedPanel" type="Panel" parent="."]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 120.0
 margin_bottom = 48.0
 custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="player_name" type="Label" parent="player_panel"]
+[node name="Name" type="Label" parent="RedPanel"]
 margin_left = 8.0
 margin_right = 96.0
 margin_bottom = 32.0
@@ -182,7 +177,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_panel" type="Panel" parent="."]
+[node name="BluePanel" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -120.0
@@ -194,7 +189,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_name" type="Label" parent="enemy_panel"]
+[node name="Name" type="Label" parent="BluePanel"]
 margin_left = 8.0
 margin_right = 96.0
 margin_bottom = 32.0
@@ -208,7 +203,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_tower" parent="." instance=ExtResource( 7 )]
+[node name="RedTower" parent="." instance=ExtResource( 3 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 193.555
@@ -217,7 +212,7 @@ margin_right = 238.555
 margin_bottom = -184.0
 rect_clip_content = false
 
-[node name="tower_head" type="TextureRect" parent="player_tower"]
+[node name="TowerHead" type="TextureRect" parent="RedTower"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -225,7 +220,7 @@ margin_left = -11.0
 margin_top = -0.999985
 margin_right = 11.0
 margin_bottom = 93.0
-texture = ExtResource( 11 )
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 flip_h = true
@@ -234,7 +229,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_wall" parent="." instance=ExtResource( 14 )]
+[node name="RedWall" parent="." instance=ExtResource( 5 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 265.0
@@ -242,7 +237,17 @@ margin_top = -234.0
 margin_right = 289.0
 margin_bottom = -184.0
 
-[node name="enemy_tower" parent="." instance=ExtResource( 12 )]
+[node name="BlueWall" parent="." instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -234.0
+margin_right = -216.0
+margin_bottom = -184.0
+
+[node name="BlueTower" parent="." instance=ExtResource( 2 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -253,7 +258,7 @@ margin_right = -104.0
 margin_bottom = -184.0
 rect_clip_content = false
 
-[node name="tower_head2" type="TextureRect" parent="enemy_tower"]
+[node name="TowerHead" type="TextureRect" parent="BlueTower"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -261,7 +266,7 @@ margin_left = -11.0
 margin_top = -1.00002
 margin_right = 11.0
 margin_bottom = 93.0
-texture = ExtResource( 13 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 5
 flip_h = true
@@ -270,17 +275,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_wall" parent="." instance=ExtResource( 15 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -240.0
-margin_top = -234.0
-margin_right = -216.0
-margin_bottom = -184.0
-
-[node name="player_tower_panel" type="Panel" parent="."]
+[node name="RedTowerPanel" type="Panel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 145.0
@@ -293,7 +288,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tower_hp" type="Label" parent="player_tower_panel"]
+[node name="Hp" type="Label" parent="RedTowerPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -309,7 +304,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_wall_panel" type="Panel" parent="."]
+[node name="RedWallPanel" type="Panel" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 225.0
@@ -322,7 +317,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="wall_hp" type="Label" parent="player_wall_panel"]
+[node name="Hp" type="Label" parent="RedWallPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -338,38 +333,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_tower_panel" type="Panel" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -200.0
-margin_top = -234.0
-margin_right = -144.0
-margin_bottom = -210.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="tower_hp" type="Label" parent="enemy_tower_panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "50"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemy_wall_panel" type="Panel" parent="."]
+[node name="BlueWallPanel" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -380,11 +344,10 @@ margin_right = -224.0
 margin_bottom = -210.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
-[node name="wall_hp" type="Label" parent="enemy_wall_panel"]
+[node name="Hp" type="Label" parent="BlueWallPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -400,7 +363,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_recruits_panel" type="Panel" parent="."]
+[node name="BlueTowerPanel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -234.0
+margin_right = -144.0
+margin_bottom = -210.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hp" type="Label" parent="BlueTowerPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "50"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RedRecruitsPanel" type="Panel" parent="."]
 margin_left = 16.0
 margin_top = 216.0
 margin_right = 104.0
@@ -411,7 +404,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="player_recruits_panel"]
+[node name="Pic" type="TextureRect" parent="RedRecruitsPanel"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -420,14 +413,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="player_recruits_panel"]
+[node name="Name" type="Label" parent="RedRecruitsPanel"]
 margin_left = 33.0
 margin_top = 54.0
 margin_right = 85.0
@@ -441,7 +434,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="player_recruits_panel"]
+[node name="PerTurn" type="Label" parent="RedRecruitsPanel"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -456,7 +449,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="player_recruits_panel"]
+[node name="Total" type="Label" parent="RedRecruitsPanel"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -471,7 +464,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_gems_panel" type="Panel" parent="."]
+[node name="RedGemsPanel" type="Panel" parent="."]
 margin_left = 16.0
 margin_top = 136.0
 margin_right = 104.0
@@ -482,7 +475,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="player_gems_panel"]
+[node name="Pic" type="TextureRect" parent="RedGemsPanel"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -491,14 +484,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 5 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="player_gems_panel"]
+[node name="Name" type="Label" parent="RedGemsPanel"]
 margin_left = 33.0
 margin_top = 54.0
 margin_right = 84.0
@@ -509,7 +502,7 @@ text = "gems"
 align = 2
 valign = 1
 
-[node name="per_turn" type="Label" parent="player_gems_panel"]
+[node name="PerTurn" type="Label" parent="RedGemsPanel"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -521,7 +514,7 @@ valign = 2
 autowrap = true
 clip_text = true
 
-[node name="total" type="Label" parent="player_gems_panel"]
+[node name="Total" type="Label" parent="RedGemsPanel"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -536,7 +529,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_bricks_panel" type="Panel" parent="."]
+[node name="RedBricksPanel" type="Panel" parent="."]
 margin_left = 16.0
 margin_top = 56.0
 margin_right = 104.0
@@ -547,7 +540,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="player_bricks_panel"]
+[node name="Pic" type="TextureRect" parent="RedBricksPanel"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -555,14 +548,14 @@ anchor_bottom = 0.75
 margin_left = 0.0079999
 margin_top = -0.0239999
 margin_right = -0.00800323
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="player_bricks_panel"]
+[node name="Name" type="Label" parent="RedBricksPanel"]
 margin_left = 33.0
 margin_top = 54.0
 margin_right = 84.0
@@ -578,7 +571,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="player_bricks_panel"]
+[node name="PerTurn" type="Label" parent="RedBricksPanel"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -593,7 +586,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="player_bricks_panel"]
+[node name="Total" type="Label" parent="RedBricksPanel"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -608,7 +601,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_recruits_panel_alt" type="Panel" parent="."]
+[node name="RedRecruitsPanelAlt" type="Panel" parent="."]
 visible = false
 margin_left = 16.0
 margin_top = 216.0
@@ -620,7 +613,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="player_recruits_panel_alt"]
+[node name="Pic" type="TextureRect" parent="RedRecruitsPanelAlt"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -629,14 +622,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="player_recruits_panel_alt"]
+[node name="Name" type="Label" parent="RedRecruitsPanelAlt"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 87.0
@@ -652,7 +645,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="player_recruits_panel_alt"]
+[node name="PerTurn" type="Label" parent="RedRecruitsPanelAlt"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -667,7 +660,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="player_recruits_panel_alt"]
+[node name="Total" type="Label" parent="RedRecruitsPanelAlt"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -682,7 +675,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_gems_panel_alt" type="Panel" parent="."]
+[node name="RedGemsPanelAlt" type="Panel" parent="."]
 visible = false
 margin_left = 16.0
 margin_top = 136.0
@@ -694,7 +687,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="player_gems_panel_alt"]
+[node name="Pic" type="TextureRect" parent="RedGemsPanelAlt"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -703,14 +696,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 5 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="player_gems_panel_alt"]
+[node name="Name" type="Label" parent="RedGemsPanelAlt"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 87.0
@@ -726,7 +719,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="player_gems_panel_alt"]
+[node name="PerTurn" type="Label" parent="RedGemsPanelAlt"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -738,7 +731,7 @@ valign = 2
 autowrap = true
 clip_text = true
 
-[node name="total" type="Label" parent="player_gems_panel_alt"]
+[node name="Total" type="Label" parent="RedGemsPanelAlt"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -753,7 +746,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_bricks_panel_alt" type="Panel" parent="."]
+[node name="RedBricksPanelAlt" type="Panel" parent="."]
 visible = false
 margin_left = 16.0
 margin_top = 56.0
@@ -765,7 +758,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="player_bricks_panel_alt"]
+[node name="Pic" type="TextureRect" parent="RedBricksPanelAlt"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -773,14 +766,14 @@ anchor_bottom = 0.75
 margin_left = 0.0079999
 margin_top = -0.0239999
 margin_right = -0.00800323
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="player_bricks_panel_alt"]
+[node name="Name" type="Label" parent="RedBricksPanelAlt"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 87.0
@@ -798,7 +791,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="player_bricks_panel_alt"]
+[node name="PerTurn" type="Label" parent="RedBricksPanelAlt"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -813,7 +806,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="player_bricks_panel_alt"]
+[node name="Total" type="Label" parent="RedBricksPanelAlt"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -828,7 +821,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_recruits_panel" type="Panel" parent="."]
+[node name="BlueRecruitsPanel" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -104.0
@@ -841,7 +834,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="enemy_recruits_panel"]
+[node name="Pic" type="TextureRect" parent="BlueRecruitsPanel"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -850,14 +843,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="enemy_recruits_panel"]
+[node name="Name" type="Label" parent="BlueRecruitsPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -874,7 +867,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="enemy_recruits_panel"]
+[node name="PerTurn" type="Label" parent="BlueRecruitsPanel"]
 anchor_left = 0.068
 anchor_top = 0.333
 anchor_right = 0.636
@@ -893,7 +886,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="enemy_recruits_panel"]
+[node name="Total" type="Label" parent="BlueRecruitsPanel"]
 anchor_left = 0.057
 anchor_top = 0.75
 anchor_right = 0.409
@@ -912,7 +905,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_gems_panel" type="Panel" parent="."]
+[node name="BlueGemsPanel" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -104.0
@@ -925,7 +918,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="enemy_gems_panel"]
+[node name="Pic" type="TextureRect" parent="BlueGemsPanel"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -934,14 +927,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 5 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="enemy_gems_panel"]
+[node name="Name" type="Label" parent="BlueGemsPanel"]
 anchor_left = 0.409
 anchor_top = 0.75
 anchor_right = 0.966
@@ -957,7 +950,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="enemy_gems_panel"]
+[node name="PerTurn" type="Label" parent="BlueGemsPanel"]
 anchor_left = 0.068
 anchor_top = 0.333
 anchor_right = 0.636
@@ -973,7 +966,7 @@ valign = 2
 autowrap = true
 clip_text = true
 
-[node name="total" type="Label" parent="enemy_gems_panel"]
+[node name="Total" type="Label" parent="BlueGemsPanel"]
 anchor_left = 0.057
 anchor_top = 0.75
 anchor_right = 0.409
@@ -992,7 +985,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_bricks_panel" type="Panel" parent="."]
+[node name="BlueBricksPanel" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -104.0
@@ -1005,7 +998,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="enemy_bricks_panel"]
+[node name="Pic" type="TextureRect" parent="BlueBricksPanel"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -1014,14 +1007,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="enemy_bricks_panel"]
+[node name="Name" type="Label" parent="BlueBricksPanel"]
 margin_left = 36.0
 margin_top = 54.0
 margin_right = 84.0
@@ -1032,7 +1025,7 @@ text = "bricks"
 align = 2
 valign = 1
 
-[node name="per_turn" type="Label" parent="enemy_bricks_panel"]
+[node name="PerTurn" type="Label" parent="BlueBricksPanel"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -1044,7 +1037,7 @@ valign = 2
 autowrap = true
 clip_text = true
 
-[node name="total" type="Label" parent="enemy_bricks_panel"]
+[node name="Total" type="Label" parent="BlueBricksPanel"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -1059,7 +1052,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_recruits_panel_alt" type="Panel" parent="."]
+[node name="BlueRecruitsPanelAlt" type="Panel" parent="."]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1073,7 +1066,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="enemy_recruits_panel_alt"]
+[node name="Pic" type="TextureRect" parent="BlueRecruitsPanelAlt"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -1082,14 +1075,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="enemy_recruits_panel_alt"]
+[node name="Name" type="Label" parent="BlueRecruitsPanelAlt"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 87.0
@@ -1105,7 +1098,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="enemy_recruits_panel_alt"]
+[node name="PerTurn" type="Label" parent="BlueRecruitsPanelAlt"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -1120,7 +1113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="enemy_recruits_panel_alt"]
+[node name="Total" type="Label" parent="BlueRecruitsPanelAlt"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -1135,7 +1128,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_gems_panel_alt" type="Panel" parent="."]
+[node name="BlueGemsPanelAlt" type="Panel" parent="."]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1149,7 +1142,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="enemy_gems_panel_alt"]
+[node name="Pic" type="TextureRect" parent="BlueGemsPanelAlt"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -1158,14 +1151,14 @@ margin_left = 0.0079999
 margin_top = -0.0240002
 margin_right = -0.00800323
 margin_bottom = -3.8147e-06
-texture = ExtResource( 5 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="enemy_gems_panel_alt"]
+[node name="Name" type="Label" parent="BlueGemsPanelAlt"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 87.0
@@ -1181,7 +1174,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="enemy_gems_panel_alt"]
+[node name="PerTurn" type="Label" parent="BlueGemsPanelAlt"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -1193,7 +1186,7 @@ valign = 2
 autowrap = true
 clip_text = true
 
-[node name="total" type="Label" parent="enemy_gems_panel_alt"]
+[node name="Total" type="Label" parent="BlueGemsPanelAlt"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -1208,7 +1201,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_bricks_panel_alt" type="Panel" parent="."]
+[node name="BlueBricksPanelAlt" type="Panel" parent="."]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1222,7 +1215,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pic" type="TextureRect" parent="enemy_bricks_panel_alt"]
+[node name="Pic" type="TextureRect" parent="BlueBricksPanelAlt"]
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
@@ -1230,14 +1223,14 @@ anchor_bottom = 0.75
 margin_left = 0.0079999
 margin_top = -0.0239999
 margin_right = -0.00800323
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="enemy_bricks_panel_alt"]
+[node name="Name" type="Label" parent="BlueBricksPanelAlt"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 87.0
@@ -1255,7 +1248,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="per_turn" type="Label" parent="enemy_bricks_panel_alt"]
+[node name="PerTurn" type="Label" parent="BlueBricksPanelAlt"]
 margin_left = 6.0
 margin_top = 24.0
 margin_right = 56.0
@@ -1270,7 +1263,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total" type="Label" parent="enemy_bricks_panel_alt"]
+[node name="Total" type="Label" parent="BlueBricksPanelAlt"]
 margin_left = 5.0
 margin_top = 54.0
 margin_right = 36.0
@@ -1285,7 +1278,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="particles" type="Control" parent="."]
+[node name="Particles" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.5
@@ -1297,12 +1290,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="deck_background" type="TextureRect" parent="."]
+[node name="DeckBg" type="TextureRect" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -210.0
-texture = ExtResource( 4 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 1
 __meta__ = {
@@ -1310,7 +1303,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shadow" type="Panel" parent="deck_background"]
+[node name="Shadow" type="Panel" parent="DeckBg"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1320,7 +1313,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="draw_card_label" type="Label" parent="."]
+[node name="DrawCardLabel" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1339,7 +1332,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemy_deck" type="HBoxContainer" parent="."]
+[node name="BlueDeck" type="HBoxContainer" parent="."]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1353,7 +1346,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player_deck" type="HBoxContainer" parent="."]
+[node name="RedDeck" type="HBoxContainer" parent="."]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1368,7 +1361,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="deck_locker" type="ColorRect" parent="."]
+[node name="DeckLocker" type="ColorRect" parent="."]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1381,16 +1374,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="deck_anim" type="Tween" parent="."]
+[node name="DeckAnim" type="Tween" parent="."]
 process_priority = 1
 
-[node name="card_anim" type="Tween" parent="."]
+[node name="CardAnim" type="Tween" parent="."]
 process_priority = 2
 
-[node name="graveyard_anim" type="Tween" parent="."]
+[node name="GraveyardAnim" type="Tween" parent="."]
 process_priority = 1
 
-[node name="newcard_anim" type="Tween" parent="."]
+[node name="NewCardAnim" type="Tween" parent="."]
 process_priority = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1401,26 +1394,26 @@ anims/fade = SubResource( 14 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pause_bg" type="ColorRect" parent="."]
+[node name="PauseBg" type="ColorRect" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.75 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 
-[node name="Time_Elapsed" type="Timer" parent="."]
+[node name="TimeElapsed" type="Timer" parent="."]
 autostart = true
 
-[node name="endgame" parent="." instance=ExtResource( 17 )]
+[node name="EndGame" parent="." instance_placeholder="res://Scenes/endgame.tscn"]
 visible = false
 
-[node name="ingame_menu" parent="." instance=ExtResource( 18 )]
+[node name="IngameMenu" parent="." instance_placeholder="res://Scenes/ingame_menu.tscn"]
 visible = false
 
-[connection signal="tween_all_completed" from="graveyard_anim" to="." method="_on_graveyard_anim_tween_all_completed"]
-[connection signal="timeout" from="Time_Elapsed" to="." method="_on_Time_Elapsed_timeout"]
+[connection signal="tween_all_completed" from="GraveyardAnim" to="." method="_on_graveyard_anim_tween_all_completed"]
+[connection signal="timeout" from="TimeElapsed" to="." method="_on_Time_Elapsed_timeout"]

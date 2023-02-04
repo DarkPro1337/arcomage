@@ -54,7 +54,7 @@ namespace Arcomage.Scripts
         }
 
         private void OnCancelPressed() => Hide();
-        private void OnReadyToPlay() => GetTree().ChangeScene("res://scenes/table.tscn");
+        private void OnReadyToPlay() => GetTree().ChangeScene("res://Scenes/Table.tscn");
 
         private void OnJoinFail()
         {

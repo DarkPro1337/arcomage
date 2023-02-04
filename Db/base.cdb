@@ -31,6 +31,10 @@
 					"name": "use"
 				},
 				{
+					"typeStr": "8",
+					"name": "actions"
+				},
+				{
 					"typeStr": "2",
 					"name": "not_discardable"
 				},
@@ -47,9 +51,10 @@
 					"description": "All players lose 8 bricks",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/brick_shortage.png",
+					"pic": "../Sprites/Cards/brick_shortage.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "lucky_cache",
@@ -57,9 +62,10 @@
 					"description": "+2 Bricks, +2 Gems, Play again",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/lucky_cache.png",
+					"pic": "../Sprites/Cards/lucky_cache.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "friendly_terrain",
@@ -67,9 +73,10 @@
 					"description": "+1 Wall, Play again",
 					"type": 0,
 					"cost": 1,
-					"pic": "../sprites/cards/friendly_terrain.png",
+					"pic": "../Sprites/Cards/friendly_terrain.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "miners",
@@ -77,9 +84,10 @@
 					"description": "+1 Quarry",
 					"type": 0,
 					"cost": 3,
-					"pic": "../sprites/cards/miners.png",
+					"pic": "../Sprites/Cards/miners.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "mother_lode",
@@ -87,9 +95,10 @@
 					"description": "If quarry < enemy quarry, +2 quarry. Else, +1 quarry",
 					"type": 0,
 					"cost": 4,
-					"pic": "../sprites/cards/mother_lode.png",
+					"pic": "../Sprites/Cards/mother_lode.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "dwarven_miners",
@@ -97,9 +106,10 @@
 					"description": "+4 Wall, +1 Quarry",
 					"type": 0,
 					"cost": 7,
-					"pic": "../sprites/cards/dwarven_miners.png",
+					"pic": "../Sprites/Cards/dwarven_miners.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "work_overtime",
@@ -107,9 +117,10 @@
 					"description": "+5 Wall, You lose 6 gems",
 					"type": 0,
 					"cost": 2,
-					"pic": "../sprites/cards/work_overtime.png",
+					"pic": "../Sprites/Cards/work_overtime.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "copping_the_tech",
@@ -117,9 +128,10 @@
 					"description": "If quarry < enemy quarry, quarry = enemy quarry",
 					"type": 0,
 					"cost": 5,
-					"pic": "../sprites/cards/copping_the_tech.png",
+					"pic": "../Sprites/Cards/copping_the_tech.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "basic_wall",
@@ -127,9 +139,10 @@
 					"description": "+3 Wall",
 					"type": 0,
 					"cost": 2,
-					"pic": "../sprites/cards/basic_wall.png",
+					"pic": "../Sprites/Cards/basic_wall.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "sturdy_wall",
@@ -137,9 +150,10 @@
 					"description": "+4 Wall",
 					"type": 0,
 					"cost": 3,
-					"pic": "../sprites/cards/sturdy_wall.png",
+					"pic": "../Sprites/Cards/sturdy_wall.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "innovations",
@@ -147,9 +161,10 @@
 					"description": "+1 To all player's quarrys, you gain 4 gems",
 					"type": 0,
 					"cost": 2,
-					"pic": "../sprites/cards/innovations.png",
+					"pic": "../Sprites/Cards/innovations.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "foundations",
@@ -157,9 +172,10 @@
 					"description": "If wall = 0, +6 wall, else +3 wall",
 					"type": 0,
 					"cost": 3,
-					"pic": "../sprites/cards/foundations.png",
+					"pic": "../Sprites/Cards/foundations.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "tremors",
@@ -167,9 +183,10 @@
 					"description": "All walls take 5 damage. Play again",
 					"type": 0,
 					"cost": 7,
-					"pic": "../sprites/cards/tremors.png",
+					"pic": "../Sprites/Cards/tremors.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "secret_room",
@@ -177,9 +194,10 @@
 					"description": "+1 Magic, Play Again",
 					"type": 0,
 					"cost": 8,
-					"pic": "../sprites/cards/secret_room.png",
+					"pic": "../Sprites/Cards/secret_room.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "earthquake",
@@ -187,9 +205,10 @@
 					"description": "-1 To all player's quarrys",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/earthquake.png",
+					"pic": "../Sprites/Cards/earthquake.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "big_wall",
@@ -197,9 +216,10 @@
 					"description": "+6 Wall",
 					"type": 0,
 					"cost": 5,
-					"pic": "../sprites/cards/big_wall.png",
+					"pic": "../Sprites/Cards/big_wall.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "collapse",
@@ -207,9 +227,10 @@
 					"description": "-1 Enemy quarry",
 					"type": 0,
 					"cost": 4,
-					"pic": "../sprites/cards/collapse.png",
+					"pic": "../Sprites/Cards/collapse.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "new_equipment",
@@ -217,9 +238,10 @@
 					"description": "+2 Quarry",
 					"type": 0,
 					"cost": 6,
-					"pic": "../sprites/cards/new_equipment.png",
+					"pic": "../Sprites/Cards/new_equipment.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "strip_mine",
@@ -227,9 +249,10 @@
 					"description": "-1 Quarry, +10 Wall, You gain 5 gems",
 					"type": 0,
 					"cost": 0,
-					"pic": "../sprites/cards/strip_mine.png",
+					"pic": "../Sprites/Cards/strip_mine.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "reinforced_wall",
@@ -237,9 +260,10 @@
 					"description": "+8 Wall",
 					"type": 0,
 					"cost": 8,
-					"pic": "../sprites/cards/reinforced_wall.png",
+					"pic": "../Sprites/Cards/reinforced_wall.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "porticulus",
@@ -247,9 +271,10 @@
 					"description": "+5 Wall, +1 Dungeons",
 					"type": 0,
 					"cost": 9,
-					"pic": "../sprites/cards/porticulus.png",
+					"pic": "../Sprites/Cards/porticulus.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "crystal_rocks",
@@ -257,9 +282,10 @@
 					"description": "+7 Wall, gain 7 gems",
 					"type": 0,
 					"cost": 9,
-					"pic": "../sprites/cards/crystal_rocks.png",
+					"pic": "../Sprites/Cards/crystal_rocks.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "harmonic_ore",
@@ -267,9 +293,10 @@
 					"description": "+6 Wall, +3 Tower",
 					"type": 0,
 					"cost": 11,
-					"pic": "../sprites/cards/harmonic_ore.png",
+					"pic": "../Sprites/Cards/harmonic_ore.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "mondo_wall",
@@ -277,9 +304,10 @@
 					"description": "+12 Wall",
 					"type": 0,
 					"cost": 13,
-					"pic": "../sprites/cards/mondoWall.png",
+					"pic": "../Sprites/Cards/mondoWall.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "focused_designs",
@@ -287,9 +315,10 @@
 					"description": "+8 Wall, +5 Tower",
 					"type": 0,
 					"cost": 15,
-					"pic": "../sprites/cards/focusedDesigns.png",
+					"pic": "../Sprites/Cards/focusedDesigns.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "great_wall",
@@ -297,9 +326,10 @@
 					"description": "+15 Wall",
 					"type": 0,
 					"cost": 16,
-					"pic": "../sprites/cards/great_wall.png",
+					"pic": "../Sprites/Cards/great_wall.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "rock_launcher",
@@ -307,9 +337,10 @@
 					"description": "+6 Wall, 10 Damage to enemy",
 					"type": 0,
 					"cost": 18,
-					"pic": "../sprites/cards/rock_launcher.png",
+					"pic": "../Sprites/Cards/rock_launcher.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "dragons_heart",
@@ -317,9 +348,10 @@
 					"description": "+20 Wall, +8 Tower",
 					"type": 0,
 					"cost": 24,
-					"pic": "../sprites/cards/dragons_heart.png",
+					"pic": "../Sprites/Cards/dragons_heart.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "forced_labor",
@@ -327,9 +359,10 @@
 					"description": "+9 Wall, Lose 5 Recruits",
 					"type": 0,
 					"cost": 7,
-					"pic": "../sprites/cards/forced_labor.png",
+					"pic": "../Sprites/Cards/forced_labor.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "rock_garden",
@@ -337,9 +370,10 @@
 					"description": "+1 Wall, +1 Tower, +2 Recruits",
 					"type": 0,
 					"cost": 1,
-					"pic": "../sprites/cards/rock_garden.png",
+					"pic": "../Sprites/Cards/rock_garden.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "flood_water",
@@ -347,9 +381,10 @@
 					"description": "Player(s) with lowest Wall are -1 Dungeon and 2 damage to Tower",
 					"type": 0,
 					"cost": 6,
-					"pic": "../sprites/cards/flood_water.png",
+					"pic": "../Sprites/Cards/flood_water.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "barracks",
@@ -357,9 +392,10 @@
 					"description": "+6 Recruits, +6 Wall, If dungeon < enemy dungeon then +1 dungeon",
 					"type": 0,
 					"cost": 10,
-					"pic": "../sprites/cards/barracks.png",
+					"pic": "../Sprites/Cards/barracks.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "battlements",
@@ -367,9 +403,10 @@
 					"description": "+7 Wall, 6 damage to enemy",
 					"type": 0,
 					"cost": 14,
-					"pic": "../sprites/cards/battlements.png",
+					"pic": "../Sprites/Cards/battlements.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "shift",
@@ -377,9 +414,10 @@
 					"description": "Switch your Wall with enemy Wall",
 					"type": 0,
 					"cost": 17,
-					"pic": "../sprites/cards/shift.png",
+					"pic": "../Sprites/Cards/shift.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "quartz",
@@ -387,9 +425,10 @@
 					"description": "+1 Tower, Play again",
 					"type": 1,
 					"cost": 1,
-					"pic": "../sprites/cards/quartz.png",
+					"pic": "../Sprites/Cards/quartz.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "smoky_quartz",
@@ -397,9 +436,10 @@
 					"description": "1 Damage to enemy tower, Play again",
 					"type": 1,
 					"cost": 2,
-					"pic": "../sprites/cards/smoky_quartz.png",
+					"pic": "../Sprites/Cards/smoky_quartz.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "amethyst",
@@ -407,9 +447,10 @@
 					"description": "+3 Tower",
 					"type": 1,
 					"cost": 2,
-					"pic": "../sprites/cards/amethyst.png",
+					"pic": "../Sprites/Cards/amethyst.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "spell_weavers",
@@ -417,9 +458,10 @@
 					"description": "+1 Magic",
 					"type": 1,
 					"cost": 3,
-					"pic": "../sprites/cards/spell_weavers.png",
+					"pic": "../Sprites/Cards/spell_weavers.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "prism",
@@ -427,9 +469,10 @@
 					"description": "Draw 1 card, Discard 1 card, Play again",
 					"type": 1,
 					"cost": 2,
-					"pic": "../sprites/cards/prism.png",
+					"pic": "../Sprites/Cards/prism.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "lodestone",
@@ -437,9 +480,10 @@
 					"description": "+3 Tower, This card can't be discarded without playing it",
 					"type": 1,
 					"cost": 5,
-					"pic": "../sprites/cards/lodestone.png",
+					"pic": "../Sprites/Cards/lodestone.png",
 					"use": 1,
-					"not_discardable": true
+					"not_discardable": true,
+					"actions": []
 				},
 				{
 					"id": "solar_flare",
@@ -447,9 +491,10 @@
 					"description": "+2 Tower, 2 Damage to enemy tower",
 					"type": 1,
 					"cost": 4,
-					"pic": "../sprites/cards/solar_flare.png",
+					"pic": "../Sprites/Cards/solar_flare.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "crystal_matrix",
@@ -457,9 +502,10 @@
 					"description": "+1 Magic, +3 Tower, +1 Enemy tower",
 					"type": 1,
 					"cost": 6,
-					"pic": "../sprites/cards/crystal_matrix.png",
+					"pic": "../Sprites/Cards/crystal_matrix.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "gemstone_flaw",
@@ -467,9 +513,10 @@
 					"description": "3 Damage to enemy tower",
 					"type": 1,
 					"cost": 2,
-					"pic": "../sprites/cards/gemstone_flaw.png",
+					"pic": "../Sprites/Cards/gemstone_flaw.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "ruby",
@@ -477,9 +524,10 @@
 					"description": "+5 Tower",
 					"type": 1,
 					"cost": 3,
-					"pic": "../sprites/cards/ruby.png",
+					"pic": "../Sprites/Cards/ruby.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "gem_spear",
@@ -487,9 +535,10 @@
 					"description": "5 Damage to enemy tower",
 					"type": 1,
 					"cost": 4,
-					"pic": "../sprites/cards/gem_spear.png",
+					"pic": "../Sprites/Cards/gem_spear.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "power_burn",
@@ -497,9 +546,10 @@
 					"description": "5 Damage to your tower, +2 Magic",
 					"type": 1,
 					"cost": 3,
-					"pic": "../sprites/cards/power_burn.png",
+					"pic": "../Sprites/Cards/power_burn.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "harmonic_vibe",
@@ -507,9 +557,10 @@
 					"description": "+1 Magic, +3 Tower, +3 Wall",
 					"type": 1,
 					"cost": 7,
-					"pic": "../sprites/cards/harmonic_vibe.png",
+					"pic": "../Sprites/Cards/harmonic_vibe.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "parity",
@@ -517,9 +568,10 @@
 					"description": "All player's magic equals the highest player's magic",
 					"type": 1,
 					"cost": 7,
-					"pic": "../sprites/cards/parity.png",
+					"pic": "../Sprites/Cards/parity.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "emerald",
@@ -527,9 +579,10 @@
 					"description": "+8 Tower",
 					"type": 1,
 					"cost": 6,
-					"pic": "../sprites/cards/emerald.png",
+					"pic": "../Sprites/Cards/emerald.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "pearl_of_wisdom",
@@ -537,9 +590,10 @@
 					"description": "+5 Tower, +1 Magic",
 					"type": 1,
 					"cost": 9,
-					"pic": "../sprites/cards/pearl_of_wisdom.png",
+					"pic": "../Sprites/Cards/pearl_of_wisdom.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "shatterer",
@@ -547,9 +601,10 @@
 					"description": "-1 Magic, 9 Damage to enemy tower",
 					"type": 1,
 					"cost": 8,
-					"pic": "../sprites/cards/shatterer.png",
+					"pic": "../Sprites/Cards/shatterer.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "crumblestone",
@@ -557,9 +612,10 @@
 					"description": "+5 Tower, Enemy loses 6 bricks",
 					"type": 1,
 					"cost": 7,
-					"pic": "../sprites/cards/crumblestone.png",
+					"pic": "../Sprites/Cards/crumblestone.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "sapphire",
@@ -567,9 +623,10 @@
 					"description": "+11 Tower",
 					"type": 1,
 					"cost": 10,
-					"pic": "../sprites/cards/sapphire.png",
+					"pic": "../Sprites/Cards/sapphire.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "discord",
@@ -577,9 +634,10 @@
 					"description": "7 Damage to all towers, all player's magic -1",
 					"type": 1,
 					"cost": 5,
-					"pic": "../sprites/cards/discord.png",
+					"pic": "../Sprites/Cards/discord.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "fire_ruby",
@@ -587,9 +645,10 @@
 					"description": "+6 Tower, 4 Damage to all enemy towers",
 					"type": 1,
 					"cost": 13,
-					"pic": "../sprites/cards/fire_ruby.png",
+					"pic": "../Sprites/Cards/fire_ruby.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "quarrys_help",
@@ -597,9 +656,10 @@
 					"description": "+7 Tower, Lose 10 bricks",
 					"type": 1,
 					"cost": 4,
-					"pic": "../sprites/cards/quarrys_help.png",
+					"pic": "../Sprites/Cards/quarrys_help.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "crystal_shield",
@@ -607,9 +667,10 @@
 					"description": "+8 Tower, +3 Wall",
 					"type": 1,
 					"cost": 12,
-					"pic": "../sprites/cards/crystal_shield.png",
+					"pic": "../Sprites/Cards/crystal_shield.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "empathy_gem",
@@ -617,9 +678,10 @@
 					"description": "+8 Tower, +1 Dungeon",
 					"type": 1,
 					"cost": 14,
-					"pic": "../sprites/cards/empathy_gem.png",
+					"pic": "../Sprites/Cards/empathy_gem.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "diamond",
@@ -627,9 +689,10 @@
 					"description": "+15 Tower",
 					"type": 1,
 					"cost": 16,
-					"pic": "../sprites/cards/diamond.png",
+					"pic": "../Sprites/Cards/diamond.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "sanctuary",
@@ -637,9 +700,10 @@
 					"description": "+10 Tower, +5 Wall, Gain 5 recruits",
 					"type": 1,
 					"cost": 15,
-					"pic": "../sprites/cards/sanctuary.png",
+					"pic": "../Sprites/Cards/sanctuary.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "lava_jewel",
@@ -647,9 +711,10 @@
 					"description": "+12 Tower, 6 Damage to all enemies",
 					"type": 1,
 					"cost": 17,
-					"pic": "../sprites/cards/lava_jewel.png",
+					"pic": "../Sprites/Cards/lava_jewel.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "dragons_eye",
@@ -657,9 +722,10 @@
 					"description": "+20 Tower",
 					"type": 1,
 					"cost": 21,
-					"pic": "../sprites/cards/dragons_eye.png",
+					"pic": "../Sprites/Cards/dragons_eye.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "crystallize",
@@ -667,9 +733,10 @@
 					"description": "+11 Tower, -6 Wall",
 					"type": 1,
 					"cost": 8,
-					"pic": "../sprites/cards/crystallize.png",
+					"pic": "../Sprites/Cards/crystallize.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "bag_of_baubles",
@@ -677,9 +744,10 @@
 					"description": "If Tower < enemy Tower than +2 Tower, Else +1 Tower",
 					"type": 1,
 					"cost": 0,
-					"pic": "../sprites/cards/bag_of_baubles.png",
+					"pic": "../Sprites/Cards/bag_of_baubles.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "rainbow",
@@ -687,9 +755,10 @@
 					"description": "+1 Tower to all players. You gain 3 gems",
 					"type": 1,
 					"cost": 0,
-					"pic": "../sprites/cards/rainbow.png",
+					"pic": "../Sprites/Cards/rainbow.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "apprentice",
@@ -697,9 +766,10 @@
 					"description": "+4 Tower, you lose 3 recruits, 2 Damage to enemy Tower",
 					"type": 1,
 					"cost": 5,
-					"pic": "../sprites/cards/apprentice.png",
+					"pic": "../Sprites/Cards/apprentice.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "lightning_shard",
@@ -707,9 +777,10 @@
 					"description": "If Tower > enemy Wall then 8 damage to enemy Tower, else 8 damage",
 					"type": 1,
 					"cost": 11,
-					"pic": "../sprites/cards/lightning_shard.png",
+					"pic": "../Sprites/Cards/lightning_shard.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "phase_jewel",
@@ -717,9 +788,10 @@
 					"description": "+13 Tower, +6 Recruits, +6 Bricks",
 					"type": 1,
 					"cost": 18,
-					"pic": "../sprites/cards/phase_jewel.png",
+					"pic": "../Sprites/Cards/phase_jewel.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "mad_cow_disease",
@@ -727,9 +799,10 @@
 					"description": "All players lose 6 recruits.",
 					"type": 2,
 					"cost": 0,
-					"pic": "../sprites/cards/madCowDisease.png",
+					"pic": "../Sprites/Cards/madCowDisease.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "faerie",
@@ -737,9 +810,10 @@
 					"description": "2 Damage, Play again",
 					"type": 2,
 					"cost": 1,
-					"pic": "../sprites/cards/faerie.png",
+					"pic": "../Sprites/Cards/faerie.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "moody_goblins",
@@ -747,9 +821,10 @@
 					"description": "4 Damage, You lose 3 gems",
 					"type": 2,
 					"cost": 1,
-					"pic": "../sprites/cards/moody_goblins.png",
+					"pic": "../Sprites/Cards/moody_goblins.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "minotaur",
@@ -757,9 +832,10 @@
 					"description": "+1 Dungeon",
 					"type": 2,
 					"cost": 3,
-					"pic": "../sprites/cards/minotaur.png",
+					"pic": "../Sprites/Cards/minotaur.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "elven_scout",
@@ -767,9 +843,10 @@
 					"description": "Draw 1 card, Discard 1 card, Play again",
 					"type": 2,
 					"cost": 2,
-					"pic": "../sprites/cards/elven_scout.png",
+					"pic": "../Sprites/Cards/elven_scout.png",
 					"use": 1,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "goblin_mob",
@@ -777,9 +854,10 @@
 					"description": "6 Damage, You take 3 damage",
 					"type": 2,
 					"cost": 3,
-					"pic": "../sprites/cards/goblin_mob.png",
+					"pic": "../Sprites/Cards/goblin_mob.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "goblin_archers",
@@ -787,9 +865,10 @@
 					"description": "3 Damage to enemy tower, You take 1 damage",
 					"type": 2,
 					"cost": 4,
-					"pic": "../sprites/cards/goblin_archers.png",
+					"pic": "../Sprites/Cards/goblin_archers.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "shadow_faerie",
@@ -797,9 +876,10 @@
 					"description": "2 Damage to enemy tower, Play again",
 					"type": 2,
 					"cost": 6,
-					"pic": "../sprites/cards/shadow_faerie.png",
+					"pic": "../Sprites/Cards/shadow_faerie.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "orc",
@@ -807,9 +887,10 @@
 					"description": "5 Damage",
 					"type": 2,
 					"cost": 3,
-					"pic": "../sprites/cards/orc.png",
+					"pic": "../Sprites/Cards/orc.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "dwarves",
@@ -817,9 +898,10 @@
 					"description": "4 Damage, +3 Wall",
 					"type": 2,
 					"cost": 5,
-					"pic": "../sprites/cards/dwarves.png",
+					"pic": "../Sprites/Cards/dwarves.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "little_snakes",
@@ -827,9 +909,10 @@
 					"description": "4 Damage to enemy tower",
 					"type": 2,
 					"cost": 6,
-					"pic": "../sprites/cards/little_snakes.png",
+					"pic": "../Sprites/Cards/little_snakes.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "troll_trainer",
@@ -837,9 +920,10 @@
 					"description": "+2 Damage",
 					"type": 2,
 					"cost": 7,
-					"pic": "../sprites/cards/troll_trainer.png",
+					"pic": "../Sprites/Cards/troll_trainer.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "tower_gremlin",
@@ -847,9 +931,10 @@
 					"description": "2 Damage, +4 Wall, +2 Tower",
 					"type": 2,
 					"cost": 8,
-					"pic": "../sprites/cards/tower_gremlin.png",
+					"pic": "../Sprites/Cards/tower_gremlin.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "full_moon",
@@ -857,9 +942,10 @@
 					"description": "+1 to all player's Dungeon, You gain 3 recruits",
 					"type": 2,
 					"cost": 0,
-					"pic": "../sprites/cards/full_moon.png",
+					"pic": "../Sprites/Cards/full_moon.png",
 					"use": 2,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "slasher",
@@ -867,9 +953,10 @@
 					"description": "6 Damage",
 					"type": 2,
 					"cost": 5,
-					"pic": "../sprites/cards/slasher.png",
+					"pic": "../Sprites/Cards/slasher.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "ogre",
@@ -877,9 +964,10 @@
 					"description": "7 Damage",
 					"type": 2,
 					"cost": 6,
-					"pic": "../sprites/cards/ogre.png",
+					"pic": "../Sprites/Cards/ogre.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "rabid_sheep",
@@ -887,9 +975,10 @@
 					"description": "6 Damage, Enemy loses 3 recruits",
 					"type": 2,
 					"cost": 6,
-					"pic": "../sprites/cards/rabid_sheep.png",
+					"pic": "../Sprites/Cards/rabid_sheep.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "imp",
@@ -897,9 +986,10 @@
 					"description": "6 Damage. All players lose 5 bricks, gems and recruits",
 					"type": 2,
 					"cost": 5,
-					"pic": "../sprites/cards/imp.png",
+					"pic": "../Sprites/Cards/imp.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "spizzer",
@@ -907,9 +997,10 @@
 					"description": "If enemy wall = 0 then 10 damage, Else 6 damage",
 					"type": 2,
 					"cost": 8,
-					"pic": "../sprites/cards/spizzer.png",
+					"pic": "../Sprites/Cards/spizzer.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "werewolf",
@@ -917,9 +1008,10 @@
 					"description": "9 Damage",
 					"type": 2,
 					"cost": 9,
-					"pic": "../sprites/cards/warewolf.png",
+					"pic": "../Sprites/Cards/warewolf.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "corrosion_cloud",
@@ -927,9 +1019,10 @@
 					"description": "If enemy wall > 0 then 10 damage, Else 7 Damage",
 					"type": 2,
 					"cost": 11,
-					"pic": "../sprites/cards/corrosion_cloud.png",
+					"pic": "../Sprites/Cards/corrosion_cloud.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "unicorn",
@@ -937,9 +1030,10 @@
 					"description": "If magic > enemy magic then 12 Damage, Else 8 Damage",
 					"type": 2,
 					"cost": 9,
-					"pic": "../sprites/cards/unicorn.png",
+					"pic": "../Sprites/Cards/unicorn.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "elven_archers",
@@ -947,9 +1041,10 @@
 					"description": "If wall > enemy wall then 6 Damage to enemy Tower, Else 8 Damage",
 					"type": 2,
 					"cost": 10,
-					"pic": "../sprites/cards/elven_archers.png",
+					"pic": "../Sprites/Cards/elven_archers.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "succubus",
@@ -957,9 +1052,10 @@
 					"description": "5 Damage to enemy tower, enemy loses 8 recruits.",
 					"type": 2,
 					"cost": 14,
-					"pic": "../sprites/cards/succubus.png",
+					"pic": "../Sprites/Cards/succubus.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "rock_stompers",
@@ -967,9 +1063,10 @@
 					"description": "8 Damage, -1 Enemy quarry",
 					"type": 2,
 					"cost": 11,
-					"pic": "../sprites/cards/rock_stompers.png",
+					"pic": "../Sprites/Cards/rock_stompers.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "thief",
@@ -977,9 +1074,10 @@
 					"description": "Enemy loses 10 gems, 5 bricks, you gain 1/2 amt. round up",
 					"type": 2,
 					"cost": 12,
-					"pic": "../sprites/cards/thief.png",
+					"pic": "../Sprites/Cards/thief.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "stone_giant",
@@ -987,9 +1085,10 @@
 					"description": "10 Damage, +4 Wall",
 					"type": 2,
 					"cost": 15,
-					"pic": "../sprites/cards/stone_giant.png",
+					"pic": "../Sprites/Cards/stone_giant.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "vampire",
@@ -997,9 +1096,10 @@
 					"description": "10 Damage, Enemy loses 5 recruits, -1 enemy Dungeon",
 					"type": 2,
 					"cost": 17,
-					"pic": "../sprites/cards/vampire.png",
+					"pic": "../Sprites/Cards/vampire.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "dragon",
@@ -1007,9 +1107,10 @@
 					"description": "20 Damage, Enemy loses 10 gems, -1 enemy Dungeon",
 					"type": 2,
 					"cost": 25,
-					"pic": "../sprites/cards/dragon.png",
+					"pic": "../Sprites/Cards/dragon.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "spearman",
@@ -1017,9 +1118,10 @@
 					"description": "If wall > enemy Wall do 3 Damage, Else do 2 Damage",
 					"type": 2,
 					"cost": 2,
-					"pic": "../sprites/cards/spearman.png",
+					"pic": "../Sprites/Cards/spearman.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "gnome",
@@ -1027,9 +1129,10 @@
 					"description": "3 Damage, +1 Gem",
 					"type": 2,
 					"cost": 2,
-					"pic": "../sprites/cards/gnome.png",
+					"pic": "../Sprites/Cards/gnome.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "berserker",
@@ -1037,9 +1140,10 @@
 					"description": "8 Damage, 3 Damage to your Tower",
 					"type": 2,
 					"cost": 4,
-					"pic": "../sprites/cards/berserker.png",
+					"pic": "../Sprites/Cards/berserker.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "warlord",
@@ -1047,9 +1151,10 @@
 					"description": "13 Damage, You lose 3 gems",
 					"type": 2,
 					"cost": 13,
-					"pic": "../sprites/cards/warlord.png",
+					"pic": "../Sprites/Cards/warlord.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				},
 				{
 					"id": "pegasus_lancer",
@@ -1057,13 +1162,23 @@
 					"description": "12 Damage to enemy tower",
 					"type": 2,
 					"cost": 18,
-					"pic": "../sprites/cards/pegasus_lancer.png",
+					"pic": "../Sprites/Cards/pegasus_lancer.png",
 					"use": 0,
-					"not_discardable": false
+					"not_discardable": false,
+					"actions": []
 				}
 			],
 			"separators": [],
 			"props": {}
+		},
+		{
+			"name": "cards@actions",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
 		}
 	],
 	"customTypes": [],

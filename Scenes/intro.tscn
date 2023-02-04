@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Images/Intro/godot_logo_large.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Intro.cs" type="Script" id=3]
-[ext_resource path="res://Images/Intro/darkpro1337_avatar.png" type="Texture" id=4]
-[ext_resource path="res://Images/Intro/nwc.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Intro.cs" type="Script" id=2]
+[ext_resource path="res://Images/Intro/nwc.png" type="Texture" id=3]
+[ext_resource path="res://Images/Intro/godot_logo_large.png" type="Texture" id=4]
+[ext_resource path="res://Images/Intro/darkpro1337_avatar.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -96,7 +96,7 @@ tracks/5/keys = {
 [node name="intro" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="bg" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -116,7 +116,7 @@ margin_top = 134.578
 margin_right = 186.0
 margin_bottom = 238.578
 rect_pivot_offset = Vector2( 186, 52 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -154,7 +154,7 @@ margin_top = 85.0
 margin_right = 186.0
 margin_bottom = 218.999
 rect_pivot_offset = Vector2( 182.791, 67.9054 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -208,7 +208,7 @@ margin_top = 156.0
 margin_right = 247.5
 margin_bottom = 260.0
 rect_pivot_offset = Vector2( 186, 52 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -235,8 +235,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "init"
 anims/init = SubResource( 3 )
-
-[connection signal="animation_finished" from="anim" to="." method="OnAnimPlayerAnimationFinished"]

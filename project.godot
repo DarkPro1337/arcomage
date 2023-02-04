@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Arcomage"
 config/description="Open-source Arcomage fan-remake made on Godot Engine."
-run/main_scene="res://Scenes/boot.tscn"
+run/main_scene="res://Scenes/Boot.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Arcoamge"
 run/low_processor_mode=true
@@ -76,7 +76,7 @@ ui_reset={
 
 [locale]
 
-translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation", "res://Arcomage Translations - Interface.da.translation" )
+translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation", "res://Arcomage Translations - Interface.da.translation", "res://Arcomage Translations - Cards.da.translation", "res://Arcomage Translations - Cards.en.translation", "res://Arcomage Translations - Cards.ru.translation", "res://Arcomage Translations - Cards.uk.translation" )
 locale_filter=[ 1, [ "da", "en", "pl", "ru", "uk" ] ]
 translation_remaps={
 }
@@ -85,6 +85,10 @@ translation_remaps={
 
 file_logging/enable_file_logging=true
 file_logging/log_path="user://logs/session.log"
+
+[mono]
+
+project/assembly_name="Arcomage"
 
 [rendering]
 
@@ -111,7 +115,9 @@ quality/shading/force_lambert_over_burley.mobile=false
 quality/shading/force_blinn_over_ggx.mobile=false
 quality/depth_prepass/enable=false
 quality/filters/anisotropic_filter_level=1
+quality/skinning/software_skinning_fallback=false
 quality/spatial_partitioning/use_bvh=false
+quality/spatial_partitioning/bvh_collision_margin=0.0
 quality/lightmapping/use_bicubic_sampling=false
 quality/reflections/atlas_size=0
 quality/reflections/atlas_subdiv=0
