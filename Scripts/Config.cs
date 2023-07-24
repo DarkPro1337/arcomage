@@ -1,87 +1,84 @@
 using Godot;
 
-namespace Arcomage.Scripts
+namespace Arcomage.Scripts;
+
+public enum Tavern
 {
-    public class Config : Node
-    {
-        public enum Tavern
-        {
-            None,
-            Harmondale,
-            Erathia,
-            TulareanForest,
-            Deyja,
-            BracadaDesert,
-            Celeste,
-            ThePit,
-            EvermornIsland,
-            Nighon,
-            BarrowDowns,
-            Tidewater,
-            Avlee,
-            StoneCity
-        }
-        public enum AiType
-        {
-            Auto,
-            Attack,
-            Defence,
-            Random
-        }
-        public enum Locale
-        {
-            en,
-            ru,
-            uk,
-            pl,
-            da
-        }
-        /// Default game settings
-        // Window Settings
-        public static bool Fullscreen = false;
-        public static bool Borderless = false;
-        public static int WindowWidth = 960;
-        public static int WindowHeight = 540;
-        public static bool Vsync = false;
-        public static bool IntroSkip = false;
-
-        // Sound Settings
-        public static double MasterVolume = 0.5;
-        public static double MusicVolume = 1;
-        public static double SoundVolume = 1;
-        public static bool MuteSound = false;
-
-        // Starting conditions
-        public static bool Singleplayer = true;
-        public static bool SingleClick = true;
-        public static int TowerLevels = 50;
-        public static int WallLevels = 50;
-        public static int QuarryLevels = 5;
-        public static int BrickQuantity = 20;
-        public static int MagicLevels = 3;
-        public static int GemQuantity = 10;
-        public static int DungeonLevels = 5;
-        public static int RecruitQuantity = 20;
-
-        // Play conditions
-        public static int AutoBricks = 0;
-        public static int AutoGems = 0;
-        public static int AutoRecruits = 0;
-        public static int CardsInHand = 6;
-        public static AiType CurrentAiType = AiType.Auto;
+    None,
+    Harmondale,
+    Erathia,
+    TulareanForest,
+    Deyja,
+    BracadaDesert,
+    Celeste,
+    ThePit,
+    EvermornIsland,
+    Nighon,
+    BarrowDowns,
+    Tidewater,
+    Avlee,
+    StoneCity
+}
     
+public enum AiType
+{
+    Auto,
+    Attack,
+    Defence,
+    Random
+}
+    
+public enum Locale
+{
+    En,
+    Ru,
+    Uk,
+    Pl,
+    Da
+}
 
-        // Victory conditions
-        public static int TowerVictory = 100;
-        public static int ResourceVictory = 300;
+public class GameSettings
+{
+    public bool Fullscreen { get; set; }
+    public bool Borderless { get; set; }
+    public int WindowWidth { get; set; } = 960;
+    public int WindowHeight { get; set; } = 540;
+    public bool Vsync { get; set; }
+    public bool IntroSkip { get; set; }
+    
+    public double MasterVolume { get; set; } = 0.5;
+    public double MusicVolume { get; set; } = 1;
+    public double SoundVolume { get; set; } = 1;
+    public bool MuteSound { get; set; }
+    
+    public bool Singleplayer { get; set; } = true;
+    public bool SingleClick { get; set; } = true;
+    public int TowerLevels { get; set; } = 50;
+    public int WallLevels { get; set; } = 50;
+    public int QuarryLevels { get; set; } = 5;
+    public int BrickQuantity { get; set; } = 20;
+    public int MagicLevels { get; set; } = 3;
+    public int GemQuantity { get; set; } = 10;
+    public int DungeonLevels { get; set; } = 5;
+    public int RecruitQuantity { get; set; } = 20;
+    
+    public int AutoBricks { get; set; }
+    public int AutoGems { get; set; }
+    public int AutoRecruits { get; set; }
+    public int CardsInHand { get; set; } = 6;
+    public AiType CurrentAiType { get; set; } = AiType.Auto;
+    
+    public int TowerVictory { get; set; } = 100;
+    public int ResourceVictory { get; set; } = 300;
+    
+    public Tavern CurrentTavern { get; set; } = Tavern.None;
 
-        // Tavern presets
-        public static Tavern CurrentTavern = Tavern.None;
+    public Locale CurrentLocale { get; set; } = Locale.En;
 
-        // Language settings
-        public static Locale CurrentLocale = Locale.en;
+    public string Nickname { get; set; } = "Player";
+}
 
-        // Player settings
-        public static string Nickname = "Player";
-    }
+public partial class Config : Node
+{
+    public static GameSettings Settings = new();
 }

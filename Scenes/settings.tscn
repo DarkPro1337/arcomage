@@ -1,1021 +1,730 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://ck57oh5lctgf0"]
 
-[ext_resource path="res://Themes/settings_theme.tres" type="Theme" id=1]
-[ext_resource path="res://Images/Layout-edit_dark_blur.png" type="Texture" id=2]
-[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scripts/Settings.cs" type="Script" id=4]
+[ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_8se8j"]
+[ext_resource type="Texture2D" uid="uid://dq2pgm0muw18t" path="res://Images/Layout-edit_dark_blur.png" id="2_idday"]
+[ext_resource type="Texture2D" uid="uid://cdcud7it23lk8" path="res://Images/Icons/Flags/gb.png" id="3_qa8cm"]
+[ext_resource type="ButtonGroup" uid="uid://chi85n3rnukm8" path="res://Themes/GameplayModes.tres" id="3_s807r"]
+[ext_resource type="Texture2D" uid="uid://cge56yffs43nm" path="res://Images/Icons/Flags/ru.png" id="4_2tfki"]
+[ext_resource type="Texture2D" uid="uid://bm0poeq6ucufi" path="res://Images/Icons/Flags/ua.png" id="5_jwrtd"]
+[ext_resource type="Texture2D" uid="uid://dkp5a4f1r3o3y" path="res://Images/Icons/Flags/pl.png" id="6_joof3"]
+[ext_resource type="Texture2D" uid="uid://cvsdectwsoylf" path="res://Images/Icons/Flags/dk.png" id="7_ivjg1"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 20
-font_data = ExtResource( 3 )
-
-[sub_resource type="ButtonGroup" id=2]
-
-[sub_resource type="DynamicFont" id=3]
-size = 32
-font_data = ExtResource( 3 )
-
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "hide"
 length = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="DynamicFont" id=5]
-size = 24
-font_data = ExtResource( 3 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8mj4"]
+_data = {
+"hide": SubResource("4")
+}
 
-[node name="settings" type="Control"]
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -360, -64 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-360, -64)
+script = ExtResource("1_8se8j")
 
-[node name="bg" type="TextureRect" parent="."]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+texture = ExtResource("2_idday")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_lock_ = true
 
-[node name="tab" type="TabContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="Tab" type="TabContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -224.0
-margin_top = -222.0
-margin_right = 434.0
-margin_bottom = 162.0
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 1 )
+offset_left = -224.0
+offset_top = -246.0
+offset_right = 434.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
 tabs_visible = false
 
-[node name="Graphics" type="CenterContainer" parent="tab"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+[node name="Graphics" type="CenterContainer" parent="Tab"]
+layout_mode = 2
 
-[node name="graphics" type="VBoxContainer" parent="tab/Graphics"]
-margin_left = 16.0
-margin_top = 84.0
-margin_right = 632.0
-margin_bottom = 289.0
-custom_constants/separation = 5
+[node name="Container" type="VBoxContainer" parent="Tab/Graphics"]
+layout_mode = 2
 
-[node name="fullscreen" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_right = 616.0
-margin_bottom = 37.0
+[node name="Fullscreen" type="HBoxContainer" parent="Tab/Graphics/Container"]
+layout_mode = 2
 
-[node name="label" type="Label" parent="tab/Graphics/graphics/fullscreen"]
-margin_right = 133.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Graphics/Container/Fullscreen"]
+layout_mode = 2
 text = "FULLSCREEN"
-align = 2
 
-[node name="fullscreen_button" type="CheckButton" parent="tab/Graphics/graphics/fullscreen"]
-margin_left = 137.0
-margin_right = 191.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckButton" parent="Tab/Graphics/Container/Fullscreen"]
+layout_mode = 2
 
-[node name="borderless" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 42.0
-margin_right = 616.0
-margin_bottom = 79.0
+[node name="Borderless" type="HBoxContainer" parent="Tab/Graphics/Container"]
+layout_mode = 2
 
-[node name="label" type="Label" parent="tab/Graphics/graphics/borderless"]
-margin_right = 134.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Graphics/Container/Borderless"]
+layout_mode = 2
 text = "BORDERLESS"
-align = 2
 
-[node name="borderless_button" type="CheckButton" parent="tab/Graphics/graphics/borderless"]
-margin_left = 138.0
-margin_right = 192.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckButton" parent="Tab/Graphics/Container/Borderless"]
+layout_mode = 2
 
-[node name="window_res" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 84.0
-margin_right = 616.0
-margin_bottom = 121.0
+[node name="WindowResolution" type="HBoxContainer" parent="Tab/Graphics/Container"]
+layout_mode = 2
 
-[node name="label1" type="Label" parent="tab/Graphics/graphics/window_res"]
-margin_right = 169.0
-margin_bottom = 37.0
+[node name="WidthLabel" type="Label" parent="Tab/Graphics/Container/WindowResolution"]
+layout_mode = 2
 text = "WINDOW_WIDTH"
-align = 2
 
-[node name="width" type="LineEdit" parent="tab/Graphics/graphics/window_res"]
-margin_left = 173.0
-margin_right = 257.0
-margin_bottom = 37.0
+[node name="Width" type="LineEdit" parent="Tab/Graphics/Container/WindowResolution"]
+layout_mode = 2
 text = "960"
-align = 3
-max_length = 4
-clear_button_enabled = true
 placeholder_text = "1280"
-
-[node name="label2" type="Label" parent="tab/Graphics/graphics/window_res"]
-margin_left = 261.0
-margin_right = 439.0
-margin_bottom = 37.0
-text = "WINDOW_HEIGHT"
-align = 2
-
-[node name="height" type="LineEdit" parent="tab/Graphics/graphics/window_res"]
-margin_left = 443.0
-margin_right = 527.0
-margin_bottom = 37.0
-text = "540"
-align = 3
 max_length = 4
 clear_button_enabled = true
+
+[node name="HeightLabel" type="Label" parent="Tab/Graphics/Container/WindowResolution"]
+layout_mode = 2
+text = "WINDOW_HEIGHT"
+
+[node name="Height" type="LineEdit" parent="Tab/Graphics/Container/WindowResolution"]
+layout_mode = 2
+text = "540"
 placeholder_text = "720"
+max_length = 4
+clear_button_enabled = true
 
-[node name="splitter" type="HSplitContainer" parent="tab/Graphics/graphics/window_res"]
-margin_left = 531.0
-margin_right = 536.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 5, 0 )
+[node name="Splitter" type="HSplitContainer" parent="Tab/Graphics/Container/WindowResolution"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
-[node name="winres_apply" type="Button" parent="tab/Graphics/graphics/window_res"]
-margin_left = 540.0
-margin_right = 616.0
-margin_bottom = 37.0
+[node name="ApplyButton" type="Button" parent="Tab/Graphics/Container/WindowResolution"]
+layout_mode = 2
 text = "APPLY"
 flat = true
 
-[node name="vsync" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 126.0
-margin_right = 616.0
-margin_bottom = 163.0
+[node name="Vsync" type="HBoxContainer" parent="Tab/Graphics/Container"]
+layout_mode = 2
 
-[node name="label" type="Label" parent="tab/Graphics/graphics/vsync"]
-margin_right = 75.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Graphics/Container/Vsync"]
+layout_mode = 2
 text = "VSYNC"
-align = 2
 
-[node name="vsync_button" type="CheckButton" parent="tab/Graphics/graphics/vsync"]
-margin_left = 79.0
-margin_right = 133.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckButton" parent="Tab/Graphics/Container/Vsync"]
+layout_mode = 2
 
-[node name="intro_skip" type="HBoxContainer" parent="tab/Graphics/graphics"]
-margin_top = 168.0
-margin_right = 616.0
-margin_bottom = 205.0
+[node name="IntroSkip" type="HBoxContainer" parent="Tab/Graphics/Container"]
+layout_mode = 2
 
-[node name="label" type="Label" parent="tab/Graphics/graphics/intro_skip"]
-margin_right = 123.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Graphics/Container/IntroSkip"]
+layout_mode = 2
 text = "INTRO_SKIP"
-align = 2
 
-[node name="introskip_button" type="CheckButton" parent="tab/Graphics/graphics/intro_skip"]
-margin_left = 127.0
-margin_right = 181.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckButton" parent="Tab/Graphics/Container/IntroSkip"]
+layout_mode = 2
 
-[node name="Sound" type="CenterContainer" parent="tab"]
+[node name="Sound" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="sound" type="VBoxContainer" parent="tab/Sound"]
-margin_left = 177.0
-margin_top = 105.0
-margin_right = 471.0
-margin_bottom = 268.0
-custom_constants/separation = 5
+[node name="Container" type="VBoxContainer" parent="Tab/Sound"]
+layout_mode = 2
 
-[node name="master" type="HBoxContainer" parent="tab/Sound/sound"]
-margin_right = 294.0
-margin_bottom = 37.0
+[node name="Master" type="HBoxContainer" parent="Tab/Sound/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Sound/sound/master"]
-margin_right = 90.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Sound/Container/Master"]
+layout_mode = 2
 text = "MASTER"
-align = 2
 
-[node name="master_slider" type="HSlider" parent="tab/Sound/sound/master"]
-margin_left = 94.0
-margin_right = 294.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 200, 37 )
+[node name="Slider" type="HSlider" parent="Tab/Sound/Container/Master"]
+custom_minimum_size = Vector2(200, 37)
+layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="music" type="HBoxContainer" parent="tab/Sound/sound"]
-margin_top = 42.0
-margin_right = 294.0
-margin_bottom = 79.0
+[node name="Music" type="HBoxContainer" parent="Tab/Sound/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Sound/sound/music"]
-margin_left = 19.0
-margin_right = 90.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Sound/Container/Music"]
+layout_mode = 2
 text = "MUSIC"
-align = 2
 
-[node name="music_slider" type="HSlider" parent="tab/Sound/sound/music"]
-margin_left = 94.0
-margin_right = 294.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 200, 37 )
+[node name="Slider" type="HSlider" parent="Tab/Sound/Container/Music"]
+custom_minimum_size = Vector2(200, 37)
+layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="sounds" type="HBoxContainer" parent="tab/Sound/sound"]
-margin_top = 84.0
-margin_right = 294.0
-margin_bottom = 121.0
+[node name="Sounds" type="HBoxContainer" parent="Tab/Sound/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Sound/sound/sounds"]
-margin_left = 2.0
-margin_right = 90.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/Sound/Container/Sounds"]
+layout_mode = 2
 text = "SOUNDS"
-align = 2
 
-[node name="sounds_slider" type="HSlider" parent="tab/Sound/sound/sounds"]
-margin_left = 94.0
-margin_right = 294.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 200, 37 )
+[node name="Slider" type="HSlider" parent="Tab/Sound/Container/Sounds"]
+custom_minimum_size = Vector2(200, 37)
+layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="mute" type="HBoxContainer" parent="tab/Sound/sound"]
-margin_top = 126.0
-margin_right = 294.0
-margin_bottom = 163.0
+[node name="Mute" type="HBoxContainer" parent="Tab/Sound/Container"]
+layout_mode = 2
 alignment = 1
 
-[node name="mute_sound" type="CheckBox" parent="tab/Sound/sound/mute"]
-margin_left = 66.0
-margin_right = 228.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckBox" parent="Tab/Sound/Container/Mute"]
+layout_mode = 2
 text = "MUTE_SOUND"
 
-[node name="Starting_Conditions" type="CenterContainer" parent="tab"]
+[node name="StartingConditions" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="starting_conditions" type="VBoxContainer" parent="tab/Starting_Conditions"]
-margin_left = 5.0
-margin_top = 56.0
-margin_right = 642.0
-margin_bottom = 317.0
+[node name="Container" type="VBoxContainer" parent="Tab/StartingConditions"]
+layout_mode = 2
 
-[node name="main" type="GridContainer" parent="tab/Starting_Conditions/starting_conditions"]
-margin_right = 637.0
-margin_bottom = 119.0
+[node name="Main" type="GridContainer" parent="Tab/StartingConditions/Container"]
+layout_mode = 2
 columns = 3
 
-[node name="gameplay" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main"]
-margin_right = 234.0
-margin_bottom = 119.0
+[node name="Gameplay" type="VBoxContainer" parent="Tab/StartingConditions/Container/Main"]
+layout_mode = 2
 
-[node name="single_player" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
-margin_right = 234.0
-margin_bottom = 37.0
+[node name="Singleplayer" type="HBoxContainer" parent="Tab/StartingConditions/Container/Main/Gameplay"]
+visible = false
+layout_mode = 2
 
-[node name="singleplayer" type="CheckBox" parent="tab/Starting_Conditions/starting_conditions/main/gameplay/single_player"]
-margin_right = 174.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckBox" parent="Tab/StartingConditions/Container/Main/Gameplay/Singleplayer"]
+layout_mode = 2
 disabled = true
-pressed = true
-group = SubResource( 2 )
+button_pressed = true
+button_group = ExtResource("3_s807r")
 text = "SINGLEPLAYER"
 
-[node name="multi_player" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
-margin_top = 41.0
-margin_right = 234.0
-margin_bottom = 78.0
+[node name="Multiplayer" type="HBoxContainer" parent="Tab/StartingConditions/Container/Main/Gameplay"]
+visible = false
+layout_mode = 2
 
-[node name="multiplayer" type="CheckBox" parent="tab/Starting_Conditions/starting_conditions/main/gameplay/multi_player"]
-margin_right = 165.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckBox" parent="Tab/StartingConditions/Container/Main/Gameplay/Multiplayer"]
+layout_mode = 2
 disabled = true
-group = SubResource( 2 )
+button_group = ExtResource("3_s807r")
 text = "MULTIPLAYER"
 
-[node name="single_click" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/gameplay"]
-margin_top = 82.0
-margin_right = 234.0
-margin_bottom = 119.0
+[node name="SingleClick" type="HBoxContainer" parent="Tab/StartingConditions/Container/Main/Gameplay"]
+layout_mode = 2
 
-[node name="singleclick_mode" type="CheckBox" parent="tab/Starting_Conditions/starting_conditions/main/gameplay/single_click"]
-margin_right = 234.0
-margin_bottom = 37.0
+[node name="Toggle" type="CheckBox" parent="Tab/StartingConditions/Container/Main/Gameplay/SingleClick"]
+layout_mode = 2
 disabled = true
-pressed = true
 text = "SINGLE_CLICK_MODE"
 
-[node name="split" type="HSplitContainer" parent="tab/Starting_Conditions/starting_conditions/main"]
-margin_left = 238.0
-margin_right = 298.0
-margin_bottom = 119.0
-rect_min_size = Vector2( 60, 0 )
+[node name="Splitter" type="HSplitContainer" parent="Tab/StartingConditions/Container/Main"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
 
-[node name="towers_walls" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main"]
-margin_left = 302.0
-margin_right = 565.0
-margin_bottom = 119.0
+[node name="TowersWalls" type="VBoxContainer" parent="Tab/StartingConditions/Container/Main"]
+layout_mode = 2
 alignment = 1
 
-[node name="tower_levels" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls"]
-margin_top = 20.0
-margin_right = 263.0
-margin_bottom = 57.0
+[node name="TowerLevels" type="HBoxContainer" parent="Tab/StartingConditions/Container/Main/TowersWalls"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels"]
-margin_right = 159.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/Main/TowersWalls/TowerLevels"]
+layout_mode = 2
 text = "TOWER_LEVELS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels"]
-margin_left = 163.0
-margin_right = 263.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/Main/TowersWalls/TowerLevels"]
+layout_mode = 2
 max_value = 50.0
 value = 50.0
 rounded = true
-align = 1
 
-[node name="wall_levels" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls"]
-margin_top = 61.0
-margin_right = 263.0
-margin_bottom = 98.0
+[node name="WallLevels" type="HBoxContainer" parent="Tab/StartingConditions/Container/Main/TowersWalls"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels"]
-margin_left = 16.0
-margin_right = 159.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/Main/TowersWalls/WallLevels"]
+layout_mode = 2
 text = "WALL_LEVELS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels"]
-margin_left = 163.0
-margin_right = 263.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/Main/TowersWalls/WallLevels"]
+layout_mode = 2
 max_value = 50.0
 value = 50.0
 rounded = true
-align = 1
 
-[node name="VSplitContainer" type="VSplitContainer" parent="tab/Starting_Conditions/starting_conditions"]
-margin_top = 123.0
-margin_right = 637.0
-margin_bottom = 138.0
-rect_min_size = Vector2( 0, 15 )
+[node name="Splitter" type="VSplitContainer" parent="Tab/StartingConditions/Container"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
 
-[node name="gen_res" type="GridContainer" parent="tab/Starting_Conditions/starting_conditions"]
-margin_top = 142.0
-margin_right = 637.0
-margin_bottom = 261.0
+[node name="ResourceGeneration" type="GridContainer" parent="Tab/StartingConditions/Container"]
+layout_mode = 2
 columns = 3
 
-[node name="generators" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res"]
-margin_right = 290.0
-margin_bottom = 119.0
+[node name="Generators" type="VBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration"]
+layout_mode = 2
 
-[node name="quarry_levels" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators"]
-margin_right = 290.0
-margin_bottom = 37.0
+[node name="Quarry" type="HBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels"]
-margin_left = 17.0
-margin_right = 186.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators/Quarry"]
+layout_mode = 2
 text = "QUARRY_LEVELS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels"]
-margin_left = 190.0
-margin_right = 290.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators/Quarry"]
+layout_mode = 2
 max_value = 5.0
 value = 5.0
 rounded = true
-align = 1
 
-[node name="magic_levels" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators"]
-margin_top = 41.0
-margin_right = 290.0
-margin_bottom = 78.0
+[node name="Magic" type="HBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels"]
-margin_left = 31.0
-margin_right = 186.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators/Magic"]
+layout_mode = 2
 text = "MAGIC_LEVELS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels"]
-margin_left = 190.0
-margin_right = 290.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators/Magic"]
+layout_mode = 2
 max_value = 5.0
 value = 3.0
 rounded = true
-align = 1
 
-[node name="dungeon_levels3" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators"]
-margin_top = 82.0
-margin_right = 290.0
-margin_bottom = 119.0
+[node name="Dungeon" type="HBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators/dungeon_levels3"]
-margin_right = 186.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators/Dungeon"]
+layout_mode = 2
 text = "DUNGEON_LEVELS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/generators/dungeon_levels3"]
-margin_left = 190.0
-margin_right = 290.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/ResourceGeneration/Generators/Dungeon"]
+layout_mode = 2
 max_value = 5.0
 value = 5.0
 rounded = true
-align = 1
 
-[node name="HSplitContainer2" type="HSplitContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res"]
-margin_left = 294.0
-margin_right = 309.0
-margin_bottom = 119.0
-rect_min_size = Vector2( 15, 0 )
+[node name="Splitter" type="HSplitContainer" parent="Tab/StartingConditions/Container/ResourceGeneration"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
 
-[node name="resources" type="VBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res"]
-margin_left = 313.0
-margin_right = 637.0
-margin_bottom = 119.0
+[node name="Resources" type="VBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration"]
+layout_mode = 2
 
-[node name="brick_quantity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
-margin_right = 324.0
-margin_bottom = 37.0
+[node name="Bricks" type="HBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity"]
-margin_left = 25.0
-margin_right = 220.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources/Bricks"]
+layout_mode = 2
 text = "BRICK_QUANTITIES"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity"]
-margin_left = 224.0
-margin_right = 324.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources/Bricks"]
+layout_mode = 2
 max_value = 50.0
 value = 20.0
 rounded = true
-align = 1
 
-[node name="gem_quantity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
-margin_top = 41.0
-margin_right = 324.0
-margin_bottom = 78.0
+[node name="Gems" type="HBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity"]
-margin_left = 40.0
-margin_right = 220.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources/Gems"]
+layout_mode = 2
 text = "GEM_QUANTITIES"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity"]
-margin_left = 224.0
-margin_right = 324.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources/Gems"]
+layout_mode = 2
 max_value = 50.0
 value = 10.0
 rounded = true
-align = 1
 
-[node name="recruit_quantity" type="HBoxContainer" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources"]
-margin_top = 82.0
-margin_right = 324.0
-margin_bottom = 119.0
+[node name="Recruits" type="HBoxContainer" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity"]
-margin_right = 220.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources/Recruits"]
+layout_mode = 2
 text = "RECRUIT_QUANTITIES"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity"]
-margin_left = 224.0
-margin_right = 324.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/StartingConditions/Container/ResourceGeneration/Resources/Recruits"]
+layout_mode = 2
 max_value = 50.0
 value = 20.0
 rounded = true
-align = 1
 
-[node name="Play_Conditions" type="CenterContainer" parent="tab"]
+[node name="PlayConditions" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="main" type="VBoxContainer" parent="tab/Play_Conditions"]
-margin_left = 161.0
-margin_top = 56.0
-margin_right = 487.0
-margin_bottom = 318.0
-custom_constants/separation = 25
+[node name="Container" type="VBoxContainer" parent="Tab/PlayConditions"]
+layout_mode = 2
 
-[node name="autoget" type="VBoxContainer" parent="tab/Play_Conditions/main"]
-margin_right = 326.0
-margin_bottom = 119.0
+[node name="AutoGetter" type="VBoxContainer" parent="Tab/PlayConditions/Container"]
+layout_mode = 2
 alignment = 1
 
-[node name="bricks" type="HBoxContainer" parent="tab/Play_Conditions/main/autoget"]
-margin_right = 326.0
-margin_bottom = 37.0
+[node name="Bricks" type="HBoxContainer" parent="Tab/PlayConditions/Container/AutoGetter"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Play_Conditions/main/autoget/bricks"]
-margin_left = 40.0
-margin_right = 222.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/PlayConditions/Container/AutoGetter/Bricks"]
+layout_mode = 2
 text = "AUTOGET_BRICKS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Play_Conditions/main/autoget/bricks"]
-margin_left = 226.0
-margin_right = 326.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/PlayConditions/Container/AutoGetter/Bricks"]
+layout_mode = 2
 max_value = 5.0
 rounded = true
-align = 1
 
-[node name="gems" type="HBoxContainer" parent="tab/Play_Conditions/main/autoget"]
-margin_top = 41.0
-margin_right = 326.0
-margin_bottom = 78.0
+[node name="Gems" type="HBoxContainer" parent="Tab/PlayConditions/Container/AutoGetter"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Play_Conditions/main/autoget/gems"]
-margin_left = 55.0
-margin_right = 222.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/PlayConditions/Container/AutoGetter/Gems"]
+layout_mode = 2
 text = "AUTOGET_GEMS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Play_Conditions/main/autoget/gems"]
-margin_left = 226.0
-margin_right = 326.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/PlayConditions/Container/AutoGetter/Gems"]
+layout_mode = 2
 max_value = 5.0
 rounded = true
-align = 1
 
-[node name="recruits" type="HBoxContainer" parent="tab/Play_Conditions/main/autoget"]
-margin_top = 82.0
-margin_right = 326.0
-margin_bottom = 119.0
+[node name="Recruits" type="HBoxContainer" parent="Tab/PlayConditions/Container/AutoGetter"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Play_Conditions/main/autoget/recruits"]
-margin_left = 15.0
-margin_right = 222.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/PlayConditions/Container/AutoGetter/Recruits"]
+layout_mode = 2
 text = "AUTOGET_RECRUITS"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Play_Conditions/main/autoget/recruits"]
-margin_left = 226.0
-margin_right = 326.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/PlayConditions/Container/AutoGetter/Recruits"]
+layout_mode = 2
 max_value = 5.0
 rounded = true
-align = 1
 
-[node name="split" type="VSplitContainer" parent="tab/Play_Conditions/main"]
-margin_top = 144.0
-margin_right = 326.0
-margin_bottom = 159.0
-rect_min_size = Vector2( 200, 15 )
+[node name="Split" type="VSplitContainer" parent="Tab/PlayConditions/Container"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 2
 
-[node name="cardsnum_and_ai" type="VBoxContainer" parent="tab/Play_Conditions/main"]
-margin_top = 184.0
-margin_right = 326.0
-margin_bottom = 262.0
+[node name="Other" type="VBoxContainer" parent="Tab/PlayConditions/Container"]
+layout_mode = 2
 
-[node name="cards_in_hand" type="HBoxContainer" parent="tab/Play_Conditions/main/cardsnum_and_ai"]
-margin_right = 326.0
-margin_bottom = 37.0
+[node name="CardsInHand" type="HBoxContainer" parent="Tab/PlayConditions/Container/Other"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand"]
-margin_left = 48.0
-margin_right = 222.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/PlayConditions/Container/Other/CardsInHand"]
+layout_mode = 2
 text = "CARDS_IN_HAND"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand"]
-margin_left = 226.0
-margin_right = 326.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/PlayConditions/Container/Other/CardsInHand"]
+layout_mode = 2
 min_value = 3.0
 max_value = 7.0
 value = 5.0
 rounded = true
-align = 1
 
-[node name="AI" type="HBoxContainer" parent="tab/Play_Conditions/main/cardsnum_and_ai"]
-margin_top = 41.0
-margin_right = 326.0
-margin_bottom = 78.0
+[node name="Ai" type="HBoxContainer" parent="Tab/PlayConditions/Container/Other"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Play_Conditions/main/cardsnum_and_ai/AI"]
-margin_right = 97.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/PlayConditions/Container/Other/Ai"]
+layout_mode = 2
 text = "AI_LEVEL"
-align = 2
 
-[node name="mode" type="OptionButton" parent="tab/Play_Conditions/main/cardsnum_and_ai/AI"]
-margin_left = 101.0
-margin_right = 326.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 225, 0 )
-text = "AI_AUTO"
-items = [ "AI_AUTO", null, false, 0, null, "AI_ATTACK", null, true, 1, null, "AI_DEFENCE", null, true, 2, null, "AI_RANDOM", null, false, 3, null ]
+[node name="Mode" type="OptionButton" parent="Tab/PlayConditions/Container/Other/Ai"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+item_count = 4
 selected = 0
+popup/item_0/text = "AI_AUTO"
+popup/item_0/id = 0
+popup/item_1/text = "AI_ATTACK"
+popup/item_1/id = 1
+popup/item_2/text = "AI_DEFENCE"
+popup/item_2/id = 2
+popup/item_3/text = "AI_RANDOM"
+popup/item_3/id = 3
 
-[node name="Victory_Conditions" type="CenterContainer" parent="tab"]
+[node name="VictoryConditions" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="main" type="VBoxContainer" parent="tab/Victory_Conditions"]
-margin_left = 168.0
-margin_top = 148.0
-margin_right = 479.0
-margin_bottom = 226.0
+[node name="Container" type="VBoxContainer" parent="Tab/VictoryConditions"]
+layout_mode = 2
 
-[node name="tower" type="HBoxContainer" parent="tab/Victory_Conditions/main"]
-margin_right = 311.0
-margin_bottom = 37.0
+[node name="TowerVictory" type="HBoxContainer" parent="Tab/VictoryConditions/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Victory_Conditions/main/tower"]
-margin_left = 33.0
-margin_right = 207.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/VictoryConditions/Container/TowerVictory"]
+layout_mode = 2
 text = "TOWER_VICTORY"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Victory_Conditions/main/tower"]
-margin_left = 211.0
-margin_right = 311.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/VictoryConditions/Container/TowerVictory"]
+layout_mode = 2
 min_value = 25.0
 max_value = 200.0
 value = 100.0
 rounded = true
-align = 1
 
-[node name="resource" type="HBoxContainer" parent="tab/Victory_Conditions/main"]
-margin_top = 41.0
-margin_right = 311.0
-margin_bottom = 78.0
+[node name="ResourceVictory" type="HBoxContainer" parent="Tab/VictoryConditions/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Victory_Conditions/main/resource"]
-margin_right = 207.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/VictoryConditions/Container/ResourceVictory"]
+layout_mode = 2
 text = "RESOURCE_VICTORY"
-align = 2
 
-[node name="level" type="SpinBox" parent="tab/Victory_Conditions/main/resource"]
-margin_left = 211.0
-margin_right = 311.0
-margin_bottom = 37.0
+[node name="Level" type="SpinBox" parent="Tab/VictoryConditions/Container/ResourceVictory"]
+layout_mode = 2
 min_value = 50.0
 max_value = 1000.0
 value = 300.0
 rounded = true
-align = 1
 
-[node name="Tavern_Presets" type="CenterContainer" parent="tab"]
+[node name="TavernPresets" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="main" type="VBoxContainer" parent="tab/Tavern_Presets"]
-margin_left = 108.0
-margin_top = 168.0
-margin_right = 540.0
-margin_bottom = 205.0
+[node name="Container" type="VBoxContainer" parent="Tab/TavernPresets"]
+layout_mode = 2
 
-[node name="preset" type="HBoxContainer" parent="tab/Tavern_Presets/main"]
-margin_right = 432.0
-margin_bottom = 37.0
+[node name="Preset" type="HBoxContainer" parent="Tab/TavernPresets/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Tavern_Presets/main/preset"]
-margin_right = 88.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/TavernPresets/Container/Preset"]
+layout_mode = 2
 text = "TAVERN"
-align = 2
 
-[node name="tavern_option" type="OptionButton" parent="tab/Tavern_Presets/main/preset"]
-margin_left = 92.0
-margin_right = 432.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 340, 0 )
-disabled = true
-text = "NONE"
-items = [ "NONE", null, false, 0, null, "TAVERN_HARMONDALE", null, false, 1, null, "TAVERN_ERATHIA", null, false, 2, null, "TAVERN_TULAREAN_FOREST", null, false, 3, null, "TAVERN_DEYJA", null, false, 4, null, "TAVERN_BRACADA_DESERT", null, false, 5, null, "TAVERN_CELESTE", null, false, 6, null, "TAVERN_PIT", null, false, 7, null, "TAVERN_EVERMORN_ISLAND", null, false, 8, null, "TAVERN_NIGHON", null, false, 9, null, "TAVERN_BARROW_DOWNS", null, false, 10, null, "TAVERN_TIDEWATER", null, false, 11, null, "TAVERN_AVLEE", null, false, 12, null, "TAVERN_STONE_CITY", null, false, 13, null ]
+[node name="Option" type="OptionButton" parent="Tab/TavernPresets/Container/Preset"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+item_count = 14
 selected = 0
+popup/item_0/text = "NONE"
+popup/item_0/id = 0
+popup/item_1/text = "TAVERN_HARMONDALE"
+popup/item_1/id = 1
+popup/item_2/text = "TAVERN_ERATHIA"
+popup/item_2/id = 2
+popup/item_3/text = "TAVERN_TULAREAN_FOREST"
+popup/item_3/id = 3
+popup/item_4/text = "TAVERN_DEYJA"
+popup/item_4/id = 4
+popup/item_5/text = "TAVERN_BRACADA_DESERT"
+popup/item_5/id = 5
+popup/item_6/text = "TAVERN_CELESTE"
+popup/item_6/id = 6
+popup/item_7/text = "TAVERN_PIT"
+popup/item_7/id = 7
+popup/item_8/text = "TAVERN_EVERMORN_ISLAND"
+popup/item_8/id = 8
+popup/item_9/text = "TAVERN_NIGHON"
+popup/item_9/id = 9
+popup/item_10/text = "TAVERN_BARROW_DOWNS"
+popup/item_10/id = 10
+popup/item_11/text = "TAVERN_TIDEWATER"
+popup/item_11/id = 11
+popup/item_12/text = "TAVERN_AVLEE"
+popup/item_12/id = 12
+popup/item_13/text = "TAVERN_STONE_CITY"
+popup/item_13/id = 13
 
-[node name="Language_Settings" type="CenterContainer" parent="tab"]
+[node name="LanguageSettings" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="main" type="VBoxContainer" parent="tab/Language_Settings"]
-margin_left = 94.0
-margin_top = 148.0
-margin_right = 553.0
-margin_bottom = 226.0
-rect_min_size = Vector2( 0, 78 )
+[node name="Container" type="VBoxContainer" parent="Tab/LanguageSettings"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
 
-[node name="language" type="HBoxContainer" parent="tab/Language_Settings/main"]
-margin_right = 459.0
-margin_bottom = 37.0
+[node name="Language" type="HBoxContainer" parent="Tab/LanguageSettings/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Language_Settings/main/language"]
-margin_right = 115.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/LanguageSettings/Container/Language"]
+layout_mode = 2
 text = "LANGUAGE"
-align = 2
 
-[node name="lang_option" type="OptionButton" parent="tab/Language_Settings/main/language"]
-margin_left = 119.0
-margin_right = 459.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 340, 0 )
-text = "English"
-items = [ "English", null, false, 0, null, "Русский", null, false, 1, null, "Українська", null, false, 2, null, "Polski", null, false, 3, null, "Dansk", null, false, 4, null ]
+[node name="Option" type="OptionButton" parent="Tab/LanguageSettings/Container/Language"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+item_count = 5
 selected = 0
+popup/item_0/text = "English"
+popup/item_0/icon = ExtResource("3_qa8cm")
+popup/item_0/id = 0
+popup/item_1/text = "Русский"
+popup/item_1/icon = ExtResource("4_2tfki")
+popup/item_1/id = 1
+popup/item_2/text = "Українська"
+popup/item_2/icon = ExtResource("5_jwrtd")
+popup/item_2/id = 2
+popup/item_3/text = "Polski"
+popup/item_3/icon = ExtResource("6_joof3")
+popup/item_3/id = 3
+popup/item_4/text = "Dansk"
+popup/item_4/icon = ExtResource("7_ivjg1")
+popup/item_4/id = 4
 
-[node name="lang_errors" type="Label" parent="tab/Language_Settings/main"]
+[node name="TranslationErrors" type="Label" parent="Tab/LanguageSettings/Container"]
 visible = false
-margin_top = 41.0
-margin_right = 459.0
-margin_bottom = 78.0
+layout_mode = 2
 text = "TRANSLATION_MAY_CONTAIN_ERRORS"
-align = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Player_Settings" type="CenterContainer" parent="tab"]
+[node name="PlayerSettings" type="CenterContainer" parent="Tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+layout_mode = 2
 
-[node name="main" type="VBoxContainer" parent="tab/Player_Settings"]
-margin_left = 94.0
-margin_top = 168.0
-margin_right = 553.0
-margin_bottom = 205.0
+[node name="Container" type="VBoxContainer" parent="Tab/PlayerSettings"]
+layout_mode = 2
 
-[node name="nickname" type="HBoxContainer" parent="tab/Player_Settings/main"]
-margin_right = 459.0
-margin_bottom = 37.0
+[node name="Nickname" type="HBoxContainer" parent="Tab/PlayerSettings/Container"]
+layout_mode = 2
 alignment = 2
 
-[node name="label" type="Label" parent="tab/Player_Settings/main/nickname"]
-margin_right = 115.0
-margin_bottom = 37.0
+[node name="Label" type="Label" parent="Tab/PlayerSettings/Container/Nickname"]
+layout_mode = 2
 text = "NICKNAME"
-align = 2
 
-[node name="edit" type="LineEdit" parent="tab/Player_Settings/main/nickname"]
-margin_left = 119.0
-margin_right = 459.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 340, 0 )
+[node name="Edit" type="LineEdit" parent="Tab/PlayerSettings/Container/Nickname"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
 text = "Player"
 
-[node name="close" type="ToolButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -452.0
-margin_top = -61.0
-margin_right = -12.0
-margin_bottom = -13.0
-rect_min_size = Vector2( 200, 48 )
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 3 )
-text = "SAVE_AND_CLOSE"
-align = 2
-
-[node name="reset" type="ToolButton" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -59.0
-margin_right = 491.0
-margin_bottom = -11.0
-rect_min_size = Vector2( 200, 48 )
-hint_tooltip = "WORK_IN_PROGRESS"
-theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 3 )
-disabled = true
-text = "RESTORE_DEFAULTS"
-align = 0
-
-[node name="buttons_container" type="CenterContainer" parent="."]
+[node name="Options" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -464.0
-margin_top = -254.0
-margin_right = -232.0
-margin_bottom = 194.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -464.0
+offset_top = -246.0
+offset_right = -226.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="buttons_grid" type="GridContainer" parent="buttons_container"]
-margin_top = 62.0
-margin_right = 245.0
-margin_bottom = 386.0
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="Grid" type="GridContainer" parent="Options"]
+layout_mode = 2
 
-[node name="window_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_right = 245.0
-margin_bottom = 37.0
+[node name="WindowSettings" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "WINDOW_SETTINGS"
 
-[node name="sound_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 41.0
-margin_right = 245.0
-margin_bottom = 78.0
+[node name="SoundSettings" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "SOUND_SETTINGS"
 
-[node name="starting_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 82.0
-margin_right = 245.0
-margin_bottom = 119.0
+[node name="StartingConditions" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "STARTING_CONDITIONS"
 
-[node name="play_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 123.0
-margin_right = 245.0
-margin_bottom = 160.0
+[node name="PlayConditions" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "PLAY_CONDITIONS"
 
-[node name="victory_conditions" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 164.0
-margin_right = 245.0
-margin_bottom = 201.0
+[node name="VictoryConditions" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "VICTORY_CONDITIONS"
 
-[node name="tavern_presets" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 205.0
-margin_right = 245.0
-margin_bottom = 242.0
+[node name="TavernPresets" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "TAVERN_PRESETS"
 
-[node name="language_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 246.0
-margin_right = 245.0
-margin_bottom = 283.0
+[node name="LanguageSettings" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "LANGUAGE_SETTINGS"
 
-[node name="player_settings" type="ToolButton" parent="buttons_container/buttons_grid"]
-margin_top = 287.0
-margin_right = 245.0
-margin_bottom = 324.0
+[node name="PlayerSettings" type="Button" parent="Options/Grid"]
+layout_mode = 2
 text = "PLAYER_SETTINGS"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hide = SubResource( 4 )
+[node name="Reset" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -68.0
+offset_right = 376.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "RESTORE_DEFAULTS"
 
-[node name="wip" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0.247059 )
+[node name="Close" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_top = 12.0
-margin_bottom = 64.0
-custom_fonts/font = SubResource( 5 )
-text = "SETTINGS_WARNING"
-align = 1
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -68.0
+offset_right = -16.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "SAVE_AND_CLOSE"
 
-[connection signal="toggled" from="tab/Graphics/graphics/fullscreen/fullscreen_button" to="." method="OnFullscreenButtonToggled"]
-[connection signal="toggled" from="tab/Graphics/graphics/borderless/borderless_button" to="." method="OnBorderlessButtonToggled"]
-[connection signal="pressed" from="tab/Graphics/graphics/window_res/winres_apply" to="." method="OnWindowResolutionApplyPressed"]
-[connection signal="toggled" from="tab/Graphics/graphics/vsync/vsync_button" to="." method="OnVsyncButtonToggled"]
-[connection signal="toggled" from="tab/Graphics/graphics/intro_skip/introskip_button" to="." method="OnIntroSkipButtonToggled"]
-[connection signal="value_changed" from="tab/Sound/sound/master/master_slider" to="." method="OnMasterSliderValueChanged"]
-[connection signal="value_changed" from="tab/Sound/sound/music/music_slider" to="." method="OnMusicSliderValueChanged"]
-[connection signal="value_changed" from="tab/Sound/sound/sounds/sounds_slider" to="." method="OnSoundsSliderValueChanged"]
-[connection signal="toggled" from="tab/Sound/sound/mute/mute_sound" to="." method="OnMuteSoundToggled"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level" to="." method="OnTowerLevelsValueChanged"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level" to="." method="OnWallLevelsValueChanged"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels/level" to="." method="OnQuarryLevelsValueChanged"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels/level" to="." method="OnMagicLevelsValueChanged"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity/level" to="." method="OnBrickQuantityValueChanged"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity/level" to="." method="OnGemQuantityValueChanged"]
-[connection signal="value_changed" from="tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity/level" to="." method="OnRecruitQuantityValueChanged"]
-[connection signal="value_changed" from="tab/Play_Conditions/main/autoget/bricks/level" to="." method="OnAutoGetBricksValueChanged"]
-[connection signal="value_changed" from="tab/Play_Conditions/main/autoget/gems/level" to="." method="OnAutoGetGemsValueChanged"]
-[connection signal="value_changed" from="tab/Play_Conditions/main/autoget/recruits/level" to="." method="OnAutoGetRecruitsValueChanged"]
-[connection signal="value_changed" from="tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level" to="." method="OnCardsInHandValueChanged"]
-[connection signal="item_selected" from="tab/Play_Conditions/main/cardsnum_and_ai/AI/mode" to="." method="OnAiModeChanged"]
-[connection signal="value_changed" from="tab/Victory_Conditions/main/tower/level" to="." method="OnTowerVictoryValueChanged"]
-[connection signal="value_changed" from="tab/Victory_Conditions/main/resource/level" to="." method="OnResourceVictoryValueChanged"]
-[connection signal="item_selected" from="tab/Tavern_Presets/main/preset/tavern_option" to="." method="OnTavernPresetSelected"]
-[connection signal="item_selected" from="tab/Language_Settings/main/language/lang_option" to="." method="OnLanguageSelected"]
-[connection signal="text_changed" from="tab/Player_Settings/main/nickname/edit" to="." method="OnNicknameTextChanged"]
-[connection signal="pressed" from="close" to="." method="OnClosePressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/window_settings" to="." method="OnWindowSettingsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/sound_settings" to="." method="OnSoundSettingsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/starting_conditions" to="." method="OnStartingConditionsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/play_conditions" to="." method="OnPlayConditionsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/victory_conditions" to="." method="OnVictoryConditionsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/tavern_presets" to="." method="OnTavernPresetsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/language_settings" to="." method="OnLanguageSettingsPressed"]
-[connection signal="pressed" from="buttons_container/buttons_grid/player_settings" to="." method="OnPlayerSettingsPressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y8mj4")
+}
+
+[node name="WorkInProgress" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.247059)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 12.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "SETTINGS_WARNING"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

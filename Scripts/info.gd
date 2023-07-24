@@ -1,24 +1,24 @@
 extends Control
 
-onready var original = $original_info
-onready var remake = $remake_info
-onready var translation = $translation_info
+@onready var original = $original_info
+@onready var remake = $remake_info
+@onready var position = $translation_info
 
 func _ready():
 	original.show()
 	remake.hide()
-	translation.hide()
+	position.hide()
 
 func _on_Button_pressed():
 	if original.visible == true:
 		original.hide()
 		remake.show()
 	elif remake.visible == true:
-		translation.show()
+		position.show()
 		remake.hide()
-	elif translation.visible == true:
+	elif position.visible == true:
 		original.show()
-		translation.hide()
+		position.hide()
 		self.hide()
 
 

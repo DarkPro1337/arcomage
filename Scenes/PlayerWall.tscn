@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3lhbmvs8de0t"]
+
+[ext_resource type="Texture2D" uid="uid://bfedjcjjucs1x" path="res://Sprites/wall_base.png" id="1"]
+
+[node name="PlayerWall" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 50.0
+rotation = 3.14159
+
+[node name="WallBase" type="TextureRect" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 24.0
+offset_bottom = 1.52588e-05
+grow_vertical = 0
+texture = ExtResource("1")
+expand_mode = 1
+flip_h = true
+flip_v = true

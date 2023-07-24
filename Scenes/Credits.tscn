@@ -1,653 +1,389 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=17 format=3 uid="uid://bm3u5shku4plo"]
 
-[ext_resource path="res://Images/Layout-edit_dark_blur.png" type="Texture" id=1]
-[ext_resource path="res://Images/arcomage_logo.png" type="Texture" id=2]
-[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Images/godot_logo.png" type="Texture" id=5]
-[ext_resource path="res://Images/gamejolt_logo.png" type="Texture" id=6]
-[ext_resource path="res://Images/github_logo.png" type="Texture" id=7]
-[ext_resource path="res://Images/trello_logo.png" type="Texture" id=8]
-[ext_resource path="res://Images/bmc_logo.png" type="Texture" id=9]
-[ext_resource path="res://Images/itch_logo.png" type="Texture" id=10]
-[ext_resource path="res://Images/kofi_logo.png" type="Texture" id=11]
-[ext_resource path="res://Images/patreon_logo.png" type="Texture" id=12]
-[ext_resource path="res://Scripts/Info.cs" type="Script" id=13]
-[ext_resource path="res://Themes/main_menu_theme.tres" type="Theme" id=14]
-[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=15]
-
-[sub_resource type="DynamicFont" id=1]
-size = 21
-outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 21
-outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 21
-outline_color = Color( 0.890196, 0.890196, 0.890196, 1 )
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 24
-font_data = ExtResource( 4 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-border_color = Color( 0.8, 0.8, 0.8, 0 )
+[ext_resource type="Texture2D" uid="uid://dq2pgm0muw18t" path="res://Images/Layout-edit_dark_blur.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dkcmh18lqgo52" path="res://Images/arcomage_logo.png" id="2"]
+[ext_resource type="LabelSettings" uid="uid://ddmn6mo77w83e" path="res://Themes/LabelHeading1.tres" id="4_dciym"]
+[ext_resource type="Texture2D" uid="uid://3a1oufmonrao" path="res://Images/godot_logo.png" id="5"]
+[ext_resource type="FontFile" uid="uid://cj57vhrh3rv6d" path="res://Fonts/Roboto-Medium.ttf" id="5_asp3v"]
+[ext_resource type="LabelSettings" uid="uid://nrljeoexe8pe" path="res://Themes/LabelBase.tres" id="5_w3p6m"]
+[ext_resource type="Texture2D" uid="uid://gymwt4uynpid" path="res://Images/gamejolt_logo.png" id="6"]
+[ext_resource type="LabelSettings" uid="uid://blmdikxxdxbhv" path="res://Themes/LabelBaseTransparent.tres" id="6_mlivc"]
+[ext_resource type="Texture2D" uid="uid://17cwcycndbx1" path="res://Images/github_logo.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dbumsrptguabu" path="res://Images/trello_logo.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://chqwgd6ghg3gr" path="res://Images/bmc_logo.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://b4hgsk60rjiyw" path="res://Images/itch_logo.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://deyl6tbvt5kja" path="res://Images/kofi_logo.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://cnjp0xqnb8x1c" path="res://Images/patreon_logo.png" id="12"]
+[ext_resource type="Script" path="res://Scripts/Info.cs" id="13"]
+[ext_resource type="LabelSettings" uid="uid://pe8pbs72c1un" path="res://Themes/LabelHeading2.tres" id="15_yxdic"]
 
 [node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13")
 
 [node name="bg" type="TextureRect" parent="."]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+texture = ExtResource("1")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="logo" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -296.0
-margin_top = -246.0
-margin_right = 296.0
-margin_bottom = -158.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -296.0
+offset_top = -246.0
+offset_right = 296.0
+offset_bottom = -158.0
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="OriginalInfo" type="VBoxContainer" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -456.0
-margin_top = -158.0
-margin_right = 456.0
-margin_bottom = 248.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="original_lable" type="Label" parent="OriginalInfo"]
-margin_right = 912.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
-text = "ORIGINAL_GAMEDEVS"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="OriginalInfo"]
-margin_top = 26.0
-margin_right = 912.0
-margin_bottom = 402.0
+offset_left = -456.0
+offset_top = -158.0
+offset_right = 456.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
-[node name="CenterContainer1" type="CenterContainer" parent="OriginalInfo/HBoxContainer"]
-margin_left = 174.0
-margin_right = 454.0
-margin_bottom = 376.0
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Label" type="Label" parent="OriginalInfo"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "ORIGINAL_GAMEDEVS"
+label_settings = ExtResource("4_dciym")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="credits1" type="RichTextLabel" parent="OriginalInfo/HBoxContainer/CenterContainer1"]
-margin_right = 280.0
-margin_bottom = 376.0
-rect_min_size = Vector2( 280, 376 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.45098 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+[node name="Container" type="HBoxContainer" parent="OriginalInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+alignment = 1
+
+[node name="LeftSide" type="CenterContainer" parent="OriginalInfo/Container"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="Credits" type="RichTextLabel" parent="OriginalInfo/Container/LeftSide"]
+custom_minimum_size = Vector2(280, 376)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 bbcode_enabled = true
-bbcode_text = "[center][b]Executive Producer[/b]
-Mark Caldwell
+text = "[center][b][color=#cac016]Executive Producer[/color][/b]
+[color=#16c8ca]Mark Caldwell[/color]
 
-[b]Programming[/b]
-James R. Morris II
+[b][color=#cac016]Programming[/color][/b]
+[color=#16c8ca]James R. Morris II
 Bob Young
-Grorge Ruof
+George Ruof[/color]
 
-[b]Testing[/b]
-Karl Drown
+[b][color=#cac016]Testing[/color][/b]
+[color=#16c8ca]Karl Drown
 Eric Williamson
 Joseph Buron
 Todd Smailes
-Ernie Gallardo[/center]"
-text = "Executive Producer
-Mark Caldwell
-
-Programming
-James R. Morris II
-Bob Young
-Grorge Ruof
-
-Testing
-Karl Drown
-Eric Williamson
-Joseph Buron
-Todd Smailes
-Ernie Gallardo"
+Ernie Gallardo[/color][/center]"
 scroll_active = false
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
-[node name="CenterContainer2" type="CenterContainer" parent="OriginalInfo/HBoxContainer"]
-margin_left = 458.0
-margin_right = 738.0
-margin_bottom = 376.0
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="RightSide" type="CenterContainer" parent="OriginalInfo/Container"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 
-[node name="credits2" type="RichTextLabel" parent="OriginalInfo/HBoxContainer/CenterContainer2"]
-margin_right = 280.0
-margin_bottom = 376.0
-rect_min_size = Vector2( 280, 376 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+[node name="Credits" type="RichTextLabel" parent="OriginalInfo/Container/RightSide"]
+custom_minimum_size = Vector2(280, 376)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 bbcode_enabled = true
-bbcode_text = "[center][b]Producer[/b]
-Peter Ryu
+text = "[center][b][color=#cac016]Producer[/color][/b]
+[color=#16c8ca]Peter Ryu[/color]
 
-[b]Art[/b]
-William Chow
-Steve Jasper
+[b][color=#cac016]Art[/color][/b]
+[color=#16c8ca]William Chow
+Steve Jasper[/color]
 
-[b]Thanks to[/b]
-Jim Cantrell
+[b][color=#cac016]Thanks to[/color][/b]
+[color=#16c8ca]Jim Cantrell
 Scott McDaniel
 John Morris
 John Machin
 James Dickinson
-Marcus @mplayer.com[/center]"
-text = "Producer
-Peter Ryu
-
-Art
-William Chow
-Steve Jasper
-
-Thanks to
-Jim Cantrell
-Scott McDaniel
-John Morris
-John Machin
-James Dickinson
-Marcus @mplayer.com"
+Marcus @mplayer.com[/color][/center]"
 scroll_active = false
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="RemakeInfo" type="VBoxContainer" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -456.0
-margin_top = -150.0
-margin_right = 456.0
-margin_bottom = 252.0
+offset_left = -456.0
+offset_top = -150.0
+offset_right = 456.0
+offset_bottom = 252.0
 alignment = 1
 
 [node name="Text" type="VBoxContainer" parent="RemakeInfo"]
-margin_top = 7.0
-margin_right = 912.0
-margin_bottom = 251.0
-rect_min_size = Vector2( 912, 244 )
+custom_minimum_size = Vector2(912, 244)
+layout_mode = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="remake_author_label1" type="Label" parent="RemakeInfo/Text"]
-margin_top = 49.0
-margin_right = 912.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
+[node name="AuthorHeading" type="Label" parent="RemakeInfo/Text"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "REMAKE_DEV"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("15_yxdic")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Author" type="Label" parent="RemakeInfo/Text"]
-margin_top = 79.0
-margin_right = 912.0
-margin_bottom = 105.0
-rect_min_size = Vector2( 912, 26 )
-hint_tooltip = "https://darkpro1337.github.io"
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
+tooltip_text = "https://darkpro1337.github.io"
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
 text = "Artem Darkov @DarkPro1337"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("5_w3p6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="testing_label" type="Label" parent="RemakeInfo/Text"]
-margin_top = 109.0
-margin_right = 912.0
-margin_bottom = 135.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
+[node name="TestingHeading" type="Label" parent="RemakeInfo/Text"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "TESTING"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("15_yxdic")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="tester1" type="Label" parent="RemakeInfo/Text"]
-margin_top = 139.0
-margin_right = 912.0
-margin_bottom = 165.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
+[node name="Tester01" type="Label" parent="RemakeInfo/Text"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "TedCraft"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("5_w3p6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="tester2" type="Label" parent="RemakeInfo/Text"]
-margin_top = 169.0
-margin_right = 912.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
+[node name="Tester02" type="Label" parent="RemakeInfo/Text"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "Zmeonysh"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("5_w3p6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="warning" type="VBoxContainer" parent="RemakeInfo"]
-margin_top = 255.0
-margin_right = 912.0
-margin_bottom = 343.0
-rect_min_size = Vector2( 912, 88 )
+[node name="Warning" type="VBoxContainer" parent="RemakeInfo"]
+custom_minimum_size = Vector2(912, 88)
+layout_mode = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="text" type="Label" parent="RemakeInfo/warning"]
-margin_top = 9.0
-margin_right = 912.0
-margin_bottom = 79.0
-rect_min_size = Vector2( 912, 70 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 3 )
+[node name="Text" type="Label" parent="RemakeInfo/Warning"]
+custom_minimum_size = Vector2(912, 70)
+layout_mode = 2
 text = "WARNING_TEXT"
-align = 1
-valign = 1
-autowrap = true
+label_settings = ExtResource("6_mlivc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 clip_text = true
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="Logos" type="HBoxContainer" parent="RemakeInfo"]
-margin_top = 347.0
-margin_right = 912.0
-margin_bottom = 395.0
-custom_constants/separation = 25
+layout_mode = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Engine" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 52.0
-margin_right = 176.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 124, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(124, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 5 )
-expand = true
+texture_normal = ExtResource("5")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Splitter1" type="HSplitContainer" parent="RemakeInfo/Logos"]
-margin_left = 201.0
-margin_right = 225.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 24, 24 )
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
 collapsed = true
 dragger_visibility = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GitHub" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 250.0
-margin_right = 298.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 7 )
-expand = true
+texture_normal = ExtResource("7")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Trello" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 323.0
-margin_right = 371.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 8 )
-expand = true
+texture_normal = ExtResource("8")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Itch" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 396.0
-margin_right = 444.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 10 )
-expand = true
+texture_normal = ExtResource("10")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GameJolt" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 469.0
-margin_right = 517.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 6 )
-expand = true
+texture_normal = ExtResource("6")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Splitter2" type="HSplitContainer" parent="RemakeInfo/Logos"]
-margin_left = 542.0
-margin_right = 566.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 24, 24 )
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
 collapsed = true
 dragger_visibility = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Bmc" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 591.0
-margin_right = 639.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 9 )
-expand = true
+texture_normal = ExtResource("9")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Patreon" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 664.0
-margin_right = 712.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 12 )
-expand = true
+texture_normal = ExtResource("12")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Kofi" type="TextureButton" parent="RemakeInfo/Logos"]
-margin_left = 737.0
-margin_right = 785.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+texture_filter = 4
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 11 )
-expand = true
+texture_normal = ExtResource("11")
+ignore_texture_size = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Splitter3" type="HSplitContainer" parent="RemakeInfo/Logos"]
-margin_left = 810.0
-margin_right = 860.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 50, 24 )
-collapsed = true
-dragger_visibility = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TranslationInfo" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -456.0
-margin_top = -150.0
-margin_right = 456.0
-margin_bottom = 252.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -456.0
+offset_top = -150.0
+offset_right = 456.0
+offset_bottom = 252.0
 
-[node name="text1" type="VBoxContainer" parent="TranslationInfo"]
-margin_right = 912.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 912, 50 )
+[node name="Heading" type="VBoxContainer" parent="TranslationInfo"]
+custom_minimum_size = Vector2(912, 50)
+layout_mode = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="thanks" type="Label" parent="TranslationInfo/text1"]
-margin_top = 12.0
-margin_right = 912.0
-margin_bottom = 38.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
+[node name="Text" type="Label" parent="TranslationInfo/Heading"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "THANKS_FOR_TRANSLATION"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("4_dciym")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
-[node name="text2" type="VBoxContainer" parent="TranslationInfo"]
-margin_top = 54.0
-margin_right = 912.0
-margin_bottom = 298.0
-rect_min_size = Vector2( 912, 244 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Locales" type="VBoxContainer" parent="TranslationInfo"]
+custom_minimum_size = Vector2(912, 244)
+layout_mode = 2
 
-[node name="UK" type="Label" parent="TranslationInfo/text2"]
-margin_right = 912.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
+[node name="Uk" type="Label" parent="TranslationInfo/Locales"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "Українська"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("15_yxdic")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="author_uk" type="Label" parent="TranslationInfo/text2"]
-margin_top = 30.0
-margin_right = 912.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
+[node name="AuthorUk" type="Label" parent="TranslationInfo/Locales"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "Zmeonysh"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("5_w3p6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PL" type="Label" parent="TranslationInfo/text2"]
-margin_top = 60.0
-margin_right = 912.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
+[node name="Pl" type="Label" parent="TranslationInfo/Locales"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "Polski"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("15_yxdic")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="author_pl" type="Label" parent="TranslationInfo/text2"]
-margin_top = 90.0
-margin_right = 912.0
-margin_bottom = 116.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
+[node name="AuthorPl" type="Label" parent="TranslationInfo/Locales"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "Zmeonysh"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("5_w3p6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DA" type="Label" parent="TranslationInfo/text2"]
-margin_top = 120.0
-margin_right = 912.0
-margin_bottom = 146.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
+[node name="Da" type="Label" parent="TranslationInfo/Locales"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "Dansk"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("15_yxdic")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="author_da" type="Label" parent="TranslationInfo/text2"]
-margin_top = 150.0
-margin_right = 912.0
-margin_bottom = 176.0
-rect_min_size = Vector2( 912, 26 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.607843 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
+[node name="AuthorDa" type="Label" parent="TranslationInfo/Locales"]
+custom_minimum_size = Vector2(912, 26)
+layout_mode = 2
 text = "TimawaViking"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("5_w3p6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Next" type="Button" parent="."]
-margin_left = 821.0
-margin_top = 488.0
-margin_right = 946.0
-margin_bottom = 525.0
-theme = ExtResource( 14 )
-custom_fonts/font = SubResource( 5 )
-custom_styles/focus = SubResource( 4 )
+layout_mode = 0
+offset_left = 812.0
+offset_top = 488.0
+offset_right = 946.0
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("5_asp3v")
+theme_override_font_sizes/font_size = 20
 text = "NEXT"
 flat = true
-align = 2
+alignment = 2

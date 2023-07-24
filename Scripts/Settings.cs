@@ -1,526 +1,407 @@
 using System;
 using System.Globalization;
+using System.IO;
+using System.Text.Json;
 using Godot;
-using static Arcomage.Scripts.Config;
+using FileAccess = Godot.FileAccess;
 
-namespace Arcomage.Scripts
+namespace Arcomage.Scripts;
+
+public partial class Settings : Control
 {
-    public class Settings : Control
-    {
-        private string _configPath = "user://settings.ini";
-        private readonly CultureInfo _invariantCulture = CultureInfo.InvariantCulture;
+	private const int MasterBusId = 0;
+	private const int MusicBusId = 1;
+	private const int SoundsBusId = 2;
 
-        #region Control vars
-        private AnimationPlayer _anim;
-        private ToolButton _reset;
-        private TextureRect _background;
-        private TabContainer _tab;
+	private const string ConfigPath = "user://settings.json";
+	private readonly CultureInfo _invariantCulture = CultureInfo.InvariantCulture;
 
-        // Window settings
-        private CenterContainer _windowSettings;
-        private ToolButton _windowSettingsButton;
-        private HBoxContainer _fullscreen;
-        private CheckButton _fullscreenButton;
-        private CheckButton _borderlessButton;
-        private HBoxContainer _windowResolution;
-        private LineEdit _windowWidthEdit;
-        private LineEdit _windowHeightEdit;
-        private CheckButton _vsyncButton;
-        private HBoxContainer _introSkip;
-        private CheckButton _introSkipButton;
+	#region Control vars
 
-        // Sound settings
-        private CenterContainer _soundSettings;
-        private ToolButton _soundSettingsButton;
-        private HSlider _masterVolume;
-        private HSlider _musicVolume;
-        private HSlider _soundVolume;
-        private CheckBox _muteSound;
-
-        // Starting conditions
-        private CenterContainer _startingConditions;
-        private ToolButton _startingConditionsButton;
-        private CheckBox _singleplayerButton;
-        private CheckBox _multiplayerButton;
-        private CheckBox _singleClickButton;
-        private SpinBox _towerLevels;
-        private SpinBox _wallLevels;
-        private SpinBox _quarryLevels;
-        private SpinBox _brickQuantity;
-        private SpinBox _magicLevels;
-        private SpinBox _gemQuantity;
-        private SpinBox _dungeonLevels;
-        private SpinBox _recruitQuantity;
+	private AnimationPlayer Anim => GetNode<AnimationPlayer>("AnimationPlayer");
+	private Button Reset => GetNode<Button>("Reset");
+	private Button Close => GetNode<Button>("Close");
+	private TabContainer Tab => GetNode<TabContainer>("Tab");
     
-        // Play conditions
-        private CenterContainer _playConditions;
-        private ToolButton _playConditionsButton;
-        private SpinBox _autoBricks;
-        private SpinBox _autoGems;
-        private SpinBox _autoRecruits;
-        private SpinBox _cardsInHand;
-        private OptionButton _ai;
+	private Button WindowSettingsButton => GetNode<Button>("Options/Grid/WindowSettings");
+	private HBoxContainer Fullscreen => GetNode<HBoxContainer>("Tab/Graphics/Container/Fullscreen");
+	private CheckButton FullscreenButton => GetNode<CheckButton>("Tab/Graphics/Container/Fullscreen/Toggle");
+	private CheckButton BorderlessButton => GetNode<CheckButton>("Tab/Graphics/Container/Borderless/Toggle");
+	private HBoxContainer WindowResolution => GetNode<HBoxContainer>("Tab/Graphics/Container/WindowResolution");
+	private LineEdit WindowWidthEdit => GetNode<LineEdit>("Tab/Graphics/Container/WindowResolution/Width");
+	private LineEdit WindowHeightEdit => GetNode<LineEdit>("Tab/Graphics/Container/WindowResolution/Height");
+	private Button WindowResolutionApplyButton => GetNode<Button>("Tab/Graphics/Container/WindowResolution/ApplyButton");
+	private CheckButton VsyncButton => GetNode<CheckButton>("Tab/Graphics/Container/Vsync/Toggle");
+	private HBoxContainer IntroSkip => GetNode<HBoxContainer>("Tab/Graphics/Container/IntroSkip");
+	private CheckButton IntroSkipButton => GetNode<CheckButton>("Tab/Graphics/Container/IntroSkip/Toggle");
     
-        // Victory conditions
-        private CenterContainer _victoryConditions;
-        private ToolButton _victoryConditionsButton;
-        private SpinBox _winTower;
-        private SpinBox _winResources;
+	private Button SoundSettingsButton => GetNode<Button>("Options/Grid/SoundSettings");
+	private HSlider MasterVolume => GetNode<HSlider>("Tab/Sound/Container/Master/Slider");
+	private HSlider MusicVolume => GetNode<HSlider>("Tab/Sound/Container/Music/Slider");
+	private HSlider SoundVolume => GetNode<HSlider>("Tab/Sound/Container/Sounds/Slider");
+	private CheckBox MuteSound => GetNode<CheckBox>("Tab/Sound/Container/Mute/Toggle");
     
-        // Tavern presets
-        private CenterContainer _tavernPresets;
-        private ToolButton _tavernPresetsButton;
-        private OptionButton _tavernPreset;
+	private Button StartingConditionsButton => GetNode<Button>("Options/Grid/StartingConditions");
+	private CheckBox SingleplayerButton => GetNode<CheckBox>("Tab/StartingConditions/Container/Main/Gameplay/Singleplayer/Toggle");
+	private CheckBox MultiplayerButton => GetNode<CheckBox>("Tab/StartingConditions/Container/Main/Gameplay/Multiplayer/Toggle");
+	private CheckBox SingleClickButton => GetNode<CheckBox>("Tab/StartingConditions/Container/Main/Gameplay/SingleClick/Toggle");
+	private SpinBox TowerLevels => GetNode<SpinBox>("Tab/StartingConditions/Container/Main/TowersWalls/TowerLevels/Level");
+	private SpinBox WallLevels => GetNode<SpinBox>("Tab/StartingConditions/Container/Main/TowersWalls/WallLevels/Level");
+	private SpinBox QuarryLevels => GetNode<SpinBox>("Tab/StartingConditions/Container/ResourceGeneration/Generators/Quarry/Level");
+	private SpinBox BrickQuantity => GetNode<SpinBox>("Tab/StartingConditions/Container/ResourceGeneration/Resources/Bricks/Level");
+	private SpinBox MagicLevels => GetNode<SpinBox>("Tab/StartingConditions/Container/ResourceGeneration/Generators/Magic/Level");
+	private SpinBox GemQuantity => GetNode<SpinBox>("Tab/StartingConditions/Container/ResourceGeneration/Resources/Gems/Level");
+	private SpinBox DungeonLevels => GetNode<SpinBox>("Tab/StartingConditions/Container/ResourceGeneration/Generators/Dungeon/Level");
+	private SpinBox RecruitQuantity => GetNode<SpinBox>("Tab/StartingConditions/Container/ResourceGeneration/Resources/Recruits/Level");
     
-        // Language settings
-        private CenterContainer _languageSettings;
-        private ToolButton _languageSettingsButton;
-        private OptionButton _language;
-        private Label _languageErrors;
+	private Button PlayConditionsButton => GetNode<Button>("Options/Grid/PlayConditions");
+	private SpinBox AutoBricks => GetNode<SpinBox>("Tab/PlayConditions/Container/AutoGetter/Bricks/Level");
+	private SpinBox AutoGems => GetNode<SpinBox>("Tab/PlayConditions/Container/AutoGetter/Gems/Level");
+	private SpinBox AutoRecruits => GetNode<SpinBox>("Tab/PlayConditions/Container/AutoGetter/Recruits/Level");
+	private SpinBox CardsInHand => GetNode<SpinBox>("Tab/PlayConditions/Container/Other/CardsInHand/Level");
+	private OptionButton AiMode => GetNode<OptionButton>("Tab/PlayConditions/Container/Other/Ai/Mode");
     
-        // Player settings
-        private CenterContainer _playerSettings;
-        private ToolButton _playerSettingsButton;
-        private LineEdit _nickname;
-        #endregion
-        
-        public override void _EnterTree()
-        {
-            base._EnterTree();
-            #region OnReady vars
-            _anim = GetNode<AnimationPlayer>("AnimationPlayer");
-            _reset = GetNode<ToolButton>("reset");
-            _background = GetNode<TextureRect>("bg");
-            _tab = GetNode<TabContainer>("tab");
-            
-            // Window settings
-            _windowSettings = GetNode<CenterContainer>("tab/Graphics");
-            _windowSettingsButton = GetNode<ToolButton>("buttons_container/buttons_grid/window_settings");
-            _fullscreen = GetNode<HBoxContainer>("tab/Graphics/graphics/fullscreen");
-            _fullscreenButton = GetNode<CheckButton>("tab/Graphics/graphics/fullscreen/fullscreen_button");
-            _borderlessButton = GetNode<CheckButton>("tab/Graphics/graphics/borderless/borderless_button");
-            _windowResolution = GetNode<HBoxContainer>("tab/Graphics/graphics/window_res");
-            _windowWidthEdit = GetNode<LineEdit>("tab/Graphics/graphics/window_res/width");
-            _windowHeightEdit = GetNode<LineEdit>("tab/Graphics/graphics/window_res/height");
-            _vsyncButton = GetNode<CheckButton>("tab/Graphics/graphics/vsync/vsync_button");
-            _introSkip = GetNode<HBoxContainer>("tab/Graphics/graphics/intro_skip");
-            _introSkipButton = GetNode<CheckButton>("tab/Graphics/graphics/intro_skip/introskip_button");
-            
-            // Sound settings
-            _soundSettings = GetNode<CenterContainer>("tab/Sound");
-            _soundSettingsButton = GetNode<ToolButton>("buttons_container/buttons_grid/sound_settings");
-            _masterVolume = GetNode<HSlider>("tab/Sound/sound/master/master_slider");
-            _musicVolume = GetNode<HSlider>("tab/Sound/sound/music/music_slider");
-            _soundVolume = GetNode<HSlider>("tab/Sound/sound/sounds/sounds_slider");
-            _muteSound = GetNode<CheckBox>("tab/Sound/sound/mute/mute_sound");
-            
-            // Starting conditions
-            _startingConditions = GetNode<CenterContainer>("tab/Starting_Conditions");
-            _startingConditionsButton = GetNode<ToolButton>("buttons_container/buttons_grid/starting_conditions");
-            _singleplayerButton = GetNode<CheckBox>("tab/Starting_Conditions/starting_conditions/main/gameplay/single_player/singleplayer");
-            _multiplayerButton = GetNode<CheckBox>("tab/Starting_Conditions/starting_conditions/main/gameplay/multi_player/multiplayer");
-            _singleClickButton = GetNode<CheckBox>("tab/Starting_Conditions/starting_conditions/main/gameplay/single_click/singleclick_mode");
-            _towerLevels = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level");
-            _wallLevels = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level");
-            _quarryLevels = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level");
-            _brickQuantity = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quantity/level");
-            _magicLevels = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels/level");
-            _gemQuantity = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quantity/level");
-            _dungeonLevels = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/gen_res/generators/dungeon_levels3/level");
-            _recruitQuantity = GetNode<SpinBox>("tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quantity/level");
-            
-            // Play conditions
-            _playConditions = GetNode<CenterContainer>("tab/Play_Conditions");
-            _playConditionsButton = GetNode<ToolButton>("buttons_container/buttons_grid/play_conditions");
-            _autoBricks = GetNode<SpinBox>("tab/Play_Conditions/main/autoget/bricks/level");
-            _autoGems = GetNode<SpinBox>("tab/Play_Conditions/main/autoget/gems/level");
-            _autoRecruits = GetNode<SpinBox>("tab/Play_Conditions/main/autoget/recruits/level");
-            _cardsInHand = GetNode<SpinBox>("tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level");
-            _ai = GetNode<OptionButton>("tab/Play_Conditions/main/cardsnum_and_ai/AI/mode");
-            
-            // Victory conditions
-            _victoryConditions = GetNode<CenterContainer>("tab/Victory_Conditions");
-            _victoryConditionsButton = GetNode<ToolButton>("buttons_container/buttons_grid/victory_conditions");
-            _winTower = GetNode<SpinBox>("tab/Victory_Conditions/main/tower/level");
-            _winResources = GetNode<SpinBox>("tab/Victory_Conditions/main/resource/level");
-            
-            // Tavern presets
-            _tavernPresets = GetNode<CenterContainer>("tab/Tavern_Presets");
-            _tavernPresetsButton = GetNode<ToolButton>("buttons_container/buttons_grid/tavern_presets");
-            _tavernPreset = GetNode<OptionButton>("tab/Tavern_Presets/main/preset/tavern_option");
-            
-            // Language settings
-            _languageSettings = GetNode<CenterContainer>("tab/Language_Settings");
-            _languageSettingsButton = GetNode<ToolButton>("buttons_container/buttons_grid/language_settings");
-            _language = GetNode<OptionButton>("tab/Language_Settings/main/language/lang_option");
-            _languageErrors = GetNode<Label>("tab/Language_Settings/main/lang_errors");
-            
-            // Player settings
-            _playerSettings = GetNode<CenterContainer>("tab/Player_Settings");
-            _playerSettingsButton = GetNode<ToolButton>("buttons_container/buttons_grid/player_settings");
-            _nickname = GetNode<LineEdit>("tab/Player_Settings/main/nickname/edit");
-            #endregion
-        }
+	private Button VictoryConditionsButton => GetNode<Button>("Options/Grid/VictoryConditions");
+	private SpinBox TowerVictory => GetNode<SpinBox>("Tab/VictoryConditions/Container/TowerVictory/Level");
+	private SpinBox ResourceVictory => GetNode<SpinBox>("Tab/VictoryConditions/Container/ResourceVictory/Level");
 
-        public override void _Ready()
-        {
-            // Settings looks different if you will open them from in-game menu
-            if (GetParent().Name == "ingame_menu")
-            {
-                _startingConditionsButton.Hide();
-                _playConditionsButton.Hide();
-                _victoryConditionsButton.Hide();
-                _tavernPresetsButton.Hide();
-                _playerSettingsButton.Hide();
-                _languageSettingsButton.Hide();
-                _introSkip.Hide();
-                _reset.Hide();
-            }
-            else if (GetParent().Name != "MainMenu")
-            {
-                Hide();
-            }
-            
-            LoadSettings();
-            _windowHeightEdit.Text = OS.WindowSize.x.ToString(_invariantCulture);
-            _windowHeightEdit.Text = OS.WindowSize.y.ToString(_invariantCulture);
+	private Button TavernPresetsButton => GetNode<Button>("Options/Grid/TavernPresets");
+	private OptionButton TavernPreset => GetNode<OptionButton>("Tab/TavernPresets/Container/Preset/Option");
 
-            switch (CurrentLocale)
-            {
-                case Locale.en:
-                    TranslationServer.SetLocale("en"); 
-                    break;
-                case Locale.ru:
-                    TranslationServer.SetLocale("ru"); 
-                    break;
-                case Locale.uk:
-                    TranslationServer.SetLocale("uk");
-                    break;
-                case Locale.pl:
-                    TranslationServer.SetLocale("pl");
-                    break;
-                case Locale.da:
-                    TranslationServer.SetLocale("da");
-                    break;
-                default:
-                    TranslationServer.SetLocale("en");
-                    break;
-            }
-        }
+	private Button LanguageSettingsButton => GetNode<Button>("Options/Grid/LanguageSettings");
+	private OptionButton Language => GetNode<OptionButton>("Tab/LanguageSettings/Container/Language/Option");
+	private Label TranslationErrors => GetNode<Label>("Tab/LanguageSettings/Container/TranslationErrors");
 
-        private async void OnClosePressed()
-        {
-            SaveSettings();
-            _anim.Play("hide");
-            await ToSignal(_anim, "animation_finished");
-            Hide();
-        }
+	private Button PlayerSettingsButton => GetNode<Button>("Options/Grid/PlayerSettings");
+	private LineEdit Nickname => GetNode<LineEdit>("Tab/PlayerSettings/Container/Nickname/Edit");
 
-        private void SaveSettings()
-        {
-            var c = new ConfigFile();
-            var err = c.Load(_configPath);
-            // If file didn't exist - create new one with defaults.
-            if (err != Error.Ok)
-            {
-                // Window settings
-                c.SetValue("WINDOW", "fullscreen", Fullscreen);
-                c.SetValue("WINDOW", "borderless", Borderless);
-                c.SetValue("WINDOW", "width", WindowWidth);
-                c.SetValue("WINDOW", "height", WindowHeight);
-                c.SetValue("WINDOW", "vsync", Vsync);
-                c.SetValue("WINDOW", "intro_skip", IntroSkip);
-                // Audio settings
-                c.SetValue("AUDIO", "master", MasterVolume);
-                c.SetValue("AUDIO", "music", MusicVolume);
-                c.SetValue("AUDIO", "sound", SoundVolume);
-                c.SetValue("AUDIO", "mute", MuteSound);
-                // Starting conditions
-                c.SetValue("START", "singleplayer", Singleplayer);
-                c.SetValue("START", "single_click_mode", SingleClick);
-                c.SetValue("START", "tower_levels", TowerLevels);
-                c.SetValue("START", "wall_levels", WallLevels);
-                c.SetValue("START", "quarry_levels", QuarryLevels);
-                c.SetValue("START", "brick_quantity", BrickQuantity);
-                c.SetValue("START", "magic_levels", MagicLevels);
-                c.SetValue("START", "gem_quantity", GemQuantity);
-                c.SetValue("START", "dungeon_levels", DungeonLevels);
-                c.SetValue("START", "recruit_quantity", RecruitQuantity);
-                // Play conditions
-                c.SetValue("PLAY", "auto_bricks", AutoBricks);
-                c.SetValue("PLAY", "auto_gems", AutoGems);
-                c.SetValue("PLAY", "auto_recruits", AutoRecruits);
-                c.SetValue("PLAY", "cards_in_hand", CardsInHand);
-                c.SetValue("PLAY", "ai", CurrentAiType);
-                // Victory conditions
-                c.SetValue("VICTORY", "tower_victory", TowerVictory);
-                c.SetValue("VICTORY", "resource_victory", ResourceVictory);
-                // Tavern presets
-                c.SetValue("TAVERN", "preset", CurrentTavern);
-                // Language settings
-                c.SetValue("LANGUAGE", "locale", CurrentLocale);
-                // Player settings
-                c.SetValue("PLAYER", "nickname", Nickname);
-                c.Save(_configPath);
-            }
-            else
-            {
-                // Window settings
-                c.SetValue("WINDOW", "fullscreen", _fullscreenButton.Pressed);
-                c.SetValue("WINDOW", "borderless", _borderlessButton.Pressed);
-                c.SetValue("WINDOW", "width", int.Parse(_windowWidthEdit.Text));
-                c.SetValue("WINDOW", "height", int.Parse(_windowHeightEdit.Text));
-                c.SetValue("WINDOW", "vsync", _vsyncButton.Pressed);
-                c.SetValue("WINDOW", "intro_skip", _introSkipButton.Pressed);
-                // Audio settings
-                c.SetValue("AUDIO", "master", _masterVolume.Value);
-                c.SetValue("AUDIO", "music", _musicVolume.Value);
-                c.SetValue("AUDIO", "sound", _soundVolume.Value);
-                c.SetValue("AUDIO", "mute", _muteSound.Pressed);
-                // Starting conditions
-                c.SetValue("START", "singleplayer", _singleplayerButton.Pressed);
-                c.SetValue("START", "single_click_mode", _singleClickButton.Pressed);
-                c.SetValue("START", "tower_levels", (int)_towerLevels.Value);
-                c.SetValue("START", "wall_levels", (int)_wallLevels.Value);
-                c.SetValue("START", "quarry_levels", (int)_quarryLevels.Value);
-                c.SetValue("START", "brick_quantity", (int)_brickQuantity.Value);
-                c.SetValue("START", "magic_levels", (int)_magicLevels.Value);
-                c.SetValue("START", "gem_quantity", (int)_gemQuantity.Value);
-                c.SetValue("START", "dungeon_levels", (int)_dungeonLevels.Value);
-                c.SetValue("START", "recruit_quantity", (int)_recruitQuantity.Value);
-                // Play conditions
-                c.SetValue("PLAY", "auto_bricks", (int)_autoBricks.Value);
-                c.SetValue("PLAY", "auto_gems", (int)_autoGems.Value);
-                c.SetValue("PLAY", "auto_recruits", (int)_autoRecruits.Value);
-                c.SetValue("PLAY", "cards_in_hand", (int)_cardsInHand.Value);
-                c.SetValue("PLAY", "ai", _ai.Selected);
-                // Victory conditions
-                c.SetValue("VICTORY", "tower_victory", (int)_winTower.Value);
-                c.SetValue("VICTORY", "resource_victory", (int)_winResources.Value);
-                // Tavern presets
-                c.SetValue("TAVERN", "preset", _tavernPreset.Selected);
-                // Language settings
-                c.SetValue("LANGUAGE", "locale", _language.Selected);
-                // Player settings
-                c.SetValue("PLAYER", "nickname", _nickname.Text);
-                c.Save(_configPath);
-            }
-        }
+	#endregion
 
-        private void LoadSettings()
-        {
-            var c = new ConfigFile();
-            var err = c.Load(_configPath);
-            // Apply current settings from .ini file.
-            if (err != Error.Ok) return;
-            // Window settings
-            HasKeyElseSet(c,"WINDOW", "fullscreen", _fullscreenButton.Pressed);
-            Fullscreen = (bool)c.GetValue("WINDOW", "fullscreen");
-            _fullscreenButton.Pressed = Fullscreen;
-            HasKeyElseSet(c,"WINDOW", "borderless", _borderlessButton.Pressed);
-            Borderless = (bool)c.GetValue("WINDOW", "borderless");
-            _borderlessButton.Pressed = Borderless;
-            HasKeyElseSet(c,"WINDOW", "width", int.Parse(_windowWidthEdit.Text));
-            WindowWidth = (int)c.GetValue("WINDOW", "width");
-            _windowWidthEdit.Text = WindowWidth.ToString();
-            HasKeyElseSet(c,"WINDOW", "height", int.Parse(_windowHeightEdit.Text));
-            WindowHeight = (int)c.GetValue("WINDOW", "height");
-            _windowHeightEdit.Text = WindowHeight.ToString();
-            HasKeyElseSet(c,"WINDOW", "vsync", _vsyncButton.Pressed);
-            Vsync = (bool)c.GetValue("WINDOW", "vsync");
-            _vsyncButton.Pressed = Vsync;
-            HasKeyElseSet(c,"WINDOW", "intro_skip", _introSkipButton.Pressed);
-            IntroSkip = (bool)c.GetValue("WINDOW", "intro_skip");
-            _introSkipButton.Pressed = IntroSkip;
-            // Audio settings
-            HasKeyElseSet(c,"AUDIO", "master", _masterVolume.Value);
-            MasterVolume = Convert.ToDouble(c.GetValue("AUDIO", "master"));
-            _masterVolume.Value = MasterVolume;
-            HasKeyElseSet(c,"AUDIO", "music", _musicVolume.Value);
-            MusicVolume = Convert.ToDouble(c.GetValue("AUDIO", "music"));
-            _musicVolume.Value = MusicVolume;
-            HasKeyElseSet(c,"AUDIO", "sound", _soundVolume.Value);
-            SoundVolume = Convert.ToDouble(c.GetValue("AUDIO", "sound"));
-            _soundVolume.Value = SoundVolume;
-            HasKeyElseSet(c,"AUDIO", "mute", _muteSound.Pressed);
-            MuteSound = (bool)c.GetValue("AUDIO", "mute");
-            _muteSound.Pressed = MuteSound;
-            // Starting conditions
-            HasKeyElseSet(c,"START", "singleplayer", _singleplayerButton.Pressed);
-            Singleplayer = (bool)c.GetValue("START", "singleplayer");
-            _singleplayerButton.Pressed = Singleplayer;
-            HasKeyElseSet(c,"START", "single_click_mode", _singleClickButton.Pressed);
-            SingleClick = (bool)c.GetValue("START", "single_click_mode");
-            _singleClickButton.Pressed = SingleClick;
-            HasKeyElseSet(c,"START", "tower_levels", int.Parse(_towerLevels.Value.ToString(_invariantCulture)));
-            TowerLevels = (int)c.GetValue("START", "tower_levels");
-            _towerLevels.Value = TowerLevels;
-            HasKeyElseSet(c,"START", "wall_levels", int.Parse(_wallLevels.Value.ToString(_invariantCulture)));
-            WallLevels = (int)c.GetValue("START", "wall_levels");
-            _wallLevels.Value = WallLevels;
-            HasKeyElseSet(c,"START", "quarry_levels", int.Parse(_quarryLevels.Value.ToString(_invariantCulture)));
-            QuarryLevels = (int)c.GetValue("START", "quarry_levels");
-            _quarryLevels.Value = QuarryLevels;
-            HasKeyElseSet(c,"START", "brick_quantity", int.Parse(_brickQuantity.Value.ToString(_invariantCulture)));
-            BrickQuantity = (int)c.GetValue("START", "brick_quantity");
-            _brickQuantity.Value = BrickQuantity;
-            HasKeyElseSet(c,"START", "magic_levels", int.Parse(_magicLevels.Value.ToString(_invariantCulture)));
-            MagicLevels = (int)c.GetValue("START", "magic_levels");
-            _magicLevels.Value = MagicLevels;
-            HasKeyElseSet(c,"START", "gem_quantity", int.Parse(_gemQuantity.Value.ToString(_invariantCulture)));
-            GemQuantity = (int)c.GetValue("START", "gem_quantity");
-            _gemQuantity.Value = GemQuantity;
-            HasKeyElseSet(c,"START", "dungeon_levels", int.Parse(_dungeonLevels.Value.ToString(_invariantCulture)));
-            DungeonLevels = (int)c.GetValue("START", "dungeon_levels");
-            _dungeonLevels.Value = DungeonLevels;
-            HasKeyElseSet(c,"START", "recruit_quantity", int.Parse(_recruitQuantity.Value.ToString(_invariantCulture)));
-            RecruitQuantity = (int)c.GetValue("START", "recruit_quantity");
-            _recruitQuantity.Value = RecruitQuantity;
-            // Play conditions
-            HasKeyElseSet(c,"PLAY", "auto_bricks", int.Parse(_autoBricks.Value.ToString(_invariantCulture)));
-            AutoBricks = (int)c.GetValue("PLAY", "auto_bricks");
-            _autoBricks.Value = AutoBricks;
-            HasKeyElseSet(c,"PLAY", "auto_gems", int.Parse(_autoGems.Value.ToString(_invariantCulture)));
-            AutoGems = (int)c.GetValue("PLAY", "auto_gems");
-            _autoGems.Value = AutoGems;
-            HasKeyElseSet(c,"PLAY", "auto_recruits", int.Parse(_autoRecruits.Value.ToString(_invariantCulture)));
-            AutoRecruits = (int)c.GetValue("PLAY", "auto_recruits");
-            _autoRecruits.Value = AutoRecruits;
-            HasKeyElseSet(c,"PLAY", "cards_in_hand", int.Parse(_cardsInHand.Value.ToString(_invariantCulture)));
-            CardsInHand = (int)c.GetValue("PLAY", "cards_in_hand");
-            _cardsInHand.Value = CardsInHand;
-            HasKeyElseSet(c,"PLAY", "ai", _ai.Selected);
-            CurrentAiType = (AiType)c.GetValue("PLAY", "ai");
-            _ai.Selected = (int)CurrentAiType;
-            // Victory conditions
-            HasKeyElseSet(c,"VICTORY", "tower_victory", int.Parse(_winTower.Value.ToString(_invariantCulture)));
-            TowerVictory = (int)c.GetValue("VICTORY", "tower_victory");
-            _winTower.Value = TowerVictory;
-            HasKeyElseSet(c,"VICTORY", "resource_victory", int.Parse(_winResources.Value.ToString(_invariantCulture)));
-            ResourceVictory = (int)c.GetValue("VICTORY", "resource_victory");
-            _winResources.Value = ResourceVictory;
-            // Tavern presets
-            HasKeyElseSet(c,"TAVERN", "preset", _tavernPreset.Selected);
-            CurrentTavern = (Tavern)c.GetValue("TAVERN", "preset");
-            _tavernPreset.Selected = (int)CurrentTavern;
-            // Language settings
-            HasKeyElseSet(c,"LANGUAGE", "locale", _language.Selected);
-            CurrentLocale = (Locale)c.GetValue("LANGUAGE", "locale");
-            _language.Selected = (int)CurrentLocale;
-            // Player settings
-            HasKeyElseSet(c,"PLAYER", "nickname", _nickname.Text);
-            Nickname = (string)c.GetValue("PLAYER", "nickname");
-            _nickname.Text = Nickname;
-        }
+	public override void _EnterTree()
+	{
+		base._EnterTree();
 
-        private static void HasKeyElseSet(ConfigFile c, string section, string key, object setTo)
-        {
-            if (!c.HasSectionKey(section, key))
-                c.SetValue(section, key, setTo);
-        }
+		Close.Pressed += OnClosePressed;
+		Reset.Pressed += OnResetPressed;
 
-        private void OnWindowSettingsPressed() => _tab.CurrentTab = 0;
-        private void OnSoundSettingsPressed() => _tab.CurrentTab = 1;
-        private void OnStartingConditionsPressed() => _tab.CurrentTab = 2;
-        private void OnPlayConditionsPressed() => _tab.CurrentTab = 3;
-        private void OnVictoryConditionsPressed() => _tab.CurrentTab = 4;
-        private void OnTavernPresetsPressed() => _tab.CurrentTab = 5;
-        private void OnLanguageSettingsPressed() => _tab.CurrentTab = 6;
-        private void OnPlayerSettingsPressed() => _tab.CurrentTab = 7;
+		WindowSettingsButton.Pressed += OnWindowSettingsPressed;
+		SoundSettingsButton.Pressed += OnSoundSettingsPressed;
+		StartingConditionsButton.Pressed += OnStartingConditionsPressed;
+		PlayConditionsButton.Pressed += OnPlayConditionsPressed;
+		VictoryConditionsButton.Pressed += OnVictoryConditionsPressed;
+		TavernPresetsButton.Pressed += OnTavernPresetsPressed;
+		LanguageSettingsButton.Pressed += OnLanguageSettingsPressed;
+		PlayConditionsButton.Pressed += OnPlayConditionsPressed;
+		PlayerSettingsButton.Pressed += OnPlayerSettingsPressed;
 
-        private void OnFullscreenButtonToggled(bool toggle)
-        {
-            OS.WindowFullscreen = toggle;
-            if (toggle)
-                _windowResolution.Hide();
-            else
-                _windowResolution.Show();
-        }
+		FullscreenButton.Toggled += OnFullscreenButtonToggled;
+		BorderlessButton.Toggled += OnBorderlessButtonToggled;
+		WindowResolutionApplyButton.Pressed += OnWindowResolutionApplyPressed;
+		VsyncButton.Toggled += OnVsyncButtonToggled;
+		IntroSkipButton.Toggled += OnIntroSkipButtonToggled;
 
-        private void OnBorderlessButtonToggled(bool toggle)
-        {
-            OS.WindowBorderless = toggle;
-            if (toggle && _fullscreenButton.Pressed)
-                _fullscreen.Hide();
-            else
-                _fullscreen.Show();
-        }
+		MasterVolume.ValueChanged += OnMasterVolumeValueChanged;
+		MusicVolume.ValueChanged += OnMusicVolumeValueChanged;
+		SoundVolume.ValueChanged += OnSoundVolumeValueChanged;
+		MuteSound.Toggled += OnMuteSoundToggled;
 
-        private void OnWindowResolutionApplyPressed()
-        {
-            OS.WindowSize = new Vector2(float.Parse(_windowWidthEdit.Text), 
-                float.Parse(_windowHeightEdit.Text));
-            OS.WindowPosition = (OS.GetScreenSize() * 0.5f - OS.WindowSize * 0.5f);
-        }
+		SingleplayerButton.Toggled += OnSingleplayerButtonToggled;
+		MultiplayerButton.Toggled += OnMultiplayerButtonToggled;
+		SingleClickButton.Toggled += OnSingleClickButtonToggled;
+		TowerLevels.ValueChanged += OnTowerLevelsValueChanged;
+		WallLevels.ValueChanged += OnWallLevelsValueChanged;
+		QuarryLevels.ValueChanged += OnQuarryLevelsValueChanged;
+		BrickQuantity.ValueChanged += OnBrickQuantityValueChanged;
+		MagicLevels.ValueChanged += OnMagicLevelsValueChanged;
+		GemQuantity.ValueChanged += OnGemQuantityValueChanged;
+		DungeonLevels.ValueChanged += OnDungeonLevelsValueChanged;
+		RecruitQuantity.ValueChanged += OnRecruitQuantityValueChanged;
 
-        private void OnVsyncButtonToggled(bool toggle) => OS.VsyncEnabled = toggle;
-        private void OnIntroSkipButtonToggled(bool toggle) => IntroSkip = toggle;
+		AutoBricks.ValueChanged += OnAutoBricksValueChanged;
+		AutoGems.ValueChanged += OnAutoGemsValueChanged;
+		AutoRecruits.ValueChanged += OnAutoRecruitsValueChanged;
+		CardsInHand.ValueChanged += OnCardsInHandValueChanged;
+		AiMode.ItemSelected += OnAiModeChanged;
 
-        private void OnMasterSliderValueChanged(float value) =>
-            AudioServer.SetBusVolumeDb(0, GD.Linear2Db((float)_masterVolume.Value));
-        private void OnMusicSliderValueChanged(float value) => 
-            AudioServer.SetBusVolumeDb(1, GD.Linear2Db((float)_musicVolume.Value));
-        private void OnSoundsSliderValueChanged(float value) => 
-            AudioServer.SetBusVolumeDb(2, GD.Linear2Db((float)_soundVolume.Value));
-        
-        private void OnMuteSoundToggled(bool toggle)
-        {
-            AudioServer.SetBusMute(0, toggle);
-            AudioServer.SetBusMute(1, toggle);
-            AudioServer.SetBusMute(2, toggle);
-        }
-        
-        private void OnTowerLevelsValueChanged(float value) => TowerLevels = (int)value;
-        private void OnWallLevelsValueChanged(float value) => WallLevels = (int)value;
-        private void OnQuarryLevelsValueChanged(float value) => QuarryLevels = (int)value;
-        private void OnMagicLevelsValueChanged(float value) => MagicLevels = (int)value;
-        private void OnDungeonLevelsValueChanged(float value) => DungeonLevels = (int)value;
-        private void OnBrickQuantityValueChanged(float value) => BrickQuantity = (int)value;
-        private void OnGemQuantityValueChanged(float value) => GemQuantity = (int)value;
-        private void OnRecruitQuantityValueChanged(float value) => RecruitQuantity = (int)value;
-        
-        private void OnAutoGetBricksValueChanged(float value) => AutoBricks = (int)value;
-        private void OnAutoGetGemsValueChanged(float value) => AutoGems = (int)value;
-        private void OnAutoGetRecruitsValueChanged(float value) => AutoRecruits = (int)value;
-        private void OnCardsInHandValueChanged(float value) => CardsInHand = (int)value;
-        private void OnAiModeChanged(int index) => CurrentAiType = (AiType)index;
+		TowerVictory.ValueChanged += OnTowerVictoryValueChanged;
+		ResourceVictory.ValueChanged += OnResourceVictoryValueChanged;
 
-        private void OnTowerVictoryValueChanged(float value) => TowerVictory = (int)value;
-        private void OnResourceVictoryValueChanged(float value) => ResourceVictory = (int)value;
+		TavernPreset.ItemSelected += OnTavernPresetChanged;
+		Language.ItemSelected += OnLanguageChanged;
+		Nickname.TextChanged += OnNicknameChanged;
+	}
 
-        private void OnTavernPresetSelected(int index) => CurrentTavern = (Tavern)index;
+	public override void _Ready()
+	{
+		// Settings looks different if you will open them from in-game menu
+		if (GetParent().Name == "InGameMenu")
+		{
+			StartingConditionsButton.Hide();
+			PlayConditionsButton.Hide();
+			VictoryConditionsButton.Hide();
+			TavernPresetsButton.Hide();
+			PlayerSettingsButton.Hide();
+			LanguageSettingsButton.Hide();
+			IntroSkip.Hide();
+			Reset.Hide();
+		}
+		else if (GetParent().Name != "MainMenu") Hide();
 
-        private void OnLanguageSelected(int index)
-        {
-            switch ((Locale)index)
-            {
-                case Locale.en:
-                    TranslationServer.SetLocale("en");
-                    _languageErrors.Hide();
-                    break;
-                case Locale.ru:
-                    TranslationServer.SetLocale("ru");
-                    _languageErrors.Show();
-                    break;
-                case Locale.uk:
-                    TranslationServer.SetLocale("uk");
-                    _languageErrors.Show();
-                    break;
-                case Locale.pl:
-                    TranslationServer.SetLocale("pl");
-                    _languageErrors.Show();
-                    break;
-                case Locale.da:
-                    TranslationServer.SetLocale("da");
-                    _languageErrors.Show();
-                    break;
-                default:
-                    TranslationServer.SetLocale("en");
-                    _languageErrors.Show();
-                    break;
-            }
-        }
+		Config.Settings = LoadSettings();
+		UpdateControls();
+		UpdateLocale();
 
-        private void OnNicknameTextChanged(string newText) => Nickname = newText;
-    }
+		WindowHeightEdit.Text = DisplayServer.WindowGetSize().X.ToString(_invariantCulture);
+		WindowHeightEdit.Text = DisplayServer.WindowGetSize().Y.ToString(_invariantCulture);
+	}
+
+	private async void OnClosePressed()
+	{
+		SaveSettings();
+		Anim.Play("hide");
+		await ToSignal(Anim, "animation_finished");
+		Hide();
+	}
+
+	private void OnResetPressed()
+	{
+		Config.Settings = new GameSettings();
+		SaveSettings();
+		UpdateControls();
+		UpdateLocale();
+	}
+
+	private static void SaveSettings()
+	{
+		try
+		{
+			var content = JsonSerializer.Serialize(Config.Settings, new JsonSerializerOptions { WriteIndented = true });
+			using var file = FileAccess.Open(ConfigPath, FileAccess.ModeFlags.Write);
+			file.StoreString(content);
+			file.Close();
+		}
+		catch (Exception ex)
+		{
+			Global.Log("Failed to save settings:");
+			Global.Log(ex.ToString());
+			Global.Log(ex.StackTrace);
+		}
+	}
+
+	private static GameSettings LoadSettings()
+	{
+		try
+		{
+			if (!FileAccess.FileExists(ConfigPath))
+			{
+				var defaults =
+					JsonSerializer.Serialize(Config.Settings, new JsonSerializerOptions { WriteIndented = true });
+				using var file = FileAccess.Open(ConfigPath, FileAccess.ModeFlags.Write);
+				file.StoreString(defaults);
+				file.Close();
+			}
+
+			using var resource = FileAccess.Open(ConfigPath, FileAccess.ModeFlags.Read);
+			var filePath = resource.GetPathAbsolute();
+			resource.Close();
+			using var stream = new StreamReader(filePath);
+			var content = stream.ReadToEnd();
+			return JsonSerializer.Deserialize<GameSettings>(content);
+		}
+		catch (Exception ex)
+		{
+			Global.Log("Failed to load settings. Fallback to defaults:");
+			Global.Log(ex.ToString());
+			return new GameSettings();
+		}
+	}
+
+	private void UpdateControls()
+	{
+		FullscreenButton.ButtonPressed = Config.Settings.Fullscreen;
+		BorderlessButton.ButtonPressed = Config.Settings.Borderless;
+		WindowWidthEdit.Text = Config.Settings.WindowWidth.ToString(_invariantCulture);
+		WindowHeightEdit.Text = Config.Settings.WindowHeight.ToString(_invariantCulture);
+		VsyncButton.ButtonPressed = Config.Settings.Vsync;
+		IntroSkipButton.ButtonPressed = Config.Settings.IntroSkip;
+		
+		MasterVolume.Value = Config.Settings.MasterVolume;
+		MusicVolume.Value = Config.Settings.MusicVolume;
+		SoundVolume.Value = Config.Settings.SoundVolume;
+		MuteSound.ButtonPressed = Config.Settings.MuteSound;
+		
+		SingleplayerButton.ButtonPressed = Config.Settings.Singleplayer;
+		SingleClickButton.ButtonPressed = Config.Settings.SingleClick;
+		TowerLevels.Value = Config.Settings.TowerLevels;
+		WallLevels.Value = Config.Settings.WallLevels;
+		QuarryLevels.Value = Config.Settings.QuarryLevels;
+		BrickQuantity.Value = Config.Settings.BrickQuantity;
+		MagicLevels.Value = Config.Settings.MagicLevels;
+		GemQuantity.Value = Config.Settings.GemQuantity;
+		DungeonLevels.Value = Config.Settings.DungeonLevels;
+		RecruitQuantity.Value = Config.Settings.RecruitQuantity;
+		
+		AutoBricks.Value = Config.Settings.AutoBricks;
+		AutoGems.Value = Config.Settings.AutoGems;
+		AutoRecruits.Value = Config.Settings.AutoRecruits;
+		CardsInHand.Value = Config.Settings.CardsInHand;
+		AiMode.Selected = (int)Config.Settings.CurrentAiType;
+		
+		TowerVictory.Value = Config.Settings.TowerVictory;
+		ResourceVictory.Value = Config.Settings.ResourceVictory;
+		
+		TavernPreset.Selected = (int)Config.Settings.CurrentTavern;
+		Language.Selected = (int)Config.Settings.CurrentLocale;
+		
+		Nickname.Text = Config.Settings.Nickname;
+	}
+	
+	private static void UpdateLocale()
+	{
+		switch (Config.Settings.CurrentLocale)
+		{
+			case Locale.En:
+				TranslationServer.SetLocale("en");
+				break;
+			case Locale.Ru:
+				TranslationServer.SetLocale("ru");
+				break;
+			case Locale.Uk:
+				TranslationServer.SetLocale("uk");
+				break;
+			case Locale.Pl:
+				TranslationServer.SetLocale("pl");
+				break;
+			case Locale.Da:
+				TranslationServer.SetLocale("da");
+				break;
+			default:
+				TranslationServer.SetLocale("en");
+				break;
+		}
+	}
+
+	private void OnWindowSettingsPressed() => Tab.CurrentTab = 0;
+	private void OnSoundSettingsPressed() => Tab.CurrentTab = 1;
+	private void OnStartingConditionsPressed() => Tab.CurrentTab = 2;
+	private void OnPlayConditionsPressed() => Tab.CurrentTab = 3;
+	private void OnVictoryConditionsPressed() => Tab.CurrentTab = 4;
+	private void OnTavernPresetsPressed() => Tab.CurrentTab = 5;
+	private void OnLanguageSettingsPressed() => Tab.CurrentTab = 6;
+	private void OnPlayerSettingsPressed() => Tab.CurrentTab = 7;
+
+	private void OnFullscreenButtonToggled(bool toggle)
+	{
+		if (toggle)
+		{
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+			WindowResolution.Hide();
+		}
+		else
+		{
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+			WindowResolution.Show();
+		}
+	}
+
+	private void OnBorderlessButtonToggled(bool toggle)
+	{
+		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, toggle);
+		if (toggle && FullscreenButton.ButtonPressed)
+			Fullscreen.Hide();
+		else
+			Fullscreen.Show();
+	}
+
+	private void OnWindowResolutionApplyPressed()
+	{
+		DisplayServer.WindowSetSize(new Vector2I(int.Parse(WindowWidthEdit.Text), int.Parse(WindowHeightEdit.Text)));
+		DisplayServer.WindowSetPosition(DisplayServer.ScreenGetSize() * (int)0.5 - DisplayServer.WindowGetSize() * (int)0.5);
+	}
+
+	private static void OnVsyncButtonToggled(bool toggle) => 
+		DisplayServer.WindowSetVsyncMode(toggle ? DisplayServer.VSyncMode.Enabled : DisplayServer.VSyncMode.Disabled);
+
+	private static void OnIntroSkipButtonToggled(bool toggle) => Config.Settings.IntroSkip = toggle;
+
+	private static void OnMasterVolumeValueChanged(double value) =>
+		AudioServer.SetBusVolumeDb(MasterBusId, (float)Mathf.LinearToDb(value));
+		
+	private static void OnMusicVolumeValueChanged(double value) => 
+		AudioServer.SetBusVolumeDb(MusicBusId, (float)Mathf.LinearToDb(value));
+		
+	private static void OnSoundVolumeValueChanged(double value) => 
+		AudioServer.SetBusVolumeDb(SoundsBusId, (float)Mathf.LinearToDb(value));
+		
+	private static void OnMuteSoundToggled(bool toggle)
+	{
+		AudioServer.SetBusMute(MasterBusId, toggle);
+		AudioServer.SetBusMute(MusicBusId, toggle);
+		AudioServer.SetBusMute(SoundsBusId, toggle);
+	}
+		
+	private static void OnSingleplayerButtonToggled(bool toggle)
+	{
+		// TODO: Subject of deletion, since it's no more needed
+	}
+
+	private static void OnMultiplayerButtonToggled(bool toggle)
+	{
+		// TODO: Subject of deletion, since it's no more needed
+	}
+		
+	private static void OnSingleClickButtonToggled(bool toggle) => Config.Settings.SingleClick = toggle;
+	private static void OnTowerLevelsValueChanged(double value) => Config.Settings.TowerLevels = (int)value;
+	private static void OnWallLevelsValueChanged(double value) => Config.Settings.WallLevels = (int)value;
+	private static void OnQuarryLevelsValueChanged(double value) => Config.Settings.QuarryLevels = (int)value;
+	private static void OnMagicLevelsValueChanged(double value) => Config.Settings.MagicLevels = (int)value;
+	private static void OnDungeonLevelsValueChanged(double value) => Config.Settings.DungeonLevels = (int)value;
+	private static void OnBrickQuantityValueChanged(double value) => Config.Settings.BrickQuantity = (int)value;
+	private static void OnGemQuantityValueChanged(double value) => Config.Settings.GemQuantity = (int)value;
+	private static void OnRecruitQuantityValueChanged(double value) => Config.Settings.RecruitQuantity = (int)value;
+		
+	private static void OnAutoBricksValueChanged(double value) => Config.Settings.AutoBricks = (int)value;
+	private static void OnAutoGemsValueChanged(double value) => Config.Settings.AutoGems = (int)value;
+	private static void OnAutoRecruitsValueChanged(double value) => Config.Settings.AutoRecruits = (int)value;
+	private static void OnCardsInHandValueChanged(double value) => Config.Settings.CardsInHand = (int)value;
+	private static void OnAiModeChanged(long index) => Config.Settings.CurrentAiType = (AiType)index;
+
+	private static void OnTowerVictoryValueChanged(double value) => Config.Settings.TowerVictory = (int)value;
+	private static void OnResourceVictoryValueChanged(double value) => Config.Settings.ResourceVictory = (int)value;
+
+	private static void OnTavernPresetChanged(long index) => Config.Settings.CurrentTavern = (Tavern)index;
+
+	private void OnLanguageChanged(long index)
+	{
+		Config.Settings.CurrentLocale = (Locale)index;
+		switch ((Locale)index)
+		{
+			case Locale.En:
+				TranslationServer.SetLocale("en");
+				TranslationErrors.Hide();
+				break;
+			case Locale.Ru:
+				TranslationServer.SetLocale("ru");
+				TranslationErrors.Show();
+				break;
+			case Locale.Uk:
+				TranslationServer.SetLocale("uk");
+				TranslationErrors.Show();
+				break;
+			case Locale.Pl:
+				TranslationServer.SetLocale("pl");
+				TranslationErrors.Show();
+				break;
+			case Locale.Da:
+				TranslationServer.SetLocale("da");
+				TranslationErrors.Show();
+				break;
+			default:
+				TranslationServer.SetLocale("en");
+				TranslationErrors.Show();
+				break;
+		}
+	}
+
+	private void OnNicknameChanged(string newText) => Config.Settings.Nickname = newText;
 }

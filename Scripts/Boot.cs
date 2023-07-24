@@ -4,7 +4,7 @@ using Godot;
 
 namespace Arcomage.Scripts
 {
-	public class Boot : Node
+	public partial class Boot : Node
 	{   
 		public Boot() 
 		{
@@ -17,17 +17,17 @@ namespace Arcomage.Scripts
 			Global.Log($"Arcomage v.{version} loaded!");
 			Global.Log($"Build number: {Global.BuildNumber}");
 			Global.Log("Boot loaded!");
-			Global.Log($"IP: {Network.IpAddress}");
+			Global.Log($"IP address: {Network.IpAddress}");
 
-			if (!Config.IntroSkip)
+			if (!Config.Settings.IntroSkip)
 			{
 				Global.Log("Loading from Boot to Intro...");
-				GetTree().ChangeScene("res://scenes/intro.tscn");
+				GetTree().ChangeSceneToFile("res://Scenes/intro.tscn");
 			}
 			else
 			{
 				Global.Log("Loading from Boot to Main menu...");
-				GetTree().ChangeScene("res://scenes/MainMenu.tscn");
+				GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
 			}
 		}
 
@@ -41,8 +41,7 @@ namespace Arcomage.Scripts
 		{
 			try
 			{
-				var file = new File();
-				file.Open("res://build.tres", File.ModeFlags.Write);
+				using var file = FileAccess.Open("res://build.tres", FileAccess.ModeFlags.Write);
 				file.StoreString(buildNumber);
 				file.Close();
 				Global.Log("Build number updated.");

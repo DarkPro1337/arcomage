@@ -27,28 +27,28 @@ func _ready() -> void:
 		if ip.begins_with("192.168.") and not ip.ends_with(".1"):
 			ip_address = ip
 	
-	get_tree().connect("network_peer_connected", self, "_on_player_connected")
-	get_tree().connect("network_peer_disconnected", self, "_on_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
-	get_tree().connect("connection_failed", self, "_on_connection_failed")
-	get_tree().connect("server_disconnected", self, "_on_disconnected_from_server")
+	get_tree().connect("peer_connected",Callable(self,"_on_player_connected"))
+	get_tree().connect("peer_disconnected",Callable(self,"_on_player_disconnected"))
+	get_tree().connect("connected_to_server",Callable(self,"_on_connected_to_server"))
+	get_tree().connect("connection_failed",Callable(self,"_on_connection_failed"))
+	get_tree().connect("server_disconnected",Callable(self,"_on_disconnected_from_server"))
 
 func create_server() -> void:
-	server = NetworkedMultiplayerENet.new()
+	server = ENetMultiplayerPeer.new()
 	if (server.create_server(DEFAULT_PORT, MAX_CLIENTS) != OK):
 		print(global.time() + "Failed to create server!")
 		return
-	get_tree().set_network_peer(server)
+	get_tree().set_multiplayer_peer(server)
 	emit_signal("server_created")
 	print(global.time() + "Server started at " + str(DEFAULT_PORT))
 
 func join_server() -> void:
-	client = NetworkedMultiplayerENet.new()
+	client = ENetMultiplayerPeer.new()
 	if (client.create_client(ip_address, DEFAULT_PORT) != OK):
 		print(global.time() + "Failed to join server")
 		emit_signal("join_fail")
 		return
-	get_tree().set_network_peer(client)
+	get_tree().set_multiplayer_peer(client)
 
 func _on_connected_to_server() -> void:
 	emit_signal("join_success")
@@ -65,5 +65,5 @@ func _on_player_disconnected(id):
 
 func _on_connection_failed():
 	emit_signal("join_fail")
-	get_tree().set_network_peer(null)
+	get_tree().set_multiplayer_peer(null)
 	print(global.time() + "Connection failed!")

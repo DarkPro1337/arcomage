@@ -36,10 +36,10 @@ As a rule, cards that require the same type of resources are similar in action. 
 * [**GameJolt**](https://gamejolt.com/games/arcomage/537808)
 
 ## Requirements
-* **GPU:** OpenGL 2.1 support
+* **OpenGL 3.3** or **OpenGL ES 3.0** compatible hardware
 
 ## Compilation and editing
-* [**Godot** v.3.4.4 stable mono](https://downloads.tuxfamily.org/godotengine/3.4.4/)
-* [**.NET** Core SDK](https://dotnet.microsoft.com/download/dotnet-core)
+* [**Godot** v.4.1.1 stable mono](https://downloads.tuxfamily.org/godotengine/4.1.1/)
+* [**.NET** SDK](https://dotnet.microsoft.com/download)
 * Recommended [**Rider**](https://www.jetbrains.com/rider/download) or [**VS Code**](https://code.visualstudio.com/download) external editors with Godot C# extensions ([learn here](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_basics.html#configuring-an-external-editor)).
 * [**CastleDB** v.1.5](http://castledb.org/)

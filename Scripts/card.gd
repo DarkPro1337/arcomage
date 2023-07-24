@@ -1,8 +1,8 @@
 class_name Card
 extends Control
 
-onready var selector = get_node("selector")
-onready var card_back = get_node("card_back")
+@onready var selector = get_node("selector")
+@onready var card_back = get_node("card_back")
 
 var rng = RandomNumberGenerator.new()
 var card_data = {}
@@ -44,7 +44,9 @@ func _ready():
 		data_read.open("res://db/base.cdb", File.READ)
 		ui_card_uppercase_text = true
 	
-	var data_cdb = parse_json(data_read.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(data_read.get_as_text())
+	var data_cdb = test_json_conv.get_data()
 	data_read.close()
 	for sheet in data_cdb["sheets"]:
 		if sheet["name"] == "cards":

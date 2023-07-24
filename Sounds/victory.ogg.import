@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/victory.ogg-e96873809bc35eb001ee0b20fab6cd9c.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cms38ct6esxqh"
+path="res://.godot/imported/victory.ogg-e96873809bc35eb001ee0b20fab6cd9c.oggvorbisstr"
 
 [deps]
 
 source_file="res://Sounds/victory.ogg"
-dest_files=[ "res://.import/victory.ogg-e96873809bc35eb001ee0b20fab6cd9c.oggstr" ]
+dest_files=["res://.godot/imported/victory.ogg-e96873809bc35eb001ee0b20fab6cd9c.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

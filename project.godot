@@ -6,23 +6,7 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Control",
-"class": "Card",
-"language": "GDScript",
-"path": "res://Scripts/card.gd"
-}, {
-"base": "Control",
-"class": "Table",
-"language": "GDScript",
-"path": "res://Scripts/table.gd"
-} ]
-_global_script_class_icons={
-"Card": "",
-"Table": ""
-}
+config_version=5
 
 [application]
 
@@ -31,9 +15,10 @@ config/description="Open-source Arcomage fan-remake made on Godot Engine."
 run/main_scene="res://Scenes/Boot.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Arcoamge"
+config/features=PackedStringArray("4.1", "C#")
 run/low_processor_mode=true
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Sprites/empty_splash.png"
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 config/macos_native_icon="res://icon.icns"
 config/windows_native_icon="res://icon.ico"
@@ -43,43 +28,49 @@ config/version="0.3-alpha"
 
 Global="*res://Scripts/Global.cs"
 Config="*res://Scripts/Config.cs"
-Settings="*res://Scenes/settings.tscn"
 Network="*res://Scripts/Network.cs"
+Settings="*res://Scenes/Settings.tscn"
 AudioStreamManager="*res://Scripts/audio_manager.gd"
 
 [display]
 
-window/size/width=960
-window/size/height=540
-window/dpi/allow_hidpi=true
-window/handheld/orientation="sensor_landscape"
-window/stretch/mode="2d"
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation="sensor_landscape"
+
+[dotnet]
+
+project/assembly_name="Arcomage"
 
 [input]
 
 ui_lmb={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 ui_rmb={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 ui_reset={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Locales/Arcomage Translations - Cards.da.translation", "res://Locales/Arcomage Translations - Cards.en.translation", "res://Locales/Arcomage Translations - Cards.pl.translation", "res://Locales/Arcomage Translations - Cards.ru.translation", "res://Locales/Arcomage Translations - Cards.uk.translation", "res://Locales/Arcomage Translations - Interface.da.translation", "res://Locales/Arcomage Translations - Interface.en.translation", "res://Locales/Arcomage Translations - Interface.pl.translation", "res://Locales/Arcomage Translations - Interface.ru.translation", "res://Locales/Arcomage Translations - Interface.uk.translation")
 
 [locale]
 
-translations=PoolStringArray( "res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation", "res://Arcomage Translations - Interface.da.translation", "res://Arcomage Translations - Cards.da.translation", "res://Arcomage Translations - Cards.en.translation", "res://Arcomage Translations - Cards.ru.translation", "res://Arcomage Translations - Cards.uk.translation" )
-locale_filter=[ 1, [ "da", "en", "pl", "ru", "uk" ] ]
-translation_remaps={
-}
+translations=PackedStringArray("res://Arcomage Translations - Interface.en.translation", "res://Arcomage Translations - Interface.ru.translation", "res://Arcomage Translations - Interface.uk.translation", "res://Arcomage Translations - Interface.pl.translation", "res://Arcomage Translations - Interface.da.translation", "res://Arcomage Translations - Cards.da.translation", "res://Arcomage Translations - Cards.en.translation", "res://Arcomage Translations - Cards.ru.translation", "res://Arcomage Translations - Cards.uk.translation")
+locale_filter=[1, ["da", "en", "pl", "ru", "uk"]]
+translation_remaps={}
 
 [logging]
 
@@ -92,28 +83,28 @@ project/assembly_name="Arcomage"
 
 [rendering]
 
+shading/overrides/force_vertex_shading.mobile=false
+shading/overrides/force_lambert_over_burley.mobile=false
+driver/depth_prepass/enable=false
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=1
 threads/thread_model=2
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
 quality/directional_shadow/size=256
 quality/directional_shadow/size.mobile=256
-quality/shadow_atlas/size=256
-quality/shadow_atlas/size.mobile=256
-quality/shadow_atlas/quadrant_0_subdiv=0
-quality/shadow_atlas/quadrant_1_subdiv=0
-quality/shadow_atlas/quadrant_2_subdiv=0
-quality/shadow_atlas/quadrant_3_subdiv=0
+lights_and_shadows/shadow_atlas/size=256
+lights_and_shadows/shadow_atlas/size.mobile=256
+lights_and_shadows/shadow_atlas/quadrant_0_subdiv=0
+lights_and_shadows/shadow_atlas/quadrant_1_subdiv=0
+lights_and_shadows/shadow_atlas/quadrant_2_subdiv=0
+lights_and_shadows/shadow_atlas/quadrant_3_subdiv=0
 quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/reflections/irradiance_max_size=32
-quality/shading/force_vertex_shading.mobile=false
-quality/shading/force_lambert_over_burley.mobile=false
-quality/shading/force_blinn_over_ggx.mobile=false
-quality/depth_prepass/enable=false
+shading/overrides/force_blinn_over_ggx.mobile=false
 quality/filters/anisotropic_filter_level=1
 quality/skinning/software_skinning_fallback=false
 quality/spatial_partitioning/use_bvh=false
@@ -122,4 +113,3 @@ quality/lightmapping/use_bicubic_sampling=false
 quality/reflections/atlas_size=0
 quality/reflections/atlas_subdiv=0
 quality/depth/hdr=false
-environment/default_environment="res://default_env.tres"

@@ -1,23 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://cvfyckv2rtvoq"]
 
-[ext_resource path="res://Scripts/CardsViewer.cs" type="Script" id=1]
-[ext_resource path="res://Images/table_gradient_dark.png" type="Texture" id=2]
+[ext_resource type="Script" path="res://Scripts/CardsViewer.cs" id="1"]
+[ext_resource type="Texture2D" uid="uid://b4ief6r1wedxu" path="res://Images/table_gradient_dark.png" id="2"]
 
 [node name="Viewer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
 
 [node name="deck_background" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 1
+texture = ExtResource("2")
+expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchor_right = 1.0
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -416.0
+offset_right = 416.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 6

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/damage.ogg-0845488dd35b4e9372bdcb85841a0063.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://duklwlnoiw7ns"
+path="res://.godot/imported/damage.ogg-0845488dd35b4e9372bdcb85841a0063.oggvorbisstr"
 
 [deps]
 
 source_file="res://Sounds/damage.ogg"
-dest_files=[ "res://.import/damage.ogg-0845488dd35b4e9372bdcb85841a0063.oggstr" ]
+dest_files=["res://.godot/imported/damage.ogg-0845488dd35b4e9372bdcb85841a0063.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,1419 +1,1154 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=31 format=3 uid="uid://cqt4vepe6qmcn"]
 
-[ext_resource path="res://Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scenes/enemy_tower.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/player_tower.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/player_wall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/enemy_wall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Sprites/tower_top_player.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Misc/recruits.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/tower_top_enemy.png" type="Texture" id=10]
-[ext_resource path="res://Images/Layout-edit_dark.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/card_back.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Misc/bricks.png" type="Texture" id=13]
-[ext_resource path="res://Images/table_gradient_dark.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Misc/gems.png" type="Texture" id=15]
-[ext_resource path="res://Scripts/Table.cs" type="Script" id=16]
-[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=17]
-[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=18]
+[ext_resource type="PackedScene" uid="uid://dgp5mnwyrer0o" path="res://Scenes/EnemyTower.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dyny48sww0vnw" path="res://Scenes/PlayerTower.tscn" id="3"]
+[ext_resource type="FontFile" uid="uid://b1s2nwtug8gkl" path="res://Fonts/RobotoCondensed-Regular.tres" id="4_6k12c"]
+[ext_resource type="PackedScene" uid="uid://c3lhbmvs8de0t" path="res://Scenes/PlayerWall.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://keod5nwm2dtr" path="res://Scenes/EnemyWall.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://dwujmueb205yj" path="res://Sprites/tower_top_player.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dxo573r1epfis" path="res://Sprites/Misc/recruits.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://druu7sryl8i7i" path="res://Sprites/tower_top_enemy.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://cvtghalj0sfe2" path="res://Images/Layout-edit_dark.png" id="11"]
+[ext_resource type="StyleBox" uid="uid://5cq0tn0mk3un" path="res://Themes/BasicPanel.tres" id="11_hvv06"]
+[ext_resource type="Texture2D" uid="uid://oe5u7ul54mpv" path="res://Sprites/card_back.png" id="12"]
+[ext_resource type="StyleBox" uid="uid://bbpngpjr0can5" path="res://Themes/RecruitsPanel.tres" id="12_6o6bu"]
+[ext_resource type="Texture2D" uid="uid://48syq1tsdco5" path="res://Sprites/Misc/bricks.png" id="13"]
+[ext_resource type="StyleBox" uid="uid://d1yifs7hn817s" path="res://Themes/GemsPanel.tres" id="13_fuj2a"]
+[ext_resource type="Texture2D" uid="uid://b4ief6r1wedxu" path="res://Images/table_gradient_dark.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://ddkcvudg26n73" path="res://Sprites/Misc/gems.png" id="15"]
+[ext_resource type="Script" path="res://Scripts/Table.cs" id="16"]
+[ext_resource type="LabelSettings" uid="uid://d3q26ciiehqyy" path="res://Themes/TableResourceNameLabel.tres" id="16_ro153"]
+[ext_resource type="LabelSettings" uid="uid://bbslxo3p83s4" path="res://Themes/TablePerTurnLabel.tres" id="17_c1kuj"]
+[ext_resource type="LabelSettings" uid="uid://bf0hwd1xq6kpa" path="res://Themes/TableTotalLabel.tres" id="18_ii8jn"]
+[ext_resource type="StyleBox" uid="uid://boisg06iq0bqg" path="res://Themes/BricksPanel.tres" id="19_b2qfd"]
+[ext_resource type="StyleBox" uid="uid://qngvvogbf2n5" path="res://Themes/BricksPanelAltName.tres" id="21_mehl7"]
+[ext_resource type="StyleBox" uid="uid://7xwqacpum8g0" path="res://Themes/RecruitsPanelAltName.tres" id="21_oop71"]
+[ext_resource type="StyleBox" uid="uid://cbeyl6vw75bof" path="res://Themes/GemsPanelAltName.tres" id="22_kq6xk"]
+[ext_resource type="PackedScene" uid="uid://c3xwlecxrvu5f" path="res://Scenes/InGameMenu.tscn" id="25_ln0tp"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlbpg"]
+bg_color = Color(0, 0, 0, 1)
 shadow_size = 3
 
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.482353, 0.65098, 0.482353, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.341176, 0.462745, 0.341176, 1 )
-border_blend = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uddb"]
+bg_color = Color(0, 0, 0, 0)
 shadow_size = 3
 
-[sub_resource type="DynamicFont" id=4]
-size = 12
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 27
-font_data = ExtResource( 17 )
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 17 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.482353, 0.65098, 0.807843, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.376471, 0.505882, 0.627451, 1 )
-border_blend = true
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.807843, 0.380392, 0.388235, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.584314, 0.27451, 0.278431, 1 )
-border_blend = true
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.482353, 0.65098, 0.482353, 0.843137 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.482353, 0.65098, 0.807843, 0.843137 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.807843, 0.380392, 0.388235, 0.843137 )
-
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-shadow_color = Color( 0, 0, 0, 0.603922 )
-shadow_size = 3
-
-[sub_resource type="DynamicFont" id=13]
-size = 32
-outline_size = 1
-outline_color = Color( 0.109804, 0.109804, 0.109804, 0.45098 )
-font_data = ExtResource( 17 )
-
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id="14"]
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahysq"]
+_data = {
+"fade": SubResource("14")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k75iy"]
+properties/0/path = NodePath("RedPanel/Name:text")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("BluePanel/Name:text")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
 
 [node name="Table" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 16 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false,
-"_edit_vertical_guides_": [  ]
-}
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16")
+metadata/_edit_lock_ = true
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+texture = ExtResource("11")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_lock_ = true
 
 [node name="Graveyard" type="GridContainer" parent="."]
-modulate = Color( 1, 1, 1, 0.5 )
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -349.0
-margin_top = 17.0
-margin_right = 349.0
-margin_bottom = 197.0
+offset_left = -349.0
+offset_top = 16.0
+offset_right = 349.0
+offset_bottom = 196.0
+grow_horizontal = 2
 columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+metadata/_edit_lock_ = true
 
 [node name="CardBack" type="TextureRect" parent="Graveyard"]
-margin_right = 135.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 135, 180 )
-texture = ExtResource( 12 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(135, 180)
+layout_mode = 2
+texture = ExtResource("12")
+expand_mode = 1
 
 [node name="RedPanel" type="Panel" parent="."]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 120.0
-margin_bottom = 48.0
-custom_styles/panel = SubResource( 1 )
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jlbpg")
 
 [node name="Name" type="Label" parent="RedPanel"]
-margin_left = 8.0
-margin_right = 96.0
-margin_bottom = 32.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
+layout_mode = 0
+offset_left = 1.0
+offset_right = 103.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.678431, 0.682353, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_6k12c")
 text = "player_name"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BluePanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -120.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 48.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -120.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 48.0
+theme_override_styles/panel = ExtResource("11_hvv06")
 
 [node name="Name" type="Label" parent="BluePanel"]
-margin_left = 8.0
-margin_right = 96.0
-margin_bottom = 32.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
+layout_mode = 0
+offset_left = 8.0
+offset_right = 96.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.678431, 0.682353, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_6k12c")
 text = "enemy_name"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="RedTower" parent="." instance=ExtResource( 3 )]
+[node name="RedTower" parent="." instance=ExtResource("3")]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 193.555
-margin_top = -234.0
-margin_right = 238.555
-margin_bottom = -184.0
-rect_clip_content = false
+offset_left = 195.0
+offset_top = -233.0
+offset_right = 240.0
+offset_bottom = -183.0
+grow_vertical = 0
+metadata/_edit_group_ = true
 
 [node name="TowerHead" type="TextureRect" parent="RedTower"]
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -11.0
-margin_top = -0.999985
-margin_right = 11.0
-margin_bottom = 93.0
-texture = ExtResource( 8 )
-expand = true
+offset_left = -11.0
+offset_top = -0.999985
+offset_right = 11.0
+offset_bottom = 93.0
+texture = ExtResource("8")
+expand_mode = 1
 stretch_mode = 5
 flip_h = true
 flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="RedWall" parent="." instance=ExtResource( 5 )]
+[node name="RedWall" parent="." instance=ExtResource("5")]
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 265.0
-margin_top = -234.0
-margin_right = 289.0
-margin_bottom = -184.0
+offset_left = 265.0
+offset_top = -233.0
+offset_right = 289.0
+offset_bottom = -183.0
+grow_vertical = 0
 
-[node name="BlueWall" parent="." instance=ExtResource( 6 )]
+[node name="BlueWall" parent="." instance=ExtResource("6")]
+layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -240.0
-margin_top = -234.0
-margin_right = -216.0
-margin_bottom = -184.0
+offset_left = -240.0
+offset_top = -233.0
+offset_right = -216.0
+offset_bottom = -183.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="BlueTower" parent="." instance=ExtResource( 2 )]
+[node name="BlueTower" parent="." instance=ExtResource("2")]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -149.0
-margin_top = -234.0
-margin_right = -104.0
-margin_bottom = -184.0
-rect_clip_content = false
+offset_left = -150.0
+offset_top = -233.0
+offset_right = -105.0
+offset_bottom = -183.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_group_ = true
 
 [node name="TowerHead" type="TextureRect" parent="BlueTower"]
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -11.0
-margin_top = -1.00002
-margin_right = 11.0
-margin_bottom = 93.0
-texture = ExtResource( 10 )
-expand = true
+offset_left = -11.0
+offset_top = -1.00002
+offset_right = 11.0
+offset_bottom = 93.0
+texture = ExtResource("10")
+expand_mode = 1
 stretch_mode = 5
 flip_h = true
 flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedTowerPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 145.0
-margin_top = -234.0
-margin_right = 200.0
-margin_bottom = -210.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = 145.0
+offset_top = -234.0
+offset_right = 200.0
+offset_bottom = -210.0
+theme_override_styles/panel = ExtResource("11_hvv06")
+metadata/_edit_group_ = true
 
 [node name="Hp" type="Label" parent="RedTowerPanel"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.678431, 0.682353, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_6k12c")
 text = "50"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedWallPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 225.0
-margin_top = -234.0
-margin_right = 281.0
-margin_bottom = -210.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = 225.0
+offset_top = -234.0
+offset_right = 281.0
+offset_bottom = -210.0
+theme_override_styles/panel = ExtResource("11_hvv06")
+metadata/_edit_group_ = true
 
 [node name="Hp" type="Label" parent="RedWallPanel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
+offset_left = 8.0
+offset_right = -8.0
+theme_override_colors/font_color = Color(0.678431, 0.682353, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_6k12c")
 text = "50"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueWallPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -280.0
-margin_top = -234.0
-margin_right = -224.0
-margin_bottom = -210.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
+offset_left = -280.0
+offset_top = -234.0
+offset_right = -224.0
+offset_bottom = -210.0
+theme_override_styles/panel = ExtResource("11_hvv06")
 
 [node name="Hp" type="Label" parent="BlueWallPanel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
+offset_left = 8.0
+offset_right = -8.0
+theme_override_colors/font_color = Color(0.678431, 0.682353, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_6k12c")
 text = "50"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueTowerPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -200.0
-margin_top = -234.0
-margin_right = -144.0
-margin_bottom = -210.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
+offset_left = -200.0
+offset_top = -234.0
+offset_right = -144.0
+offset_bottom = -210.0
+theme_override_styles/panel = ExtResource("11_hvv06")
 
 [node name="Hp" type="Label" parent="BlueTowerPanel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.678431, 0.682353, 0.129412, 1 )
-custom_fonts/font = SubResource( 2 )
+offset_left = 8.0
+offset_right = -8.0
+theme_override_colors/font_color = Color(0.678431, 0.682353, 0.129412, 1)
+theme_override_fonts/font = ExtResource("4_6k12c")
 text = "50"
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedRecruitsPanel" type="Panel" parent="."]
-margin_left = 16.0
-margin_top = 216.0
-margin_right = 104.0
-margin_bottom = 288.0
-custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 216.0
+offset_right = 104.0
+offset_bottom = 288.0
+theme_override_styles/panel = ExtResource("12_6o6bu")
 
 [node name="Pic" type="TextureRect" parent="RedRecruitsPanel"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("9")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="RedRecruitsPanel"]
-margin_left = 33.0
-margin_top = 54.0
-margin_right = 85.0
-margin_bottom = 72.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_left = 33.0
+offset_top = 54.0
+offset_right = 85.0
+offset_bottom = 72.0
 text = "recruits"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PerTurn" type="Label" parent="RedRecruitsPanel"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="RedRecruitsPanel"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 5.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedGemsPanel" type="Panel" parent="."]
-margin_left = 16.0
-margin_top = 136.0
-margin_right = 104.0
-margin_bottom = 208.0
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 104.0
+offset_bottom = 208.0
+theme_override_styles/panel = ExtResource("13_fuj2a")
 
 [node name="Pic" type="TextureRect" parent="RedGemsPanel"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="RedGemsPanel"]
-margin_left = 33.0
-margin_top = 54.0
-margin_right = 84.0
-margin_bottom = 72.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_left = 35.0
+offset_top = 54.0
+offset_right = 85.0
+offset_bottom = 72.0
 text = "gems"
-align = 2
-valign = 1
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PerTurn" type="Label" parent="RedGemsPanel"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "3"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
 
 [node name="Total" type="Label" parent="RedGemsPanel"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 31.0
+offset_bottom = 73.0
 text = "10"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedBricksPanel" type="Panel" parent="."]
-margin_left = 16.0
-margin_top = 56.0
-margin_right = 104.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 8 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 128.0
+theme_override_styles/panel = ExtResource("19_b2qfd")
 
 [node name="Pic" type="TextureRect" parent="RedBricksPanel"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0239999
-margin_right = -0.00800323
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0239999
+offset_right = -0.00800323
+texture = ExtResource("13")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="RedBricksPanel"]
-margin_left = 33.0
-margin_top = 54.0
-margin_right = 84.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 47, 0 )
-rect_clip_content = true
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+clip_contents = true
+custom_minimum_size = Vector2(47, 0)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 54.0
+offset_right = 85.0
+offset_bottom = 72.0
 text = "bricks"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PerTurn" type="Label" parent="RedBricksPanel"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="RedBricksPanel"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedRecruitsPanelAlt" type="Panel" parent="."]
 visible = false
-margin_left = 16.0
-margin_top = 216.0
-margin_right = 104.0
-margin_bottom = 288.0
-custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 216.0
+offset_right = 104.0
+offset_bottom = 288.0
+theme_override_styles/panel = ExtResource("12_6o6bu")
 
 [node name="Pic" type="TextureRect" parent="RedRecruitsPanelAlt"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("9")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="RedRecruitsPanelAlt"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 87.0
-margin_bottom = 16.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/normal = SubResource( 9 )
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme_override_styles/normal = ExtResource("21_oop71")
 text = "RECRUITS"
-align = 1
-autowrap = true
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PerTurn" type="Label" parent="RedRecruitsPanelAlt"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="RedRecruitsPanelAlt"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedGemsPanelAlt" type="Panel" parent="."]
 visible = false
-margin_left = 16.0
-margin_top = 136.0
-margin_right = 104.0
-margin_bottom = 208.0
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 104.0
+offset_bottom = 208.0
+theme_override_styles/panel = ExtResource("13_fuj2a")
 
 [node name="Pic" type="TextureRect" parent="RedGemsPanelAlt"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="RedGemsPanelAlt"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 87.0
-margin_bottom = 16.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/normal = SubResource( 10 )
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme_override_styles/normal = ExtResource("22_kq6xk")
 text = "GEMS"
-align = 1
-autowrap = true
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PerTurn" type="Label" parent="RedGemsPanelAlt"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "3"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
 
 [node name="Total" type="Label" parent="RedGemsPanelAlt"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "10"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedBricksPanelAlt" type="Panel" parent="."]
 visible = false
-margin_left = 16.0
-margin_top = 56.0
-margin_right = 104.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 8 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 128.0
+theme_override_styles/panel = ExtResource("19_b2qfd")
 
 [node name="Pic" type="TextureRect" parent="RedBricksPanelAlt"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0239999
-margin_right = -0.00800323
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0239999
+offset_right = -0.00800323
+texture = ExtResource("13")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="RedBricksPanelAlt"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 87.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 47, 0 )
-rect_clip_content = true
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/normal = SubResource( 11 )
+clip_contents = true
+custom_minimum_size = Vector2(47, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme_override_styles/normal = ExtResource("21_mehl7")
 text = "BRICKS"
-align = 1
-autowrap = true
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PerTurn" type="Label" parent="RedBricksPanelAlt"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="RedBricksPanelAlt"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueRecruitsPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -104.0
-margin_top = 216.0
-margin_right = -16.0
-margin_bottom = 288.0
-custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = -104.0
+offset_top = 216.0
+offset_right = -16.0
+offset_bottom = 288.0
+theme_override_styles/panel = ExtResource("12_6o6bu")
 
 [node name="Pic" type="TextureRect" parent="BlueRecruitsPanel"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("9")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="BlueRecruitsPanel"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -52.0
-margin_top = -18.0
-margin_right = -4.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+layout_mode = 1
+offset_left = 36.0
+offset_top = 54.0
+offset_right = 85.0
+offset_bottom = 72.0
 text = "recruits"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PerTurn" type="Label" parent="BlueRecruitsPanel"]
-anchor_left = 0.068
-anchor_top = 0.333
-anchor_right = 0.636
-anchor_bottom = 0.792
-margin_left = 0.0159998
-margin_top = 0.0240002
-margin_right = 0.0319977
-margin_bottom = -0.0240021
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="BlueRecruitsPanel"]
-anchor_left = 0.057
-anchor_top = 0.75
-anchor_right = 0.409
-anchor_bottom = 1.014
-margin_left = -0.0160003
-margin_top = -3.8147e-06
-margin_right = 0.00799942
-margin_bottom = -1.008
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 1
+anchors_preset = -1
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueGemsPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -104.0
-margin_top = 136.0
-margin_right = -16.0
-margin_bottom = 208.0
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = -104.0
+offset_top = 136.0
+offset_right = -16.0
+offset_bottom = 208.0
+theme_override_styles/panel = ExtResource("13_fuj2a")
 
 [node name="Pic" type="TextureRect" parent="BlueGemsPanel"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="BlueGemsPanel"]
-anchor_left = 0.409
-anchor_top = 0.75
-anchor_right = 0.966
-anchor_bottom = 1.0
-margin_left = 0.00799942
-margin_right = -1.008
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+layout_mode = 1
+anchors_preset = -1
+offset_left = 36.0
+offset_top = 54.0
+offset_right = 85.0
+offset_bottom = 72.0
 text = "gems"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PerTurn" type="Label" parent="BlueGemsPanel"]
-anchor_left = 0.068
-anchor_top = 0.333
-anchor_right = 0.636
-anchor_bottom = 0.792
-margin_left = 0.0159998
-margin_top = 0.0240002
-margin_right = 0.0319977
-margin_bottom = -0.0240021
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "3"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
 
 [node name="Total" type="Label" parent="BlueGemsPanel"]
-anchor_left = 0.057
-anchor_top = 0.75
-anchor_right = 0.409
-anchor_bottom = 1.014
-margin_left = -0.0160003
-margin_top = -3.8147e-06
-margin_right = 0.00799942
-margin_bottom = -0.00800323
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 1
+anchors_preset = -1
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "10"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueBricksPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -104.0
-margin_top = 56.0
-margin_right = -16.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 8 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = -104.0
+offset_top = 56.0
+offset_right = -16.0
+offset_bottom = 128.0
+theme_override_styles/panel = ExtResource("19_b2qfd")
 
 [node name="Pic" type="TextureRect" parent="BlueBricksPanel"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("13")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="BlueBricksPanel"]
-margin_left = 36.0
-margin_top = 54.0
-margin_right = 84.0
-margin_bottom = 72.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_left = 36.0
+offset_top = 54.0
+offset_right = 84.0
+offset_bottom = 72.0
 text = "bricks"
-align = 2
-valign = 1
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PerTurn" type="Label" parent="BlueBricksPanel"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
 
 [node name="Total" type="Label" parent="BlueBricksPanel"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 34.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueRecruitsPanelAlt" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -104.0
-margin_top = 216.0
-margin_right = -16.0
-margin_bottom = 288.0
-custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = -104.0
+offset_top = 216.0
+offset_right = -16.0
+offset_bottom = 288.0
+theme_override_styles/panel = ExtResource("12_6o6bu")
 
 [node name="Pic" type="TextureRect" parent="BlueRecruitsPanelAlt"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("9")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="BlueRecruitsPanelAlt"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 87.0
-margin_bottom = 16.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/normal = SubResource( 9 )
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme_override_styles/normal = ExtResource("21_oop71")
 text = "RECRUITS"
-align = 1
-autowrap = true
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PerTurn" type="Label" parent="BlueRecruitsPanelAlt"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="BlueRecruitsPanelAlt"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueGemsPanelAlt" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -104.0
-margin_top = 136.0
-margin_right = -16.0
-margin_bottom = 208.0
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = -104.0
+offset_top = 136.0
+offset_right = -16.0
+offset_bottom = 208.0
+theme_override_styles/panel = ExtResource("13_fuj2a")
 
 [node name="Pic" type="TextureRect" parent="BlueGemsPanelAlt"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0240002
-margin_right = -0.00800323
-margin_bottom = -3.8147e-06
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0240002
+offset_right = -0.00800323
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="BlueGemsPanelAlt"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 87.0
-margin_bottom = 16.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/normal = SubResource( 10 )
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme_override_styles/normal = ExtResource("22_kq6xk")
 text = "GEMS"
-align = 1
-autowrap = true
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PerTurn" type="Label" parent="BlueGemsPanelAlt"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "3"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
 clip_text = true
 
 [node name="Total" type="Label" parent="BlueGemsPanelAlt"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "10"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueBricksPanelAlt" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -104.0
-margin_top = 56.0
-margin_right = -16.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 8 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = -104.0
+offset_top = 56.0
+offset_right = -16.0
+offset_bottom = 128.0
+theme_override_styles/panel = ExtResource("19_b2qfd")
 
 [node name="Pic" type="TextureRect" parent="BlueBricksPanelAlt"]
+layout_mode = 0
 anchor_left = 0.034
 anchor_top = 0.042
 anchor_right = 0.966
 anchor_bottom = 0.75
-margin_left = 0.0079999
-margin_top = -0.0239999
-margin_right = -0.00800323
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.0079999
+offset_top = -0.0239999
+offset_right = -0.00800323
+texture = ExtResource("13")
+expand_mode = 1
 
 [node name="Name" type="Label" parent="BlueBricksPanelAlt"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 87.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 47, 0 )
-rect_clip_content = true
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/normal = SubResource( 11 )
+clip_contents = true
+custom_minimum_size = Vector2(47, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme_override_styles/normal = ExtResource("21_mehl7")
 text = "BRICKS"
-align = 1
-autowrap = true
+label_settings = ExtResource("16_ro153")
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PerTurn" type="Label" parent="BlueBricksPanelAlt"]
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 57.0
-custom_colors/font_color = Color( 0.752941, 0.745098, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 57.0
 text = "5"
-valign = 2
-autowrap = true
+label_settings = ExtResource("17_c1kuj")
+vertical_alignment = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Total" type="Label" parent="BlueBricksPanelAlt"]
-margin_left = 5.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 36.0
+offset_bottom = 73.0
 text = "20"
-valign = 2
-autowrap = true
+label_settings = ExtResource("18_ii8jn")
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Particles" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -0.5
-margin_bottom = -0.5
-rect_clip_content = true
+offset_top = -0.5
+offset_bottom = -0.5
 mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+metadata/_edit_lock_ = true
 
 [node name="DeckBg" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -210.0
-texture = ExtResource( 14 )
-expand = true
+offset_top = -210.0
+texture = ExtResource("14")
+expand_mode = 1
 stretch_mode = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="Shadow" type="Panel" parent="DeckBg"]
 show_behind_parent = true
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 12 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uddb")
 
 [node name="DrawCardLabel" type="Label" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -134.0
-margin_top = -262.0
-margin_right = 134.0
-margin_bottom = -224.0
-custom_colors/font_color = Color( 0.85098, 0.156863, 0.168627, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.105882 )
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 13 )
+offset_left = -134.0
+offset_top = -262.0
+offset_right = 134.0
+offset_bottom = -224.0
 text = "DISCARD A CARD!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueDeck" type="HBoxContainer" parent="."]
 visible = false
+clip_contents = true
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -4.5
-margin_top = -192.0
-margin_right = 4.50006
-rect_clip_content = true
+offset_left = -4.5
+offset_top = -192.0
+offset_right = 4.50006
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RedDeck" type="HBoxContainer" parent="."]
 visible = false
+clip_contents = true
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -4.5
-margin_top = -192.0
-margin_right = 4.50006
-margin_bottom = 0.000305176
-rect_clip_content = true
+offset_left = -4.5
+offset_top = -192.0
+offset_right = 4.50006
+offset_bottom = 0.000305176
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DeckLocker" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -4.5
-margin_top = -192.0
-margin_right = 4.5
-color = Color( 1, 1, 1, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -4.5
+offset_top = -192.0
+offset_right = 4.5
+color = Color(1, 1, 1, 0)
 
 [node name="DeckAnim" type="Tween" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
 process_priority = 1
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
 
 [node name="CardAnim" type="Tween" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
 process_priority = 2
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
 
 [node name="GraveyardAnim" type="Tween" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
 process_priority = 1
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
 
 [node name="NewCardAnim" type="Tween" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
 process_priority = 2
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade"
-anims/fade = SubResource( 14 )
+libraries = {
+"": SubResource("AnimationLibrary_ahysq")
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 0)
 
 [node name="PauseBg" type="ColorRect" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.75 )
+modulate = Color(1, 1, 1, 0.75)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 
 [node name="TimeElapsed" type="Timer" parent="."]
 autostart = true
 
 [node name="EndGame" parent="." instance_placeholder="res://Scenes/endgame.tscn"]
 visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="IngameMenu" parent="." instance_placeholder="res://Scenes/ingame_menu.tscn"]
+[node name="InGameMenu" parent="." instance=ExtResource("25_ln0tp")]
 visible = false
+layout_mode = 1
 
-[connection signal="tween_all_completed" from="GraveyardAnim" to="." method="_on_graveyard_anim_tween_all_completed"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_k75iy")
+
 [connection signal="timeout" from="TimeElapsed" to="." method="_on_Time_Elapsed_timeout"]

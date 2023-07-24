@@ -12,10 +12,10 @@ func _ready():
 	print(global.time() + "Boot loaded.")
 	print(global.time() + "IP: " + Network.ip_address)
 	if cfg.intro_skip == false:
-		get_tree().change_scene("res://scenes/intro.tscn")
+		get_tree().change_scene_to_file("res://scenes/intro.tscn")
 		print(global.time() + "Loading to the Intro...")
 	elif cfg.intro_skip == true:
-		get_tree().change_scene("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		print(global.time() + "Loading to the Main menu...")
 
 # Generate build number from current date if in Debug Mode

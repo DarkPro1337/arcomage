@@ -1,7 +1,8 @@
 using Godot;
-using System;
 
-public class CardsViewer : Control
+namespace Arcomage.Scripts;
+
+public partial class CardsViewer : Control
 {
     public override void _Ready()
     {
@@ -9,7 +10,7 @@ public class CardsViewer : Control
         var card = (PackedScene)ResourceLoader.Load("res://Scenes/Card.tscn");
         for (var i = 0; i < 102; i++)
         {
-            var newCard = (Control)card.Instance();
+            var newCard = (Control)card.Instantiate();
             newCard.Set("CardIdx", i);
             newCard.Set("Preview", true);
             container.AddChild(newCard);

@@ -1,12 +1,12 @@
 extends Control
 
-onready var settings = $settings
-onready var network_setup = $network_setup
-onready var startup = $startupAnim
-onready var anim = $menuAnim
-onready var info = $info
-onready var version = $logo/ver
-onready var build_number = $build
+@onready var settings = $settings
+@onready var network_setup = $network_setup
+@onready var startup = $startupAnim
+@onready var anim = $menuAnim
+@onready var info = $info
+@onready var version = $logo/ver
+@onready var build_number = $build
 
 func _ready():
 	version.text = "v." + str(ProjectSettings.get_setting("application/config/version"))
@@ -17,8 +17,8 @@ func _ready():
 
 func _on_new_game_pressed():
 	anim.play("fade_out")
-	yield(anim, "animation_finished")
-	get_tree().change_scene("res://scenes/table.tscn")
+	await anim.animation_finished
+	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 func _on_multiplayer_game_pressed():
 	network_setup.show()
@@ -41,6 +41,6 @@ func alert(text: String, title: String='Message') -> void:
 	dialog.theme = load("res://themes/main_menu_theme.tres")
 	dialog.dialog_text = text
 	dialog.window_title = title
-	dialog.connect('modal_closed', dialog, 'queue_free')
+	dialog.connect('modal_closed',Callable(dialog,'queue_free'))
 	add_child(dialog)
 	dialog.popup_centered()

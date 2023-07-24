@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dxtj1mnqd7m84"
+
+[deps]
+
+files=["res://Locales/Arcomage Translations - Interface.en.translation", "res://Locales/Arcomage Translations - Interface.ru.translation", "res://Locales/Arcomage Translations - Interface.uk.translation", "res://Locales/Arcomage Translations - Interface.pl.translation", "res://Locales/Arcomage Translations - Interface.da.translation"]
+
+source_file="res://Locales/Arcomage Translations - Interface.csv"
+dest_files=["res://Locales/Arcomage Translations - Interface.en.translation", "res://Locales/Arcomage Translations - Interface.ru.translation", "res://Locales/Arcomage Translations - Interface.uk.translation", "res://Locales/Arcomage Translations - Interface.pl.translation", "res://Locales/Arcomage Translations - Interface.da.translation"]
+
+[params]
+
+compress=true
+delimiter=0

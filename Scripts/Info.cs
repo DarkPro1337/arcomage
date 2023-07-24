@@ -2,20 +2,16 @@ using Godot;
 
 namespace Arcomage.Scripts
 {
-    public class Info : Control
+    public partial class Info : Control
     {
-        private VBoxContainer _originalContainer;
-        private VBoxContainer _remakeContainer;
-        private VBoxContainer _translationContainer;
-        private Label _authorLabel;
+        private VBoxContainer OriginalContainer => GetNode<VBoxContainer>("OriginalInfo");
+        private VBoxContainer RemakeContainer => GetNode<VBoxContainer>("RemakeInfo");
+        private VBoxContainer TranslationContainer => GetNode<VBoxContainer>("TranslationInfo");
+        private Label AuthorLabel => GetNode<Label>("RemakeInfo/Text/Author");
 
         public override void _EnterTree()
         {
             base._EnterTree();
-            _originalContainer = GetNode<VBoxContainer>("OriginalInfo");
-            _remakeContainer = GetNode<VBoxContainer>("RemakeInfo");
-            _translationContainer = GetNode<VBoxContainer>("TranslationInfo");
-            _authorLabel = GetNode<Label>("RemakeInfo/Text/Author");
 
             var authorLabel = GetNode<Label>("RemakeInfo/Text/Author");
             var engineButton = GetNode<TextureButton>("RemakeInfo/Logos/Engine");
@@ -28,55 +24,55 @@ namespace Arcomage.Scripts
             var kofiButton = GetNode<TextureButton>("RemakeInfo/Logos/Kofi");
             var nextButton = GetNode<Button>("Next");
 
-            authorLabel.Connect("gui_input", this, nameof(OnAuthorGuiInput));
-            authorLabel.Connect("mouse_entered", this, nameof(OnAuthorMouseEntered));
-            authorLabel.Connect("mouse_exited", this, nameof(OnAuthorMouseExited));
-            engineButton.Connect("pressed", this, nameof(OnEnginePressed));
-            githubButton.Connect("pressed", this, nameof(OnGithubPressed));
-            trelloButton.Connect("pressed", this, nameof(OnTrelloPressed));
-            itchButton.Connect("pressed", this, nameof(OnItchPressed));
-            gameJoltButton.Connect("pressed", this, nameof(OnGameJoltPressed));
-            bmcButton.Connect("pressed", this, nameof(OnBmcPressed));
-            patronButton.Connect("pressed", this, nameof(OnPatronPressed));
-            kofiButton.Connect("pressed", this, nameof(OnKofiPressed));
-            nextButton.Connect("pressed", this, nameof(OnNextPressed));
+            authorLabel.Connect("gui_input",new Callable(this,nameof(OnAuthorGuiInput)));
+            authorLabel.Connect("mouse_entered",new Callable(this,nameof(OnAuthorMouseEntered)));
+            authorLabel.Connect("mouse_exited",new Callable(this,nameof(OnAuthorMouseExited)));
+            engineButton.Connect("pressed",new Callable(this,nameof(OnEnginePressed)));
+            githubButton.Connect("pressed",new Callable(this,nameof(OnGithubPressed)));
+            trelloButton.Connect("pressed",new Callable(this,nameof(OnTrelloPressed)));
+            itchButton.Connect("pressed",new Callable(this,nameof(OnItchPressed)));
+            gameJoltButton.Connect("pressed",new Callable(this,nameof(OnGameJoltPressed)));
+            bmcButton.Connect("pressed",new Callable(this,nameof(OnBmcPressed)));
+            patronButton.Connect("pressed",new Callable(this,nameof(OnPatronPressed)));
+            kofiButton.Connect("pressed",new Callable(this,nameof(OnKofiPressed)));
+            nextButton.Connect("pressed",new Callable(this,nameof(OnNextPressed)));
         }
 
         public override void _Ready()
         {
-            _originalContainer.Show();
-            _remakeContainer.Hide();
-            _translationContainer.Hide();
+            OriginalContainer.Show();
+            RemakeContainer.Hide();
+            TranslationContainer.Hide();
         }
 
         private void OnNextPressed()
         {
-            if (_originalContainer.Visible)
+            if (OriginalContainer.Visible)
             {
-                _originalContainer.Hide();
-                _remakeContainer.Show();
+                OriginalContainer.Hide();
+                RemakeContainer.Show();
             }
-            else if (_remakeContainer.Visible)
+            else if (RemakeContainer.Visible)
             {
-                _translationContainer.Show();
-                _remakeContainer.Hide();
+                TranslationContainer.Show();
+                RemakeContainer.Hide();
             }
-            else if (_translationContainer.Visible)
+            else if (TranslationContainer.Visible)
             {
-                _originalContainer.Show();
-                _translationContainer.Hide();
+                OriginalContainer.Show();
+                TranslationContainer.Hide();
                 Hide();
             }
         }
     
         private void OnAuthorGuiInput(InputEvent @event)
         {
-            if (@event is InputEventMouseButton btn && btn.IsPressed() && btn.ButtonIndex == 1)
+            if (@event is InputEventMouseButton btn && btn.IsPressed() && btn.ButtonIndex == MouseButton.Left)
                 OS.ShellOpen("https://darkpro1337.github.io");
         }
 
-        private void OnAuthorMouseEntered() => _authorLabel.Modulate = new Color("#ff993f");
-        private void OnAuthorMouseExited() => _authorLabel.Modulate = new Color("#ffffff");
+        private void OnAuthorMouseEntered() => AuthorLabel.Modulate = new Color("#ff993f");
+        private void OnAuthorMouseExited() => AuthorLabel.Modulate = new Color("#ffffff");
     
         private void OnEnginePressed() => OS.ShellOpen("https://godotengine.org");
         private void OnGithubPressed() => OS.ShellOpen("https://github.com/DarkPro1337/arcomage");

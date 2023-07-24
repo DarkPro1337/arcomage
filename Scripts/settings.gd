@@ -2,68 +2,68 @@ extends Control
 
 var config_path = "user://settings.ini"
 
-onready var anim = $AnimationPlayer
-onready var reset = $reset
-onready var bg = $bg
+@onready var anim = $AnimationPlayer
+@onready var reset = $reset
+@onready var bg = $bg
 # INTERACTIVE CONTROL ELEMENTS VARIABLES BELOW
 # WINDOW SETTINGS
-onready var window_settings = $tab/Graphics
-onready var window_settings_button = $buttons_container/buttons_grid/window_settings
-onready var fullscreen_block = $tab/Graphics/graphics/fullscreen
-onready var fullscreen_button = $tab/Graphics/graphics/fullscreen/fullscreen_button
-onready var borderless_button = $tab/Graphics/graphics/borderless/borderless_button
-onready var window_width_edit = $tab/Graphics/graphics/window_res/width
-onready var window_height_edit = $tab/Graphics/graphics/window_res/height
-onready var vsync_button = $tab/Graphics/graphics/vsync/vsync_button
-onready var intro_skip = $tab/Graphics/graphics/intro_skip
-onready var intro_skip_button = $tab/Graphics/graphics/intro_skip/introskip_button
+@onready var window_settings = $tab/Graphics
+@onready var window_settings_button = $buttons_container/buttons_grid/window_settings
+@onready var fullscreen_block = $tab/Graphics/graphics/fullscreen
+@onready var fullscreen_button = $tab/Graphics/graphics/fullscreen/fullscreen_button
+@onready var borderless_button = $tab/Graphics/graphics/borderless/borderless_button
+@onready var window_width_edit = $tab/Graphics/graphics/window_res/width
+@onready var window_height_edit = $tab/Graphics/graphics/window_res/height
+@onready var vsync_button = $tab/Graphics/graphics/vsync/vsync_button
+@onready var intro_skip = $tab/Graphics/graphics/intro_skip
+@onready var intro_skip_button = $tab/Graphics/graphics/intro_skip/introskip_button
 # SOUND SETTINGS
-onready var sound_settings = $tab/Sound
-onready var sound_settings_button = $buttons_container/buttons_grid/sound_settings
-onready var master_volume = $tab/Sound/sound/master/master_slider
-onready var music_volume = $tab/Sound/sound/music/music_slider
-onready var sound_volume = $tab/Sound/sound/sounds/sounds_slider
-onready var mute_sound = $tab/Sound/sound/mute/mute_sound
+@onready var sound_settings = $tab/Sound
+@onready var sound_settings_button = $buttons_container/buttons_grid/sound_settings
+@onready var master_volume = $tab/Sound/sound/master/master_slider
+@onready var music_volume = $tab/Sound/sound/music/music_slider
+@onready var sound_volume = $tab/Sound/sound/sounds/sounds_slider
+@onready var mute_sound = $tab/Sound/sound/mute/mute_sound
 # STARTING CONDITIONS
-onready var starting_conditions = $tab/Starting_Conditions
-onready var starting_conditions_button = $buttons_container/buttons_grid/starting_conditions
-onready var singleplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_player/singleplayer
-onready var multiplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/multi_player/multiplayer
-onready var single_click_mode_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_click/singleclick_mode
-onready var tower_levels = $tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level
-onready var wall_levels = $tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level
-onready var quarry_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels/level
-onready var brick_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quanity/level
-onready var magic_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels/level
-onready var gem_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quanity/level
-onready var dungeon_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/dungeon_levels3/level
-onready var recruit_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quanity/level
+@onready var starting_conditions = $tab/Starting_Conditions
+@onready var starting_conditions_button = $buttons_container/buttons_grid/starting_conditions
+@onready var singleplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_player/singleplayer
+@onready var multiplayer_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/multi_player/multiplayer
+@onready var single_click_mode_button = $tab/Starting_Conditions/starting_conditions/main/gameplay/single_click/singleclick_mode
+@onready var tower_levels = $tab/Starting_Conditions/starting_conditions/main/towers_walls/tower_levels/level
+@onready var wall_levels = $tab/Starting_Conditions/starting_conditions/main/towers_walls/wall_levels/level
+@onready var quarry_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/quarry_levels/level
+@onready var brick_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/brick_quanity/level
+@onready var magic_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/magic_levels/level
+@onready var gem_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/gem_quanity/level
+@onready var dungeon_levels = $tab/Starting_Conditions/starting_conditions/gen_res/generators/dungeon_levels3/level
+@onready var recruit_quantity = $tab/Starting_Conditions/starting_conditions/gen_res/resources/recruit_quanity/level
 # PLAY CONDITIONS
-onready var play_conditions = $tab/Play_Conditions
-onready var play_conditions_button = $buttons_container/buttons_grid/play_conditions
-onready var auto_bricks = $tab/Play_Conditions/main/autoget/bricks/level
-onready var auto_gems = $tab/Play_Conditions/main/autoget/gems/level
-onready var auto_recruits = $tab/Play_Conditions/main/autoget/recruits/level
-onready var cards_in_hand = $tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level
-onready var ai = $tab/Play_Conditions/main/cardsnum_and_ai/AI/mode
+@onready var play_conditions = $tab/Play_Conditions
+@onready var play_conditions_button = $buttons_container/buttons_grid/play_conditions
+@onready var auto_bricks = $tab/Play_Conditions/main/autoget/bricks/level
+@onready var auto_gems = $tab/Play_Conditions/main/autoget/gems/level
+@onready var auto_recruits = $tab/Play_Conditions/main/autoget/recruits/level
+@onready var cards_in_hand = $tab/Play_Conditions/main/cardsnum_and_ai/cards_in_hand/level
+@onready var ai = $tab/Play_Conditions/main/cardsnum_and_ai/AI/mode
 # VICTORY CONDITIONS
-onready var victory_conditions = $tab/Victory_Conditions
-onready var victory_conditions_button = $buttons_container/buttons_grid/victory_conditions
-onready var win_tower = $tab/Victory_Conditions/main/tower/level
-onready var win_resources = $tab/Victory_Conditions/main/resource/level
+@onready var victory_conditions = $tab/Victory_Conditions
+@onready var victory_conditions_button = $buttons_container/buttons_grid/victory_conditions
+@onready var win_tower = $tab/Victory_Conditions/main/tower/level
+@onready var win_resources = $tab/Victory_Conditions/main/resource/level
 # TAVERN PRESETS
-onready var tavern_presets = $tab/Tavern_Presets
-onready var tavern_presets_button = $buttons_container/buttons_grid/tavern_presets
-onready var tavern_preset = $tab/Tavern_Presets/main/preset/tavern_option
+@onready var tavern_presets = $tab/Tavern_Presets
+@onready var tavern_presets_button = $buttons_container/buttons_grid/tavern_presets
+@onready var tavern_preset = $tab/Tavern_Presets/main/preset/tavern_option
 # LANGUAGE SETTINGS
-onready var language_settings = $tab/Language_Settings
-onready var language_settings_button = $buttons_container/buttons_grid/language_settings
-onready var language = $tab/Language_Settings/main/language/lang_option
-onready var lang_errors = $tab/Language_Settings/main/lang_errors
+@onready var language_settings = $tab/Language_Settings
+@onready var language_settings_button = $buttons_container/buttons_grid/language_settings
+@onready var language = $tab/Language_Settings/main/language/lang_option
+@onready var lang_errors = $tab/Language_Settings/main/lang_errors
 # PLAYER SETTINGS
-onready var player_settings = $tab/Player_Settings
-onready var player_settings_button = $buttons_container/buttons_grid/player_settings
-onready var nickname = $tab/Player_Settings/main/nickname/edit
+@onready var player_settings = $tab/Player_Settings
+@onready var player_settings_button = $buttons_container/buttons_grid/player_settings
+@onready var nickname = $tab/Player_Settings/main/nickname/edit
 
 func _ready():
 	# Settings will looks different if you will open them from ingame menu
@@ -81,8 +81,8 @@ func _ready():
 	
 	load_settings()
 	update_controls()
-	$tab/Graphics/graphics/window_res/height.text = str(OS.get_window_size().y)
-	$tab/Graphics/graphics/window_res/width.text = str(OS.get_window_size().x)
+	$tab/Graphics/graphics/window_res/height.text = str(get_window().get_size().y)
+	$tab/Graphics/graphics/window_res/width.text = str(get_window().get_size().x)
 	match cfg.locale:
 		0:
 			TranslationServer.set_locale("en")
@@ -97,7 +97,7 @@ func _ready():
 
 func _on_close_pressed():
 	anim.play("hide")
-	yield(anim, "animation_finished")
+	await anim.animation_finished
 	save_settings()
 	hide()
 
@@ -272,22 +272,22 @@ func has_key_else_set(c: ConfigFile, SECTION: String, key: String, set_to):
 # UPDATE BUTTONS STATE
 func update_controls():
 	# WINDOW SETTINGS
-	fullscreen_button.pressed = cfg.fullscreen
-	borderless_button.pressed = cfg.borderless
+	fullscreen_button.button_pressed = cfg.fullscreen
+	borderless_button.button_pressed = cfg.borderless
 	window_width_edit.text = str(cfg.window_width)
 	window_height_edit.text = str(cfg.window_height)
-	vsync_button.pressed = cfg.vsync
-	intro_skip_button.pressed = cfg.intro_skip
+	vsync_button.button_pressed = cfg.vsync
+	intro_skip_button.button_pressed = cfg.intro_skip
 	# AUDIO SETTINGS
 	master_volume.value = float(cfg.master_volume)
 	music_volume.value = float(cfg.music_volume)
 	sound_volume.value = float(cfg.sound_volume)
-	mute_sound.pressed = cfg.mute_sound
+	mute_sound.button_pressed = cfg.mute_sound
 	# STARTING CONDITIONS
 	#TODO: SINGLEPLAYER AND MULTIPLAYER RADIO BUTTONS STATE, AFTER MULTIPLAYER UPDATE
-	#singleplayer_button.pressed = cfg.singleplayer
-	single_click_mode_button.pressed = cfg.single_click
-	mute_sound.pressed = cfg.mute_sound
+	#singleplayer_button.button_pressed = cfg.singleplayer
+	single_click_mode_button.button_pressed = cfg.single_click
+	mute_sound.button_pressed = cfg.mute_sound
 	tower_levels.value = cfg.tower_levels
 	wall_levels.value = cfg.wall_levels
 	quarry_levels.value = cfg.quarry_levels
@@ -337,34 +337,34 @@ func _on_player_settings_pressed():
 	$tab.current_tab = 7
 
 func _on_fullscreen_button_toggled(button_pressed):
-	OS.window_fullscreen = button_pressed
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (button_pressed) else Window.MODE_WINDOWED
 	if button_pressed == true:
 		$tab/Graphics/graphics/window_res.hide()
 	else:
 		$tab/Graphics/graphics/window_res.show()
 
 func _on_borderless_button_toggled(button_pressed):
-	OS.window_borderless = button_pressed
-	if button_pressed == true and fullscreen_button.pressed == true:
+	get_window().borderless = button_pressed
+	if button_pressed == true and fullscreen_button.button_pressed == true:
 		fullscreen_block.hide()
 	else:
 		fullscreen_block.show()
 
 func _on_vsync_button_toggled(button_pressed):
-	OS.vsync_enabled = button_pressed
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (button_pressed) else DisplayServer.VSYNC_DISABLED)
 
 func _on_winres_apply_pressed():
-	OS.set_window_size(Vector2(float(window_width_edit.text), float(window_height_edit.text)))
-	OS.set_window_position(OS.get_screen_size()*0.5 - OS.get_window_size()*0.5)
+	get_window().set_size(Vector2(float(window_width_edit.text), float(window_height_edit.text)))
+	get_window().set_position(DisplayServer.screen_get_size()*0.5 - get_window().get_size()*0.5)
 
 func _on_master_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(0, linear2db(master_volume.value))
+	AudioServer.set_bus_volume_db(0, linear_to_db(master_volume.value))
 
 func _on_music_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(1, linear2db(music_volume.value))
+	AudioServer.set_bus_volume_db(1, linear_to_db(music_volume.value))
 
 func _on_sounds_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(2, linear2db(sound_volume.value))
+	AudioServer.set_bus_volume_db(2, linear_to_db(sound_volume.value))
 
 func _on_lang_option_item_selected(index):
 	match index:
