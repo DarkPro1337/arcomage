@@ -98,3 +98,11 @@ ENTER_IP_ADDRESS,Enter IP Address,Введите IP адрес сервера,В
 IP_ADDRESS_NOT_FOUND,IP Address not found!,IP адрес не найден!,IP адрес не знайдений!,Nie znaleziono adresu IP!,IP Adresse ikke fundet!
 CANCEL,Cancel,Отмена,Відміна,Zniesienie,Afbryd
 MULTIPLAYER_GAME_TOOLTIP,Opens multiplayer game creation and connection screen.,Открывает экран создания и подключения многопользовательской игры.,Відкриває екран створення і підключення багатокористувацької гри.,Otwiera ekran tworzenia i łączenia gry wieloosobowej.,Åbner multiplayer oprettelses- og forbindelsesskærm
+READY,Ready,Готов,,,
+LOBBY,Lobby,Лобби,,,
+CONNECTION,Connection,Подключение,,,
+PLAYERS,Players,Игроки,,,
+STATUS,Status,Статус,,,
+READY,Ready,Готов,,,
+NOT_READY,Not Ready,Не готов,,,
+DEV_TOOLS,Developer Tools,Инструменты разработчика,,,

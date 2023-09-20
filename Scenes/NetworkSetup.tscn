@@ -30,6 +30,7 @@ expand_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Container" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,6 +40,13 @@ offset_left = -215.0
 offset_top = -39.0
 offset_right = 216.0
 offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
+text = "CONNECTION"
+label_settings = ExtResource("4_qrbr7")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="IpAddress" type="LineEdit" parent="Container"]
 layout_mode = 2
@@ -57,6 +65,47 @@ text = "CREATE_SERVER"
 [node name="JoinServer" type="Button" parent="Container"]
 layout_mode = 2
 text = "JOIN_SERVER"
+
+[node name="Lobby" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_right = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Lobby"]
+layout_mode = 2
+text = "LOBBY"
+label_settings = ExtResource("4_qrbr7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayersList" type="Tree" parent="Lobby"]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_vertical = 4
+columns = 2
+column_titles_visible = true
+allow_search = false
+hide_folding = true
+enable_recursive_folding = false
+hide_root = true
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+
+[node name="StartGame" type="Button" parent="Lobby"]
+layout_mode = 2
+text = "START_GAME"
+
+[node name="Ready" type="Button" parent="Lobby"]
+layout_mode = 2
+toggle_mode = true
+text = "READY"
 
 [node name="Cancel" type="Button" parent="."]
 layout_mode = 0
@@ -82,10 +131,5 @@ text = "IP_ADDRESS_NOT_FOUND"
 label_settings = ExtResource("4_qrbr7")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Table.tscn")
-spawn_path = NodePath("../Level")
-spawn_limit = 1
 
 [node name="Level" type="Node" parent="."]

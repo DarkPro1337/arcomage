@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Godot;
+using Godot.Collections;
 
 namespace Arcomage.Scripts
 {
@@ -17,6 +19,15 @@ namespace Arcomage.Scripts
 
         public static void Log(string text) => 
             GD.Print($"[{GetTime()}] {text}");
+        
+        public static Dictionary<string, string> GetCommandLineArgs()
+        {
+            return new Dictionary<string, string>(OS.GetCmdlineArgs()
+                .Where(arg => arg.StartsWith("--"))
+                .Select(arg => arg[2..].Split("=", 2))
+                .Where(parts => parts.Length == 2)
+                .ToDictionary(parts => parts[0], parts => parts[1]));
+        }
 
         private static string GetTime() => 
             DateTime.Now.ToString("HH:mm:ss");
@@ -29,7 +40,7 @@ namespace Arcomage.Scripts
                 using var file = FileAccess.Open(fileName, FileAccess.ModeFlags.Read);
                 var content = file.GetAsText();
                 file.Close();
-                return content;
+                return content.Trim();
             }
 
             GD.PrintErr("Build.tres file missing");
