@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca5d6s8ukswrf"]
+[gd_scene load_steps=6 format=3 uid="uid://ca5d6s8ukswrf"]
 
 [ext_resource type="Texture2D" uid="uid://cvtghalj0sfe2" path="res://Images/Layout-edit_dark.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://b4ief6r1wedxu" path="res://Images/table_gradient_dark.png" id="2"]
-[ext_resource type="Script" path="res://Scripts/endgame.gd" id="4"]
 
 [sub_resource type="Animation" id="4"]
 resource_name = "fade_out"
@@ -49,7 +48,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.666667)
