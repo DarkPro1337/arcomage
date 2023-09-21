@@ -42,4 +42,3 @@ As a rule, cards that require the same type of resources are similar in action. 
 * [**Godot** v.4.1.1 stable mono](https://downloads.tuxfamily.org/godotengine/4.1.1/)
 * [**.NET** SDK](https://dotnet.microsoft.com/download)
 * Recommended [**Rider**](https://www.jetbrains.com/rider/download) or [**VS Code**](https://code.visualstudio.com/download) external editors with Godot C# extensions ([learn here](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_basics.html#configuring-an-external-editor)).
-* [**CastleDB** v.1.5](http://castledb.org/)

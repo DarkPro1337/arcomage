@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using Godot;
 
@@ -9,7 +8,8 @@ public enum CardsLayout
 {
     Brick,
     Gem,
-    Recruits
+    Recruits,
+    None
 }
 
 public enum CardsUse
@@ -17,6 +17,13 @@ public enum CardsUse
     Attack,
     Defence,
     Resource
+}
+
+public enum CardFeature
+{
+    PlayAgain,
+    DrawDiscard,
+    NotDiscardable,
 }
 
 public class Cards
@@ -27,27 +34,40 @@ public class Cards
     public CardsLayout Type { get; set; }
     public int Cost { get; set; }
     public string Pic { get; set; }
-    public CardsUse Use { get; set; }
-    public bool NotDiscardable { get; set; }
+    public List<CardsUse> Uses { get; set; }
+    public List<CardFeature> Features { get; set; }
 
     public void Load(JsonElement obj)
     {
-        if(obj.TryGetProperty("id", out var idElem) && idElem.ValueKind == JsonValueKind.String)
-            Id = idElem.GetString();
-        if(obj.TryGetProperty("name", out var nameElem) && nameElem.ValueKind == JsonValueKind.String)
-            Name = nameElem.GetString();
-        if(obj.TryGetProperty("description", out var descriptionElem) && descriptionElem.ValueKind == JsonValueKind.String)
-            Description = descriptionElem.GetString();
-        if(obj.TryGetProperty("type", out var typeElem) && typeElem.ValueKind == JsonValueKind.Number)
-            Type = (CardsLayout)typeElem.GetInt32();
-        if(obj.TryGetProperty("cost", out var costElem) && costElem.ValueKind == JsonValueKind.Number)
-            Cost = costElem.GetInt32();
-        if(obj.TryGetProperty("use", out var useElem) && useElem.ValueKind == JsonValueKind.Number)
-            Use = (CardsUse)useElem.GetInt32();
-        if(obj.TryGetProperty("not_discardable", out var notDiscardableElem) && notDiscardableElem.ValueKind == JsonValueKind.String)
-            NotDiscardable = notDiscardableElem.GetString().Equals("true");
-        if(obj.TryGetProperty("pic", out JsonElement picElem) && picElem.ValueKind == JsonValueKind.String)
-            Pic = picElem.GetString();
+        Id = obj.GetProperty("id").GetString();
+        Name = obj.GetProperty("name").GetString();
+        Description = obj.GetProperty("description").GetString();
+        Type = obj.GetProperty("type").GetString() switch
+        {
+            "brick" => CardsLayout.Brick,
+            "gem" => CardsLayout.Gem,
+            "recruits" => CardsLayout.Recruits,
+            _ => CardsLayout.None
+        };
+        Cost = obj.GetProperty("cost").GetInt32();
+        Pic = obj.GetProperty("pic").GetString();
+        
+        // TODO: Uses should be automated based on Actions
+        Uses = null;
+        
+        if (obj.TryGetProperty("features", out var features))
+        {
+            Features = new List<CardFeature>();
+            foreach (var feature in features.EnumerateArray())
+            {
+                Features.Add(feature.GetString() switch
+                {
+                    "playAgain" => CardFeature.PlayAgain,
+                    "drawDiscard" => CardFeature.DrawDiscard,
+                    "notDiscardable" => CardFeature.NotDiscardable
+                });
+            }
+        }
     }
 }
     
@@ -72,8 +92,8 @@ public partial class Card : Control
     public int CardCost;
     public CardsLayout CardLayout;
     public string CardArt;
-    public CardsUse CardUse;
-    public bool CardNotDiscardable;
+    public List<CardsUse> CardUses;
+    public List<CardFeature> CardFeatures;
 
     public bool Preview = false;
     public bool Discardable = true;
@@ -89,9 +109,12 @@ public partial class Card : Control
         MouseExited += OnMouseExited;
         
         _rng.Randomize();
-            
-        var jsonString = System.IO.File.ReadAllText("Db/base.cdb");
-        using (var document = JsonDocument.Parse(jsonString)) 
+
+        var jsonFile = FileAccess.Open("res://Db/base.json", FileAccess.ModeFlags.Read);
+        var json = jsonFile.GetAsText();
+        jsonFile.Close();
+        
+        using (var document = JsonDocument.Parse(json)) 
             LoadCards(document);
         
         var selectedCard = CardIdx != -1 && CardIdx >= 0 && CardIdx <= CardsList.Count
@@ -104,8 +127,8 @@ public partial class Card : Control
         CardDescription = $"{selectedCard.Id.ToUpper()}_DESC";
         CardCost = selectedCard.Cost;
         CardLayout = selectedCard.Type;
-        CardUse = selectedCard.Use;
-        CardNotDiscardable = selectedCard.NotDiscardable;
+        CardUses = selectedCard.Uses;
+        CardFeatures = selectedCard.Features;
 
         NameLabel.Text = CardName;
         Art.Texture = GD.Load<Texture2D>(CardArt);
@@ -114,7 +137,7 @@ public partial class Card : Control
         NameLabel.Uppercase = UiCardUppercaseText;
         Name = CardId;
 
-        if (CardNotDiscardable) Discardable = false;
+        if (CardFeatures.Contains(CardFeature.NotDiscardable)) Discardable = false;
 
         switch (CardLayout)
         {
@@ -157,20 +180,12 @@ public partial class Card : Control
     private void LoadCards(JsonDocument document)
     {
         var root = document.RootElement;
-        if(!root.TryGetProperty("sheets", out JsonElement sheetsElem) || sheetsElem.ValueKind != JsonValueKind.Array) return;
-        foreach (var s in sheetsElem.EnumerateArray().Where(s => s.ValueKind == JsonValueKind.Object))
+        if(root.ValueKind != JsonValueKind.Array) return;
+        foreach (var card in root.EnumerateArray())
         {
-            if(!s.TryGetProperty("name", out JsonElement nameElem) || nameElem.ValueKind != JsonValueKind.String) continue;
-            var sheetName = nameElem.GetString();
-            if (sheetName != null && !sheetName.Equals("cards")) continue;
-            if(!s.TryGetProperty("lines", out JsonElement linesElem) || linesElem.ValueKind != JsonValueKind.Array) continue;
-            foreach (var l in linesElem.EnumerateArray())
-            {
-                if(l.ValueKind != JsonValueKind.Object) continue;
-                var value = new Cards();
-                value.Load(l);
-                CardsList.Add(value);
-            }
+            var newCard = new Cards();
+            newCard.Load(card);
+            CardsList.Add(newCard);
         }
     }
 }
