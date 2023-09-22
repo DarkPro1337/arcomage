@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca5d6s8ukswrf"]
+[gd_scene load_steps=7 format=3 uid="uid://ca5d6s8ukswrf"]
 
 [ext_resource type="Texture2D" uid="uid://cvtghalj0sfe2" path="res://Images/Layout-edit_dark.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://b4ief6r1wedxu" path="res://Images/table_gradient_dark.png" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8gv1"]
+bg_color = Color(0, 0, 0, 0)
+shadow_size = 3
 
 [sub_resource type="Animation" id="4"]
 resource_name = "fade_out"
@@ -9,7 +13,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fader:modulate")
+tracks/0/path = NodePath("Fade:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +28,7 @@ resource_name = "hint_anim"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("hint:modulate")
+tracks/0/path = NodePath("Hint:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +44,7 @@ _data = {
 "hint_anim": SubResource("3")
 }
 
-[node name="endgame" type="Control"]
+[node name="MatchResult" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -49,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="background" type="TextureRect" parent="."]
+[node name="Bg" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.666667)
 layout_mode = 0
 anchor_right = 1.0
@@ -57,9 +61,9 @@ anchor_bottom = 1.0
 pivot_offset = Vector2(-223, 96)
 texture = ExtResource("1")
 expand_mode = 1
-stretch_mode = 7
+stretch_mode = 6
 
-[node name="deck_background" type="TextureRect" parent="."]
+[node name="DeckBg" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.666667)
 layout_mode = 0
 anchor_top = 1.0
@@ -71,13 +75,17 @@ texture = ExtResource("2")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="shadow" type="Panel" parent="deck_background"]
+[node name="Shadow" type="Panel" parent="DeckBg"]
 show_behind_parent = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w8gv1")
 
-[node name="winner_is" type="Label" parent="."]
+[node name="WinnerIs" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -88,8 +96,10 @@ offset_top = -73.0
 offset_right = 476.0
 offset_bottom = -30.0
 text = "WINNER_IS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="winner_label" type="Label" parent="."]
+[node name="WinnerName" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -100,8 +110,10 @@ offset_top = -24.3723
 offset_right = 468.0
 offset_bottom = 18.6277
 text = "NICKNAME"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="by_what" type="Label" parent="."]
+[node name="ByWhat" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -112,8 +124,10 @@ offset_top = 78.0
 offset_right = 468.0
 offset_bottom = 121.0
 text = "WIN MSG"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="time" type="Label" parent="."]
+[node name="Time" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -124,8 +138,10 @@ offset_top = 126.0
 offset_right = 469.0
 offset_bottom = 169.0
 text = "TIME: 00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="hint" type="Label" parent="."]
+[node name="Hint" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
@@ -136,14 +152,16 @@ offset_top = -59.0
 offset_right = 468.5
 offset_bottom = -16.0
 text = "Press \"Space\" to continue..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "hint_anim"
 libraries = {
 "": SubResource("AnimationLibrary_bau11")
 }
 
-[node name="fader" type="ColorRect" parent="."]
+[node name="Fade" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 anchor_right = 1.0
