@@ -36,7 +36,7 @@ As a rule, cards that require the same type of resources are similar in action. 
 * [**GameJolt**](https://gamejolt.com/games/arcomage/537808)
 
 ## Requirements
-* **OpenGL 3.3** or **OpenGL ES 3.0** compatible hardware
+* **Vulkan 1.0** compatible hardware
 
 ## Compilation and editing
 * [**Godot** v.4.1.1 stable mono](https://downloads.tuxfamily.org/godotengine/4.1.1/)
